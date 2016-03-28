@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10E903B51CA9A017000904DB /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E903B41CA9A017000904DB /* CircleView.m */; };
 		19FDF03F1CA9950F00FBE133 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF03E1CA9950F00FBE133 /* main.m */; };
 		19FDF0421CA9950F00FBE133 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0411CA9950F00FBE133 /* AppDelegate.m */; };
 		19FDF04B1CA9950F00FBE133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19FDF0491CA9950F00FBE133 /* Main.storyboard */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10E903B31CA9A017000904DB /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
+		10E903B41CA9A017000904DB /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		19FDF03A1CA9950F00FBE133 /* Adept_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adept_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19FDF03E1CA9950F00FBE133 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		19FDF0401CA9950F00FBE133 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 				19FDF0401CA9950F00FBE133 /* AppDelegate.h */,
 				19FDF0411CA9950F00FBE133 /* AppDelegate.m */,
 				19FDF0571CA996A200FBE133 /* HomeViewController.h */,
+				10E903B31CA9A017000904DB /* CircleView.h */,
+				10E903B41CA9A017000904DB /* CircleView.m */,
 				19FDF0581CA996A200FBE133 /* HomeViewController.m */,
 				19FDF05A1CA996BA00FBE133 /* PeripheralsTableViewController.h */,
 				19FDF05B1CA996BA00FBE133 /* PeripheralsTableViewController.m */,
@@ -174,6 +179,7 @@
 				19FDF0421CA9950F00FBE133 /* AppDelegate.m in Sources */,
 				19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */,
 				19FDF03F1CA9950F00FBE133 /* main.m in Sources */,
+				10E903B51CA9A017000904DB /* CircleView.m in Sources */,
 				19FDF05F1CA996E200FBE133 /* ExerciseViewController.m in Sources */,
 				19FDF05C1CA996BA00FBE133 /* PeripheralsTableViewController.m in Sources */,
 				19FDF0591CA996A200FBE133 /* HomeViewController.m in Sources */,
@@ -327,6 +333,7 @@
 				19FDF0561CA9950F00FBE133 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
