@@ -75,9 +75,9 @@
 			children = (
 				19FDF0401CA9950F00FBE133 /* AppDelegate.h */,
 				19FDF0411CA9950F00FBE133 /* AppDelegate.m */,
-				19FDF0571CA996A200FBE133 /* HomeViewController.h */,
 				10E903B31CA9A017000904DB /* CircleView.h */,
 				10E903B41CA9A017000904DB /* CircleView.m */,
+				19FDF0571CA996A200FBE133 /* HomeViewController.h */,
 				19FDF0581CA996A200FBE133 /* HomeViewController.m */,
 				19FDF05A1CA996BA00FBE133 /* PeripheralsTableViewController.h */,
 				19FDF05B1CA996BA00FBE133 /* PeripheralsTableViewController.m */,

@@ -15,14 +15,36 @@
 
 #pragma mark Initialization
 
-+ (void)initialize
+- (void)initialize
 {
 }
 
+- (instancetype) initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    return self;
+}
+
+- (instancetype) initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    return self;
+}
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+    [self drawCanvas2WithInsideTest:@"Hello world"];
+}
+
+
 #pragma mark Drawing Methods
 
-+ (void)drawCanvas2WithInsideTest: (NSString*)insideTest
+- (void)drawCanvas2WithInsideTest: (NSString*)insideTest
 {
+    self.strokeWidth = MIN(self.frame.size.width, self.frame.size.height)/(25);
+    
+    NSInteger circleRadius = (MIN(self.frame.size.width, self.frame.size.height)*9)/(10 * 2);
     //// General Declarations
     CGContextRef context = UIGraphicsGetCurrentContext();
 
@@ -33,7 +55,11 @@
     UIImage* insideImage = [UIImage imageNamed: @"insideImage.png"];
 
     //// DataCirle Drawing
-    CGRect dataCirleRect = CGRectMake(75, 45, 200, 200);
+    CGRect dataCirleRect = CGRectMake(self.frame.size.width/2 - circleRadius ,
+                                      self.frame.size.height/2 - circleRadius ,
+                                      circleRadius*2 ,
+                                      circleRadius*2);
+    
     UIBezierPath* dataCirlePath = [UIBezierPath bezierPathWithOvalInRect: dataCirleRect];
     CGContextSaveGState(context);
     [dataCirlePath addClip];
@@ -41,7 +67,7 @@
     CGContextDrawTiledImage(context, CGRectMake(75, -45, insideImage.size.width, insideImage.size.height), insideImage.CGImage);
     CGContextRestoreGState(context);
     [gradientColor setStroke];
-    dataCirlePath.lineWidth = 6.5;
+    dataCirlePath.lineWidth = self.strokeWidth;
     [dataCirlePath stroke];
     NSMutableParagraphStyle* dataCirleStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
     dataCirleStyle.alignment = NSTextAlignmentCenter;

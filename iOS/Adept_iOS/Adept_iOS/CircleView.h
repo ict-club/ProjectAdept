@@ -12,9 +12,12 @@
 #import <UIKit/UIKit.h>
 
 
-@interface CircleView : NSObject
+@interface CircleView : UIView
+
+@property (nonatomic, assign) NSInteger strokeWidth;
+@property (nonatomic, strong) UIColor * strokeColor;
 
 // Drawing Methods
-+ (void)drawCanvas2WithInsideTest: (NSString*)insideTest;
+- (void)drawCanvas2WithInsideTest: (NSString*)insideTest;
 
 @end
