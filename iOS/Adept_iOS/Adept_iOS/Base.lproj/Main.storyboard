@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home-->
@@ -17,14 +19,142 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Twp-CN-BNg" customClass="CircleView">
-                                <rect key="frame" x="76" y="128" width="150" height="159"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F0I-Yw-Ba1" customClass="CircleView">
+                                <rect key="frame" x="160" y="271" width="280" height="235"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ejd-Yr-zGF" customClass="CircleView">
+                                <rect key="frame" x="452" y="115" width="128" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ejd-Yr-zGF" secondAttribute="height" multiplier="1:1" id="pN3-fP-eS8"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="pN3-fP-eS8"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="pN3-fP-eS8"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="342" y="115" width="128" height="128"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Twp-CN-BNg" customClass="CircleView">
+                                <rect key="frame" x="20" y="115" width="128" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Twp-CN-BNg" secondAttribute="height" multiplier="1:1" id="DHU-Cj-pfb"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DHU-Cj-pfb"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="DHU-Cj-pfb"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="20" y="115" width="128" height="328"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Afa-VY-Pq8" customClass="CircleView">
+                                <rect key="frame" x="236" y="115" width="128" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Afa-VY-Pq8" secondAttribute="height" multiplier="1:1" id="P3V-zF-qLz"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="P3V-zF-qLz"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="P3V-zF-qLz"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="182" y="115" width="128" height="128"/>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ejd-Yr-zGF" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="3xA-wW-zwu"/>
+                            <constraint firstItem="F0I-Yw-Ba1" firstAttribute="top" secondItem="Twp-CN-BNg" secondAttribute="bottom" constant="33" id="5qd-B4-2X3">
+                                <variation key="widthClass=compact" constant="53"/>
+                            </constraint>
+                            <constraint firstItem="Ejd-Yr-zGF" firstAttribute="leading" secondItem="Afa-VY-Pq8" secondAttribute="trailing" constant="20" id="9CE-7L-Bl4"/>
+                            <constraint firstItem="F0I-Yw-Ba1" firstAttribute="top" secondItem="Ejd-Yr-zGF" secondAttribute="bottom" constant="33" id="AuX-c8-qNf">
+                                <variation key="widthClass=compact" constant="53"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="F0I-Yw-Ba1" secondAttribute="trailing" constant="30" id="EPe-sQ-7UF">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="F0I-Yw-Ba1" firstAttribute="top" secondItem="Afa-VY-Pq8" secondAttribute="bottom" constant="33" id="S9I-xY-jfc">
+                                <variation key="widthClass=compact" constant="53"/>
+                            </constraint>
+                            <constraint firstItem="Ejd-Yr-zGF" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="31" id="SOT-Zu-nVh"/>
+                            <constraint firstItem="Twp-CN-BNg" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="31" id="a6k-9z-P2e"/>
+                            <constraint firstItem="Afa-VY-Pq8" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="31" id="bOR-bJ-DDz"/>
+                            <constraint firstItem="Afa-VY-Pq8" firstAttribute="leading" secondItem="Twp-CN-BNg" secondAttribute="trailing" constant="20" id="fNb-lF-68N"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="F0I-Yw-Ba1" secondAttribute="bottom" constant="30" id="jub-PQ-DYc"/>
+                            <constraint firstItem="Afa-VY-Pq8" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="pIr-JG-dTi"/>
+                            <constraint firstItem="Twp-CN-BNg" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="pT0-Fw-Nyd"/>
+                            <constraint firstItem="F0I-Yw-Ba1" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="30" id="tIJ-Kd-fD9">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="a6k-9z-P2e"/>
+                                <exclude reference="pT0-Fw-Nyd"/>
+                                <exclude reference="bOR-bJ-DDz"/>
+                                <exclude reference="fNb-lF-68N"/>
+                                <exclude reference="pIr-JG-dTi"/>
+                                <exclude reference="5qd-B4-2X3"/>
+                                <exclude reference="AuX-c8-qNf"/>
+                                <exclude reference="EPe-sQ-7UF"/>
+                                <exclude reference="S9I-xY-jfc"/>
+                                <exclude reference="tIJ-Kd-fD9"/>
+                                <exclude reference="3xA-wW-zwu"/>
+                                <exclude reference="9CE-7L-Bl4"/>
+                                <exclude reference="SOT-Zu-nVh"/>
+                                <exclude reference="jub-PQ-DYc"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="a6k-9z-P2e"/>
+                                <include reference="pT0-Fw-Nyd"/>
+                                <include reference="bOR-bJ-DDz"/>
+                                <include reference="fNb-lF-68N"/>
+                                <include reference="pIr-JG-dTi"/>
+                                <include reference="5qd-B4-2X3"/>
+                                <include reference="AuX-c8-qNf"/>
+                                <include reference="EPe-sQ-7UF"/>
+                                <include reference="S9I-xY-jfc"/>
+                                <include reference="tIJ-Kd-fD9"/>
+                                <include reference="3xA-wW-zwu"/>
+                                <include reference="9CE-7L-Bl4"/>
+                                <include reference="SOT-Zu-nVh"/>
+                                <include reference="jub-PQ-DYc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="centerCircleView" destination="Afa-VY-Pq8" id="06N-5V-uNU"/>
+                        <outlet property="leftCircleView" destination="Twp-CN-BNg" id="ITL-2n-b5B"/>
+                        <outlet property="mainCircleView" destination="F0I-Yw-Ba1" id="mfZ-Yv-BRH"/>
+                        <outlet property="rightCircleView" destination="Ejd-Yr-zGF" id="8kB-Sl-C6N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,7 +173,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XQu-fF-kqL" id="HIr-dp-RDM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -72,7 +202,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gak-NB-Mxe" id="q0N-ue-f68">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -159,7 +289,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="upx-xf-2PK" id="xfB-Bs-oct">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

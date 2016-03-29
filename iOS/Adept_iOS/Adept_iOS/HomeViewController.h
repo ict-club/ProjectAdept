@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CircleView.h"
 
 @interface HomeViewController : UIViewController
+@property (weak, nonatomic) IBOutlet CircleView *mainCircleView;
+@property (weak, nonatomic) IBOutlet CircleView *leftCircleView;
+@property (weak, nonatomic) IBOutlet CircleView *centerCircleView;
+@property (weak, nonatomic) IBOutlet CircleView *rightCircleView;
 
 @end

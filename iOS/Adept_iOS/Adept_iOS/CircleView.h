@@ -16,8 +16,11 @@
 
 @property (nonatomic, assign) NSInteger strokeWidth;
 @property (nonatomic, strong) UIColor * strokeColor;
+@property (nonatomic, strong) NSString * textString;
+@property (nonatomic, assign) NSInteger fontSize;
+
 
 // Drawing Methods
-- (void)drawCanvas2WithInsideTest: (NSString*)insideTest;
+- (void)drawCanvas2WithInsideText: (NSString*)insideText;
 
 @end

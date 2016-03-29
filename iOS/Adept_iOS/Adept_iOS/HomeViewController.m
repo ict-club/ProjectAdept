@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.leftCircleView.strokeColor = [UIColor colorWithRed: 1 green: 0.756 blue: 0.923 alpha: 1];
     // Do any additional setup after loading the view.
 }
 

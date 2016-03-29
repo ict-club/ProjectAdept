@@ -17,6 +17,9 @@
 
 - (void)initialize
 {
+    self.strokeColor = [UIColor colorWithRed: 0.213 green: 0.756 blue: 0.923 alpha: 1];
+    self.fontSize = 12;
+    
 }
 
 - (instancetype) initWithCoder:(NSCoder *)aDecoder
@@ -34,14 +37,18 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    [self drawCanvas2WithInsideTest:@"Hello world"];
+    [self drawCanvas2WithInsideTest:self.textString];
 }
 
 
 #pragma mark Drawing Methods
 
-- (void)drawCanvas2WithInsideTest: (NSString*)insideTest
+- (void)drawCanvas2WithInsideTest: (NSString*)insideText
 {
+    if(self.strokeColor == nil) self.strokeColor = [UIColor colorWithRed: 0.213 green: 0.756 blue: 0.923 alpha: 1];
+    if(self.fontSize == 0) self.fontSize = self.frame.size.height / 8;
+    if(insideText == nil) insideText = @"Hello world";
+    
     self.strokeWidth = MIN(self.frame.size.width, self.frame.size.height)/(25);
     
     NSInteger circleRadius = (MIN(self.frame.size.width, self.frame.size.height)*9)/(10 * 2);
@@ -49,7 +56,7 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     //// Color Declarations
-    UIColor* gradientColor = [UIColor colorWithRed: 0.213 green: 0.756 blue: 0.923 alpha: 1];
+    UIColor* gradientColor = self.strokeColor;
 
     //// Image Declarations
     UIImage* insideImage = [UIImage imageNamed: @"insideImage.png"];
@@ -72,12 +79,12 @@
     NSMutableParagraphStyle* dataCirleStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
     dataCirleStyle.alignment = NSTextAlignmentCenter;
 
-    NSDictionary* dataCirleFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: @"Helvetica" size: 12], NSForegroundColorAttributeName: UIColor.blackColor, NSParagraphStyleAttributeName: dataCirleStyle};
+    NSDictionary* dataCirleFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: @"Helvetica" size: self.fontSize], NSForegroundColorAttributeName: UIColor.blackColor, NSParagraphStyleAttributeName: dataCirleStyle};
 
-    CGFloat dataCirleTextHeight = [insideTest boundingRectWithSize: CGSizeMake(dataCirleRect.size.width, INFINITY)  options: NSStringDrawingUsesLineFragmentOrigin attributes: dataCirleFontAttributes context: nil].size.height;
+    CGFloat dataCirleTextHeight = [insideText boundingRectWithSize: CGSizeMake(dataCirleRect.size.width, INFINITY)  options: NSStringDrawingUsesLineFragmentOrigin attributes: dataCirleFontAttributes context: nil].size.height;
     CGContextSaveGState(context);
     CGContextClipToRect(context, dataCirleRect);
-    [insideTest drawInRect: CGRectMake(CGRectGetMinX(dataCirleRect), CGRectGetMinY(dataCirleRect) + (CGRectGetHeight(dataCirleRect) - dataCirleTextHeight) / 2, CGRectGetWidth(dataCirleRect), dataCirleTextHeight) withAttributes: dataCirleFontAttributes];
+    [insideText drawInRect: CGRectMake(CGRectGetMinX(dataCirleRect), CGRectGetMinY(dataCirleRect) + (CGRectGetHeight(dataCirleRect) - dataCirleTextHeight) / 2, CGRectGetWidth(dataCirleRect), dataCirleTextHeight) withAttributes: dataCirleFontAttributes];
     CGContextRestoreGState(context);
 }
 
