@@ -193,33 +193,81 @@
         <scene sceneID="vmx-cl-adh">
             <objects>
                 <tableViewController id="hLu-f5-iXb" customClass="ExerciseViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="Udw-fJ-bEW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="Udw-fJ-bEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="Gak-NB-Mxe">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseTableCellIdentifier" rowHeight="100" id="Gak-NB-Mxe">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gak-NB-Mxe" id="q0N-ue-f68">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TAO-wellshell.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="qeM-1G-wMP">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TAO-picture.png" translatesAutoresizingMaskIntoConstraints="NO" id="qeM-1G-wMP">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="128" y="-7" width="272" height="106.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="qeM-1G-wMP" secondAttribute="height" multiplier="271:106" id="Jg0-XF-8bC">
+                                                    <variation key="widthClass=compact" constant="-1.2783018867924625"/>
+                                                </constraint>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Jg0-XF-8bC"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="Jg0-XF-8bC"/>
+                                                </mask>
                                             </variation>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PS-SD-4gX">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="TAO Wellshell Trainig">
+                                                    <attributes>
+                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <font key="NSFont" size="19" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="8" y="8" width="135" height="83.5"/>
+                                            </variation>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="qeM-1G-wMP" secondAttribute="bottom" id="Sbc-jJ-win"/>
+                                        <constraint firstItem="qeM-1G-wMP" firstAttribute="top" secondItem="q0N-ue-f68" secondAttribute="topMargin" id="r5v-YM-K6c">
+                                            <variation key="widthClass=compact" constant="-15"/>
+                                        </constraint>
+                                        <constraint firstAttribute="trailing" secondItem="qeM-1G-wMP" secondAttribute="trailing" id="vIM-yu-rhy"/>
+                                    </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="qeM-1G-wMP"/>
+                                            <exclude reference="3PS-SD-4gX"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="Sbc-jJ-win"/>
+                                            <exclude reference="r5v-YM-K6c"/>
+                                            <exclude reference="vIM-yu-rhy"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
                                         <mask key="subviews">
                                             <include reference="qeM-1G-wMP"/>
+                                            <include reference="3PS-SD-4gX"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="Sbc-jJ-win"/>
+                                            <include reference="r5v-YM-K6c"/>
+                                            <include reference="vIM-yu-rhy"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -325,6 +373,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TAO-wellshell.jpeg" width="851" height="315"/>
+        <image name="TAO-picture.png" width="851" height="315"/>
     </resources>
 </document>

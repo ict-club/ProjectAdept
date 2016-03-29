@@ -18,6 +18,7 @@
 		19FDF05F1CA996E200FBE133 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF05E1CA996E200FBE133 /* ExerciseViewController.m */; };
 		19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */; };
 		19FDF0651CA9972400FBE133 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */; };
+		19FDF06C1CAA7DC400FBE133 /* TAO-picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceViewController.m; sourceTree = "<group>"; };
 		19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TAO-picture.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */,
 				19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */,
 				19FDF0491CA9950F00FBE133 /* Main.storyboard */,
+				19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */,
 				19FDF04C1CA9950F00FBE133 /* Assets.xcassets */,
 				19FDF04E1CA9950F00FBE133 /* LaunchScreen.storyboard */,
 				19FDF0511CA9950F00FBE133 /* Info.plist */,
@@ -165,6 +168,7 @@
 				19FDF0501CA9950F00FBE133 /* LaunchScreen.storyboard in Resources */,
 				19FDF04D1CA9950F00FBE133 /* Assets.xcassets in Resources */,
 				19FDF04B1CA9950F00FBE133 /* Main.storyboard in Resources */,
+				19FDF06C1CAA7DC400FBE133 /* TAO-picture.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
