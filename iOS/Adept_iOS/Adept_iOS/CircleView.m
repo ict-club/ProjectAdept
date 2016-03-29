@@ -37,13 +37,13 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    [self drawCanvas2WithInsideTest:self.textString];
+    [self drawCanvas2WithInsideText:self.textString];
 }
 
 
 #pragma mark Drawing Methods
 
-- (void)drawCanvas2WithInsideTest: (NSString*)insideText
+- (void)drawCanvas2WithInsideText: (NSString*)insideText
 {
     if(self.strokeColor == nil) self.strokeColor = [UIColor colorWithRed: 0.213 green: 0.756 blue: 0.923 alpha: 1];
     if(self.fontSize == 0) self.fontSize = self.frame.size.height / 8;

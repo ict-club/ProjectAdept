@@ -7,8 +7,15 @@
 //
 
 #import "ExerciseExecutionViewController.h"
+#import "ExerciseStaticLine.h"
+#import "ExerciseDynamicLine.h"
 
 @interface ExerciseExecutionViewController ()
+@property (weak, nonatomic) IBOutlet ExerciseStaticLine *exerciseStaticGraphic;
+@property (weak, nonatomic) IBOutlet ExerciseDynamicLine *exerciseDynamicGraphic;
+@property (weak, nonatomic) IBOutlet UILabel *burnedCaloriesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *heartrateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *exerciseImage;
 
 @end
 
@@ -16,7 +23,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.exerciseImage.layer.borderColor = [UIColor blackColor].CGColor;
+    self.exerciseImage.layer.borderWidth = 3.0f;
+//    self.exerciseImage.layer.cornerRadius = 15;
+//    self.exerciseImage.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {

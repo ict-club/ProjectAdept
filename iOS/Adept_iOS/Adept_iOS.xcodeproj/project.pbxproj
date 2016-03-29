@@ -10,6 +10,11 @@
 		10E903B51CA9A017000904DB /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E903B41CA9A017000904DB /* CircleView.m */; };
 		19DA718C1CAAF1020078DC65 /* TrainingSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */; };
 		19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA718E1CAAF11A0078DC65 /* ExerciseExecutionViewController.m */; };
+		19DA71921CAAF5DA0078DC65 /* ExerciseStaticLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA71911CAAF5DA0078DC65 /* ExerciseStaticLine.m */; };
+		19DA71981CAB09310078DC65 /* ExerciseDynamicLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA71971CAB09310078DC65 /* ExerciseDynamicLine.m */; };
+		19DA719A1CAB0DF30078DC65 /* calories.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DA71991CAB0DF30078DC65 /* calories.png */; };
+		19DA719C1CAB0DF90078DC65 /* heartrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DA719B1CAB0DF90078DC65 /* heartrate.png */; };
+		19DA719E1CAB11C40078DC65 /* mxerciseImage1axresdefault.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19DA719D1CAB11C40078DC65 /* mxerciseImage1axresdefault.jpg */; };
 		19FDF03F1CA9950F00FBE133 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF03E1CA9950F00FBE133 /* main.m */; };
 		19FDF0421CA9950F00FBE133 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0411CA9950F00FBE133 /* AppDelegate.m */; };
 		19FDF04B1CA9950F00FBE133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19FDF0491CA9950F00FBE133 /* Main.storyboard */; };
@@ -30,6 +35,13 @@
 		19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingSelectTableViewController.m; sourceTree = "<group>"; };
 		19DA718D1CAAF11A0078DC65 /* ExerciseExecutionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseExecutionViewController.h; sourceTree = "<group>"; };
 		19DA718E1CAAF11A0078DC65 /* ExerciseExecutionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseExecutionViewController.m; sourceTree = "<group>"; };
+		19DA71901CAAF5DA0078DC65 /* ExerciseStaticLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseStaticLine.h; sourceTree = "<group>"; };
+		19DA71911CAAF5DA0078DC65 /* ExerciseStaticLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseStaticLine.m; sourceTree = "<group>"; };
+		19DA71961CAB09310078DC65 /* ExerciseDynamicLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseDynamicLine.h; sourceTree = "<group>"; };
+		19DA71971CAB09310078DC65 /* ExerciseDynamicLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseDynamicLine.m; sourceTree = "<group>"; };
+		19DA71991CAB0DF30078DC65 /* calories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calories.png; sourceTree = "<group>"; };
+		19DA719B1CAB0DF90078DC65 /* heartrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartrate.png; sourceTree = "<group>"; };
+		19DA719D1CAB11C40078DC65 /* mxerciseImage1axresdefault.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mxerciseImage1axresdefault.jpg; sourceTree = "<group>"; };
 		19FDF03A1CA9950F00FBE133 /* Adept_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adept_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19FDF03E1CA9950F00FBE133 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		19FDF0401CA9950F00FBE133 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -62,6 +74,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19DA71931CAAF5DF0078DC65 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				19FDF0571CA996A200FBE133 /* HomeViewController.h */,
+				19FDF0581CA996A200FBE133 /* HomeViewController.m */,
+				19FDF05A1CA996BA00FBE133 /* PeripheralsTableViewController.h */,
+				19FDF05B1CA996BA00FBE133 /* PeripheralsTableViewController.m */,
+				19FDF05D1CA996E200FBE133 /* ExerciseViewController.h */,
+				19FDF05E1CA996E200FBE133 /* ExerciseViewController.m */,
+				19DA718A1CAAF1020078DC65 /* TrainingSelectTableViewController.h */,
+				19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */,
+				19DA718D1CAAF11A0078DC65 /* ExerciseExecutionViewController.h */,
+				19DA718E1CAAF11A0078DC65 /* ExerciseExecutionViewController.m */,
+				19FDF0601CA9970F00FBE133 /* PerformanceViewController.h */,
+				19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */,
+				19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */,
+				19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		19DA71941CAAF6120078DC65 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				10E903B31CA9A017000904DB /* CircleView.h */,
+				10E903B41CA9A017000904DB /* CircleView.m */,
+				19DA71961CAB09310078DC65 /* ExerciseDynamicLine.h */,
+				19DA71971CAB09310078DC65 /* ExerciseDynamicLine.m */,
+				19DA71901CAAF5DA0078DC65 /* ExerciseStaticLine.h */,
+				19DA71911CAAF5DA0078DC65 /* ExerciseStaticLine.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		19DA71951CAAF63C0078DC65 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */,
+				19DA719B1CAB0DF90078DC65 /* heartrate.png */,
+				19DA71991CAB0DF30078DC65 /* calories.png */,
+				19DA719D1CAB11C40078DC65 /* mxerciseImage1axresdefault.jpg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		19FDF0311CA9950F00FBE133 = {
 			isa = PBXGroup;
 			children = (
@@ -83,24 +140,10 @@
 			children = (
 				19FDF0401CA9950F00FBE133 /* AppDelegate.h */,
 				19FDF0411CA9950F00FBE133 /* AppDelegate.m */,
-				10E903B31CA9A017000904DB /* CircleView.h */,
-				10E903B41CA9A017000904DB /* CircleView.m */,
-				19FDF0571CA996A200FBE133 /* HomeViewController.h */,
-				19FDF0581CA996A200FBE133 /* HomeViewController.m */,
-				19FDF05A1CA996BA00FBE133 /* PeripheralsTableViewController.h */,
-				19FDF05B1CA996BA00FBE133 /* PeripheralsTableViewController.m */,
-				19FDF05D1CA996E200FBE133 /* ExerciseViewController.h */,
-				19FDF05E1CA996E200FBE133 /* ExerciseViewController.m */,
-				19DA718A1CAAF1020078DC65 /* TrainingSelectTableViewController.h */,
-				19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */,
-				19FDF0601CA9970F00FBE133 /* PerformanceViewController.h */,
-				19DA718D1CAAF11A0078DC65 /* ExerciseExecutionViewController.h */,
-				19DA718E1CAAF11A0078DC65 /* ExerciseExecutionViewController.m */,
-				19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */,
-				19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */,
-				19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */,
+				19DA71951CAAF63C0078DC65 /* Resources */,
+				19DA71941CAAF6120078DC65 /* Views */,
+				19DA71931CAAF5DF0078DC65 /* ViewControllers */,
 				19FDF0491CA9950F00FBE133 /* Main.storyboard */,
-				19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */,
 				19FDF04C1CA9950F00FBE133 /* Assets.xcassets */,
 				19FDF04E1CA9950F00FBE133 /* LaunchScreen.storyboard */,
 				19FDF0511CA9950F00FBE133 /* Info.plist */,
@@ -178,7 +221,10 @@
 				19FDF0501CA9950F00FBE133 /* LaunchScreen.storyboard in Resources */,
 				19FDF04D1CA9950F00FBE133 /* Assets.xcassets in Resources */,
 				19FDF04B1CA9950F00FBE133 /* Main.storyboard in Resources */,
+				19DA719A1CAB0DF30078DC65 /* calories.png in Resources */,
+				19DA719E1CAB11C40078DC65 /* mxerciseImage1axresdefault.jpg in Resources */,
 				19FDF06C1CAA7DC400FBE133 /* TAO-picture.png in Resources */,
+				19DA719C1CAB0DF90078DC65 /* heartrate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +244,8 @@
 				19FDF05F1CA996E200FBE133 /* ExerciseViewController.m in Sources */,
 				19FDF05C1CA996BA00FBE133 /* PeripheralsTableViewController.m in Sources */,
 				19FDF0591CA996A200FBE133 /* HomeViewController.m in Sources */,
+				19DA71981CAB09310078DC65 /* ExerciseDynamicLine.m in Sources */,
+				19DA71921CAAF5DA0078DC65 /* ExerciseStaticLine.m in Sources */,
 				19DA718C1CAAF1020078DC65 /* TrainingSelectTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
