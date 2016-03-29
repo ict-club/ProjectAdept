@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		10E903B51CA9A017000904DB /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E903B41CA9A017000904DB /* CircleView.m */; };
+		19DA718C1CAAF1020078DC65 /* TrainingSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */; };
+		19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA718E1CAAF11A0078DC65 /* ExerciseExecutionViewController.m */; };
 		19FDF03F1CA9950F00FBE133 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF03E1CA9950F00FBE133 /* main.m */; };
 		19FDF0421CA9950F00FBE133 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0411CA9950F00FBE133 /* AppDelegate.m */; };
 		19FDF04B1CA9950F00FBE133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19FDF0491CA9950F00FBE133 /* Main.storyboard */; };
@@ -24,6 +26,10 @@
 /* Begin PBXFileReference section */
 		10E903B31CA9A017000904DB /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		10E903B41CA9A017000904DB /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
+		19DA718A1CAAF1020078DC65 /* TrainingSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingSelectTableViewController.h; sourceTree = "<group>"; };
+		19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingSelectTableViewController.m; sourceTree = "<group>"; };
+		19DA718D1CAAF11A0078DC65 /* ExerciseExecutionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseExecutionViewController.h; sourceTree = "<group>"; };
+		19DA718E1CAAF11A0078DC65 /* ExerciseExecutionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseExecutionViewController.m; sourceTree = "<group>"; };
 		19FDF03A1CA9950F00FBE133 /* Adept_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adept_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19FDF03E1CA9950F00FBE133 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		19FDF0401CA9950F00FBE133 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -85,7 +91,11 @@
 				19FDF05B1CA996BA00FBE133 /* PeripheralsTableViewController.m */,
 				19FDF05D1CA996E200FBE133 /* ExerciseViewController.h */,
 				19FDF05E1CA996E200FBE133 /* ExerciseViewController.m */,
+				19DA718A1CAAF1020078DC65 /* TrainingSelectTableViewController.h */,
+				19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */,
 				19FDF0601CA9970F00FBE133 /* PerformanceViewController.h */,
+				19DA718D1CAAF11A0078DC65 /* ExerciseExecutionViewController.h */,
+				19DA718E1CAAF11A0078DC65 /* ExerciseExecutionViewController.m */,
 				19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */,
 				19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */,
 				19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */,
@@ -180,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19FDF0651CA9972400FBE133 /* SettingsTableViewController.m in Sources */,
+				19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */,
 				19FDF0421CA9950F00FBE133 /* AppDelegate.m in Sources */,
 				19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */,
 				19FDF03F1CA9950F00FBE133 /* main.m in Sources */,
@@ -187,6 +198,7 @@
 				19FDF05F1CA996E200FBE133 /* ExerciseViewController.m in Sources */,
 				19FDF05C1CA996BA00FBE133 /* PeripheralsTableViewController.m in Sources */,
 				19FDF0591CA996A200FBE133 /* HomeViewController.m in Sources */,
+				19DA718C1CAAF1020078DC65 /* TrainingSelectTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

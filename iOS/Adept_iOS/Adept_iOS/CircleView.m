@@ -52,16 +52,16 @@
     self.strokeWidth = MIN(self.frame.size.width, self.frame.size.height)/(25);
     
     NSInteger circleRadius = (MIN(self.frame.size.width, self.frame.size.height)*9)/(10 * 2);
-    //// General Declarations
+    // General Declarations
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    //// Color Declarations
+    // Color Declarations
     UIColor* gradientColor = self.strokeColor;
 
-    //// Image Declarations
+    // Image Declarations
     UIImage* insideImage = [UIImage imageNamed: @"insideImage.png"];
 
-    //// DataCirle Drawing
+    // DataCirle Drawing
     CGRect dataCirleRect = CGRectMake(self.frame.size.width/2 - circleRadius ,
                                       self.frame.size.height/2 - circleRadius ,
                                       circleRadius*2 ,

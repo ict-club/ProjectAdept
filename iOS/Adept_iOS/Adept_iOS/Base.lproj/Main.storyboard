@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F0I-Yw-Ba1" customClass="CircleView">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F0I-Yw-Ba1" customClass="CircleView">
                                 <rect key="frame" x="160" y="271" width="280" height="235"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -199,10 +199,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseTableCellIdentifier" rowHeight="100" id="Gak-NB-Mxe">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gak-NB-Mxe" id="q0N-ue-f68">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TAO-picture.png" translatesAutoresizingMaskIntoConstraints="NO" id="qeM-1G-wMP">
@@ -237,7 +237,7 @@
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <rect key="frame" x="8" y="8" width="135" height="83.5"/>
+                                                <rect key="frame" x="8" y="8" width="135" height="84"/>
                                             </variation>
                                         </label>
                                     </subviews>
@@ -271,6 +271,9 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ZMQ-AR-OR7" kind="show" id="7Q6-u7-0kQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -283,6 +286,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Neh-ar-UBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="865.5" y="0.0"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="hGs-6z-vMV">
+            <objects>
+                <tableViewController id="ZMQ-AR-OR7" customClass="TrainingSelectTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q3k-30-uD4">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vr2-cm-rxg">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vr2-cm-rxg" id="nZ0-Rf-C2d">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ZMQ-AR-OR7" id="7Ze-au-Nfu"/>
+                            <outlet property="delegate" destination="ZMQ-AR-OR7" id="3mp-WB-blR"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="cmz-mq-Xom">
+                        <barButtonItem key="rightBarButtonItem" title="Go" id="2S7-GI-knK">
+                            <connections>
+                                <segue destination="hXn-H0-Gsm" kind="show" id="wOv-J6-nT3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Yf-Kb-BC7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1729.5" y="0.0"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="iuu-4s-N6Q">
+            <objects>
+                <viewController id="hXn-H0-Gsm" customClass="ExerciseExecutionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oRW-sy-rI6"/>
+                        <viewControllerLayoutGuide type="bottom" id="10h-ZO-fZH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uwD-Z1-aww">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="KHn-FV-nBG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sb0-gz-Zz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2550" y="0.0"/>
         </scene>
         <!--Performance-->
         <scene sceneID="WBk-XS-yy7">
