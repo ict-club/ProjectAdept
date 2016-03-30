@@ -17,7 +17,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.leftCircleView.strokeColor = [UIColor colorWithRed: 1 green: 0.756 blue: 0.923 alpha: 1];
-    // Do any additional setup after loading the view.
+
+    NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(healthKitNotAvailableNotificationHandler:)
+                               name:@"HealthKitNotAvailable"
+                             object:nil];
+    self.healthKitObject = [HealthKitIntegration sharedInstance];
+    [self.healthKitObject initialize];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,5 +43,17 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (void) healthKitNotAvailableNotificationHandler: (NSNotification *) notification
+{
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                    message:@"Cannot get information from health kit application. Go to health app and enable services"
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK"
+                                              style:UIAlertActionStyleCancel
+                                            handler:^(UIAlertAction * action){}]];
+    
+}
 
 @end

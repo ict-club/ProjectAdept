@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		10E903B51CA9A017000904DB /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E903B41CA9A017000904DB /* CircleView.m */; };
+		1998A5F41CAC654E00DA95C1 /* HealthKitIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */; };
+		1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F71CAC802D00DA95C1 /* RDDateTime.m */; };
 		19DA718C1CAAF1020078DC65 /* TrainingSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */; };
 		19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA718E1CAAF11A0078DC65 /* ExerciseExecutionViewController.m */; };
 		19DA71921CAAF5DA0078DC65 /* ExerciseStaticLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA71911CAAF5DA0078DC65 /* ExerciseStaticLine.m */; };
@@ -15,6 +17,7 @@
 		19DA719A1CAB0DF30078DC65 /* calories.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DA71991CAB0DF30078DC65 /* calories.png */; };
 		19DA719C1CAB0DF90078DC65 /* heartrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DA719B1CAB0DF90078DC65 /* heartrate.png */; };
 		19DA719E1CAB11C40078DC65 /* mxerciseImage1axresdefault.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19DA719D1CAB11C40078DC65 /* mxerciseImage1axresdefault.jpg */; };
+		19DA71A81CAC2BD90078DC65 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DA71A71CAC2BD90078DC65 /* HealthKit.framework */; };
 		19FDF03F1CA9950F00FBE133 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF03E1CA9950F00FBE133 /* main.m */; };
 		19FDF0421CA9950F00FBE133 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0411CA9950F00FBE133 /* AppDelegate.m */; };
 		19FDF04B1CA9950F00FBE133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19FDF0491CA9950F00FBE133 /* Main.storyboard */; };
@@ -31,6 +34,10 @@
 /* Begin PBXFileReference section */
 		10E903B31CA9A017000904DB /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		10E903B41CA9A017000904DB /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
+		1998A5F21CAC654E00DA95C1 /* HealthKitIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthKitIntegration.h; sourceTree = "<group>"; };
+		1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitIntegration.m; sourceTree = "<group>"; };
+		1998A5F61CAC802D00DA95C1 /* RDDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDateTime.h; sourceTree = "<group>"; };
+		1998A5F71CAC802D00DA95C1 /* RDDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDateTime.m; sourceTree = "<group>"; };
 		19DA718A1CAAF1020078DC65 /* TrainingSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingSelectTableViewController.h; sourceTree = "<group>"; };
 		19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingSelectTableViewController.m; sourceTree = "<group>"; };
 		19DA718D1CAAF11A0078DC65 /* ExerciseExecutionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseExecutionViewController.h; sourceTree = "<group>"; };
@@ -42,6 +49,8 @@
 		19DA71991CAB0DF30078DC65 /* calories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calories.png; sourceTree = "<group>"; };
 		19DA719B1CAB0DF90078DC65 /* heartrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartrate.png; sourceTree = "<group>"; };
 		19DA719D1CAB11C40078DC65 /* mxerciseImage1axresdefault.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mxerciseImage1axresdefault.jpg; sourceTree = "<group>"; };
+		19DA71A71CAC2BD90078DC65 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		19DA71A91CAC2BD90078DC65 /* Adept_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Adept_iOS.entitlements; sourceTree = "<group>"; };
 		19FDF03A1CA9950F00FBE133 /* Adept_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adept_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19FDF03E1CA9950F00FBE133 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		19FDF0401CA9950F00FBE133 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,12 +77,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19DA71A81CAC2BD90078DC65 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1998A5F51CAC656100DA95C1 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				1998A5F21CAC654E00DA95C1 /* HealthKitIntegration.h */,
+				1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */,
+			);
+			name = Singleton;
+			sourceTree = "<group>";
+		};
+		1998A5F91CAC804A00DA95C1 /* RapidDevelopment */ = {
+			isa = PBXGroup;
+			children = (
+				1998A5F61CAC802D00DA95C1 /* RDDateTime.h */,
+				1998A5F71CAC802D00DA95C1 /* RDDateTime.m */,
+			);
+			name = RapidDevelopment;
+			sourceTree = "<group>";
+		};
 		19DA71931CAAF5DF0078DC65 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +150,7 @@
 		19FDF0311CA9950F00FBE133 = {
 			isa = PBXGroup;
 			children = (
+				19DA71A71CAC2BD90078DC65 /* HealthKit.framework */,
 				19FDF03C1CA9950F00FBE133 /* Adept_iOS */,
 				19FDF03B1CA9950F00FBE133 /* Products */,
 			);
@@ -138,9 +167,12 @@
 		19FDF03C1CA9950F00FBE133 /* Adept_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				19DA71A91CAC2BD90078DC65 /* Adept_iOS.entitlements */,
 				19FDF0401CA9950F00FBE133 /* AppDelegate.h */,
 				19FDF0411CA9950F00FBE133 /* AppDelegate.m */,
+				1998A5F91CAC804A00DA95C1 /* RapidDevelopment */,
 				19DA71951CAAF63C0078DC65 /* Resources */,
+				1998A5F51CAC656100DA95C1 /* Singleton */,
 				19DA71941CAAF6120078DC65 /* Views */,
 				19DA71931CAAF5DF0078DC65 /* ViewControllers */,
 				19FDF0491CA9950F00FBE133 /* Main.storyboard */,
@@ -192,6 +224,11 @@
 					19FDF0391CA9950F00FBE133 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = P6Y2W9RQ54;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -237,12 +274,14 @@
 			files = (
 				19FDF0651CA9972400FBE133 /* SettingsTableViewController.m in Sources */,
 				19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */,
+				1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */,
 				19FDF0421CA9950F00FBE133 /* AppDelegate.m in Sources */,
 				19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */,
 				19FDF03F1CA9950F00FBE133 /* main.m in Sources */,
 				10E903B51CA9A017000904DB /* CircleView.m in Sources */,
 				19FDF05F1CA996E200FBE133 /* ExerciseViewController.m in Sources */,
 				19FDF05C1CA996BA00FBE133 /* PeripheralsTableViewController.m in Sources */,
+				1998A5F41CAC654E00DA95C1 /* HealthKitIntegration.m in Sources */,
 				19FDF0591CA996A200FBE133 /* HomeViewController.m in Sources */,
 				19DA71981CAB09310078DC65 /* ExerciseDynamicLine.m in Sources */,
 				19DA71921CAAF5DA0078DC65 /* ExerciseStaticLine.m in Sources */,
@@ -360,6 +399,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Adept_iOS/Adept_iOS.entitlements;
 				INFOPLIST_FILE = Adept_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ICT-Club.Adept-iOS";
@@ -371,6 +411,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Adept_iOS/Adept_iOS.entitlements;
 				INFOPLIST_FILE = Adept_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ICT-Club.Adept-iOS";
