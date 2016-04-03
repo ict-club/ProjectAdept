@@ -15,12 +15,12 @@
 @property (nonatomic, strong) NSNumber * bodyMass;
 @property (nonatomic, strong) NSNumber * BMI;
 @property (nonatomic, strong) NSNumber * activeEnergyBurned;
-@property (nonatomic, strong) NSNumber * exerciseTime;
-@property (nonatomic, strong) NSNumber * heartRate;
-@property (nonatomic, strong) NSNumber * dateOfBirth;
+@property (nonatomic, assign) NSInteger exerciseTime;
+@property (nonatomic, assign) NSInteger * heartRate;
+@property (nonatomic, strong) NSDate * dateOfBirth;
 @property (nonatomic, strong) HKBiologicalSexObject * biologicalSex;
-@property (nonatomic, strong) NSNumber * stepCount;
-@property (nonatomic, strong) NSNumber * height;
+@property (nonatomic, assign) NSInteger stepCount;
+@property (nonatomic, assign) NSInteger height;
 
 
 - (void) initialize;

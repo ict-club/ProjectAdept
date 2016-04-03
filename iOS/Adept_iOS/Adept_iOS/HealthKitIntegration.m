@@ -9,6 +9,21 @@
 #import "HealthKitIntegration.h"
 #import "RDDateTime.h"
 
+#define HEALTH_KIT_DATA_UPDATED @"HKDATAUPDATED"
+
+typedef enum
+{
+    HealthKitDateOfBirth,
+    HealthKitBiologicalSex,
+    HealthKitStepCount,
+    HealthKitHeight,
+    HealthKitBMI,
+    HealthKitBodyMass,
+    HealthKitActiveEnergy,
+    HealthKitHartRate
+} HeathKitDataType;
+
+
 
 @implementation HealthKitIntegration
 
@@ -74,20 +89,27 @@
 
 - (void) updateData
 {
-
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+                                                {
+                                                    [self updateStepsForToday];
+                                                    
+                                                    NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
+                                                    [notificationCenter postNotificationName:HEALTH_KIT_DATA_UPDATED object:self];
+                                                });
 }
 
-- (void) updateBiologicalSex
-{
-    NSError *error;
-    self.biologicalSex = [self.healthStore biologicalSexWithError:&error];
-}
+#pragma mark - Step Count Data
 - (void) updateStepsForToday
 {
-    NSDate * startDate, * endDate;
+    self.stepCount = [self getDataForStepCountFrom:[RDDateTime beginingOfToday] to:[RDDateTime endOfToday]];
+}
 
-    startDate = [RDDateTime beginingOfToday];
-    endDate = [RDDateTime endOfToday];
+- (NSInteger) getDataForStepCountFrom: (NSDate *) startDate to: (NSDate *) endDate
+{
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    __block NSInteger returnResult = 0;
     
     HKSampleType *sampleType = [HKSampleType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
     NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionStrictStartDate];
@@ -101,19 +123,41 @@
                                                                 
                                                                 if(!error && results)
                                                                 {
-                                                    
+                                                                    
                                                                     for(HKQuantitySample *sample in results)
                                                                     {
-                                                                        
+                                                                        returnResult += [sample.quantity doubleValueForUnit: [HKUnit countUnit]];
                                                                     }
                                                                     
                                                                 }
+                                                                else
+                                                                {
+                                                                    returnResult = -1;
+                                                                }
+                                                                
+                                                                dispatch_semaphore_signal(semaphore);
                                                                 
                                                             }];
     
-    // Execute the query
     [self.healthStore executeQuery:sampleQuery];
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     
+    return returnResult;
+}
+
+
+
+- (NSDate *) dateOfBirth
+{
+    NSError * error;
+    return [self.healthStore dateOfBirthWithError:&error];
+}
+
+- (HKBiologicalSexObject*) biologicalSex
+{
+     NSError *error;
+    return [self.healthStore biologicalSexWithError:&error];
+
 }
 
 @end
