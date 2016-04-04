@@ -12,15 +12,15 @@
 @interface HealthKitIntegration : NSObject
 
 @property (nonatomic, strong) HKHealthStore * healthStore;
-@property (nonatomic, strong) NSNumber * bodyMass;
-@property (nonatomic, strong) NSNumber * BMI;
+@property (nonatomic, assign) double bodyMass;
+@property (nonatomic, assign) double BMI;
 @property (nonatomic, strong) NSNumber * activeEnergyBurned;
 @property (nonatomic, assign) NSInteger exerciseTime;
 @property (nonatomic, assign) NSInteger * heartRate;
 @property (nonatomic, strong) NSDate * dateOfBirth;
 @property (nonatomic, strong) HKBiologicalSexObject * biologicalSex;
 @property (nonatomic, assign) NSInteger stepCount;
-@property (nonatomic, assign) NSInteger height;
+@property (nonatomic, assign) double height;
 
 
 - (void) initialize;
