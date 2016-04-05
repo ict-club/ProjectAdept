@@ -9,8 +9,6 @@
 #import "HealthKitIntegration.h"
 #import "RDDateTime.h"
 
-#define HEALTH_KIT_DATA_UPDATED @"HKDATAUPDATED"
-
 typedef enum
 {
     HealthKitDateOfBirth,
@@ -40,7 +38,11 @@ typedef enum
 - (void)initialize
 {
     self.healthStore = [[HKHealthStore alloc] init];
-    if(NSClassFromString(@"HKHealthStore") && [HKHealthStore isHealthDataAvailable])
+    
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    
+    
+    if(NSClassFromString(@"HKHealthStore") && [HKHealthStore isHealthDataAvailable] && [defaults objectForKey:@"HealthKitIsAllowed"] == nil)
     {
         HKHealthStore *healthStore = [[HKHealthStore alloc] init];
         
@@ -50,6 +52,7 @@ typedef enum
                                    [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMassIndex],
                                    [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned],
                                    [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate],
+                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight],
                                    nil];
         
         // Read date of birth, biological sex and step count
@@ -57,23 +60,22 @@ typedef enum
                                    [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierDateOfBirth],
                                    [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierBiologicalSex],
                                    [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount],
-                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight],
                                    nil];
         
         // Request access
         [healthStore requestAuthorizationToShareTypes:shareObjectTypes
                                             readTypes:readObjectTypes
                                            completion:^(BOOL success, NSError *error) {
-                                               
                                                if(success == YES || [HKHealthStore isHealthDataAvailable] == YES)
                                                {
-                                                   // ...
+                                                   [defaults setObject:@"YES" forKey:@"HealthKitIsAllowed"];
                                                }
                                                else
                                                {
                                                    NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
                                                    [notificationCenter postNotificationName:@"HealthKitNotAvailable" object:self];
                                                }
+                                               
                                                
                                            }];
     }
@@ -83,7 +85,7 @@ typedef enum
         [notificationCenter postNotificationName:@"HealthKitNotAvailable" object:self];
     }
     
-    [self updateStepsForToday];
+    
 
 }
 
@@ -92,9 +94,9 @@ typedef enum
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
                                                 {
                                                     [self updateStepsForToday];
-                                                    [self updateBMIForToday];
                                                     [self updateHeightForToday];
                                                     [self updateBodyMassForToday];
+                                                    [self updateBMIForToday];
                                                     [self updateHeartRateForToday];
                                                     
                                                     NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
@@ -106,6 +108,7 @@ typedef enum
 - (void) updateStepsForToday
 {
     self.stepCount = [self getDataForStepCountFrom:[RDDateTime beginingOfToday] to:[RDDateTime endOfToday]];
+    if(self.stepCount < 0) self.stepCount = 0;
 }
 
 - (NSInteger) getDataForStepCountFrom: (NSDate *) startDate to: (NSDate *) endDate
@@ -154,6 +157,20 @@ typedef enum
 - (void) updateBMIForToday
 {
     self.BMI = [self getAverageBMIForPeriodFrom: [RDDateTime beginingOfToday] to:[RDDateTime endOfToday]];
+    
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    
+    if(self.BMI < 1 || isnan(self.BMI) == YES)
+    {
+        if([defaults dataForKey:@"BMI"] == nil)
+        {
+            [defaults setObject:[NSNumber numberWithDouble:22.00] forKey:@"BMI"];
+            [defaults synchronize];
+        }
+        NSNumber * numberToWrite = [defaults objectForKey:@"BMI"];
+        self.BMI = [numberToWrite doubleValue];
+    }
+    
 }
 
 - (double) getAverageBMIForPeriodFrom: (NSDate *) startDate to: (NSDate *) endDate
@@ -214,6 +231,9 @@ typedef enum
         }
     }];
     self.BMI = BMI;
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithDouble:self.BMI] forKey:@"bodyMass"];
+    [defaults synchronize];
     
 }
 
@@ -223,6 +243,19 @@ typedef enum
 - (void) updateBodyMassForToday
 {
     self.bodyMass = [self getAverageBodyMassForPeriodFrom: [RDDateTime beginingOfToday] to:[RDDateTime endOfToday]];
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    
+    if(self.bodyMass < 1 || isnan(self.bodyMass) == YES)
+    {
+        if([defaults dataForKey:@"bodyMass"] == nil)
+        {
+            [defaults setObject:[NSNumber numberWithDouble:75.00] forKey:@"bodyMass"];
+            [defaults synchronize];
+        }
+        NSNumber * numberToWrite = [defaults objectForKey:@"bodyMass"];
+        self.bodyMass = [numberToWrite doubleValue];
+    }
+    
 }
 
 - (double) getAverageBodyMassForPeriodFrom: (NSDate *) startDate to: (NSDate *) endDate
@@ -268,11 +301,51 @@ typedef enum
     return returnResult;
 }
 
+- (void) writeBodyMassToHealthKit: (double) bodyMass
+{
+    
+    HKQuantity *BMquantity = [HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:bodyMass];
+    HKQuantityType * BMquantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass];
+    NSDate * now = [NSDate date];
+    
+    HKQuantitySample *BMISample = [HKQuantitySample quantitySampleWithType:BMquantityType quantity:BMquantity startDate:now endDate:now];
+    
+    [self.healthStore saveObject:BMISample withCompletion:^(BOOL success, NSError *error) {
+        if (!success) {
+            NSLog(@"Error while saving BMI (%f) to Health Store: %@.", bodyMass, error);
+        }
+    }];
+    self.bodyMass = bodyMass;
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithDouble:self.bodyMass] forKey:@"bodyMass"];
+    [defaults synchronize];
+    
+}
+
 #pragma mark - Height
 
 - (void) updateHeightForToday
 {
     self.height = [self getAverageHeightForPeriodFrom: [RDDateTime beginingOfToday] to:[RDDateTime endOfToday]];
+    
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    
+    if(self.height < 1)
+    {
+        if([defaults dataForKey:@"height"] == nil)
+        {
+            [defaults setObject:[NSNumber numberWithDouble:1.75] forKey:@"height"];
+            [defaults synchronize];
+        }
+        NSNumber * numberToWrite = [defaults objectForKey:@"height"];
+        self.height = [numberToWrite doubleValue];
+    }
+    else
+    {
+        [defaults setObject:[NSNumber numberWithDouble:self.height] forKey:@"height"];
+        [defaults synchronize];
+    }
+    
 }
 
 - (double) getAverageHeightForPeriodFrom: (NSDate *) startDate to: (NSDate *) endDate
@@ -321,10 +394,23 @@ typedef enum
 
 - (void) updateHeartRateForToday
 {
-    self.bodyMass = [self getAverageBodyMassForPeriodFrom: [RDDateTime beginingOfToday] to:[RDDateTime endOfToday]];
+    self.heartRate = [self getAverageHeartRateForPeriodFrom: [RDDateTime beginingOfToday] to:[RDDateTime endOfToday]];
+    
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    
+    if(self.heartRate < 1)
+    {
+        if([defaults dataForKey:@"heartRate"] == nil)
+        {
+            [defaults setObject:[NSNumber numberWithDouble:72] forKey:@"heartRate"];
+            [defaults synchronize];
+        }
+        NSNumber * numberToWrite = [defaults objectForKey:@"heartRate"];
+        self.heartRate = [numberToWrite doubleValue];
+    }
 }
 
-- (double) getAverageHeartRateForPeriodFrom: (NSDate *) startDate to: (NSDate *) endDate
+- (NSInteger) getAverageHeartRateForPeriodFrom: (NSDate *) startDate to: (NSDate *) endDate
 {
     
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
@@ -379,6 +465,12 @@ typedef enum
             NSLog(@"Error while saving heart rate (%ld) to Health Store: %@.", heartRateValue, error);
         }
     }];
+    
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithDouble:heartRateValue] forKey:@"heartRate"];
+    [defaults synchronize];
+    
+    
 }
 
 
@@ -386,13 +478,15 @@ typedef enum
 - (NSDate *) dateOfBirth
 {
     NSError * error;
-    return [self.healthStore dateOfBirthWithError:&error];
+    _dateOfBirth = [self.healthStore dateOfBirthWithError:&error];
+    return _dateOfBirth;
 }
 
 - (HKBiologicalSexObject*) biologicalSex
 {
      NSError *error;
-    return [self.healthStore biologicalSexWithError:&error];
+    _biologicalSex = [self.healthStore biologicalSexWithError:&error];
+    return _biologicalSex;
 
 }
 

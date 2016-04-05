@@ -16,8 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.leftCircleView.strokeColor = [UIColor colorWithRed: 1 green: 0.756 blue: 0.923 alpha: 1];
-
     NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self
                            selector:@selector(healthKitNotAvailableNotificationHandler:)
@@ -25,7 +23,14 @@
                              object:nil];
     self.healthKitObject = [HealthKitIntegration sharedInstance];
     [self.healthKitObject initialize];
+    [self.healthKitObject updateData];
+    [self.healthKitObject updateBMIinHealthKit];
+    [self.healthKitObject updateBMIForToday];
     
+    [notificationCenter addObserver:self
+                           selector:@selector(redrawCircles)
+                               name:HEALTH_KIT_DATA_UPDATED
+                             object:nil];
     
 }
 
@@ -56,4 +61,32 @@
     
 }
 
+- (void) redrawCircles
+{
+    double currentBMI = self.healthKitObject.BMI;
+    self.leftCircleView.textString = [NSString stringWithFormat:@"BMI: %0.2f", currentBMI];
+    double leftRed = 51.0f/255.0f;
+    double leftGreen = 204.0f/255.0f;
+    double leftBlue = 204.0f/255.0f;
+    
+    if(currentBMI < 18.5 || currentBMI > 25)
+    {
+        leftGreen = 51.0f/255.0f;
+        leftBlue = 204.0f/255.0f;
+        if(currentBMI < 18.5)
+        {
+            leftRed = 128.0f + fabs(currentBMI - 18.5f)*50.0f;
+        }
+        else
+        {
+            leftRed = 1280.f + fabs(currentBMI - 25.0f) * 25.0f;
+        }
+        if(leftRed > 255.0f) leftRed = 255.0f;
+        leftRed /= 255.0f;
+        
+    }
+    
+    self.leftCircleView.strokeColor = [UIColor colorWithRed:leftRed green:leftGreen blue:leftBlue alpha:1];
+    [self.leftCircleView setNeedsDisplay];
+}
 @end
