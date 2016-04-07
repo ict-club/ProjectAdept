@@ -10,20 +10,24 @@
 #import <HealthKit/HealthKit.h>
 
 #define HEALTH_KIT_DATA_UPDATED @"HKDATAUPDATED"
+#define BMI_UPDATED @"BMI_UPDATED"
+#define CALORIE_BALANCE_UPDATED @"CALORIE_BALANCE_UPDATED"
 
 @interface HealthKitIntegration : NSObject
 
 @property (nonatomic, strong) HKHealthStore * healthStore;
 @property (nonatomic, assign) double bodyMass;
 @property (nonatomic, assign) double BMI;
-@property (nonatomic, strong) NSNumber * activeEnergyBurned;
 @property (nonatomic, assign) NSInteger exerciseTime;
 @property (nonatomic, assign) NSInteger heartRate;
 @property (nonatomic, strong) NSDate * dateOfBirth;
 @property (nonatomic, strong) HKBiologicalSexObject * biologicalSex;
 @property (nonatomic, assign) NSInteger stepCount;
 @property (nonatomic, assign) double height;
-
+@property (nonatomic, assign) double restingEnergyBurned;
+@property (nonatomic, assign) double activeEnergyBurned;
+@property (nonatomic, assign) double energyConsumed;
+@property (nonatomic, assign) double netEnergy;
 
 - (void) initialize;
 + (id) sharedInstance;

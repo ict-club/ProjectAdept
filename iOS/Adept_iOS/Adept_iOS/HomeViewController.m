@@ -16,28 +16,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.healthKitObject = [HealthKitIntegration sharedInstance];
+    
+    
     NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self
                            selector:@selector(healthKitNotAvailableNotificationHandler:)
                                name:@"HealthKitNotAvailable"
                              object:nil];
-    self.healthKitObject = [HealthKitIntegration sharedInstance];
+    
+    
     [self.healthKitObject initialize];
-    [self.healthKitObject updateData];
     [self.healthKitObject updateBMIinHealthKit];
-    [self.healthKitObject updateBMIForToday];
-    [self.healthKitObject updateBMIinHealthKit];
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+     NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(redrawLeftCircle:)
+                               name:BMI_UPDATED
+                             object:self.healthKitObject];
     
     [notificationCenter addObserver:self
-                           selector:@selector(redrawCircles)
-                               name:HEALTH_KIT_DATA_UPDATED
-                             object:nil];
-    
+                           selector:@selector(redrawRightCircle:)
+                               name:CALORIE_BALANCE_UPDATED
+                             object:self.healthKitObject];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) dealloc
+{
+    
 }
 
 /*
@@ -62,7 +78,17 @@
     
 }
 
+-(void) redrawCircles: (NSNotification *) notification
+{
+    [self redrawCircles];
+}
+
 - (void) redrawCircles
+{
+    [self redrawLeftCircle:nil];
+}
+
+- (void) redrawLeftCircle:(NSNotification *) notification
 {
     double currentBMI = self.healthKitObject.BMI;
     self.leftCircleView.textString = [NSString stringWithFormat:@"BMI: %0.2f", currentBMI];
@@ -80,7 +106,7 @@
         }
         else
         {
-            leftRed = 1280.f + fabs(currentBMI - 25.0f) * 25.0f;
+            leftRed = 128.f + fabs(currentBMI - 25.0f) * 25.0f;
         }
         if(leftRed > 255.0f) leftRed = 255.0f;
         leftRed /= 255.0f;
@@ -88,6 +114,36 @@
     }
     
     self.leftCircleView.strokeColor = [UIColor colorWithRed:leftRed green:leftGreen blue:leftBlue alpha:1];
-    [self.view setNeedsDisplay];
+    [self.leftCircleView setNeedsDisplay];
 }
+
+- (void) redrawCenterCircle: (NSNotification *) notification
+{
+    
+}
+
+- (void) redrawRightCircle: (NSNotification *) notification
+{
+    double netEnergy = self.healthKitObject.netEnergy/1000;
+    self.rightCircleView.textString = [NSString stringWithFormat:@"%0.2f kJ", netEnergy];
+    double leftRed = 51.0f/255.0f;
+    double leftGreen = 204.0f/255.0f;
+    double leftBlue = 204.0f/255.0f;
+    
+    if(netEnergy < -500 || netEnergy > 500)
+    {
+        leftGreen = 51.0f/255.0f;
+        leftBlue = 204.0f/255.0f;
+        
+        leftRed = 128.0f + (fabs(netEnergy) - 500.0f)/10.0f;
+        
+        if(leftRed > 255.0f) leftRed = 255.0f;
+        leftRed /= 255.0f;
+    }
+    
+    self.rightCircleView.strokeColor = [UIColor colorWithRed:leftRed green:leftGreen blue:leftBlue alpha:1];
+    [self.rightCircleView setNeedsDisplay];
+}
+
+
 @end

@@ -45,9 +45,13 @@
 
 - (void)drawCanvas2WithInsideText: (NSString*)insideText
 {
-    if(self.strokeColor == nil) self.strokeColor = [UIColor colorWithRed: 0.213 green: 0.756 blue: 0.923 alpha: 1];
+    double Red = 51.0f/255.0f;
+    double Green = 204.0f/255.0f;
+    double Blue = 204.0f/255.0f;
+    
+    if(self.strokeColor == nil) self.strokeColor = [UIColor colorWithRed: Red green: Green blue: Blue alpha: 1];
     if(self.fontSize == 0) self.fontSize = self.frame.size.height / 8;
-    if(insideText == nil) insideText = @"Hello world";
+    if(insideText == nil) insideText = @"Loading ...";
     
     self.strokeWidth = MIN(self.frame.size.width, self.frame.size.height)/(25);
     

@@ -49,6 +49,7 @@ typedef enum
         
         // Share body mass, height and body mass index
         NSSet *shareObjectTypes = [NSSet setWithObjects:
+                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryEnergyConsumed],
                                    [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass],
                                    [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMassIndex],
                                    [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned],
@@ -58,6 +59,13 @@ typedef enum
         
         // Read date of birth, biological sex and step count
         NSSet *readObjectTypes  = [NSSet setWithObjects:
+                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryEnergyConsumed],
+                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass],
+                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMassIndex],
+                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned],
+                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate],
+                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight],
+                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned],
                                    [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierDateOfBirth],
                                    [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierBiologicalSex],
                                    [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount],
@@ -67,9 +75,9 @@ typedef enum
         [healthStore requestAuthorizationToShareTypes:shareObjectTypes
                                             readTypes:readObjectTypes
                                            completion:^(BOOL success, NSError *error) {
-                                               if(success == YES || [HKHealthStore isHealthDataAvailable] == YES)
+                                               if(success == YES)
                                                {
-                                                   [defaults setObject:@"YES" forKey:@"HealthKitIsAllowed"];
+                                                   [self updateData];
                                                }
                                                else
                                                {
@@ -79,6 +87,7 @@ typedef enum
                                                
                                                
                                            }];
+        
     }
     else
     {
@@ -99,6 +108,9 @@ typedef enum
                                                     [self updateBodyMassForToday];
                                                     [self updateBMIForToday];
                                                     [self updateHeartRateForToday];
+                                                    _dateOfBirth = self.dateOfBirth;
+                                                    _biologicalSex = self.biologicalSex;
+                                                    [self updateCaloriesBalance];
                                                     
                                                     NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
                                                     [notificationCenter postNotificationName:HEALTH_KIT_DATA_UPDATED object:self];
@@ -157,21 +169,15 @@ typedef enum
 
 - (void) updateBMIForToday
 {
-    self.BMI = [self getAverageBMIForPeriodFrom: [RDDateTime beginingOfToday] to:[RDDateTime endOfToday]];
-    
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    
-    if(self.BMI < 1 || isnan(self.BMI) == YES)
-    {
-        if([defaults dataForKey:@"BMI"] == nil)
+    [self.healthStore aapl_mostRecentQuantitySampleOfType:[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMassIndex] predicate:nil completion:^(HKQuantity *mostRecentQuantity, NSError *error) {
+        if(mostRecentQuantity)
         {
-            [defaults setObject:[NSNumber numberWithDouble:22.00] forKey:@"BMI"];
-            [defaults synchronize];
+            HKUnit * BMIunit = [HKUnit countUnit];
+            self.BMI = [mostRecentQuantity doubleValueForUnit:BMIunit];
+            NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
+            [defaultCenter postNotificationName:BMI_UPDATED object:self];
         }
-        NSNumber * numberToWrite = [defaults objectForKey:@"BMI"];
-        self.BMI = [numberToWrite doubleValue];
-    }
-    
+    }];
 }
 
 - (double) getAverageBMIForPeriodFrom: (NSDate *) startDate to: (NSDate *) endDate
@@ -234,9 +240,6 @@ typedef enum
             }
         }];
         self.BMI = BMI;
-        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:[NSNumber numberWithDouble:self.BMI] forKey:@"bodyMass"];
-        [defaults synchronize];
     }
     
 }
@@ -246,19 +249,13 @@ typedef enum
 
 - (void) updateBodyMassForToday
 {
-    self.bodyMass = [self getAverageBodyMassForPeriodFrom: [RDDateTime beginingOfToday] to:[RDDateTime endOfToday]];
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    
-    if(self.bodyMass < 1 || isnan(self.bodyMass) == YES)
-    {
-        if([defaults dataForKey:@"bodyMass"] == nil)
+    [self.healthStore aapl_mostRecentQuantitySampleOfType:[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass] predicate:nil completion:^(HKQuantity *mostRecentQuantity, NSError *error) {
+        if(mostRecentQuantity)
         {
-            [defaults setObject:[NSNumber numberWithDouble:75.00] forKey:@"bodyMass"];
-            [defaults synchronize];
+            HKUnit * BodyMassUnit = [HKUnit gramUnit];
+            self.bodyMass = ((double)[mostRecentQuantity doubleValueForUnit:BodyMassUnit]/(double)1000);
         }
-        NSNumber * numberToWrite = [defaults objectForKey:@"bodyMass"];
-        self.bodyMass = [numberToWrite doubleValue];
-    }
+    }];
     
 }
 
@@ -320,35 +317,19 @@ typedef enum
         }
     }];
     self.bodyMass = bodyMass;
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithDouble:self.bodyMass] forKey:@"bodyMass"];
-    [defaults synchronize];
-    
 }
 
 #pragma mark - Height
 
 - (void) updateHeightForToday
 {
-    self.height = [self getAverageHeightForPeriodFrom: [RDDateTime beginingOfToday] to:[RDDateTime endOfToday]];
-    
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    
-    if(self.height < 1)
-    {
-        if([defaults dataForKey:@"height"] == nil)
+    [self.healthStore aapl_mostRecentQuantitySampleOfType:[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight] predicate:nil completion:^(HKQuantity *mostRecentQuantity, NSError *error) {
+        if(mostRecentQuantity)
         {
-            [defaults setObject:[NSNumber numberWithDouble:1.75] forKey:@"height"];
-            [defaults synchronize];
+            HKUnit * heightUnit = [HKUnit meterUnit];
+            self.height = [mostRecentQuantity doubleValueForUnit:heightUnit];
         }
-        NSNumber * numberToWrite = [defaults objectForKey:@"height"];
-        self.height = [numberToWrite doubleValue];
-    }
-    else if (isnan(self.height) == NO)
-    {
-        [defaults setObject:[NSNumber numberWithDouble:self.height] forKey:@"height"];
-        [defaults synchronize];
-    }
+    }];
     
 }
 
@@ -400,17 +381,16 @@ typedef enum
 {
     self.heartRate = [self getAverageHeartRateForPeriodFrom: [RDDateTime beginingOfToday] to:[RDDateTime endOfToday]];
     
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    
     if(self.heartRate < 1)
     {
-        if([defaults dataForKey:@"heartRate"] == nil)
-        {
-            [defaults setObject:[NSNumber numberWithDouble:72] forKey:@"heartRate"];
-            [defaults synchronize];
-        }
-        NSNumber * numberToWrite = [defaults objectForKey:@"heartRate"];
-        self.heartRate = [numberToWrite doubleValue];
+        [self.healthStore aapl_mostRecentQuantitySampleOfType:[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate] predicate:nil completion:^(HKQuantity *mostRecentQuantity, NSError *error) {
+            if(mostRecentQuantity)
+            {
+                HKUnit * HRUnit = [[HKUnit countUnit]unitDividedByUnit:[HKUnit minuteUnit]];
+                self.heartRate = [mostRecentQuantity doubleValueForUnit:HRUnit];
+            }
+        }];
+
     }
 }
 
@@ -478,8 +458,88 @@ typedef enum
 }
 
 
+#pragma mark - Intake and Burned Calories
 
+- (void) updateCaloriesBalance {
+    
+    HKQuantityType *energyConsumedType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryEnergyConsumed];
+    HKQuantityType *activeEnergyBurnType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned];
+    
+    // First, fetch the sum of energy consumed samples from HealthKit. Populate this by creating your
+    // own food logging app or using the food journal view controller.
+    [self fetchSumOfSamplesTodayForType:energyConsumedType unit:[HKUnit jouleUnit] completion:^(double totalJoulesConsumed, NSError *error) {
+        
+        // Next, fetch the sum of active energy burned from HealthKit. Populate this by creating your
+        // own calorie tracking app or the Health app.
+        [self fetchSumOfSamplesTodayForType:activeEnergyBurnType unit:[HKUnit jouleUnit] completion:^(double activeEnergyBurned, NSError *error) {
+            
+            // Last, calculate the user's basal energy burn so far today.
+            [self fetchTotalBasalBurn:^(HKQuantity *basalEnergyBurn, NSError *error) {
+                
+                if (!basalEnergyBurn) {
+                    NSLog(@"An error occurred trying to compute the basal energy burn. In your app, handle this gracefully. Error: %@", error);
+                }
+                
+                // Update the UI with all of the fetched values.
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.activeEnergyBurned = activeEnergyBurned;
+                    
+                    self.restingEnergyBurned = [basalEnergyBurn doubleValueForUnit:[HKUnit jouleUnit]];
+                    
+                    self.energyConsumed = totalJoulesConsumed;
+                    
+                    self.netEnergy = self.energyConsumed - self.activeEnergyBurned - self.restingEnergyBurned;
+                    
+                    NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
+                    [notificationCenter postNotificationName:CALORIE_BALANCE_UPDATED object:self];
+                    
+                });
+            }];
+        }];
+    }];
+}
 
+- (void)fetchTotalBasalBurn:(void(^)(HKQuantity *basalEnergyBurn, NSError *error))completion {
+    NSPredicate *todayPredicate = [self predicateForSamplesToday];
+    
+    HKQuantityType *weightType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass];
+    HKQuantityType *heightType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight];
+    
+    [self.healthStore aapl_mostRecentQuantitySampleOfType:weightType predicate:nil completion:^(HKQuantity *weight, NSError *error) {
+        if (!weight) {
+            completion(nil, error);
+            
+            return;
+        }
+        
+        [self.healthStore aapl_mostRecentQuantitySampleOfType:heightType predicate:todayPredicate completion:^(HKQuantity *height, NSError *error) {
+            if (!height) {
+                completion(nil, error);
+                
+                return;
+            }
+            
+            NSDate *dateOfBirth = [self.healthStore dateOfBirthWithError:&error];
+            if (!dateOfBirth) {
+                completion(nil, error);
+                
+                return;
+            }
+            
+            HKBiologicalSexObject *biologicalSexObject = [self.healthStore biologicalSexWithError:&error];
+            if (!biologicalSexObject) {
+                completion(nil, error);
+                
+                return;
+            }
+            
+            // Once we have pulled all of the information without errors, calculate the user's total basal energy burn
+            HKQuantity *basalEnergyBurn = [self calculateBasalBurnTodayFromWeight:weight height:height dateOfBirth:dateOfBirth biologicalSex:biologicalSexObject];
+            
+            completion(basalEnergyBurn, nil);
+        }];
+    }];
+}
 
 
 - (NSDate *) dateOfBirth
@@ -513,7 +573,13 @@ typedef enum
     return energyFormatter;
 }
 
-
+- (HKQuantity *) calculateBasalBurnToday
+{
+    HKQuantity * bodyMass = [HKQuantity quantityWithUnit:[HKUnit gramUnit] doubleValue:self.bodyMass*1000];
+    HKQuantity * height = [HKQuantity quantityWithUnit:[HKUnit meterUnit] doubleValue:self.height];
+    
+    return [self calculateBasalBurnTodayFromWeight:bodyMass height:height dateOfBirth:self.dateOfBirth biologicalSex:self.biologicalSex];
+}
 
 #pragma mark - Private methods
 
@@ -590,5 +656,26 @@ typedef enum
     
     return [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionStrictStartDate];
 }
+
+#pragma mark - Setter Overrides
+
+- (void)setActiveEnergyBurned:(double)activeEnergyBurned {
+    _activeEnergyBurned = activeEnergyBurned;
+}
+
+- (void)setEnergyConsumed:(double)energyConsumed {
+    _energyConsumed = energyConsumed;
+}
+
+- (void)setRestingEnergyBurned:(double)restingEnergyBurned {
+    _restingEnergyBurned = restingEnergyBurned;
+}
+
+- (void)setNetEnergy:(double)netEnergy {
+    _netEnergy = netEnergy;
+    
+}
+
+
 
 @end

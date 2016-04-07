@@ -8,7 +8,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Profile-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="HomeViewController" sceneMemberID="viewController">
@@ -146,7 +146,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile.png" selectedImage="Profile.png" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="centerCircleView" destination="Afa-VY-Pq8" id="06N-5V-uNU"/>
                         <outlet property="leftCircleView" destination="Twp-CN-BNg" id="ITL-2n-b5B"/>
@@ -158,7 +158,7 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="-717"/>
         </scene>
-        <!--Peripherals-->
+        <!--Connections-->
         <scene sceneID="Hq2-Oi-R7a">
             <objects>
                 <tableViewController id="wSy-2r-9kO" customClass="PeripheralsTableViewController" sceneMemberID="viewController">
@@ -181,7 +181,7 @@
                             <outlet property="delegate" destination="wSy-2r-9kO" id="O7I-oo-Stp"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Peripherals" id="EW5-Yk-v4t"/>
+                    <tabBarItem key="tabBarItem" title="Connections" image="Connections.png" id="EW5-Yk-v4t"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jUO-pm-RNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -279,7 +279,7 @@
                             <outlet property="delegate" destination="hLu-f5-iXb" id="wZv-sE-wxw"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Exercise" id="nty-vf-MfZ"/>
+                    <tabBarItem key="tabBarItem" title="Exercise" image="Exercise.png" id="nty-vf-MfZ"/>
                     <navigationItem key="navigationItem" title="Select device to workout" id="8jO-EN-fxg"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Neh-ar-UBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -606,7 +606,7 @@
             </objects>
             <point key="canvasLocation" x="2550" y="0.0"/>
         </scene>
-        <!--Performance-->
+        <!--History-->
         <scene sceneID="WBk-XS-yy7">
             <objects>
                 <viewController id="zmn-QJ-mtA" customClass="PerformanceViewController" sceneMemberID="viewController">
@@ -619,7 +619,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Performance" id="dO0-5B-9I6"/>
+                    <tabBarItem key="tabBarItem" title="History" image="Statistics.png" id="dO0-5B-9I6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qHw-Bg-eNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -629,9 +629,14 @@
         <scene sceneID="Ml4-BL-tSR">
             <objects>
                 <navigationController id="nD3-GX-NAt" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oJQ-IB-DCA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="oJQ-IB-DCA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="49e-Tb-3d3" kind="relationship" relationship="rootViewController" id="OzH-mG-Hax"/>
@@ -641,16 +646,22 @@
             </objects>
             <point key="canvasLocation" x="-740" y="0.0"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Adept-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Li4-Gm-Nzy"/>
+                    <navigationItem key="navigationItem" title="Adept" id="Li4-Gm-Nzy"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                    <tabBar key="tabBar" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -687,7 +698,7 @@
                             <outlet property="delegate" destination="5Jl-Qw-LIi" id="faQ-fV-suQ"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Settings" id="tdI-Mr-0Tx"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings.png" id="tdI-Mr-0Tx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2S-bf-UU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -696,6 +707,11 @@
     </scenes>
     <resources>
         <image name="Calories.png" width="432" height="595"/>
+        <image name="Connections.png" width="30" height="30"/>
+        <image name="Exercise.png" width="30" height="30"/>
+        <image name="Profile.png" width="30" height="30"/>
+        <image name="Settings.png" width="30" height="30"/>
+        <image name="Statistics.png" width="30" height="30"/>
         <image name="TAO-picture.png" width="851" height="315"/>
         <image name="heartrate.png" width="512" height="512"/>
         <image name="mxerciseImage1axresdefault.jpg" width="1280" height="720"/>
