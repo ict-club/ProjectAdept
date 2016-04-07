@@ -7,6 +7,7 @@
 //
 
 #import "HealthKitIntegration.h"
+#import "HKHealthStore+AAPLExtensions.h"
 #import "RDDateTime.h"
 
 typedef enum
@@ -219,21 +220,24 @@ typedef enum
 {
     
     double BMI = self.bodyMass / (self.height * self.height);
-    HKQuantity *BMIquantity = [HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:BMI];
-    HKQuantityType * BMIquantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMassIndex];
-    NSDate * now = [NSDate date];
-    
-    HKQuantitySample *BMISample = [HKQuantitySample quantitySampleWithType:BMIquantityType quantity:BMIquantity startDate:now endDate:now];
-    
-    [self.healthStore saveObject:BMISample withCompletion:^(BOOL success, NSError *error) {
-        if (!success) {
-            NSLog(@"Error while saving BMI (%f) to Health Store: %@.", BMI, error);
-        }
-    }];
-    self.BMI = BMI;
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithDouble:self.BMI] forKey:@"bodyMass"];
-    [defaults synchronize];
+    if(BMI > 0 && isnan(BMI) == NO)
+    {
+        HKQuantity *BMIquantity = [HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:BMI];
+        HKQuantityType * BMIquantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMassIndex];
+        NSDate * now = [NSDate date];
+        
+        HKQuantitySample *BMISample = [HKQuantitySample quantitySampleWithType:BMIquantityType quantity:BMIquantity startDate:now endDate:now];
+        
+        [self.healthStore saveObject:BMISample withCompletion:^(BOOL success, NSError *error) {
+            if (!success) {
+                NSLog(@"Error while saving BMI (%f) to Health Store: %@.", BMI, error);
+            }
+        }];
+        self.BMI = BMI;
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:[NSNumber numberWithDouble:self.BMI] forKey:@"bodyMass"];
+        [defaults synchronize];
+    }
     
 }
 
@@ -340,7 +344,7 @@ typedef enum
         NSNumber * numberToWrite = [defaults objectForKey:@"height"];
         self.height = [numberToWrite doubleValue];
     }
-    else
+    else if (isnan(self.height) == NO)
     {
         [defaults setObject:[NSNumber numberWithDouble:self.height] forKey:@"height"];
         [defaults synchronize];
@@ -475,6 +479,9 @@ typedef enum
 
 
 
+
+
+
 - (NSDate *) dateOfBirth
 {
     NSError * error;
@@ -488,6 +495,100 @@ typedef enum
     _biologicalSex = [self.healthStore biologicalSexWithError:&error];
     return _biologicalSex;
 
+}
+
+#pragma mark - NSEnergyFormatter
+
+- (NSEnergyFormatter *)energyFormatter {
+    static NSEnergyFormatter *energyFormatter;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        energyFormatter = [[NSEnergyFormatter alloc] init];
+        energyFormatter.unitStyle = NSFormattingUnitStyleLong;
+        energyFormatter.forFoodEnergyUse = YES;
+        energyFormatter.numberFormatter.maximumFractionDigits = 2;
+    });
+    
+    return energyFormatter;
+}
+
+
+
+#pragma mark - Private methods
+
+- (HKQuantity *)calculateBasalBurnTodayFromWeight:(HKQuantity *)weight height:(HKQuantity *)height dateOfBirth:(NSDate *)dateOfBirth biologicalSex:(HKBiologicalSexObject *)biologicalSex {
+    // Only calculate Basal Metabolic Rate (BMR) if we have enough information about the user
+    if (!weight || !height || !dateOfBirth || !biologicalSex) {
+        return nil;
+    }
+    
+    // Note the difference between calling +unitFromString: vs creating a unit from a string with
+    // a given prefix. Both of these are equally valid, however one may be more convenient for a given
+    // use case.
+    double heightInCentimeters = [height doubleValueForUnit:[HKUnit unitFromString:@"cm"]];
+    double weightInKilograms = [weight doubleValueForUnit:[HKUnit gramUnitWithMetricPrefix:HKMetricPrefixKilo]];
+    
+    NSDate *now = [NSDate date];
+    NSDateComponents *ageComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:dateOfBirth toDate:now options:NSCalendarWrapComponents];
+    NSUInteger ageInYears = ageComponents.year;
+    
+    // BMR is calculated in kilocalories per day.
+    double BMR = [self calculateBMRFromWeight:weightInKilograms height:heightInCentimeters age:ageInYears biologicalSex:[biologicalSex biologicalSex]];
+    
+    // Figure out how much of today has completed so we know how many kilocalories the user has burned.
+    NSDate *startOfToday = [[NSCalendar currentCalendar] startOfDayForDate:now];
+    NSDate *endOfToday = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay value:1 toDate:startOfToday options:0];
+    
+    NSTimeInterval secondsInDay = [endOfToday timeIntervalSinceDate:startOfToday];
+    double percentOfDayComplete = [now timeIntervalSinceDate:startOfToday] / secondsInDay;
+    
+    double kilocaloriesBurned = BMR * percentOfDayComplete;
+    
+    return [HKQuantity quantityWithUnit:[HKUnit kilocalorieUnit] doubleValue:kilocaloriesBurned];
+}
+
+
+- (double)calculateBMRFromWeight:(double)weightInKilograms height:(double)heightInCentimeters age:(NSUInteger)ageInYears biologicalSex:(HKBiologicalSex )biologicalSex {
+    double BMR;
+    
+    // The BMR equation is different between males and females.
+    if (biologicalSex == HKBiologicalSexMale) {
+        BMR = 66.0 + (13.8 * weightInKilograms) + (5 * heightInCentimeters) - (6.8 * ageInYears);
+    }
+    else {
+        BMR = 655 + (9.6 * weightInKilograms) + (1.8 * heightInCentimeters) - (4.7 * ageInYears);
+    }
+    
+    return BMR;
+}
+
+
+- (void)fetchSumOfSamplesTodayForType:(HKQuantityType *)quantityType unit:(HKUnit *)unit completion:(void (^)(double, NSError *))completionHandler {
+    NSPredicate *predicate = [self predicateForSamplesToday];
+    
+    HKStatisticsQuery *query = [[HKStatisticsQuery alloc] initWithQuantityType:quantityType quantitySamplePredicate:predicate options:HKStatisticsOptionCumulativeSum completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
+        HKQuantity *sum = [result sumQuantity];
+        
+        if (completionHandler) {
+            double value = [sum doubleValueForUnit:unit];
+            
+            completionHandler(value, error);
+        }
+    }];
+    
+    [self.healthStore executeQuery:query];
+}
+
+- (NSPredicate *)predicateForSamplesToday {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSDate *now = [NSDate date];
+    
+    NSDate *startDate = [calendar startOfDayForDate:now];
+    NSDate *endDate = [calendar dateByAddingUnit:NSCalendarUnitDay value:1 toDate:startDate options:0];
+    
+    return [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionStrictStartDate];
 }
 
 @end

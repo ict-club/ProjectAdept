@@ -26,6 +26,7 @@
     [self.healthKitObject updateData];
     [self.healthKitObject updateBMIinHealthKit];
     [self.healthKitObject updateBMIForToday];
+    [self.healthKitObject updateBMIinHealthKit];
     
     [notificationCenter addObserver:self
                            selector:@selector(redrawCircles)
@@ -87,6 +88,6 @@
     }
     
     self.leftCircleView.strokeColor = [UIColor colorWithRed:leftRed green:leftGreen blue:leftBlue alpha:1];
-    [self.leftCircleView setNeedsDisplay];
+    [self.view setNeedsDisplay];
 }
 @end

@@ -10,6 +10,9 @@
 		10E903B51CA9A017000904DB /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E903B41CA9A017000904DB /* CircleView.m */; };
 		1998A5F41CAC654E00DA95C1 /* HealthKitIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */; };
 		1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F71CAC802D00DA95C1 /* RDDateTime.m */; };
+		19C2254A1CB6B3BA0017D5A7 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C225461CB6B1090017D5A7 /* ResearchKit.framework */; };
+		19C2254B1CB6B3BA0017D5A7 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 19C225461CB6B1090017D5A7 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		19C225521CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C225511CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m */; };
 		19DA718C1CAAF1020078DC65 /* TrainingSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */; };
 		19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA718E1CAAF11A0078DC65 /* ExerciseExecutionViewController.m */; };
 		19DA71921CAAF5DA0078DC65 /* ExerciseStaticLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA71911CAAF5DA0078DC65 /* ExerciseStaticLine.m */; };
@@ -31,6 +34,44 @@
 		19FDF06C1CAA7DC400FBE133 /* TAO-picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		19C225451CB6B1090017D5A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B183A5951A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		19C225471CB6B1090017D5A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
+			remoteInfo = ResearchKitTests;
+		};
+		19C2254C1CB6B3BA0017D5A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B183A4731A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		19C2254E1CB6B3BA0017D5A7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				19C2254B1CB6B3BA0017D5A7 /* ResearchKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		10E903B31CA9A017000904DB /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		10E903B41CA9A017000904DB /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
@@ -38,6 +79,9 @@
 		1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitIntegration.m; sourceTree = "<group>"; };
 		1998A5F61CAC802D00DA95C1 /* RDDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDateTime.h; sourceTree = "<group>"; };
 		1998A5F71CAC802D00DA95C1 /* RDDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDDateTime.m; sourceTree = "<group>"; };
+		19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = Adept_iOS/ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
+		19C225501CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HKHealthStore+AAPLExtensions.h"; sourceTree = "<group>"; };
+		19C225511CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HKHealthStore+AAPLExtensions.m"; sourceTree = "<group>"; };
 		19DA718A1CAAF1020078DC65 /* TrainingSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingSelectTableViewController.h; sourceTree = "<group>"; };
 		19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingSelectTableViewController.m; sourceTree = "<group>"; };
 		19DA718D1CAAF11A0078DC65 /* ExerciseExecutionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseExecutionViewController.h; sourceTree = "<group>"; };
@@ -77,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19C2254A1CB6B3BA0017D5A7 /* ResearchKit.framework in Frameworks */,
 				19DA71A81CAC2BD90078DC65 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,13 +129,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1998A5F51CAC656100DA95C1 /* Singleton */ = {
+		1998A5F51CAC656100DA95C1 /* HealthKit */ = {
 			isa = PBXGroup;
 			children = (
 				1998A5F21CAC654E00DA95C1 /* HealthKitIntegration.h */,
 				1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */,
+				19C225501CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.h */,
+				19C225511CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m */,
 			);
-			name = Singleton;
+			name = HealthKit;
 			sourceTree = "<group>";
 		};
 		1998A5F91CAC804A00DA95C1 /* RapidDevelopment */ = {
@@ -100,6 +147,15 @@
 				1998A5F71CAC802D00DA95C1 /* RDDateTime.m */,
 			);
 			name = RapidDevelopment;
+			sourceTree = "<group>";
+		};
+		19C225401CB6B1090017D5A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19C225461CB6B1090017D5A7 /* ResearchKit.framework */,
+				19C225481CB6B1090017D5A7 /* ResearchKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		19DA71931CAAF5DF0078DC65 /* ViewControllers */ = {
@@ -150,6 +206,7 @@
 		19FDF0311CA9950F00FBE133 = {
 			isa = PBXGroup;
 			children = (
+				19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */,
 				19DA71A71CAC2BD90078DC65 /* HealthKit.framework */,
 				19FDF03C1CA9950F00FBE133 /* Adept_iOS */,
 				19FDF03B1CA9950F00FBE133 /* Products */,
@@ -172,7 +229,7 @@
 				19FDF0411CA9950F00FBE133 /* AppDelegate.m */,
 				19DA71951CAAF63C0078DC65 /* Resources */,
 				1998A5F91CAC804A00DA95C1 /* RapidDevelopment */,
-				1998A5F51CAC656100DA95C1 /* Singleton */,
+				1998A5F51CAC656100DA95C1 /* HealthKit */,
 				19DA71941CAAF6120078DC65 /* Views */,
 				19DA71931CAAF5DF0078DC65 /* ViewControllers */,
 				19FDF0491CA9950F00FBE133 /* Main.storyboard */,
@@ -202,10 +259,12 @@
 				19FDF0361CA9950F00FBE133 /* Sources */,
 				19FDF0371CA9950F00FBE133 /* Frameworks */,
 				19FDF0381CA9950F00FBE133 /* Resources */,
+				19C2254E1CB6B3BA0017D5A7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				19C2254D1CB6B3BA0017D5A7 /* PBXTargetDependency */,
 			);
 			name = Adept_iOS;
 			productName = Adept_iOS;
@@ -243,12 +302,35 @@
 			mainGroup = 19FDF0311CA9950F00FBE133;
 			productRefGroup = 19FDF03B1CA9950F00FBE133 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 19C225401CB6B1090017D5A7 /* Products */;
+					ProjectRef = 19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				19FDF0391CA9950F00FBE133 /* Adept_iOS */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		19C225461CB6B1090017D5A7 /* ResearchKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ResearchKit.framework;
+			remoteRef = 19C225451CB6B1090017D5A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		19C225481CB6B1090017D5A7 /* ResearchKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ResearchKitTests.xctest;
+			remoteRef = 19C225471CB6B1090017D5A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		19FDF0381CA9950F00FBE133 /* Resources */ = {
@@ -282,6 +364,7 @@
 				19FDF05F1CA996E200FBE133 /* ExerciseViewController.m in Sources */,
 				19FDF05C1CA996BA00FBE133 /* PeripheralsTableViewController.m in Sources */,
 				1998A5F41CAC654E00DA95C1 /* HealthKitIntegration.m in Sources */,
+				19C225521CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m in Sources */,
 				19FDF0591CA996A200FBE133 /* HomeViewController.m in Sources */,
 				19DA71981CAB09310078DC65 /* ExerciseDynamicLine.m in Sources */,
 				19DA71921CAAF5DA0078DC65 /* ExerciseStaticLine.m in Sources */,
@@ -290,6 +373,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		19C2254D1CB6B3BA0017D5A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ResearchKit;
+			targetProxy = 19C2254C1CB6B3BA0017D5A7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		19FDF0491CA9950F00FBE133 /* Main.storyboard */ = {
@@ -400,6 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Adept_iOS/Adept_iOS.entitlements;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Adept_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ICT-Club.Adept-iOS";
@@ -412,6 +504,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Adept_iOS/Adept_iOS.entitlements;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Adept_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ICT-Club.Adept-iOS";

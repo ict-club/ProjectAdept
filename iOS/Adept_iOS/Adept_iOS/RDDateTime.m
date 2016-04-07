@@ -330,6 +330,4 @@
     return [self endOfMonthNumber:12];
 }
 
-
-
 @end
