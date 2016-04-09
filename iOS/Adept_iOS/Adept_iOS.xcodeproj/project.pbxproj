@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10E903B51CA9A017000904DB /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E903B41CA9A017000904DB /* CircleView.m */; };
+		10F070B91CB9CC620051A053 /* RDBluetoothLowEnergy.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */; };
 		1998A5F41CAC654E00DA95C1 /* HealthKitIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */; };
 		1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F71CAC802D00DA95C1 /* RDDateTime.m */; };
 		199E0C151CB912C00094B384 /* DailyTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 199E0C141CB912C00094B384 /* DailyTarget.m */; };
@@ -98,6 +99,8 @@
 /* Begin PBXFileReference section */
 		10E903B31CA9A017000904DB /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		10E903B41CA9A017000904DB /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
+		10F070B71CB9CC620051A053 /* RDBluetoothLowEnergy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDBluetoothLowEnergy.h; sourceTree = "<group>"; };
+		10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDBluetoothLowEnergy.m; sourceTree = "<group>"; };
 		1998A5F21CAC654E00DA95C1 /* HealthKitIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthKitIntegration.h; sourceTree = "<group>"; };
 		1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitIntegration.m; sourceTree = "<group>"; };
 		1998A5F61CAC802D00DA95C1 /* RDDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDateTime.h; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 			children = (
 				1998A5F61CAC802D00DA95C1 /* RDDateTime.h */,
 				1998A5F71CAC802D00DA95C1 /* RDDateTime.m */,
+				10F070B71CB9CC620051A053 /* RDBluetoothLowEnergy.h */,
+				10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */,
 			);
 			name = RapidDevelopment;
 			sourceTree = "<group>";
@@ -458,6 +463,7 @@
 				19FDF03F1CA9950F00FBE133 /* main.m in Sources */,
 				10E903B51CA9A017000904DB /* CircleView.m in Sources */,
 				19FDF05F1CA996E200FBE133 /* ExerciseViewController.m in Sources */,
+				10F070B91CB9CC620051A053 /* RDBluetoothLowEnergy.m in Sources */,
 				19FDF05C1CA996BA00FBE133 /* PeripheralsTableViewController.m in Sources */,
 				1998A5F41CAC654E00DA95C1 /* HealthKitIntegration.m in Sources */,
 				19C225521CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m in Sources */,
