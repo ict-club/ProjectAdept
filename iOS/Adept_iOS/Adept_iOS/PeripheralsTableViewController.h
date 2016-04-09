@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DeviceConnectionStateTableViewCell.h"
 
 @interface PeripheralsTableViewController : UITableViewController
+
+@property (nonatomic, strong) NSArray * deviceNamesArray;
+@property (nonatomic, strong) NSArray * deviceIDArray;
 
 @end

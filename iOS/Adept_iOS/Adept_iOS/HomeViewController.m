@@ -14,36 +14,46 @@
 
 @implementation HomeViewController
 
+NSDate * methodStart;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.healthKitObject = [HealthKitIntegration sharedInstance];
-    
-    
+    self.dailyTarget = [[DailyTarget alloc] init];
     NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self
                            selector:@selector(healthKitNotAvailableNotificationHandler:)
                                name:@"HealthKitNotAvailable"
                              object:nil];
     
+    [notificationCenter addObserver:self
+                           selector:@selector(bmiUpdatedNotificationHandler:)
+                               name:BMI_UPDATED
+                             object:self.healthKitObject];
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(caloriesBalanceUpdatedNotificationHandler:)
+                               name:CALORIE_BALANCE_UPDATED
+                             object:self.healthKitObject];
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(dailyRemainingCaloriesToBurnNotificationHandler:)
+                               name:DAILY_REMAINING_CALORIES_TO_BURN_UPDATED
+                             object:nil];
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(healthKitInitializedNotificationHandler:)
+                               name:HEALTH_KIT_INITIALIZED
+                             object:nil];
     
     [self.healthKitObject initialize];
-    [self.healthKitObject updateBMIinHealthKit];
     
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
-     NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self
-                           selector:@selector(redrawLeftCircle:)
-                               name:BMI_UPDATED
-                             object:self.healthKitObject];
-    
-    [notificationCenter addObserver:self
-                           selector:@selector(redrawRightCircle:)
-                               name:CALORIE_BALANCE_UPDATED
-                             object:self.healthKitObject];
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(initalizeThreadToUpdateDataOnAnotherThread) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,18 +63,8 @@
 
 - (void) dealloc
 {
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 
 - (void) healthKitNotAvailableNotificationHandler: (NSNotification *) notification
@@ -78,20 +78,41 @@
     
 }
 
--(void) redrawCircles: (NSNotification *) notification
+- (void) healthKitInitializedNotificationHandler: (NSNotification *) notification
 {
-    [self redrawCircles];
+    [self.healthKitObject updateData];
 }
+
 
 - (void) redrawCircles
 {
-    [self redrawLeftCircle:nil];
+    [self redrawLeftCircle];
+    [self redrawCenterCircle];
+    [self redrawRightCircle];
+    [self redrawCenterCircle];
 }
 
-- (void) redrawLeftCircle:(NSNotification *) notification
+- (void) bmiUpdatedNotificationHandler: (NSNotification *) notification
 {
+    [self redrawLeftCircle];
+}
+
+- (void) caloriesBalanceUpdatedNotificationHandler: (NSNotification *) notification
+{
+    [self.dailyTarget calculateDailyTargetAndRemainingCaloriesToBurn];
+    [self redrawRightCircle];
+}
+
+- (void) dailyRemainingCaloriesToBurnNotificationHandler: (NSNotification *) notification
+{
+    [self redrawCenterCircle];
+}
+
+- (void) redrawLeftCircle
+{
+    
     double currentBMI = self.healthKitObject.BMI;
-    self.leftCircleView.textString = [NSString stringWithFormat:@"BMI: %0.2f", currentBMI];
+    self.leftCircleView.textString = [NSString stringWithFormat:@"BMI\n%0.2f", currentBMI];
     double leftRed = 51.0f/255.0f;
     double leftGreen = 204.0f/255.0f;
     double leftBlue = 204.0f/255.0f;
@@ -114,18 +135,42 @@
     }
     
     self.leftCircleView.strokeColor = [UIColor colorWithRed:leftRed green:leftGreen blue:leftBlue alpha:1];
+    dispatch_async(dispatch_get_main_queue(), ^{
     [self.leftCircleView setNeedsDisplay];
+    });
 }
 
-- (void) redrawCenterCircle: (NSNotification *) notification
+- (void) redrawCenterCircle
 {
+    double remainingCaloriesToBurn = self.dailyTarget.exerciseRemainingCaloriesToBurn;
     
+    self.centerCircleView.textString = [NSString stringWithFormat:@"To Burn\n%0.1f Cal", (-1 * remainingCaloriesToBurn)];
+    double leftRed = 51.0f/255.0f;
+    double leftGreen = 204.0f/255.0f;
+    double leftBlue = 204.0f/255.0f;
+    
+    if(remainingCaloriesToBurn < 0)
+    {
+        leftGreen = 51.0f/255.0f;
+        leftBlue = 204.0f/255.0f;
+        leftRed = 128.0f + (-1 * remainingCaloriesToBurn/10);
+        
+        if(leftRed > 255.0f) leftRed = 255.0f;
+        leftRed /= 255.0f;
+        
+    }
+    
+    self.centerCircleView.strokeColor = [UIColor colorWithRed:leftRed green:leftGreen blue:leftBlue alpha:1];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.centerCircleView setNeedsDisplay];
+    });
+
 }
 
-- (void) redrawRightCircle: (NSNotification *) notification
+- (void) redrawRightCircle
 {
-    double netEnergy = self.healthKitObject.netEnergy/1000;
-    self.rightCircleView.textString = [NSString stringWithFormat:@"%0.2f kJ", netEnergy];
+    double netEnergy = self.healthKitObject.netEnergy/(4186.8);
+    self.rightCircleView.textString = [NSString stringWithFormat:@"Balance\n%0.1f Cal", netEnergy];
     double leftRed = 51.0f/255.0f;
     double leftGreen = 204.0f/255.0f;
     double leftBlue = 204.0f/255.0f;
@@ -142,8 +187,24 @@
     }
     
     self.rightCircleView.strokeColor = [UIColor colorWithRed:leftRed green:leftGreen blue:leftBlue alpha:1];
+    dispatch_async(dispatch_get_main_queue(), ^{
     [self.rightCircleView setNeedsDisplay];
+    });
 }
 
+- (void) redrawMainCircle
+{
+    
+}
+
+- (void) initalizeThreadToUpdateDataOnAnotherThread
+{
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+                   {
+                       [self.healthKitObject updateData];
+                       [self.dailyTarget calculateDailyTargetAndRemainingCaloriesToBurn];
+                   });
+}
 
 @end

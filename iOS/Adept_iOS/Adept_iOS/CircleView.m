@@ -52,8 +52,7 @@
     if(self.strokeColor == nil) self.strokeColor = [UIColor colorWithRed: Red green: Green blue: Blue alpha: 1];
     if(self.fontSize == 0) self.fontSize = self.frame.size.height / 8;
     if(insideText == nil) insideText = @"Loading ...";
-    
-    self.strokeWidth = MIN(self.frame.size.width, self.frame.size.height)/(25);
+    if(self.strokeWidth == 0) self.strokeWidth = MIN(self.frame.size.width, self.frame.size.height)/(25);
     
     NSInteger circleRadius = (MIN(self.frame.size.width, self.frame.size.height)*9)/(10 * 2);
     // General Declarations

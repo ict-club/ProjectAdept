@@ -17,13 +17,9 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F0I-Yw-Ba1" customClass="CircleView">
-                                <rect key="frame" x="160" y="271" width="280" height="235"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ejd-Yr-zGF" customClass="CircleView">
                                 <rect key="frame" x="452" y="115" width="128" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -83,6 +79,10 @@
                                 <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="182" y="115" width="128" height="128"/>
                                 </variation>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F0I-Yw-Ba1" customClass="CircleView">
+                                <rect key="frame" x="160" y="271" width="280" height="235"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -162,18 +162,106 @@
         <scene sceneID="Hq2-Oi-R7a">
             <objects>
                 <tableViewController id="wSy-2r-9kO" customClass="PeripheralsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bcQ-0k-3Iy">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="bcQ-0k-3Iy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="XQu-fF-kqL">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DeviceConnectionStatusCell" rowHeight="80" id="xQ0-nX-Bod" customClass="DeviceConnectionStateTableViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XQu-fF-kqL" id="HIr-dp-RDM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xQ0-nX-Bod" id="qcP-0h-luS">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mfc-rW-exx" customClass="CircleView">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="48" id="c2l-Cc-2tz"/>
+                                                <constraint firstAttribute="width" constant="48" id="go6-YN-EGn"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="c2l-Cc-2tz"/>
+                                                    <exclude reference="go6-YN-EGn"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="c2l-Cc-2tz"/>
+                                                    <include reference="go6-YN-EGn"/>
+                                                </mask>
+                                            </variation>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adept Stick" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQ7-Au-wfr">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="FJY-t3-VsL"/>
+                                                <constraint firstAttribute="width" constant="281" id="KVV-Mj-YaA"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="FJY-t3-VsL"/>
+                                                    <exclude reference="KVV-Mj-YaA"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="FJY-t3-VsL"/>
+                                                    <include reference="KVV-Mj-YaA"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Mfc-rW-exx" firstAttribute="top" secondItem="qcP-0h-luS" secondAttribute="topMargin" constant="7" id="7ex-XY-WoK"/>
+                                        <constraint firstItem="MQ7-Au-wfr" firstAttribute="top" secondItem="qcP-0h-luS" secondAttribute="topMargin" constant="11" id="8tn-MC-zP6"/>
+                                        <constraint firstItem="Mfc-rW-exx" firstAttribute="leading" secondItem="qcP-0h-luS" secondAttribute="leadingMargin" constant="8" id="93t-nS-Yh7"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="MQ7-Au-wfr" secondAttribute="trailing" constant="-8" id="Leo-tr-WH6"/>
+                                        <constraint firstItem="Mfc-rW-exx" firstAttribute="centerX" secondItem="qcP-0h-luS" secondAttribute="centerX" id="aHk-OP-AlW">
+                                            <variation key="widthClass=compact" constant="-143.5"/>
+                                        </constraint>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Mfc-rW-exx" secondAttribute="bottom" constant="8.5" id="ill-gy-4LG"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="MQ7-Au-wfr" secondAttribute="bottom" constant="12.5" id="waw-9H-jh0"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="Mfc-rW-exx"/>
+                                            <exclude reference="MQ7-Au-wfr"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="7ex-XY-WoK"/>
+                                            <exclude reference="93t-nS-Yh7"/>
+                                            <exclude reference="aHk-OP-AlW"/>
+                                            <exclude reference="ill-gy-4LG"/>
+                                            <exclude reference="8tn-MC-zP6"/>
+                                            <exclude reference="Leo-tr-WH6"/>
+                                            <exclude reference="waw-9H-jh0"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="Mfc-rW-exx"/>
+                                            <include reference="MQ7-Au-wfr"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="7ex-XY-WoK"/>
+                                            <include reference="93t-nS-Yh7"/>
+                                            <include reference="aHk-OP-AlW"/>
+                                            <include reference="ill-gy-4LG"/>
+                                            <include reference="8tn-MC-zP6"/>
+                                            <include reference="Leo-tr-WH6"/>
+                                            <include reference="waw-9H-jh0"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="StatusCircleView" destination="Mfc-rW-exx" id="5Nr-q0-kvm"/>
+                                    <outlet property="deviceLabel" destination="MQ7-Au-wfr" id="1So-Rl-RqW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -185,14 +273,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jUO-pm-RNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="866" y="-717"/>
+            <point key="canvasLocation" x="865.5" y="-717"/>
         </scene>
         <!--Select device to workout-->
         <scene sceneID="vmx-cl-adh">
             <objects>
                 <tableViewController id="hLu-f5-iXb" customClass="ExerciseViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="Udw-fJ-bEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -310,7 +398,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="cmz-mq-Xom">
+                    <navigationItem key="navigationItem" title="Select Workout" id="cmz-mq-Xom">
                         <barButtonItem key="rightBarButtonItem" title="Go" id="2S7-GI-knK">
                             <connections>
                                 <segue destination="hXn-H0-Gsm" kind="show" id="wOv-J6-nT3"/>
@@ -615,7 +703,7 @@
                         <viewControllerLayoutGuide type="bottom" id="erM-dr-d2l"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bdR-5i-FUz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -680,7 +768,7 @@
             <objects>
                 <tableViewController id="5Jl-Qw-LIi" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="W25-bg-7Nf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>

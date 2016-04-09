@@ -77,7 +77,8 @@ typedef enum
                                            completion:^(BOOL success, NSError *error) {
                                                if(success == YES)
                                                {
-                                                   [self updateData];
+                                                   NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
+                                                   [notificationCenter postNotificationName:HEALTH_KIT_INITIALIZED object:self];
                                                }
                                                else
                                                {
@@ -101,16 +102,16 @@ typedef enum
 
 - (void) updateData
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^
                                                 {
-                                                    [self updateStepsForToday];
                                                     [self updateHeightForToday];
                                                     [self updateBodyMassForToday];
-                                                    [self updateBMIForToday];
                                                     [self updateHeartRateForToday];
+                                                    [self updateStepsForToday];
                                                     _dateOfBirth = self.dateOfBirth;
                                                     _biologicalSex = self.biologicalSex;
                                                     [self updateCaloriesBalance];
+                                                    [self updateBMIForToday];
                                                     
                                                     NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
                                                     [notificationCenter postNotificationName:HEALTH_KIT_DATA_UPDATED object:self];
@@ -169,15 +170,20 @@ typedef enum
 
 - (void) updateBMIForToday
 {
-    [self.healthStore aapl_mostRecentQuantitySampleOfType:[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMassIndex] predicate:nil completion:^(HKQuantity *mostRecentQuantity, NSError *error) {
-        if(mostRecentQuantity)
-        {
-            HKUnit * BMIunit = [HKUnit countUnit];
-            self.BMI = [mostRecentQuantity doubleValueForUnit:BMIunit];
-            NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
-            [defaultCenter postNotificationName:BMI_UPDATED object:self];
-        }
-    }];
+    
+//    [self.healthStore aapl_mostRecentQuantitySampleOfType:[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMassIndex] predicate:nil completion:^(HKQuantity *mostRecentQuantity, NSError *error) {
+//        if(mostRecentQuantity)
+//        {
+//            HKUnit * BMIunit = [HKUnit countUnit];
+//            self.BMI = [mostRecentQuantity doubleValueForUnit:BMIunit];
+//            NSLog(@"BMI Updated notification sent");
+//            NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
+//            [defaultCenter postNotificationName:BMI_UPDATED object:self];
+//        }
+//    }];
+    self.BMI = self.bodyMass / (self.height * self.height);
+    NSNotificationCenter * defaultCenter = [NSNotificationCenter defaultCenter];
+               [defaultCenter postNotificationName:BMI_UPDATED object:self];
 }
 
 - (double) getAverageBMIForPeriodFrom: (NSDate *) startDate to: (NSDate *) endDate
@@ -309,9 +315,9 @@ typedef enum
     HKQuantityType * BMquantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass];
     NSDate * now = [NSDate date];
     
-    HKQuantitySample *BMISample = [HKQuantitySample quantitySampleWithType:BMquantityType quantity:BMquantity startDate:now endDate:now];
+    HKQuantitySample *BMSample = [HKQuantitySample quantitySampleWithType:BMquantityType quantity:BMquantity startDate:now endDate:now];
     
-    [self.healthStore saveObject:BMISample withCompletion:^(BOOL success, NSError *error) {
+    [self.healthStore saveObject:BMSample withCompletion:^(BOOL success, NSError *error) {
         if (!success) {
             NSLog(@"Error while saving BMI (%f) to Health Store: %@.", bodyMass, error);
         }

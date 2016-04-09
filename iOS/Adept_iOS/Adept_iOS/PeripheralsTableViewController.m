@@ -16,12 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.deviceNamesArray = [NSArray arrayWithObjects:@"Adept Stick", @"Moov",@"Heart rate monitor", @"Tao-Wellshell", @"Apple Watch", @"Some other device", nil];
+    self.deviceIDArray = [NSArray arrayWithObjects:@"AdeptStick",@"Moov",@"HeartRateMonitor", @"TAO-AA-0051", @"AppleFukingWatch", @"OtherDevice", nil];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,21 +29,42 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return [self.deviceNamesArray count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier1" forIndexPath:indexPath];
+    double red = 51.0f/255.0f;
+    double green = 204.0f/255.0f;
+    double blue = 204.0f/255.0f;
     
+    DeviceConnectionStateTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"DeviceConnectionStatusCell" forIndexPath:indexPath];
+    cell.StatusCircleView.textString = @"";
+    cell.StatusCircleView.strokeWidth = 3;
+    cell.deviceLabel.text = [self.deviceNamesArray objectAtIndex:indexPath.row];
+    if(indexPath.row > 2)
+    {
+        red = 204.0f/255.0f;
+        green = 51.0f/255.0f;
+        blue = 204.0f/255.0f;
+        cell.StatusCircleView.strokeColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
+    }
+    cell.deviceLabel.textColor = [UIColor blackColor];
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:0.5f];
+    [cell setSelectedBackgroundView:bgColorView];
     
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*

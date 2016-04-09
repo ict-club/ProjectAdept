@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CircleView.h"
 #import "HealthKitIntegration.h"
+#import "DailyTarget.h"
 
 @interface HomeViewController : UIViewController
 @property (weak, nonatomic) IBOutlet CircleView *mainCircleView;
@@ -17,4 +18,5 @@
 @property (weak, nonatomic) IBOutlet CircleView *rightCircleView;
 
 @property (nonatomic, strong) HealthKitIntegration * healthKitObject;
+@property (nonatomic, strong) DailyTarget * dailyTarget;
 @end
