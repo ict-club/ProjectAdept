@@ -11,16 +11,32 @@
 @implementation RDBluetoothLowEnergy
 @synthesize lastReadData, timeLastRead, serviceUUIDtoLookFor;
 
-- (void) initialize
+- (instancetype) init
 {
-    
-    self.characteristic = [CBCharacteristic alloc];
-    self.myCentralMaganer = [[CBCentralManager alloc] init];
-    self.connected = false;
-    self.deviceList = [[NSMutableArray alloc] init];
-    self.characteristicsList = [[NSMutableArray alloc]init];
-    self.servicesList = [[NSMutableArray alloc] init];
-    self.serviceUUIDtoLookFor = nil;
+    self = [super init];
+    if(self)
+    {
+        self.characteristic = [CBCharacteristic alloc];
+        self.myCentralMaganer = [[CBCentralManager alloc] init];
+        self.connected = false;
+        self.deviceList = [[NSMutableArray alloc] init];
+        self.characteristicsList = [[NSMutableArray alloc]init];
+        self.servicesList = [[NSMutableArray alloc] init];
+        self.serviceUUIDtoLookFor = nil;
+        
+        return self;
+    }
+    return nil;
+}
+
++ (id)sharedInstance
+{
+    static dispatch_once_t pred = 0;
+    __strong static id _sharedObject = nil;
+    dispatch_once(&pred, ^{
+        _sharedObject = [[self alloc] init]; // or some other init method
+    });
+    return _sharedObject;
 }
 
 - (void) searchDevices
@@ -138,7 +154,9 @@
     //NSLog(@"Discovered %@", peripheral.identifier.UUIDString);
     NSLog(@"NAME %@", peripheral.name);
     if([peripheral.name length] > 0) [self.deviceList addObject: peripheral];
-    //NSLog(@"%@", [self.deviceList lastObject]);
+    if([self.delegate respondsToSelector:@selector(newDeviceFound:)]) {
+        [self.delegate newDeviceFound:self];
+    }
     
     
 }
@@ -174,6 +192,12 @@
     self.serviceUUIDtoLookFor = nil;
 }
 
+- (void) refreshDeviceList
+{
+    [self stopSearchingForDevices];
+    [self.deviceList removeAllObjects];
+    [self searchDevices];
+}
 
 - (void)centralManager:(CBCentralManager *)central
   didConnectPeripheral:(CBPeripheral *)peripheral {
@@ -192,6 +216,11 @@ didDiscoverServices:(NSError *)error {
         [peripheral discoverCharacteristics:nil forService:service];
         
     }
+    
+    if([self.delegate respondsToSelector:@selector(didDiscoverServices:)]) {
+        [self.delegate didDiscoverServices:self];
+    }
+    
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral
@@ -205,6 +234,10 @@ didDiscoverCharacteristicsForService:(CBService *)service
         [self.characteristicsList addObject:characteristics];
         
     }
+    
+    if([self.delegate respondsToSelector:@selector(didDiscoverCharacteristics:)]) {
+        [self.delegate didDiscoverCharacteristics:self];
+    }
 }
 
 
@@ -215,6 +248,10 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     self.lastReadData = characteristic.value;
     NSLog(@"%@", characteristic.value);
     self.timeLastRead = [NSDate date];
+    
+    if([self.delegate respondsToSelector:@selector(didUpdateValueForCharacteristic:andData:)]) {
+        [self.delegate didUpdateValueForCharacteristic:self andData:characteristic.value];
+    }
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral
@@ -235,6 +272,10 @@ didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
         NSLog(@"Error writing characteristic value: %@",
               [error localizedDescription]);
     }
+    if([self.delegate respondsToSelector:@selector(didWriteValueForCharacteristic:)]) {
+        [self.delegate didWriteValueForCharacteristic:self];
+    }
+    
 }
 
 

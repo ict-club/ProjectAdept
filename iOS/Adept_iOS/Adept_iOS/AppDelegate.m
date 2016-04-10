@@ -15,7 +15,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.bleCommunication = [RDBluetoothLowEnergy sharedInstance];
+    
     return YES;
 }
 

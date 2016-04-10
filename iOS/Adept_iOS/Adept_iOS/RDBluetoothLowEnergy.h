@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "RDBluetoothLowEnergyDelegate.h"
 
 enum
 {
@@ -16,11 +17,12 @@ enum
     CONNECTED
 };
 
-@interface RDBluetoothLowEnergy : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
-- (void) initialize;
+@interface RDBluetoothLowEnergy : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate, RDBluetoothLowEnergyDelegate>
++ (id) sharedInstance;
 - (void) searchDevices;
 - (void) stopSearchingForDevices;
 - (void) setDeviceServicesArrayToLookFor: (NSArray *) deviceServicesArray;
+- (void) refreshDeviceList;
 - (void) clearDeviceServicesArrayToLookFor;
 - (void) waitForDeviceWithName: (NSString *) name;
 - (void) connectToDevice: (CBPeripheral * ) peripheral;
@@ -42,6 +44,7 @@ enum
 @property NSMutableArray * characteristicsList;
 @property NSString * scanServices;
 @property NSArray * serviceUUIDtoLookFor;
+@property (nonatomic, weak) id <RDBluetoothLowEnergyDelegate> delegate;
 
 @property int connected;
 

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "DeviceConnectionStateTableViewCell.h"
+#import "RDBluetoothLowEnergy.h"
 
-@interface PeripheralsTableViewController : UITableViewController
+@interface PeripheralsTableViewController : UITableViewController <RDBluetoothLowEnergyDelegate>
 
 @property (nonatomic, strong) NSArray * deviceNamesArray;
 @property (nonatomic, strong) NSArray * deviceIDArray;
+@property (nonatomic, strong) RDBluetoothLowEnergy * bleCommunication;
 
 @end
