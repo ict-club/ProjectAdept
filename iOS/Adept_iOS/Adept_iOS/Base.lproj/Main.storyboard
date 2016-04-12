@@ -167,10 +167,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DeviceConnectionStatusCell" rowHeight="80" id="xQ0-nX-Bod" customClass="DeviceConnectionStateTableViewCell">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeviceConnectionStatusCell" rowHeight="80" id="xQ0-nX-Bod" customClass="DeviceConnectionStateTableViewCell">
+                                <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xQ0-nX-Bod" id="qcP-0h-luS">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mfc-rW-exx" customClass="CircleView">
@@ -211,7 +212,7 @@
                                             <variation key="widthClass=compact">
                                                 <mask key="constraints">
                                                     <include reference="FJY-t3-VsL"/>
-                                                    <include reference="KVV-Mj-YaA"/>
+                                                    <exclude reference="KVV-Mj-YaA"/>
                                                 </mask>
                                             </variation>
                                         </label>
@@ -220,12 +221,16 @@
                                         <constraint firstItem="Mfc-rW-exx" firstAttribute="top" secondItem="qcP-0h-luS" secondAttribute="topMargin" constant="7" id="7ex-XY-WoK"/>
                                         <constraint firstItem="MQ7-Au-wfr" firstAttribute="top" secondItem="qcP-0h-luS" secondAttribute="topMargin" constant="11" id="8tn-MC-zP6"/>
                                         <constraint firstItem="Mfc-rW-exx" firstAttribute="leading" secondItem="qcP-0h-luS" secondAttribute="leadingMargin" constant="8" id="93t-nS-Yh7"/>
+                                        <constraint firstItem="Mfc-rW-exx" firstAttribute="top" secondItem="qcP-0h-luS" secondAttribute="topMargin" constant="7" id="H60-3z-Ene"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="MQ7-Au-wfr" secondAttribute="trailing" constant="-8" id="Leo-tr-WH6"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Mfc-rW-exx" secondAttribute="bottom" constant="8.5" id="Px6-w5-rGk"/>
                                         <constraint firstItem="Mfc-rW-exx" firstAttribute="centerX" secondItem="qcP-0h-luS" secondAttribute="centerX" id="aHk-OP-AlW">
                                             <variation key="widthClass=compact" constant="-143.5"/>
                                         </constraint>
+                                        <constraint firstItem="MQ7-Au-wfr" firstAttribute="leading" secondItem="Mfc-rW-exx" secondAttribute="trailing" constant="16" id="c7N-1q-Udh"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Mfc-rW-exx" secondAttribute="bottom" constant="8.5" id="ill-gy-4LG"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="MQ7-Au-wfr" secondAttribute="bottom" constant="12.5" id="waw-9H-jh0"/>
+                                        <constraint firstItem="MQ7-Au-wfr" firstAttribute="leading" secondItem="Mfc-rW-exx" secondAttribute="trailing" constant="22" id="zfV-i5-Duk"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
@@ -233,13 +238,17 @@
                                             <exclude reference="MQ7-Au-wfr"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="7ex-XY-WoK"/>
-                                            <exclude reference="93t-nS-Yh7"/>
-                                            <exclude reference="aHk-OP-AlW"/>
-                                            <exclude reference="ill-gy-4LG"/>
                                             <exclude reference="8tn-MC-zP6"/>
                                             <exclude reference="Leo-tr-WH6"/>
+                                            <exclude reference="c7N-1q-Udh"/>
                                             <exclude reference="waw-9H-jh0"/>
+                                            <exclude reference="zfV-i5-Duk"/>
+                                            <exclude reference="7ex-XY-WoK"/>
+                                            <exclude reference="93t-nS-Yh7"/>
+                                            <exclude reference="H60-3z-Ene"/>
+                                            <exclude reference="Px6-w5-rGk"/>
+                                            <exclude reference="aHk-OP-AlW"/>
+                                            <exclude reference="ill-gy-4LG"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -248,13 +257,17 @@
                                             <include reference="MQ7-Au-wfr"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="7ex-XY-WoK"/>
-                                            <include reference="93t-nS-Yh7"/>
-                                            <include reference="aHk-OP-AlW"/>
-                                            <include reference="ill-gy-4LG"/>
                                             <include reference="8tn-MC-zP6"/>
                                             <include reference="Leo-tr-WH6"/>
+                                            <include reference="c7N-1q-Udh"/>
                                             <include reference="waw-9H-jh0"/>
+                                            <exclude reference="zfV-i5-Duk"/>
+                                            <include reference="7ex-XY-WoK"/>
+                                            <include reference="93t-nS-Yh7"/>
+                                            <include reference="H60-3z-Ene"/>
+                                            <include reference="Px6-w5-rGk"/>
+                                            <exclude reference="aHk-OP-AlW"/>
+                                            <include reference="ill-gy-4LG"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

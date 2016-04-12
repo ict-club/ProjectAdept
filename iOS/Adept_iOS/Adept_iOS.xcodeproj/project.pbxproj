@@ -14,6 +14,7 @@
 		199E0C151CB912C00094B384 /* DailyTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 199E0C141CB912C00094B384 /* DailyTarget.m */; };
 		199E0C1A1CB9B5630094B384 /* DeviceConnectionStateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 199E0C191CB9B5630094B384 /* DeviceConnectionStateTableViewCell.m */; };
 		199E0C211CB9CE040094B384 /* TAOCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 199E0C201CB9CE040094B384 /* TAOCommunication.m */; };
+		199F44691CBC340200D26FDB /* BluetoothDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 199F44681CBC340200D26FDB /* BluetoothDevice.m */; };
 		19C2254A1CB6B3BA0017D5A7 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C225461CB6B1090017D5A7 /* ResearchKit.framework */; };
 		19C2254B1CB6B3BA0017D5A7 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 19C225461CB6B1090017D5A7 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		19C225521CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C225511CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m */; };
@@ -113,6 +114,8 @@
 		199E0C1F1CB9CE040094B384 /* TAOCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAOCommunication.h; sourceTree = "<group>"; };
 		199E0C201CB9CE040094B384 /* TAOCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAOCommunication.m; sourceTree = "<group>"; };
 		199E0C221CBA5AAF0094B384 /* RDBluetoothLowEnergyDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDBluetoothLowEnergyDelegate.h; sourceTree = "<group>"; };
+		199F44671CBC340200D26FDB /* BluetoothDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDevice.h; sourceTree = "<group>"; };
+		199F44681CBC340200D26FDB /* BluetoothDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothDevice.m; sourceTree = "<group>"; };
 		19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = Adept_iOS/ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		19C225501CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HKHealthStore+AAPLExtensions.h"; sourceTree = "<group>"; };
 		19C225511CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HKHealthStore+AAPLExtensions.m"; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 		199E0C1C1CB9CDA70094B384 /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
+				199F44671CBC340200D26FDB /* BluetoothDevice.h */,
+				199F44681CBC340200D26FDB /* BluetoothDevice.m */,
 				199E0C1F1CB9CE040094B384 /* TAOCommunication.h */,
 				199E0C201CB9CE040094B384 /* TAOCommunication.m */,
 			);
@@ -471,6 +476,7 @@
 				19FDF0651CA9972400FBE133 /* SettingsTableViewController.m in Sources */,
 				19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */,
 				199E0C1A1CB9B5630094B384 /* DeviceConnectionStateTableViewCell.m in Sources */,
+				199F44691CBC340200D26FDB /* BluetoothDevice.m in Sources */,
 				199E0C151CB912C00094B384 /* DailyTarget.m in Sources */,
 				1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */,
 				19FDF0421CA9950F00FBE133 /* AppDelegate.m in Sources */,

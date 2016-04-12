@@ -422,7 +422,7 @@ typedef enum
                                                                     
                                                                     for(HKQuantitySample *sample in results)
                                                                     {
-                                                                        returnResult += [sample.quantity doubleValueForUnit: [HKUnit countUnit]];
+                                                                        returnResult += [sample.quantity doubleValueForUnit: [[HKUnit countUnit] unitDividedByUnit:[HKUnit minuteUnit]]];
                                                                     }
                                                                     
                                                                     returnResult /= [results count];
