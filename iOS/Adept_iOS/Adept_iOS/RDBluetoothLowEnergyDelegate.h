@@ -14,6 +14,7 @@
 @optional
 
 - (void) newDeviceFound: (RDBluetoothLowEnergy *) bluetoothLowEnergy;
+- (void) didConnectDevice: (CBPeripheral *) device;
 - (void) didDiscoverServices: (RDBluetoothLowEnergy *) bluetoothLowEnergy;
 - (void) didDiscoverCharacteristics: (RDBluetoothLowEnergy *) bluetoothLowEnergy;
 - (void) didUpdateValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy andData: (NSData *) data;

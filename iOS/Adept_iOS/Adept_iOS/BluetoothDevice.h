@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString * displayName;
 @property (nonatomic, strong) NSString * deviceName;
 @property (nonatomic, assign) BOOL available;
+@property (nonatomic, assign) BOOL connected;
 @property (nonatomic, strong) CBPeripheral * device;
 
 @end

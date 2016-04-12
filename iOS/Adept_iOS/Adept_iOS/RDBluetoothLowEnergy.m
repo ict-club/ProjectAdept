@@ -204,6 +204,9 @@
     peripheral.delegate = self;
     NSLog(@"Peripheral %@ connected", peripheral.name);
     self.connected = CONNECTED;
+    if([self.delegate respondsToSelector:@selector(didConnectDevice:)]) {
+        [self.delegate didConnectDevice:peripheral];
+    }
     
 }
 

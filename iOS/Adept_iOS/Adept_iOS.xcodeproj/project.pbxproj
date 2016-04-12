@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		10E903B51CA9A017000904DB /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E903B41CA9A017000904DB /* CircleView.m */; };
 		10F070B91CB9CC620051A053 /* RDBluetoothLowEnergy.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */; };
+		197292161CBD5B6800CD5A48 /* BluetoothDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */; };
 		1998A5F41CAC654E00DA95C1 /* HealthKitIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */; };
 		1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F71CAC802D00DA95C1 /* RDDateTime.m */; };
 		199E0C151CB912C00094B384 /* DailyTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 199E0C141CB912C00094B384 /* DailyTarget.m */; };
@@ -103,6 +104,8 @@
 		10E903B41CA9A017000904DB /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		10F070B71CB9CC620051A053 /* RDBluetoothLowEnergy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDBluetoothLowEnergy.h; sourceTree = "<group>"; };
 		10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDBluetoothLowEnergy.m; sourceTree = "<group>"; };
+		197292141CBD5B6800CD5A48 /* BluetoothDeviceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceList.h; sourceTree = "<group>"; };
+		197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothDeviceList.m; sourceTree = "<group>"; };
 		1998A5F21CAC654E00DA95C1 /* HealthKitIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthKitIntegration.h; sourceTree = "<group>"; };
 		1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitIntegration.m; sourceTree = "<group>"; };
 		1998A5F61CAC802D00DA95C1 /* RDDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDateTime.h; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 			children = (
 				199F44671CBC340200D26FDB /* BluetoothDevice.h */,
 				199F44681CBC340200D26FDB /* BluetoothDevice.m */,
+				197292141CBD5B6800CD5A48 /* BluetoothDeviceList.h */,
+				197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */,
 				199E0C1F1CB9CE040094B384 /* TAOCommunication.h */,
 				199E0C201CB9CE040094B384 /* TAOCommunication.m */,
 			);
@@ -479,6 +484,7 @@
 				199F44691CBC340200D26FDB /* BluetoothDevice.m in Sources */,
 				199E0C151CB912C00094B384 /* DailyTarget.m in Sources */,
 				1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */,
+				197292161CBD5B6800CD5A48 /* BluetoothDeviceList.m in Sources */,
 				19FDF0421CA9950F00FBE133 /* AppDelegate.m in Sources */,
 				19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */,
 				19FDF03F1CA9950F00FBE133 /* main.m in Sources */,

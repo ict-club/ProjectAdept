@@ -15,7 +15,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     self.bleCommunication = [RDBluetoothLowEnergy sharedInstance];
+    self.bleDevices = [BluetoothDeviceList sharedInstance];
     
     return YES;
 }
