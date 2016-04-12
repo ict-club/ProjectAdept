@@ -10,4 +10,6 @@
 
 @interface TrainingSelectTableViewController : UITableViewController
 
+@property (nonatomic, assign) NSInteger selectedType;
+
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TrainingSelectTableViewController.h"
+
 
 @interface ExerciseViewController : UITableViewController
 
+@property (nonatomic, assign) NSInteger selectedType;
 @end

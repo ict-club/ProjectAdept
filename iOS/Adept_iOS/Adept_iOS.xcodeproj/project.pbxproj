@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		10E903B51CA9A017000904DB /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E903B41CA9A017000904DB /* CircleView.m */; };
 		10F070B91CB9CC620051A053 /* RDBluetoothLowEnergy.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */; };
+		1945CC461CBD80BA004505F6 /* AppleWatchTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC421CBD80BA004505F6 /* AppleWatchTraining.png */; };
+		1945CC471CBD80BA004505F6 /* HeartRateTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC431CBD80BA004505F6 /* HeartRateTraining.png */; };
+		1945CC481CBD80BA004505F6 /* MoovTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC441CBD80BA004505F6 /* MoovTraining.png */; };
+		1945CC491CBD80BA004505F6 /* TaoTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC451CBD80BA004505F6 /* TaoTraining.png */; };
 		197292161CBD5B6800CD5A48 /* BluetoothDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */; };
 		1998A5F41CAC654E00DA95C1 /* HealthKitIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */; };
 		1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F71CAC802D00DA95C1 /* RDDateTime.m */; };
@@ -104,6 +108,10 @@
 		10E903B41CA9A017000904DB /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		10F070B71CB9CC620051A053 /* RDBluetoothLowEnergy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDBluetoothLowEnergy.h; sourceTree = "<group>"; };
 		10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDBluetoothLowEnergy.m; sourceTree = "<group>"; };
+		1945CC421CBD80BA004505F6 /* AppleWatchTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppleWatchTraining.png; sourceTree = "<group>"; };
+		1945CC431CBD80BA004505F6 /* HeartRateTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartRateTraining.png; sourceTree = "<group>"; };
+		1945CC441CBD80BA004505F6 /* MoovTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoovTraining.png; sourceTree = "<group>"; };
+		1945CC451CBD80BA004505F6 /* TaoTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaoTraining.png; sourceTree = "<group>"; };
 		197292141CBD5B6800CD5A48 /* BluetoothDeviceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceList.h; sourceTree = "<group>"; };
 		197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothDeviceList.m; sourceTree = "<group>"; };
 		1998A5F21CAC654E00DA95C1 /* HealthKitIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthKitIntegration.h; sourceTree = "<group>"; };
@@ -276,6 +284,10 @@
 		19DA71951CAAF63C0078DC65 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1945CC421CBD80BA004505F6 /* AppleWatchTraining.png */,
+				1945CC431CBD80BA004505F6 /* HeartRateTraining.png */,
+				1945CC441CBD80BA004505F6 /* MoovTraining.png */,
+				1945CC451CBD80BA004505F6 /* TaoTraining.png */,
 				19C2257B1CB71EFE0017D5A7 /* Connections.png */,
 				19C2257C1CB71EFE0017D5A7 /* Connections@2x.png */,
 				19C2257D1CB71EFE0017D5A7 /* Connections@3x.png */,
@@ -440,7 +452,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1945CC471CBD80BA004505F6 /* HeartRateTraining.png in Resources */,
 				19C225931CB71EFE0017D5A7 /* Settings.png in Resources */,
+				1945CC491CBD80BA004505F6 /* TaoTraining.png in Resources */,
 				19C225971CB71EFE0017D5A7 /* Statistics@2x.png in Resources */,
 				19C225911CB71EFE0017D5A7 /* Profile@2x.png in Resources */,
 				19C2258C1CB71EFE0017D5A7 /* Connections@3x.png in Resources */,
@@ -455,9 +469,11 @@
 				19C225981CB71EFE0017D5A7 /* Statistics@3x.png in Resources */,
 				19C2258F1CB71EFE0017D5A7 /* Exercise@3x.png in Resources */,
 				19FDF04B1CA9950F00FBE133 /* Main.storyboard in Resources */,
+				1945CC481CBD80BA004505F6 /* MoovTraining.png in Resources */,
 				19C225961CB71EFE0017D5A7 /* Statistics.png in Resources */,
 				19C225941CB71EFE0017D5A7 /* Settings@2x.png in Resources */,
 				19C2258A1CB71EFE0017D5A7 /* Connections.png in Resources */,
+				1945CC461CBD80BA004505F6 /* AppleWatchTraining.png in Resources */,
 				19DA719A1CAB0DF30078DC65 /* calories.png in Resources */,
 				19DA719E1CAB11C40078DC65 /* mxerciseImage1axresdefault.jpg in Resources */,
 				19C225581CB7150A0017D5A7 /* syncing@2x.png in Resources */,

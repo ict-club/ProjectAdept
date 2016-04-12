@@ -292,23 +292,23 @@
         <scene sceneID="vmx-cl-adh">
             <objects>
                 <tableViewController id="hLu-f5-iXb" customClass="ExerciseViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="Udw-fJ-bEW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="Udw-fJ-bEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseTableCellIdentifier" rowHeight="100" id="Gak-NB-Mxe">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoovExerciseIdentifier" rowHeight="100" id="Gak-NB-Mxe">
                                 <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gak-NB-Mxe" id="q0N-ue-f68">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TAO-picture.png" translatesAutoresizingMaskIntoConstraints="NO" id="qeM-1G-wMP">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MoovTraining.png" translatesAutoresizingMaskIntoConstraints="NO" id="qeM-1G-wMP">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="qeM-1G-wMP" secondAttribute="height" multiplier="271:106" id="Jg0-XF-8bC">
-                                                    <variation key="widthClass=compact" constant="-1.2783018867924625"/>
+                                                    <variation key="widthClass=compact" constant="144.33962264150941"/>
                                                 </constraint>
                                             </constraints>
                                             <variation key="default">
@@ -322,10 +322,10 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PS-SD-4gX">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PS-SD-4gX">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <attributedString key="attributedText">
-                                                <fragment content="TAO Wellshell Trainig">
+                                                <fragment content="Moov training">
                                                     <attributes>
                                                         <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="19" name="AvenirNext-Regular"/>
@@ -336,14 +336,14 @@
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <rect key="frame" x="8" y="8" width="135" height="84"/>
+                                                <rect key="frame" x="8" y="7" width="135" height="84.5"/>
                                             </variation>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="qeM-1G-wMP" secondAttribute="bottom" id="Sbc-jJ-win"/>
                                         <constraint firstItem="qeM-1G-wMP" firstAttribute="top" secondItem="q0N-ue-f68" secondAttribute="topMargin" id="r5v-YM-K6c">
-                                            <variation key="widthClass=compact" constant="-15"/>
+                                            <variation key="widthClass=compact" constant="-8"/>
                                         </constraint>
                                         <constraint firstAttribute="trailing" secondItem="qeM-1G-wMP" secondAttribute="trailing" id="vIM-yu-rhy"/>
                                     </constraints>
@@ -371,7 +371,392 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ZMQ-AR-OR7" kind="show" id="7Q6-u7-0kQ"/>
+                                    <segue destination="ZMQ-AR-OR7" kind="show" identifier="" id="7Q6-u7-0kQ"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaoExerciseIdentifier" rowHeight="100" id="M4k-3j-4eY">
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M4k-3j-4eY" id="AWY-m8-Tnw">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TaoTraining.png" translatesAutoresizingMaskIntoConstraints="NO" id="hbn-Bo-MFD">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="hbn-Bo-MFD" secondAttribute="height" multiplier="271:106" id="9aw-yd-WZX">
+                                                    <variation key="widthClass=compact" constant="144.33962264150941"/>
+                                                </constraint>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="9aw-yd-WZX"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="9aw-yd-WZX"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eN2-PH-wEG">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Wellshell training">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="19" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="8" y="8" width="195" height="84"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="hbn-Bo-MFD" secondAttribute="trailing" id="0XZ-J4-yr0"/>
+                                        <constraint firstAttribute="bottom" secondItem="hbn-Bo-MFD" secondAttribute="bottom" id="a3A-6P-WlZ"/>
+                                        <constraint firstItem="hbn-Bo-MFD" firstAttribute="top" secondItem="AWY-m8-Tnw" secondAttribute="topMargin" id="fct-JT-VyD">
+                                            <variation key="widthClass=compact" constant="-8"/>
+                                        </constraint>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="hbn-Bo-MFD"/>
+                                            <exclude reference="eN2-PH-wEG"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="a3A-6P-WlZ"/>
+                                            <exclude reference="fct-JT-VyD"/>
+                                            <exclude reference="0XZ-J4-yr0"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="hbn-Bo-MFD"/>
+                                            <include reference="eN2-PH-wEG"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="a3A-6P-WlZ"/>
+                                            <include reference="fct-JT-VyD"/>
+                                            <include reference="0XZ-J4-yr0"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ZMQ-AR-OR7" kind="show" id="Chk-1s-Ttq"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeartRateExerciseIdentifier" rowHeight="100" id="cEQ-EQ-CbS">
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cEQ-EQ-CbS" id="JEf-lY-DqH">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeartRateTraining.png" translatesAutoresizingMaskIntoConstraints="NO" id="mHd-iJ-Ybo">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="mHd-iJ-Ybo" secondAttribute="height" multiplier="271:106" id="gF7-1i-lLu">
+                                                    <variation key="widthClass=compact" constant="144.33962264150941"/>
+                                                </constraint>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="gF7-1i-lLu"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="gF7-1i-lLu"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWb-wt-jih">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Universal training">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="19" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="8" y="8" width="195" height="84"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mHd-iJ-Ybo" firstAttribute="top" secondItem="JEf-lY-DqH" secondAttribute="topMargin" id="2ST-kK-GII">
+                                            <variation key="widthClass=compact" constant="-8"/>
+                                        </constraint>
+                                        <constraint firstAttribute="trailing" secondItem="mHd-iJ-Ybo" secondAttribute="trailing" id="51K-Dp-Nn0"/>
+                                        <constraint firstAttribute="bottom" secondItem="mHd-iJ-Ybo" secondAttribute="bottom" id="7Bh-ib-QqL"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="mHd-iJ-Ybo"/>
+                                            <exclude reference="NWb-wt-jih"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="7Bh-ib-QqL"/>
+                                            <exclude reference="2ST-kK-GII"/>
+                                            <exclude reference="51K-Dp-Nn0"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="mHd-iJ-Ybo"/>
+                                            <include reference="NWb-wt-jih"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="7Bh-ib-QqL"/>
+                                            <include reference="2ST-kK-GII"/>
+                                            <include reference="51K-Dp-Nn0"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ZMQ-AR-OR7" kind="show" id="9tW-FA-Rqd"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AppleWatchExerciseIdentifier" rowHeight="100" id="shc-9R-bsA">
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="shc-9R-bsA" id="wFf-el-UK4">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleWatchTraining.png" translatesAutoresizingMaskIntoConstraints="NO" id="RWO-kd-PB6">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="RWO-kd-PB6" secondAttribute="height" multiplier="271:106" id="RbV-6t-SeD">
+                                                    <variation key="widthClass=compact" constant="144.33962264150941"/>
+                                                </constraint>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="RbV-6t-SeD"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="RbV-6t-SeD"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phb-r6-oWc">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Apple watch training">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="19" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="8" y="8" width="135" height="84"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="RWO-kd-PB6" secondAttribute="bottom" id="8Xy-9j-dVx"/>
+                                        <constraint firstAttribute="trailing" secondItem="RWO-kd-PB6" secondAttribute="trailing" id="e0I-pn-4iO"/>
+                                        <constraint firstItem="RWO-kd-PB6" firstAttribute="top" secondItem="wFf-el-UK4" secondAttribute="topMargin" id="f1E-Ey-Ncw">
+                                            <variation key="widthClass=compact" constant="-8"/>
+                                        </constraint>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="RWO-kd-PB6"/>
+                                            <exclude reference="phb-r6-oWc"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="8Xy-9j-dVx"/>
+                                            <exclude reference="f1E-Ey-Ncw"/>
+                                            <exclude reference="e0I-pn-4iO"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="RWO-kd-PB6"/>
+                                            <include reference="phb-r6-oWc"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="8Xy-9j-dVx"/>
+                                            <include reference="f1E-Ey-Ncw"/>
+                                            <include reference="e0I-pn-4iO"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ZMQ-AR-OR7" kind="show" id="uTu-GV-2PN"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdeptTrainingIdentifier" rowHeight="100" id="zUP-CI-TM9">
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zUP-CI-TM9" id="3Md-md-3uu">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QfL-xN-72E">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="QfL-xN-72E" secondAttribute="height" multiplier="271:106" id="J4O-fS-7Pg">
+                                                    <variation key="widthClass=compact" constant="144.33962264150941"/>
+                                                </constraint>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="J4O-fS-7Pg"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="J4O-fS-7Pg"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEw-Rj-STp">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Adept Stick Training">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="19" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="8" y="8" width="135" height="84"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="QfL-xN-72E" secondAttribute="trailing" id="RLU-N9-lel"/>
+                                        <constraint firstItem="QfL-xN-72E" firstAttribute="top" secondItem="3Md-md-3uu" secondAttribute="topMargin" id="yFw-dS-HbR">
+                                            <variation key="widthClass=compact" constant="-8"/>
+                                        </constraint>
+                                        <constraint firstAttribute="bottom" secondItem="QfL-xN-72E" secondAttribute="bottom" id="zFv-kH-F7o"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="QfL-xN-72E"/>
+                                            <exclude reference="FEw-Rj-STp"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="zFv-kH-F7o"/>
+                                            <exclude reference="yFw-dS-HbR"/>
+                                            <exclude reference="RLU-N9-lel"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="QfL-xN-72E"/>
+                                            <include reference="FEw-Rj-STp"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="zFv-kH-F7o"/>
+                                            <include reference="yFw-dS-HbR"/>
+                                            <include reference="RLU-N9-lel"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ZMQ-AR-OR7" kind="show" id="sVc-SP-8dA"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OtherTrainingIdentifier" rowHeight="100" id="g3j-11-mGB">
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g3j-11-mGB" id="X3z-qU-3nG">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TJL-tG-byL">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="TJL-tG-byL" secondAttribute="height" multiplier="271:106" id="Bme-Ty-h29">
+                                                    <variation key="widthClass=compact" constant="144.33962264150941"/>
+                                                </constraint>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Bme-Ty-h29"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="Bme-Ty-h29"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KC-ng-Cbc">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Adept Stick Training">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="19" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="8" y="8" width="135" height="84"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="TJL-tG-byL" secondAttribute="trailing" id="Hob-Bz-Osn"/>
+                                        <constraint firstAttribute="bottom" secondItem="TJL-tG-byL" secondAttribute="bottom" id="ac7-cm-I2B"/>
+                                        <constraint firstItem="TJL-tG-byL" firstAttribute="top" secondItem="X3z-qU-3nG" secondAttribute="topMargin" id="zzo-pe-xz3">
+                                            <variation key="widthClass=compact" constant="-8"/>
+                                        </constraint>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="TJL-tG-byL"/>
+                                            <exclude reference="4KC-ng-Cbc"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="ac7-cm-I2B"/>
+                                            <exclude reference="zzo-pe-xz3"/>
+                                            <exclude reference="Hob-Bz-Osn"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="TJL-tG-byL"/>
+                                            <include reference="4KC-ng-Cbc"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="ac7-cm-I2B"/>
+                                            <include reference="zzo-pe-xz3"/>
+                                            <include reference="Hob-Bz-Osn"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ZMQ-AR-OR7" kind="show" id="kPI-Q2-fTq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -636,7 +1021,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mxerciseImage1axresdefault.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1xg-Dt-6tR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mxerciseImage1axresdefault.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1xg-Dt-6tR">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="203" id="qdD-zD-aPh"/>
@@ -807,14 +1192,20 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AppleWatchTraining.png" width="1600" height="400"/>
         <image name="Calories.png" width="432" height="595"/>
         <image name="Connections.png" width="30" height="30"/>
         <image name="Exercise.png" width="30" height="30"/>
+        <image name="HeartRateTraining.png" width="1600" height="400"/>
+        <image name="MoovTraining.png" width="1600" height="400"/>
         <image name="Profile.png" width="30" height="30"/>
         <image name="Settings.png" width="30" height="30"/>
         <image name="Statistics.png" width="30" height="30"/>
-        <image name="TAO-picture.png" width="851" height="315"/>
+        <image name="TaoTraining.png" width="1600" height="400"/>
         <image name="heartrate.png" width="512" height="512"/>
         <image name="mxerciseImage1axresdefault.jpg" width="1280" height="720"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Q6-u7-0kQ"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -25,8 +25,8 @@
     [super viewDidLoad];
     self.exerciseImage.layer.borderColor = [UIColor blackColor].CGColor;
     self.exerciseImage.layer.borderWidth = 3.0f;
-//    self.exerciseImage.layer.cornerRadius = 15;
-//    self.exerciseImage.layer.masksToBounds = YES;
+    self.exerciseImage.layer.cornerRadius = 15;
+    self.exerciseImage.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
