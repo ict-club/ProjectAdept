@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RDBluetoothLowEnergy.h"
 
-@interface TAOCommunication : NSObject
+@interface TAOCommunication : RDBluetoothLowEnergy
 
 @end

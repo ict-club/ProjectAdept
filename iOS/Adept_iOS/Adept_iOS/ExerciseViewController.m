@@ -70,6 +70,7 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedType = indexPath.row;
+    [self performSegueWithIdentifier:@"TrainingSelectSegueIdentifier" sender:nil];
 }
 
 

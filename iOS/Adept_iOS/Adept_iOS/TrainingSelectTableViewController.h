@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef NS_ENUM(NSUInteger, TrainingSelectEnum) {
+    MoovTraining,
+    WellshellTraining,
+    UniversalTraining,
+    AppleWatchTraining,
+    AdeptStickTraining,
+    OtherTraining
+};
 
-@interface TrainingSelectTableViewController : UITableViewController
+@interface TrainingSelectTableViewController : UITableViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (nonatomic, assign) NSInteger selectedType;
 

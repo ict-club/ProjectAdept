@@ -9,19 +9,24 @@
 #import "TrainingSelectTableViewController.h"
 
 @interface TrainingSelectTableViewController ()
-
+{
+    NSArray * pickerArray;
+    NSInteger numberOfRows;
+    BOOL isPickerVisible;
+    NSInteger pickerIndex;
+    
+}
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @end
 
 @implementation TrainingSelectTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    pickerArray = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", nil];
+    numberOfRows = 5;
+    isPickerVisible = false;
+    pickerIndex = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,67 +37,104 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    NSInteger numberOfRowsToReturn = numberOfRows;
+    if(isPickerVisible == YES) numberOfRowsToReturn++;
+    return numberOfRowsToReturn;
 }
 
-/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(isPickerVisible == YES && pickerIndex == indexPath.row)
+    {
+        return 120;
+    }
+    else
+    {
+        return 40;
+    }
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
+    UITableViewCell * cell;
+    if(isPickerVisible == YES && pickerIndex == indexPath.row)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"PickerViewIdentifier" forIndexPath:indexPath];
+    }
+    else
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"TrainingSelectCellViewIdentifier" forIndexPath:indexPath];
+    }
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(isPickerVisible == NO)
+    {
+        pickerIndex = indexPath.row + 1;
+        isPickerVisible = YES;
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:pickerIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else
+    {
+        isPickerVisible = NO;
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:pickerIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        if(pickerIndex == indexPath.row + 1)
+        {
+            isPickerVisible = NO;
+            pickerIndex = -1;
+        }
+        else if (pickerIndex < indexPath.row)
+        {
+            isPickerVisible = YES;
+            pickerIndex = indexPath.row;
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:pickerIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        else
+        {
+            isPickerVisible = YES;
+            pickerIndex = indexPath.row + 1;
+            if(pickerIndex == [self.tableView numberOfRowsInSection:0])
+            {
+                pickerIndex = pickerIndex - 1;
+            }
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:pickerIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[self.tableView reloadData];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+
+#pragma mark - Picker view source
+
+- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return 5;
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [pickerArray objectAtIndex:row];
 }
-*/
+
 
 @end

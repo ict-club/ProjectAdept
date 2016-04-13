@@ -14,6 +14,9 @@
 		1945CC481CBD80BA004505F6 /* MoovTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC441CBD80BA004505F6 /* MoovTraining.png */; };
 		1945CC491CBD80BA004505F6 /* TaoTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC451CBD80BA004505F6 /* TaoTraining.png */; };
 		197292161CBD5B6800CD5A48 /* BluetoothDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */; };
+		19811DF41CBEFC530037B65A /* MoovCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 19811DF31CBEFC530037B65A /* MoovCommunication.m */; };
+		19811DF71CBEFC800037B65A /* HeartRateensorCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 19811DF61CBEFC800037B65A /* HeartRateensorCommunication.m */; };
+		19811DFA1CBEFC970037B65A /* AdeptStickCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 19811DF91CBEFC970037B65A /* AdeptStickCommunication.m */; };
 		1998A5F41CAC654E00DA95C1 /* HealthKitIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */; };
 		1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998A5F71CAC802D00DA95C1 /* RDDateTime.m */; };
 		199E0C151CB912C00094B384 /* DailyTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 199E0C141CB912C00094B384 /* DailyTarget.m */; };
@@ -114,6 +117,12 @@
 		1945CC451CBD80BA004505F6 /* TaoTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaoTraining.png; sourceTree = "<group>"; };
 		197292141CBD5B6800CD5A48 /* BluetoothDeviceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceList.h; sourceTree = "<group>"; };
 		197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothDeviceList.m; sourceTree = "<group>"; };
+		19811DF21CBEFC530037B65A /* MoovCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoovCommunication.h; sourceTree = "<group>"; };
+		19811DF31CBEFC530037B65A /* MoovCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoovCommunication.m; sourceTree = "<group>"; };
+		19811DF51CBEFC800037B65A /* HeartRateSensorCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateSensorCommunication.h; sourceTree = "<group>"; };
+		19811DF61CBEFC800037B65A /* HeartRateensorCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateensorCommunication.m; sourceTree = "<group>"; };
+		19811DF81CBEFC970037B65A /* AdeptStickCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdeptStickCommunication.h; sourceTree = "<group>"; };
+		19811DF91CBEFC970037B65A /* AdeptStickCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdeptStickCommunication.m; sourceTree = "<group>"; };
 		1998A5F21CAC654E00DA95C1 /* HealthKitIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthKitIntegration.h; sourceTree = "<group>"; };
 		1998A5F31CAC654E00DA95C1 /* HealthKitIntegration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitIntegration.m; sourceTree = "<group>"; };
 		1998A5F61CAC802D00DA95C1 /* RDDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDDateTime.h; sourceTree = "<group>"; };
@@ -232,6 +241,12 @@
 				197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */,
 				199E0C1F1CB9CE040094B384 /* TAOCommunication.h */,
 				199E0C201CB9CE040094B384 /* TAOCommunication.m */,
+				19811DF21CBEFC530037B65A /* MoovCommunication.h */,
+				19811DF31CBEFC530037B65A /* MoovCommunication.m */,
+				19811DF51CBEFC800037B65A /* HeartRateSensorCommunication.h */,
+				19811DF61CBEFC800037B65A /* HeartRateensorCommunication.m */,
+				19811DF81CBEFC970037B65A /* AdeptStickCommunication.h */,
+				19811DF91CBEFC970037B65A /* AdeptStickCommunication.m */,
 			);
 			name = Bluetooth;
 			sourceTree = "<group>";
@@ -494,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19811DF71CBEFC800037B65A /* HeartRateensorCommunication.m in Sources */,
 				19FDF0651CA9972400FBE133 /* SettingsTableViewController.m in Sources */,
 				19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */,
 				199E0C1A1CB9B5630094B384 /* DeviceConnectionStateTableViewCell.m in Sources */,
@@ -509,11 +525,13 @@
 				10F070B91CB9CC620051A053 /* RDBluetoothLowEnergy.m in Sources */,
 				19FDF05C1CA996BA00FBE133 /* PeripheralsTableViewController.m in Sources */,
 				1998A5F41CAC654E00DA95C1 /* HealthKitIntegration.m in Sources */,
+				19811DF41CBEFC530037B65A /* MoovCommunication.m in Sources */,
 				199E0C211CB9CE040094B384 /* TAOCommunication.m in Sources */,
 				19C225521CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m in Sources */,
 				19FDF0591CA996A200FBE133 /* HomeViewController.m in Sources */,
 				19DA71981CAB09310078DC65 /* ExerciseDynamicLine.m in Sources */,
 				19DA71921CAAF5DA0078DC65 /* ExerciseStaticLine.m in Sources */,
+				19811DFA1CBEFC970037B65A /* AdeptStickCommunication.m in Sources */,
 				19DA718C1CAAF1020078DC65 /* TrainingSelectTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

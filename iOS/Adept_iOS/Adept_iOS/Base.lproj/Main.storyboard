@@ -301,7 +301,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gak-NB-Mxe" id="q0N-ue-f68">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MoovTraining.png" translatesAutoresizingMaskIntoConstraints="NO" id="qeM-1G-wMP">
@@ -370,15 +370,12 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ZMQ-AR-OR7" kind="show" identifier="" id="7Q6-u7-0kQ"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaoExerciseIdentifier" rowHeight="100" id="M4k-3j-4eY">
-                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="192" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M4k-3j-4eY" id="AWY-m8-Tnw">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TaoTraining.png" translatesAutoresizingMaskIntoConstraints="NO" id="hbn-Bo-MFD">
@@ -430,9 +427,9 @@
                                             <exclude reference="eN2-PH-wEG"/>
                                         </mask>
                                         <mask key="constraints">
+                                            <exclude reference="0XZ-J4-yr0"/>
                                             <exclude reference="a3A-6P-WlZ"/>
                                             <exclude reference="fct-JT-VyD"/>
-                                            <exclude reference="0XZ-J4-yr0"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -441,21 +438,18 @@
                                             <include reference="eN2-PH-wEG"/>
                                         </mask>
                                         <mask key="constraints">
+                                            <include reference="0XZ-J4-yr0"/>
                                             <include reference="a3A-6P-WlZ"/>
                                             <include reference="fct-JT-VyD"/>
-                                            <include reference="0XZ-J4-yr0"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ZMQ-AR-OR7" kind="show" id="Chk-1s-Ttq"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeartRateExerciseIdentifier" rowHeight="100" id="cEQ-EQ-CbS">
-                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="292" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cEQ-EQ-CbS" id="JEf-lY-DqH">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeartRateTraining.png" translatesAutoresizingMaskIntoConstraints="NO" id="mHd-iJ-Ybo">
@@ -507,9 +501,9 @@
                                             <exclude reference="NWb-wt-jih"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="7Bh-ib-QqL"/>
                                             <exclude reference="2ST-kK-GII"/>
                                             <exclude reference="51K-Dp-Nn0"/>
+                                            <exclude reference="7Bh-ib-QqL"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -518,21 +512,18 @@
                                             <include reference="NWb-wt-jih"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="7Bh-ib-QqL"/>
                                             <include reference="2ST-kK-GII"/>
                                             <include reference="51K-Dp-Nn0"/>
+                                            <include reference="7Bh-ib-QqL"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ZMQ-AR-OR7" kind="show" id="9tW-FA-Rqd"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AppleWatchExerciseIdentifier" rowHeight="100" id="shc-9R-bsA">
-                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="392" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="shc-9R-bsA" id="wFf-el-UK4">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleWatchTraining.png" translatesAutoresizingMaskIntoConstraints="NO" id="RWO-kd-PB6">
@@ -585,8 +576,8 @@
                                         </mask>
                                         <mask key="constraints">
                                             <exclude reference="8Xy-9j-dVx"/>
-                                            <exclude reference="f1E-Ey-Ncw"/>
                                             <exclude reference="e0I-pn-4iO"/>
+                                            <exclude reference="f1E-Ey-Ncw"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -596,20 +587,17 @@
                                         </mask>
                                         <mask key="constraints">
                                             <include reference="8Xy-9j-dVx"/>
-                                            <include reference="f1E-Ey-Ncw"/>
                                             <include reference="e0I-pn-4iO"/>
+                                            <include reference="f1E-Ey-Ncw"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ZMQ-AR-OR7" kind="show" id="uTu-GV-2PN"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdeptTrainingIdentifier" rowHeight="100" id="zUP-CI-TM9">
-                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="492" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zUP-CI-TM9" id="3Md-md-3uu">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QfL-xN-72E">
@@ -661,9 +649,9 @@
                                             <exclude reference="FEw-Rj-STp"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="zFv-kH-F7o"/>
-                                            <exclude reference="yFw-dS-HbR"/>
                                             <exclude reference="RLU-N9-lel"/>
+                                            <exclude reference="yFw-dS-HbR"/>
+                                            <exclude reference="zFv-kH-F7o"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -672,21 +660,18 @@
                                             <include reference="FEw-Rj-STp"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="zFv-kH-F7o"/>
-                                            <include reference="yFw-dS-HbR"/>
                                             <include reference="RLU-N9-lel"/>
+                                            <include reference="yFw-dS-HbR"/>
+                                            <include reference="zFv-kH-F7o"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ZMQ-AR-OR7" kind="show" id="sVc-SP-8dA"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OtherTrainingIdentifier" rowHeight="100" id="g3j-11-mGB">
-                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="592" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g3j-11-mGB" id="X3z-qU-3nG">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TJL-tG-byL">
@@ -738,9 +723,9 @@
                                             <exclude reference="4KC-ng-Cbc"/>
                                         </mask>
                                         <mask key="constraints">
+                                            <exclude reference="Hob-Bz-Osn"/>
                                             <exclude reference="ac7-cm-I2B"/>
                                             <exclude reference="zzo-pe-xz3"/>
-                                            <exclude reference="Hob-Bz-Osn"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -749,15 +734,12 @@
                                             <include reference="4KC-ng-Cbc"/>
                                         </mask>
                                         <mask key="constraints">
+                                            <include reference="Hob-Bz-Osn"/>
                                             <include reference="ac7-cm-I2B"/>
                                             <include reference="zzo-pe-xz3"/>
-                                            <include reference="Hob-Bz-Osn"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ZMQ-AR-OR7" kind="show" id="kPI-Q2-fTq"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -767,6 +749,9 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Exercise" image="Exercise.png" id="nty-vf-MfZ"/>
                     <navigationItem key="navigationItem" title="Select device to workout" id="8jO-EN-fxg"/>
+                    <connections>
+                        <segue destination="ZMQ-AR-OR7" kind="show" identifier="TrainingSelectSegueIdentifier" id="bd9-5N-rAl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Neh-ar-UBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -776,17 +761,68 @@
         <scene sceneID="hGs-6z-vMV">
             <objects>
                 <tableViewController id="ZMQ-AR-OR7" userLabel="Training select" customClass="TrainingSelectTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q3k-30-uD4">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Q3k-30-uD4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vr2-cm-rxg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrainingSelectCellViewIdentifier" textLabel="IPU-kk-czC" detailTextLabel="4A0-fs-M4Q" style="IBUITableViewCellStyleValue1" id="vr2-cm-rxg">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vr2-cm-rxg" id="nZ0-Rf-C2d">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IPU-kk-czC">
+                                            <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4A0-fs-M4Q">
+                                            <rect key="frame" x="541" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PickerViewIdentifier" rowHeight="180" id="dcs-bo-xsL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dcs-bo-xsL" id="CRg-iY-NlM">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDj-BY-S6q">
+                                            <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="0.0" y="-18" width="400" height="216"/>
+                                            </variation>
+                                            <connections>
+                                                <outlet property="dataSource" destination="ZMQ-AR-OR7" id="CnH-Qe-XJD"/>
+                                                <outlet property="delegate" destination="ZMQ-AR-OR7" id="Zcz-eR-yPf"/>
+                                            </connections>
+                                        </pickerView>
+                                    </subviews>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="zDj-BY-S6q"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="zDj-BY-S6q"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -1205,7 +1241,4 @@
         <image name="heartrate.png" width="512" height="512"/>
         <image name="mxerciseImage1axresdefault.jpg" width="1280" height="720"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="7Q6-u7-0kQ"/>
-    </inferredMetricsTieBreakers>
 </document>
