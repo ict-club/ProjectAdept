@@ -66,6 +66,7 @@
 		19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */; };
 		19FDF0651CA9972400FBE133 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */; };
 		19FDF06C1CAA7DC400FBE133 /* TAO-picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */; };
+		D3B714531CC2481D00C08DD8 /* RDWebPost.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B714521CC2481D00C08DD8 /* RDWebPost.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +193,8 @@
 		19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TAO-picture.png"; sourceTree = "<group>"; };
+		D3B714511CC2481D00C08DD8 /* RDWebPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDWebPost.h; sourceTree = "<group>"; };
+		D3B714521CC2481D00C08DD8 /* RDWebPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDWebPost.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +231,8 @@
 				199E0C221CBA5AAF0094B384 /* RDBluetoothLowEnergyDelegate.h */,
 				10F070B71CB9CC620051A053 /* RDBluetoothLowEnergy.h */,
 				10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */,
+				D3B714511CC2481D00C08DD8 /* RDWebPost.h */,
+				D3B714521CC2481D00C08DD8 /* RDWebPost.m */,
 			);
 			name = RapidDevelopment;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				199E0C151CB912C00094B384 /* DailyTarget.m in Sources */,
 				1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */,
 				197292161CBD5B6800CD5A48 /* BluetoothDeviceList.m in Sources */,
+				D3B714531CC2481D00C08DD8 /* RDWebPost.m in Sources */,
 				19FDF0421CA9950F00FBE133 /* AppDelegate.m in Sources */,
 				19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */,
 				19FDF03F1CA9950F00FBE133 /* main.m in Sources */,
