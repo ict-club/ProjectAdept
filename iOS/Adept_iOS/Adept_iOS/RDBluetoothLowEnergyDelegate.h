@@ -20,5 +20,7 @@
 - (void) didUpdateValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy andData: (NSData *) data;
 - (void) didWriteValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy;
 
+@property (nonatomic, strong) id delegate;
+
 @end
 

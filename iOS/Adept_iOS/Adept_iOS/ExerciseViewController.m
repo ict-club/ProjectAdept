@@ -70,7 +70,14 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedType = indexPath.row;
-    [self performSegueWithIdentifier:@"TrainingSelectSegueIdentifier" sender:nil];
+    if(indexPath.row == 2)
+    {
+        [self performSegueWithIdentifier:@"HeartRateSegueIdentifier" sender:nil];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"TrainingSelectSegueIdentifier" sender:nil];
+    }
 }
 
 

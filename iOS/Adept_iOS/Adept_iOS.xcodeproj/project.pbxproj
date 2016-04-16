@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		10E903B51CA9A017000904DB /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E903B41CA9A017000904DB /* CircleView.m */; };
 		10F070B91CB9CC620051A053 /* RDBluetoothLowEnergy.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */; };
+		1934BCCC1CC25C3600475745 /* HeartRateExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1934BCCB1CC25C3600475745 /* HeartRateExerciseViewController.m */; };
 		1945CC461CBD80BA004505F6 /* AppleWatchTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC421CBD80BA004505F6 /* AppleWatchTraining.png */; };
 		1945CC471CBD80BA004505F6 /* HeartRateTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC431CBD80BA004505F6 /* HeartRateTraining.png */; };
 		1945CC481CBD80BA004505F6 /* MoovTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC441CBD80BA004505F6 /* MoovTraining.png */; };
@@ -112,6 +113,8 @@
 		10E903B41CA9A017000904DB /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		10F070B71CB9CC620051A053 /* RDBluetoothLowEnergy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDBluetoothLowEnergy.h; sourceTree = "<group>"; };
 		10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDBluetoothLowEnergy.m; sourceTree = "<group>"; };
+		1934BCCA1CC25C3600475745 /* HeartRateExerciseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateExerciseViewController.h; sourceTree = "<group>"; };
+		1934BCCB1CC25C3600475745 /* HeartRateExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateExerciseViewController.m; sourceTree = "<group>"; };
 		1945CC421CBD80BA004505F6 /* AppleWatchTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppleWatchTraining.png; sourceTree = "<group>"; };
 		1945CC431CBD80BA004505F6 /* HeartRateTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartRateTraining.png; sourceTree = "<group>"; };
 		1945CC441CBD80BA004505F6 /* MoovTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoovTraining.png; sourceTree = "<group>"; };
@@ -278,6 +281,8 @@
 				19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */,
 				19DA718D1CAAF11A0078DC65 /* ExerciseExecutionViewController.h */,
 				19DA718E1CAAF11A0078DC65 /* ExerciseExecutionViewController.m */,
+				1934BCCA1CC25C3600475745 /* HeartRateExerciseViewController.h */,
+				1934BCCB1CC25C3600475745 /* HeartRateExerciseViewController.m */,
 				19FDF0601CA9970F00FBE133 /* PerformanceViewController.h */,
 				19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */,
 				19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */,
@@ -518,6 +523,7 @@
 				19FDF0651CA9972400FBE133 /* SettingsTableViewController.m in Sources */,
 				19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */,
 				199E0C1A1CB9B5630094B384 /* DeviceConnectionStateTableViewCell.m in Sources */,
+				1934BCCC1CC25C3600475745 /* HeartRateExerciseViewController.m in Sources */,
 				199F44691CBC340200D26FDB /* BluetoothDevice.m in Sources */,
 				199E0C151CB912C00094B384 /* DailyTarget.m in Sources */,
 				1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */,
