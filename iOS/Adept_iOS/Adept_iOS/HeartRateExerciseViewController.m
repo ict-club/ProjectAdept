@@ -12,7 +12,22 @@
 
 - (void) viewDidLoad
 {
+    self.bluetoothDelegate = self;
+    self.bluetoothDeviceList = [BluetoothDeviceList sharedInstance];
     
+    CBPeripheral * aPeripheral = [[self.bluetoothDeviceList objectAtIndex:3] device];
+    for(CBService * aService in aPeripheral.services)
+    {
+        for(CBCharacteristic * aCharacteristic in aService.characteristics)
+        {
+            if(aCharacteristic.UUID == [CBUUID UUIDWithString:@"2A37"])
+            {
+                [self.bluetoothDeviceList.heartRateDevice.device setNotifyValue:YES forCharacteristic:aCharacteristic];
+                break;
+            }
+        }
+    }
+    //[self.bluetoothDeviceList.heartRateDevice.device setNotifyValue:YES forCharacteristic:<#(nonnull CBCharacteristic *)#>]
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -40,7 +55,18 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 4;
+}
+
+#pragma mark - Bluetooth Low Energy Delegate
+
+- (void) didUpdateValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy andData: (NSData *) data
+{
+    
+}
+- (void) didWriteValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy
+{
+    
 }
 
 

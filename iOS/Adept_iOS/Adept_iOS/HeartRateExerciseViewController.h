@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "RDBluetoothLowEnergy.h"
 #import "CircleView.h"
+#import "BluetoothDeviceList.h"
 
-@interface HeartRateExerciseViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface HeartRateExerciseViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, RDBluetoothLowEnergyDelegate>
 
 @property (weak, nonatomic) IBOutlet CircleView *MainCircleView;
 @property (assign, nonatomic) NSInteger selectedType;
+@property (weak, nonatomic) id <RDBluetoothLowEnergyDelegate> bluetoothDelegate;
+@property (strong, nonatomic) RDBluetoothLowEnergy * bleCommunication;
+@property (strong, nonatomic) BluetoothDeviceList * bluetoothDeviceList;
 
 @end

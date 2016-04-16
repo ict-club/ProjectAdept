@@ -108,7 +108,10 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CBPeripheral * deviceToConnect = (CBPeripheral *)[[self.bluetoothDevices objectAtIndex:indexPath.row] device];
-    if(deviceToConnect)[self.bleCommunication connectToDevice:deviceToConnect];
+    if(deviceToConnect)
+    {
+        [self.bleCommunication connectToDevice:deviceToConnect];
+    }
     else
     {
         UIAlertController * controller = [UIAlertController alertControllerWithTitle:@"Error" message:@"Device out of range" preferredStyle:UIAlertControllerStyleAlert];
@@ -150,9 +153,10 @@
 {
     for(BluetoothDevice * aDevice in self.bluetoothDevices)
     {
-        if(aDevice.device == device)
+        if(aDevice.device.name == device.name)
         {
             aDevice.connected = YES;
+            [aDevice.device discoverServices:nil];
             [self.tableView reloadData];
             break;
         }

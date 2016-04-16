@@ -87,15 +87,20 @@
     [self.characteristicsList removeAllObjects];
     //[self.desiredPeripheral discoverServices:nil];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-    NSThread* myThread = [[NSThread alloc] initWithTarget:self.desiredPeripheral
-                                                 selector:@selector(discoverServices:)
-                                                   object:nil];
-    [myThread start];  // Actually create the thread
+        [self.desiredPeripheral discoverServices:nil];
     });
 
     
 }
 
+- (void) discoverSevicesForPeriheral:(CBPeripheral *) peripheral
+{
+    [self.servicesList removeAllObjects];
+    [self.characteristicsList removeAllObjects];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [peripheral discoverServices:nil];
+    });
+}
 
 - (void) writeValue: (NSData *) data forCharacteristic:(nonnull CBCharacteristic *)characteristic type:(CBCharacteristicWriteType)type
 {
@@ -116,19 +121,10 @@
     {
         if([device.name isEqualToString:name])
         {
-            //[self connectToDevice:device];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
-                NSThread* myThread = [[NSThread alloc] initWithTarget:self
-                                                             selector:@selector(connectToDevice:)
-                                                               object:device];
-                [myThread start];  // Actually create the thread
-                NSLog(@"New thread started for connecting the device");
-                dispatch_async(dispatch_get_main_queue(), ^{ // 2
-                    // 3
-                });
+                [self connectToDevice:device];
             });
-            
-            return;
+            break;
         }
     }
 }
@@ -149,9 +145,6 @@
  didDiscoverPeripheral:(CBPeripheral *)peripheral
      advertisementData:(NSDictionary *)advertisementData
                   RSSI:(NSNumber *)RSSI {
-    
-    // Here check for device UUID if the same as scanned in the QR code
-    //NSLog(@"Discovered %@", peripheral.identifier.UUIDString);
     NSLog(@"NAME %@", peripheral.name);
     if([peripheral.name length] > 0) [self.deviceList addObject: peripheral];
     if([self.delegate respondsToSelector:@selector(newDeviceFound:)]) {
@@ -204,6 +197,7 @@
     peripheral.delegate = self;
     NSLog(@"Peripheral %@ connected", peripheral.name);
     self.connected = CONNECTED;
+    
     if([self.delegate respondsToSelector:@selector(didConnectDevice:)]) {
         [self.delegate didConnectDevice:peripheral];
     }
@@ -249,7 +243,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
              error:(NSError *)error {
     
     self.lastReadData = characteristic.value;
-    NSLog(@"%@", characteristic.value);
+    //NSLog(@"%@", characteristic.value);
     self.timeLastRead = [NSDate date];
     
     if([self.delegate respondsToSelector:@selector(didUpdateValueForCharacteristic:andData:)]) {
