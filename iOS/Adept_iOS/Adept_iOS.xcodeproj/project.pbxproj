@@ -67,6 +67,7 @@
 		19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */; };
 		19FDF0651CA9972400FBE133 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */; };
 		19FDF06C1CAA7DC400FBE133 /* TAO-picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */; };
+		D3A13FA11CC3EEBF009CC8C2 /* RDReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A13FA01CC3EEBF009CC8C2 /* RDReachability.m */; };
 		D3B714531CC2481D00C08DD8 /* RDWebPost.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B714521CC2481D00C08DD8 /* RDWebPost.m */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +197,8 @@
 		19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TAO-picture.png"; sourceTree = "<group>"; };
+		D3A13F9F1CC3EEBF009CC8C2 /* RDReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDReachability.h; sourceTree = "<group>"; };
+		D3A13FA01CC3EEBF009CC8C2 /* RDReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDReachability.m; sourceTree = "<group>"; };
 		D3B714511CC2481D00C08DD8 /* RDWebPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDWebPost.h; sourceTree = "<group>"; };
 		D3B714521CC2481D00C08DD8 /* RDWebPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDWebPost.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,6 +239,8 @@
 				10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */,
 				D3B714511CC2481D00C08DD8 /* RDWebPost.h */,
 				D3B714521CC2481D00C08DD8 /* RDWebPost.m */,
+				D3A13F9F1CC3EEBF009CC8C2 /* RDReachability.h */,
+				D3A13FA01CC3EEBF009CC8C2 /* RDReachability.m */,
 			);
 			name = RapidDevelopment;
 			sourceTree = "<group>";
@@ -544,6 +549,7 @@
 				19DA71981CAB09310078DC65 /* ExerciseDynamicLine.m in Sources */,
 				19DA71921CAAF5DA0078DC65 /* ExerciseStaticLine.m in Sources */,
 				19811DFA1CBEFC970037B65A /* AdeptStickCommunication.m in Sources */,
+				D3A13FA11CC3EEBF009CC8C2 /* RDReachability.m in Sources */,
 				19DA718C1CAAF1020078DC65 /* TrainingSelectTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
