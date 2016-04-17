@@ -2,16 +2,16 @@
     height:100%;
     width:100%;
     padding:0;
+    min-width:750px;
 }
 
 /*RESPONSIVE*/ 
-@media (max-width:679px) {
+@media (max-width:1000px) {
     .logo {
         float:left;
-        width:200px;
-        height:67px !important;
-        padding:0 !important;
-        padding-top:1.3em !important; 
+        width:34.5%;
+        min-width:150px;
+        height:150px !important;
     }
     .person-container {
         display:none;
@@ -31,15 +31,15 @@
 
 .logo {
     background: #F1495B; 
-    height:100px;
+    height:150px;
     text-align:center;
-    padding:2.3em;
+    padding-top:4em;
 }
 
 .logo-img {
    width:30px;
    height:30px;
-   background-image:url('C:/Users/Asus/Documents/Visual Studio 2015/Projects/Adept/assets/space-ship.png');
+   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/space-ship.png');
    background-repeat:no-repeat;
    padding:0; 
    display:inline-block;
@@ -48,7 +48,7 @@
 .logo-text {
     font-weight:bold;
     color:white;
-    font-size:235%;
+    font-size:330%;
     font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important; 
     display:inline-block;
 }
@@ -58,9 +58,8 @@
 
 #person-dropdown {
     display:none;
-    float:right;
-    margin-right:2em;
-    margin-top:1.8em;
+    margin:0 auto;
+    margin-top:4.5em;
 }
 
 .person-container ul {
@@ -71,33 +70,29 @@
 }
 
 .person-container ul li{
-    padding:0.32em 0;
-    padding-left:2.3em;
+    padding:0.6em 0;
+    padding-left:3.5em;
     cursor:pointer;
 }
 
-.person-container ul li:nth-child(1){
-    padding-top:0.6em;
-}
-
 .person-container ul li span {
-    width:30px;
-    height:30px;
-    background-image:url('C:/Users/Asus/Documents/Visual Studio 2015/Projects/Adept/assets/person.png');
+    width:60px;
+    height:60px;
+    background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/person.png');
     background-repeat:no-repeat;
     padding:0; 
     display: inline-block;
     vertical-align:bottom;
     border-radius:50%;
-    margin-right:0.8em;
+    margin-right:1.5em;
 }
 
 .person-container ul li p {
     display: inline-block;
     vertical-align:bottom;
-    margin-bottom:10px;
+    margin-bottom:18px;
     color:#999EA4;
-    font-size:70%;
+    font-size:140%;
     font-weight:bold;
 }
 
@@ -117,3 +112,26 @@
     color:#f2f2f2 !important;
 }
 
+.table-img {
+    width: 60px;
+    padding-right:2em;
+    padding-left:1.3em;
+}
+
+.table-img-format {
+    height:60px;
+    width:60px;
+    border-radius:50%;
+}
+
+.table-text{
+    font-size: 160%;
+}
+
+.dropdown-header {
+    left: 4px; 
+    top: 6px; 
+    position: relative;
+    color:white;
+    font-size: 180%;
+}
