@@ -1,0 +1,119 @@
+﻿html , body , .container{
+    height:100%;
+    width:100%;
+    padding:0;
+}
+
+/*RESPONSIVE*/ 
+@media (max-width:679px) {
+    .logo {
+        float:left;
+        width:200px;
+        height:67px !important;
+        padding:0 !important;
+        padding-top:1.3em !important; 
+    }
+    .person-container {
+        display:none;
+    }   
+    #person-dropdown {
+        display:block !important;
+    }
+}
+
+.leftPanel {
+    background-color:#3E4752;
+}
+
+.rightPanel {
+  
+}
+
+.logo {
+    background: #F1495B; 
+    height:100px;
+    text-align:center;
+    padding:2.3em;
+}
+
+.logo-img {
+   width:30px;
+   height:30px;
+   background-image:url('C:/Users/Asus/Documents/Visual Studio 2015/Projects/Adept/assets/space-ship.png');
+   background-repeat:no-repeat;
+   padding:0; 
+   display:inline-block;
+}
+
+.logo-text {
+    font-weight:bold;
+    color:white;
+    font-size:235%;
+    font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important; 
+    display:inline-block;
+}
+.jqx-widget-content {
+    border:none;
+}
+
+#person-dropdown {
+    display:none;
+    float:right;
+    margin-right:2em;
+    margin-top:1.8em;
+}
+
+.person-container ul {
+    list-style:none;
+    padding-left:0;
+    margin-bottom:0;
+    font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;     
+}
+
+.person-container ul li{
+    padding:0.32em 0;
+    padding-left:2.3em;
+    cursor:pointer;
+}
+
+.person-container ul li:nth-child(1){
+    padding-top:0.6em;
+}
+
+.person-container ul li span {
+    width:30px;
+    height:30px;
+    background-image:url('C:/Users/Asus/Documents/Visual Studio 2015/Projects/Adept/assets/person.png');
+    background-repeat:no-repeat;
+    padding:0; 
+    display: inline-block;
+    vertical-align:bottom;
+    border-radius:50%;
+    margin-right:0.8em;
+}
+
+.person-container ul li p {
+    display: inline-block;
+    vertical-align:bottom;
+    margin-bottom:10px;
+    color:#999EA4;
+    font-size:70%;
+    font-weight:bold;
+}
+
+.person-container ul li:hover {
+    background-color:#38414B;
+}
+
+.person-container ul li:hover p{
+    color:#e6e6e6;
+}
+
+.active, .active:hover {
+    background-color:#323942 !important;
+}
+
+.active p, .active:hover p {
+    color:#f2f2f2 !important;
+}
+
