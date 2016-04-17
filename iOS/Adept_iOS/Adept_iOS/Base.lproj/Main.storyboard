@@ -1244,6 +1244,7 @@
                     </view>
                     <connections>
                         <outlet property="MainCircleView" destination="0Rj-rc-mUn" id="3d4-Ki-l8Q"/>
+                        <outlet property="tableView" destination="NSh-Bx-I3E" id="AGm-si-zti"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PhV-Pp-A27" userLabel="First Responder" sceneMemberID="firstResponder"/>

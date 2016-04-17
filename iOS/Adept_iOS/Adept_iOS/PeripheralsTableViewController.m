@@ -19,7 +19,6 @@
     
     self.bluetoothDevices = [BluetoothDeviceList sharedInstance];
     self.bleCommunication = [RDBluetoothLowEnergy sharedInstance];
-    self.bleCommunication.delegate = self;
     [self.bleCommunication searchDevices];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -31,11 +30,20 @@
     
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    self.bleCommunication.delegate = self;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    
+}
 #pragma mark - Refresh control
 
 - (void) refreshControlPulled
@@ -53,11 +61,6 @@
         [self.tableView endUpdates];
         [self.refreshControl endRefreshing];
     });
-}
-
-- (void) refreshBLEdevices
-{
-    
 }
 
 #pragma mark - Table view data source
@@ -95,6 +98,10 @@
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     cell.StatusCircleView.strokeColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
     UIView *bgColorView = [[UIView alloc] init];
@@ -107,10 +114,17 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CBPeripheral * deviceToConnect = (CBPeripheral *)[[self.bluetoothDevices objectAtIndex:indexPath.row] device];
-    if(deviceToConnect)
+    CBPeripheral * device = (CBPeripheral *)[[self.bluetoothDevices objectAtIndex:indexPath.row] device];
+    if(device)
     {
-        [self.bleCommunication connectToDevice:deviceToConnect];
+        if([(BluetoothDevice *)[self.bluetoothDevices objectAtIndex:indexPath.row] connected] == NO)
+        {
+            [self.bleCommunication connectToDevice:device];
+        }
+        else
+        {
+            [self.bleCommunication disconnectDevice:device];
+        }
     }
     else
     {
@@ -157,6 +171,19 @@
         {
             aDevice.connected = YES;
             [aDevice.device discoverServices:nil];
+            [self.tableView reloadData];
+            break;
+        }
+    }
+}
+
+- (void) didDisconnectDevice:(CBPeripheral *)device
+{
+    for(BluetoothDevice * aDevice in self.bluetoothDevices)
+    {
+        if(aDevice.device.name == device.name)
+        {
+            aDevice.connected = NO;
             [self.tableView reloadData];
             break;
         }

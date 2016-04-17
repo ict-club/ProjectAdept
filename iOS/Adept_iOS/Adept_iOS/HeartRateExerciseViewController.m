@@ -12,27 +12,67 @@
 
 - (void) viewDidLoad
 {
-    self.bluetoothDelegate = self;
     self.bluetoothDeviceList = [BluetoothDeviceList sharedInstance];
+    self.bleCommunication = [RDBluetoothLowEnergy sharedInstance];
+    self.heathKit = [HealthKitIntegration sharedInstance];
+    self.burnedCalories = 0;
+    self.trainingTime = 0;
+    self.currentHeartRate = 0;
+    self.heartRateZoneMin = 120;
+    self.heartRateZoneMax = 140;
     
-    CBPeripheral * aPeripheral = [[self.bluetoothDeviceList objectAtIndex:3] device];
-    for(CBService * aService in aPeripheral.services)
+    self.labels = [NSArray arrayWithObjects:@"Training time", @"Burned calories", @"HRZ Min", @"HRZ Max", nil];
+    self.detailTextLabels = [NSMutableArray arrayWithObjects:@"00:00",
+                           @"0.0 Cal",
+                           [NSString stringWithFormat:@"%ld", self.heartRateZoneMin],
+                           [NSString stringWithFormat:@"%ld", self.heartRateZoneMax],
+                           nil];
+}
+
+- (void) subscribeToHRCharacteristic
+{
+    CBPeripheral * HRPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:3] device];
+    
+    for(CBService * aService in [HRPeripheral services])
     {
         for(CBCharacteristic * aCharacteristic in aService.characteristics)
         {
-            if(aCharacteristic.UUID == [CBUUID UUIDWithString:@"2A37"])
+            if([[aCharacteristic.UUID UUIDString]  isEqual: @"2A37"])
             {
-                [self.bluetoothDeviceList.heartRateDevice.device setNotifyValue:YES forCharacteristic:aCharacteristic];
+                [HRPeripheral setNotifyValue:YES forCharacteristic:aCharacteristic];
+                self.heartRateCharacteristic = aCharacteristic;
+                [HRPeripheral readValueForCharacteristic:self.heartRateCharacteristic];
                 break;
             }
         }
     }
-    //[self.bluetoothDeviceList.heartRateDevice.device setNotifyValue:YES forCharacteristic:<#(nonnull CBCharacteristic *)#>]
+
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    self.bleCommunication.delegate = self;
+    [self subscribeToHRCharacteristic];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                        target:self
+                                                      selector:@selector(refreshTrainingData)
+                                                      userInfo:nil
+                                                       repeats:YES];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self.updateTimer invalidate];
     
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    self.bleCommunication.delegate = nil;
 }
 
 - (void) didReceiveMemoryWarning
@@ -40,11 +80,35 @@
     
 }
 
+- (void) refreshTrainingData
+{
+    if(self.currentHeartRate)
+    {
+        self.trainingTime++ ;
+        self.burnedCalories += [self.heathKit getCaloriesForHeartRate:self.currentHeartRate
+                                                              andTime:1];
+        
+        [self.detailTextLabels replaceObjectAtIndex:HRTIME
+                                         withObject:[NSString stringWithFormat:@"%02ld:%02ld", self.trainingTime/60, self.trainingTime%60]];
+        
+        [self.detailTextLabels replaceObjectAtIndex:HR_BURNED_CALORIES
+                                         withObject:[NSString stringWithFormat:@"%0.2f", self.burnedCalories]];
+        
+        [self.tableView reloadData];
+    }
+    
+}
 
+
+#pragma mark - Table View Delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell = [[UITableViewCell alloc] init];
     cell = [tableView dequeueReusableCellWithIdentifier:@"HRCell"];
+    cell.textLabel.text = [self.labels objectAtIndex:indexPath.row];
+    
+    cell.detailTextLabel.text = [self.detailTextLabels objectAtIndex:indexPath.row];
+    
     return cell;
 }
 
@@ -62,12 +126,69 @@
 
 - (void) didUpdateValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy andData: (NSData *) data
 {
+    uint8_t *currentHeartRate = (uint8_t *) data.bytes;
     
+    if(currentHeartRate)
+    {
+        self.currentHeartRate = currentHeartRate[1];
+        
+        self.MainCircleView.textString = [NSString stringWithFormat:@"\u2665 %ld bpm",self.currentHeartRate];
+        
+        [self.heathKit writeHeartRatetoHealthKit:self.currentHeartRate];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            double red = 51.0f/255.0f;
+            double green = 204.0f/255.0f;
+            double blue = 204.0f/255.0f;
+            
+            if(self.currentHeartRate < self.heartRateZoneMin || self.currentHeartRate > self.heartRateZoneMax)
+            {
+                green = 51.0f/255.0f;
+                blue = 204.0f/255.0f;
+                
+                if(self.currentHeartRate < self.heartRateZoneMin)
+                {
+                    red = 128.0f + labs(self.heartRateZoneMin - self.currentHeartRate)*5;
+                }
+                else
+                {
+                    red = 128.0f + labs(self.heartRateZoneMax - self.currentHeartRate)*5;
+                }
+                
+                if(red > 255.0f) red = 255.0f;
+                red /= 255.0f;
+            }
+
+            self.MainCircleView.strokeColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
+            
+            [self.MainCircleView setNeedsDisplay];
+        });
+        
+    }
 }
 - (void) didWriteValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy
 {
     
 }
 
+- (void) didDisconnectDevice:(CBPeripheral *)device
+{
+    if([device.name isEqualToString: @"Heart Rate Sensor"] == YES)
+    {
+        [self.bleCommunication connectToDevice:device];
+    }
+}
+
+- (void) didConnectDevice:(CBPeripheral *)device
+{
+    if([device.name isEqualToString: @"Heart Rate Sensor"] == YES)
+    {
+        [device discoverServices:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void)
+                       {
+                           [self subscribeToHRCharacteristic];
+                       });
+    }
+}
 
 @end

@@ -9,7 +9,6 @@
 #import "RDBluetoothLowEnergy.h"
 
 @implementation RDBluetoothLowEnergy
-@synthesize lastReadData, timeLastRead, serviceUUIDtoLookFor;
 
 - (instancetype) init
 {
@@ -81,6 +80,11 @@
     [self.myCentralMaganer cancelPeripheralConnection:self.desiredPeripheral];
 }
 
+- (void) disconnectDevice:(CBPeripheral *)peripheral
+{
+    [self.myCentralMaganer cancelPeripheralConnection:peripheral];
+}
+
 - (void) discoverServices
 {
     [self.servicesList removeAllObjects];
@@ -138,7 +142,7 @@
 {
     [self.desiredPeripheral setNotifyValue:NO forCharacteristic:characteristic];
 }
-
+ 
 
 
 - (void)centralManager:(CBCentralManager *)central
@@ -202,6 +206,18 @@
         [self.delegate didConnectDevice:peripheral];
     }
     
+}
+
+- (void) centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    peripheral.delegate = self;
+    NSLog(@"Peripheral %@ disconnected", peripheral.name);
+    self.connected = NOT_CONNECTED;
+    
+        if([self.delegate respondsToSelector:@selector(didDisconnectDevice:)]) {
+        [self.delegate didDisconnectDevice:peripheral];
+    }
+
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral

@@ -33,6 +33,7 @@ enum
 - (void) subscribeToCharacteristic: (CBCharacteristic *) characteristic;
 - (void) unsubscribeToCharacteristic: (CBCharacteristic  *) characteristic;
 - (void) disconnect;
+- (void) disconnectDevice:(CBPeripheral *)peripheral;
 
 @property NSData * lastReadData;
 @property NSDate * timeLastRead;

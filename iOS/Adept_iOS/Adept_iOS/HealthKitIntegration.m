@@ -444,11 +444,12 @@ typedef enum
 
 - (void) writeHeartRatetoHealthKit: (NSInteger) heartRateValue
 {
-    HKQuantity *BMIquantity = [HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:(double)heartRateValue];
-    HKQuantityType * BMIquantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate];
+    HKQuantity *HRQuantity = [HKQuantity quantityWithUnit:[[HKUnit countUnit] unitDividedByUnit:[HKUnit minuteUnit]] doubleValue:(double)heartRateValue];
+    
+    HKQuantityType * HRQuantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate];
     NSDate * now = [NSDate date];
     
-    HKQuantitySample *BMISample = [HKQuantitySample quantitySampleWithType:BMIquantityType quantity:BMIquantity startDate:now endDate:now];
+    HKQuantitySample *BMISample = [HKQuantitySample quantitySampleWithType:HRQuantityType quantity:HRQuantity startDate:now endDate:now];
     
     [self.healthStore saveObject:BMISample withCompletion:^(BOOL success, NSError *error) {
         if (!success) {
@@ -461,6 +462,24 @@ typedef enum
     [defaults synchronize];
     
     
+}
+
+- (double) getCaloriesForHeartRate: (NSInteger) heartRate andTime: (NSInteger) time
+{
+    NSDate *now = [NSDate date];
+    NSDateComponents *ageComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:self.dateOfBirth toDate:now options:NSCalendarWrapComponents];
+    NSUInteger ageInYears = ageComponents.year;
+    
+    if([self.biologicalSex biologicalSex] == HKBiologicalSexMale)
+    {
+        //Male = ((-55.0969 + (0.6309 × HR) + (0.1988 × W) + (0.2017 × A)) / 4.184) × 60 × T
+        return ((-55.0969f + 0.6309f * heartRate + 0.1988f * self.bodyMass + 0.2017f * ageInYears)/4.184f) * (double)(time / 60.0f);
+    }
+    else
+    {
+        //Female = ((-20.4022 + (0.4472 × HR) - (0.1263 × W) + (0.074 × A)) / 4.184) × 60 × T
+        return ((-20.4022f + 0.4472f * heartRate + 0.1988f * self.bodyMass + 0.2017f * ageInYears)/4.184f) * (double)(time/60.0f);
+    }
 }
 
 
