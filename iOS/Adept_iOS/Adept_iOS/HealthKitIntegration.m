@@ -449,19 +449,13 @@ typedef enum
     HKQuantityType * HRQuantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate];
     NSDate * now = [NSDate date];
     
-    HKQuantitySample *BMISample = [HKQuantitySample quantitySampleWithType:HRQuantityType quantity:HRQuantity startDate:now endDate:now];
+    HKQuantitySample *HRSample = [HKQuantitySample quantitySampleWithType:HRQuantityType quantity:HRQuantity startDate:now endDate:now];
     
-    [self.healthStore saveObject:BMISample withCompletion:^(BOOL success, NSError *error) {
+    [self.healthStore saveObject:HRSample withCompletion:^(BOOL success, NSError *error) {
         if (!success) {
             NSLog(@"Error while saving heart rate (%ld) to Health Store: %@.", heartRateValue, error);
         }
     }];
-    
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithDouble:heartRateValue] forKey:@"heartRate"];
-    [defaults synchronize];
-    
-    
 }
 
 - (double) getCaloriesForHeartRate: (NSInteger) heartRate andTime: (NSInteger) time
@@ -482,6 +476,66 @@ typedef enum
     }
 }
 
+
+#pragma mark - Actve energy burned
+
+- (double) getActiveEnergyForPeriodFrom: (NSDate *) startDate toData: (NSDate *) endDate
+{
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    __block double returnResult = 0;
+    
+    HKSampleType *sampleType = [HKSampleType quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned];
+    NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionStrictStartDate];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:HKSampleSortIdentifierStartDate ascending:YES];
+    
+    HKSampleQuery *sampleQuery = [[HKSampleQuery alloc] initWithSampleType:sampleType
+                                                                 predicate:predicate
+                                                                     limit:HKObjectQueryNoLimit
+                                                           sortDescriptors:@[sortDescriptor]
+                                                            resultsHandler:^(HKSampleQuery *query, NSArray *results, NSError *error) {
+                                                                
+                                                                if(!error && results)
+                                                                {
+                                                                    
+                                                                    for(HKQuantitySample *sample in results)
+                                                                    {
+                                                                        returnResult += [sample.quantity doubleValueForUnit: [HKUnit calorieUnit]];
+                                                                    }
+                                                                    
+                                                                }
+                                                                else
+                                                                {
+                                                                    returnResult = -1;
+                                                                }
+                                                                
+                                                                dispatch_semaphore_signal(semaphore);
+                                                                
+                                                            }];
+    
+    [self.healthStore executeQuery:sampleQuery];
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    return returnResult;
+
+}
+
+- (void) writeActiveEnergyBurnedToHealthKit: (double) caloriesBurned
+{
+    HKQuantity *activeEnergyBurnedQuantity = [HKQuantity quantityWithUnit:[HKUnit calorieUnit] doubleValue:caloriesBurned];
+    
+    HKQuantityType * activeEnergyQuantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned];
+    NSDate * now = [NSDate date];
+    
+    HKQuantitySample *activeCaloriesSample = [HKQuantitySample quantitySampleWithType:activeEnergyQuantityType quantity:activeEnergyBurnedQuantity startDate:now endDate:now];
+    
+    [self.healthStore saveObject:activeCaloriesSample withCompletion:^(BOOL success, NSError *error) {
+        if (!success) {
+            NSLog(@"Error while saving heart rate (%lf) to Health Store: %@.", caloriesBurned, error);
+        }
+    }];
+
+}
 
 #pragma mark - Intake and Burned Calories
 
