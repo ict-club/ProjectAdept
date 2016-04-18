@@ -1,4 +1,4 @@
-﻿html , body , .container{
+﻿html , body{
     height:100%;
     width:100%;
     padding:0;
@@ -26,7 +26,7 @@
 }
 
 .rightPanel {
-  
+    background-color:#ECECEC;
 }
 
 .logo {
@@ -59,10 +59,10 @@
 #person-dropdown {
     display:none;
     margin:0 auto;
-    margin-top:4.5em;
+    margin-top:3.8em;
 }
 
-.person-container ul {
+ul {
     list-style:none;
     padding-left:0;
     margin-bottom:0;
@@ -71,14 +71,13 @@
 
 .person-container ul li{
     padding:0.6em 0;
-    padding-left:3.5em;
+    padding-left:3em;
     cursor:pointer;
 }
 
 .person-container ul li span {
     width:60px;
     height:60px;
-    background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/person.png');
     background-repeat:no-repeat;
     padding:0; 
     display: inline-block;
@@ -114,7 +113,7 @@
 
 .table-img {
     width: 60px;
-    padding-right:2em;
+    padding-right:1.7em;
     padding-left:1.3em;
 }
 
@@ -122,16 +121,161 @@
     height:60px;
     width:60px;
     border-radius:50%;
+    margin-top:0.2em;
 }
+
+.table-header {
+     height:65px;
+}
+
 
 .table-text{
     font-size: 160%;
 }
 
 .dropdown-header {
-    left: 4px; 
-    top: 6px; 
+    padding-left:0;
+    top: 12px; 
     position: relative;
     color:white;
-    font-size: 180%;
+    font-size: 200%;
+}
+
+#innerListBoxperson-dropdown {
+    background-color:#3E4752;
+    border:1px solid #3E4752;
+}
+
+.jqx-fill-state-hover-metrodark {
+    background-color:#38414B;
+    border-color:#38414B;
+}
+
+.jqx-fill-state-pressed-metrodark,.jqx-fill-state-normal-metrodark  {
+    background-color:#323942;
+    border-color:#323942;
+}
+
+.person-info-container {
+    padding:5em;
+}
+
+.person-data {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-bottom:5em;
+}
+
+.person-big-img {
+    width:170px;
+    height:170px;
+    background-repeat:no-repeat;
+    padding:0; 
+    display: inline-block;
+    vertical-align: bottom;
+    vertical-align:bottom;
+    border:7px solid blue;
+    border-radius:50%;
+    background-color:red;
+    margin-right:3em;
+}
+
+.person-name {
+    font-size:280%;
+    font-weight:bold;
+    color:#F18D9E;
+}
+
+.person-title {
+    font-size:150%;
+    font-weight:bold;
+    color:#F18D9E;
+}
+
+.buttons-container {
+    padding-top:2em;
+}
+
+.buttons-container ul {
+    text-align:center;
+}
+
+.buttons-container ul li {
+    background-color:none;
+    font-weight:bold;
+    color:white;
+    font-size:180%;
+    padding:0.3em 1.2em;
+    color:#808080;
+    border-radius:8px;
+    margin:0.25em 0.05em;
+}
+
+.buttons-container ul li:hover {
+    background-color:#f4717e;
+    color:white;
+}
+
+.person-active, .person-active:hover {
+    background-color:#F1495B;
+    color:white !important;
+}
+
+#chart {
+    height:460px;
+    width:80%;
+    padding-top:2em;
+    overflow: hidden;
+    margin:0 auto;
+}
+
+.person-stats ul{
+    text-align:center;   
+}
+
+.stats-picture {
+    width:60px;
+    height:60px;
+    background-repeat:no-repeat;
+    padding:0; 
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right:1em;
+    position:relative;
+    top:24px;
+}
+
+.weight-picture {
+    background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/Weight.png');
+}
+
+.MS-picture {
+    background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/muscle.png');
+}
+
+.WBS-picture {
+    background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/bone.png');
+}
+
+.CB-picture {
+    background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/calories.png');
+}
+
+.RHR-picture {
+    background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/hearth.png');
+}
+
+.statsTextFormat, .statsValueFormat {
+    font-weight:bold;
+    color:#808080;
+    font-size:150%;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.statsValueFormat {
+     display: block;
+     text-align:center;
+     font-size:210%;
+     margin-left:1.85em;
 }

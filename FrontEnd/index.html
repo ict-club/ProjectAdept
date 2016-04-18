@@ -18,12 +18,15 @@
     <script type="text/javascript" src="jqwidgets/jqxlistbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxchart.core.js"></script>
 
 
     <script type="text/javascript" src="js/main.js"></script>   
     <link rel="stylesheet" type="text/css" href="css/mainCSS.css" />
 </head>
-<body class="container">
+<body>
     <div id="mainSplitter">
         <div class="splitter-panel leftPanel">
             <div class="logo">
@@ -32,22 +35,50 @@
             </div>
             <div class="person-container">               
                 <ul>
-                    <li class="active"><span></span><p>Ivo Zhulev</p></li>
-                    <li><span></span><p>Martin Kuvandzhiev</p></li>
-                    <li><span></span><p>Peter Lazarov</p></li>
-                    <li><span></span><p>Ivo Zhulev</p></li>
-                    <li><span></span><p>Martin Kuvandzhiev</p></li>
-                    <li><span></span><p>Peter Lazarov</p></li>
-                    <li><span></span><p>Ivo Zhulev</p></li>
-                    <li><span></span><p>Martin Kuvandzhiev</p></li>
-                    <li><span></span><p>Peter Lazarov</p></li>
-                    <li><span></span><p>Ivo Zhulev</p></li>
+                    <li class="active"><span></span><p></p></li>
+                    <li><span></span><p></p></li>
+                    <li><span></span><p></p></li>
+                    <li><span></span><p></p></li>
+                    <li><span></span><p></p></li>
+                    <li><span></span><p></p></li>
+                    <li><span></span><p></p></li>
+                    <li><span></span><p></p></li>
                 </ul>
             </div>
             <div id="person-dropdown"></div>
         </div>
         <div class="splitter-panel rightPanel">
-            
+            <div class="person-info-container">
+                <div class="person-big-img"></div>
+                <div class="person-data">
+                    <ul>
+                        <li><p class="person-name">Peter Lazavor</p></li>
+                        <li><p class="person-title">Sex Engeneer</p></li>
+                        <!--<li><p class="person-KG">Kilograms : 80</p></li>
+                        <li><p class="person-AMS">Average Muscle Strength : 1.5</p></li>
+                        <li><p class="person-WBS">Wrist Bone Structure : 3.5</p></li>-->
+                    </ul>
+                </div> 
+            </div>
+            <div class="person-stats">
+                <ul class="list-inline">
+                    <li><span class="stats-picture weight-picture"></span><p class="statsTextFormat">Weight:</p><br /><p class="statsValueFormat">80</p></li>
+                    <li><span class="stats-picture MS-picture"></span><p class="statsTextFormat">Muscle Strength:</p><p class="statsValueFormat">4</p></li>
+                    <li><span class="stats-picture WBS-picture"></span><p class="statsTextFormat">Wrist Bone Structure:</p><p class="statsValueFormat">3</p></li>
+                    <li><span class="stats-picture CB-picture"></span><p class="statsTextFormat">Calories Balance:</p><p class="statsValueFormat">+1000</p></li>
+                    <li><span class="stats-picture RHR-picture"></span><p class="statsTextFormat">Resting Heart Rate:</p><p class="statsValueFormat">80</p></li>
+                </ul>
+            </div>
+            <div class="buttons-container">
+                <ul class="list-inline">
+                    <li class="person-active">Weight</li>
+                    <li>Muscle Strength</li>
+                    <li>Wrist Bone Structure</li>
+                    <li>Calories Balance</li>
+                    <li>Resting Heart Rate</li>
+                </ul>
+            </div>
+            <div id="chart"></div>
         </div>
     </div>
 </body>
