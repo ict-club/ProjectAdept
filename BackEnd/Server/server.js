@@ -76,7 +76,14 @@ function userData(request, response) {
         var values = [];
         parameters_json = JSON.parse(parameters); 
         values.push(parameters_json[0].UserId);
-        var sql = "Select Weight from userdata_weight where userid = ? order by Timestamp desc limit 1";
+        var sql = "select ud.id as UserId, ud.Name, ud.Age, udh.Height, ud.Title, ud.OverallCondition, udw.Weight, udm.avgForce, udwr.WristCirc, udc.CaloriesBalance, udhr.avgHeartRate as RestingHeartRate, ud.picture_big from userdata ud\
+                    left join (select Weight, UserId from userdata_weight udw where timestamp = (select max(timestamp) from userdata_weight udw2 where udw2.UserId = udw.UserId)) udw on ud.id = udw.userId\
+                    left join (select UserId, AVG(AppliedForce) as avgForce from userdata_musclestrength group by userId) udm on ud.id = udm.userid\
+                    left join (select WristCirc, UserId from userdata_wristbonestructure udwr where timestamp = (select max(timestamp) from userdata_wristbonestructure udwr2 where udwr2.UserId = udwr.UserId)) udwr on ud.id = udwr.userId\
+                    left join (select UserId, AVG(HeartRate) as avgHeartRate from userData_RestingHeartRate group by userId) udhr on ud.id = udhr.userid\
+                    left join (select CaloriesBalance, UserId from userdata_calories udc where timestamp = (select max(timestamp) from userdata_calories udc2 where udc2.UserId = udc.UserId)) udc on ud.id = udc.userId\
+                    left join (select Height, UserId from userdata_height udh where timestamp = (select max(timestamp) from userdata_height udh2 where udh2.UserId = udh.UserId)) udh on ud.id = udh.userId\
+                    where ud.id = ?";
         execute_query(request, response, sql, values);
     }
     else {
