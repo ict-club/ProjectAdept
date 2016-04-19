@@ -7,10 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ResearchKit/ResearchKit/Charts/ORKLineGraphChartView.h"
+#import "RDBluetoothLowEnergy.h"
+#import "HealthKitIntegration.h"
+#import "BluetoothDeviceList.h"
+
+
 @interface ExerciseExecutionViewController : UIViewController
 
 @property NSDictionary * exerciseInformation;
 @property (nonatomic, strong) NSArray * dataPoints;
+@property (nonatomic, strong) RDBluetoothLowEnergy * bleCommunication;
+@property (strong, nonatomic) BluetoothDeviceList * bluetoothDeviceList;
+@property (strong, nonatomic) HealthKitIntegration * heathKit;
+@property (strong, nonatomic) CBCharacteristic * isometricCaracteristic;
+@property (assign, nonatomic) NSInteger currentHeartRate;
+@property (assign, nonatomic) NSInteger trainingTime;
+@property (assign, nonatomic) CGFloat burnedCalories;
+@property (assign, nonatomic) NSInteger heartRateZoneMin;
+@property (assign, nonatomic) NSInteger heartRateZoneMax;
+
 
 @end

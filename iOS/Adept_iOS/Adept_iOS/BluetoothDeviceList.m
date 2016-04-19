@@ -46,6 +46,12 @@
         self.appleWatch.deviceName = @"AppleFukinWatch";
         self = [super init];
         self = (BluetoothDeviceList *)[NSArray arrayWithObjects:self.adeptDevice, self.moovDevice, self.taoDevice, self.heartRateDevice, self.appleWatch, nil];
+        
+//        self.adeptDevice = [self objectAtIndex:0];
+//        self.moovDevice = [self objectAtIndex:1];
+//        self.taoDevice = [self objectAtIndex:2];
+//        self.heartRateDevice = [self objectAtIndex:3];
+//        self.appleWatch = [self objectAtIndex:4];
     }
     return self;
 }

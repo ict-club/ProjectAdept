@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet ExerciseStaticLine *exerciseStaticGraphic;
 @property (weak, nonatomic) IBOutlet ExerciseDynamicLine *exerciseDynamicGraphic;
 @property (weak, nonatomic) IBOutlet UIImageView *exerciseImage;
+@property (weak, nonatomic) IBOutlet UILabel *burnedCaloriesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currentForceLabel;
 
 @end
 
@@ -21,6 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.bleCommunication = [RDBluetoothLowEnergy sharedInstance];
+    self.bluetoothDeviceList = [BluetoothDeviceList sharedInstance];
+    
     self.exerciseImage.layer.borderColor = [UIColor blackColor].CGColor;
     self.exerciseImage.layer.borderWidth = 1.0f;
     self.exerciseImage.layer.cornerRadius = 15;
@@ -31,6 +38,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
