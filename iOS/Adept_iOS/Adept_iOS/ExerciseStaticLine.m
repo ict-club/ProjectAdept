@@ -28,12 +28,16 @@
     // Drawing code
     [super drawRect:rect];
     
+    double Red = 51.0f/255.0f;
+    double Green = 204.0f/255.0f;
+    double Blue = 204.0f/255.0f;
+    
     NSInteger numberOfPoints = self.frame.size.width;
     double omega = (sqrt(6*M_PI))/numberOfPoints; // - sqrt(3*M_PI/2)
     int amplitude = (self.frame.size.height*0.9)/2;
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:Red green:Green blue:Blue alpha:1].CGColor);
     
     // Draw them with a 2.0 stroke width so they are a bit more visible.
     CGContextSetLineWidth(context, 5.0f);

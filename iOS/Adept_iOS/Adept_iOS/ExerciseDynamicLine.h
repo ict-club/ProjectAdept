@@ -10,4 +10,5 @@
 
 @interface ExerciseDynamicLine : UIView
 
+@property (nonatomic, strong) NSMutableArray * pointsArray;
 @end

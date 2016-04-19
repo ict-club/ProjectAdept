@@ -4,51 +4,13 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Adept_iOS/PeripheralsTableViewController.m"
-            timestampString = "482591208.974943"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "-didDisconnectDevice:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[PeripheralsTableViewController didDisconnectDevice:]"
-                  moduleName = "Adept_iOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mkuvandzhiev/github/ProjectAdept/iOS/Adept_iOS/Adept_iOS/PeripheralsTableViewController.m"
-                  timestampString = "482597426.625022"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "182"
-                  endingLineNumber = "182"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[PeripheralsTableViewController didDisconnectDevice:]"
-                  moduleName = "Adept_iOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mkuvandzhiev/github/ProjectAdept/iOS/Adept_iOS/Adept_iOS/PeripheralsTableViewController.m"
-                  timestampString = "482597426.625184"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "182"
-                  endingLineNumber = "182"
-                  offsetFromSymbolStart = "116">
-               </Location>
-            </Locations>
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

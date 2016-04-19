@@ -14,6 +14,7 @@
 		1945CC471CBD80BA004505F6 /* HeartRateTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC431CBD80BA004505F6 /* HeartRateTraining.png */; };
 		1945CC481CBD80BA004505F6 /* MoovTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC441CBD80BA004505F6 /* MoovTraining.png */; };
 		1945CC491CBD80BA004505F6 /* TaoTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC451CBD80BA004505F6 /* TaoTraining.png */; };
+		194DB9F31CC69CBC00546EEB /* PickerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DB9F21CC69CBC00546EEB /* PickerTableCell.m */; };
 		197292161CBD5B6800CD5A48 /* BluetoothDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */; };
 		19811DF41CBEFC530037B65A /* MoovCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 19811DF31CBEFC530037B65A /* MoovCommunication.m */; };
 		19811DF71CBEFC800037B65A /* HeartRateensorCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 19811DF61CBEFC800037B65A /* HeartRateensorCommunication.m */; };
@@ -120,6 +121,8 @@
 		1945CC431CBD80BA004505F6 /* HeartRateTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartRateTraining.png; sourceTree = "<group>"; };
 		1945CC441CBD80BA004505F6 /* MoovTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoovTraining.png; sourceTree = "<group>"; };
 		1945CC451CBD80BA004505F6 /* TaoTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaoTraining.png; sourceTree = "<group>"; };
+		194DB9F11CC69CBC00546EEB /* PickerTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerTableCell.h; sourceTree = "<group>"; };
+		194DB9F21CC69CBC00546EEB /* PickerTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerTableCell.m; sourceTree = "<group>"; };
 		197292141CBD5B6800CD5A48 /* BluetoothDeviceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceList.h; sourceTree = "<group>"; };
 		197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothDeviceList.m; sourceTree = "<group>"; };
 		19811DF21CBEFC530037B65A /* MoovCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoovCommunication.h; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				19DA71911CAAF5DA0078DC65 /* ExerciseStaticLine.m */,
 				199E0C181CB9B5630094B384 /* DeviceConnectionStateTableViewCell.h */,
 				199E0C191CB9B5630094B384 /* DeviceConnectionStateTableViewCell.m */,
+				194DB9F11CC69CBC00546EEB /* PickerTableCell.h */,
+				194DB9F21CC69CBC00546EEB /* PickerTableCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -546,6 +551,7 @@
 				199E0C211CB9CE040094B384 /* TAOCommunication.m in Sources */,
 				19C225521CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m in Sources */,
 				19FDF0591CA996A200FBE133 /* HomeViewController.m in Sources */,
+				194DB9F31CC69CBC00546EEB /* PickerTableCell.m in Sources */,
 				19DA71981CAB09310078DC65 /* ExerciseDynamicLine.m in Sources */,
 				19DA71921CAAF5DA0078DC65 /* ExerciseStaticLine.m in Sources */,
 				19811DFA1CBEFC970037B65A /* AdeptStickCommunication.m in Sources */,

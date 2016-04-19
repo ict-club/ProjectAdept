@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ResearchKit/ResearchKit/Charts/ORKLineGraphChartView.h"
 @interface ExerciseExecutionViewController : UIViewController
+
+@property NSDictionary * exerciseInformation;
+@property (nonatomic, strong) NSArray * dataPoints;
 
 @end

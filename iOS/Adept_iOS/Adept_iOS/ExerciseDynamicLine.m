@@ -12,6 +12,7 @@
 
 - (instancetype) initWithCoder:(NSCoder *)aDecoder
 {
+    self.pointsArray = [NSMutableArray arrayWithObject:[NSNumber numberWithDouble:0]];
     self = [super initWithCoder:aDecoder];
     return self;
 }
@@ -26,34 +27,46 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     [super drawRect:rect];
+    
+    
+    double Red = 255.0f/255.0f;
+    double Green = 51.0f/255.0f;
+    double Blue = 204.0f/255.0f;
+    
     self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3f];
     NSInteger numberOfPoints = self.frame.size.width;
-    double omega = (sqrt(6*M_PI))/numberOfPoints; // - sqrt(3*M_PI/2)
     int amplitude = (self.frame.size.height*0.9)/2;
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:Red green:Green blue:Blue alpha:1].CGColor);
     
     // Draw them with a 2.0 stroke width so they are a bit more visible.
     CGContextSetLineWidth(context, 3.0f);
     
     CGContextMoveToPoint(context, 0.0f, amplitude); //start at this point
     
-    for(int i = 0; i < numberOfPoints; i+=4)
+    double scaleFactor = (double)numberOfPoints / (double)[self.pointsArray count];
+    double xPoint = 0.0f;
+    
+    for(int i = 0; i < [self.pointsArray count]; i+=1)
     {
-        float x = (omega * (i - self.frame.size.width/2));
         if(i == 0)
         {
-            CGContextMoveToPoint(context, 0.0f, self.frame.size.height/2 - amplitude * sin(x * x));
+            CGContextMoveToPoint(context, 0.0f, 0.0f);
         }
         else
         {
-            CGContextAddLineToPoint(context, i, arc4random()%20 + self.frame.size.height/2 - amplitude * sin(x * x)); //draw to this point
+            CGContextAddLineToPoint(context, xPoint += scaleFactor, ([[self.pointsArray objectAtIndex:i] doubleValue]/1023.0) * self.frame.size.height); //draw to this point
         }
     }
     
     // and now draw the Path!
     CGContextStrokePath(context);
+    
+    self.layer.borderColor = [UIColor blackColor].CGColor;
+    self.layer.borderWidth = 1.0f;
+    self.layer.cornerRadius = 15.0f;
+    self.layer.masksToBounds = YES;
 }
 
 
