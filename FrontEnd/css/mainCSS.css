@@ -6,7 +6,28 @@
 }
 
 /*RESPONSIVE*/ 
-@media (max-width:1000px) {
+@media (max-width:1670px) {
+    .person-stats, .buttons-container {
+        margin-left: 15em;
+        margin-right:15em;
+    }
+}
+
+@media (max-width:1440px) {
+    .person-stats, .buttons-container {
+        margin-left: 8em;
+        margin-right:8em;
+    }
+}
+
+@media (max-width:1260px) {
+    .person-stats, .buttons-container {
+        margin-left: 0em;
+        margin-right:0em;
+    }
+}
+
+@media (max-width:1100px) {
     .logo {
         float:left;
         width:34.5%;
@@ -18,6 +39,29 @@
     }   
     #person-dropdown {
         display:block !important;
+    }
+}
+
+@media  (max-width:1100px) {
+    .person-stats, .buttons-container {
+        margin-left: 10em;
+        margin-right:10em;
+    }
+
+}
+
+@media  (max-width:1000px) {
+    .person-stats, .buttons-container {
+        margin-left: 5em;
+        margin-right:5em;
+    }
+
+}
+
+@media  (max-width:910px) {
+    .person-stats, .buttons-container {
+        margin-left: 0;
+        margin-right:0;
     }
 }
 
@@ -157,13 +201,18 @@ ul {
 }
 
 .person-info-container {
-    padding:5em;
+   width:100%;
+   height:150px;
+   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/space.jpg');
+   padding:0; 
+   text-align:center;
+   border-bottom:3px solid #F1495B;
 }
 
 .person-data {
-    display: inline-block;
+    /*display: inline-block;
     vertical-align: bottom;
-    margin-bottom:5em;
+    margin-bottom:5em;*/
 }
 
 .person-big-img {
@@ -173,23 +222,21 @@ ul {
     padding:0; 
     display: inline-block;
     vertical-align: bottom;
-    vertical-align:bottom;
-    border:7px solid blue;
     border-radius:50%;
-    background-color:red;
-    margin-right:3em;
+    margin-top:7em;
+    margin-bottom:2em;
 }
 
 .person-name {
     font-size:280%;
     font-weight:bold;
-    color:#F18D9E;
+    color:#808080;
 }
 
 .person-title {
     font-size:150%;
     font-weight:bold;
-    color:#F18D9E;
+    color:#808080;
 }
 
 .buttons-container {
@@ -203,7 +250,6 @@ ul {
 .buttons-container ul li {
     background-color:none;
     font-weight:bold;
-    color:white;
     font-size:180%;
     padding:0.3em 1.2em;
     color:#808080;
@@ -217,16 +263,21 @@ ul {
 }
 
 .person-active, .person-active:hover {
-    background-color:#F1495B;
+    background-color:#F1495B !important;
     color:white !important;
+    border:none !important;
 }
 
 #chart {
-    height:460px;
+    height:380px;
     width:80%;
     padding-top:2em;
     overflow: hidden;
     margin:0 auto;
+}
+
+.person-stats {
+    margin-top:18em;
 }
 
 .person-stats ul{
@@ -278,4 +329,21 @@ ul {
      text-align:center;
      font-size:210%;
      margin-left:1.85em;
+}
+
+rect {
+    fill: #ECECEC;
+}
+
+.gear {
+   width:64px;
+   height:64px;
+   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/gear.png');
+   background-repeat:no-repeat;
+   padding:0; 
+   display:inline-block;
+   position:relative;
+   top:-80px;
+   right:-200px;
+   cursor:pointer;
 }

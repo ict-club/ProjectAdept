@@ -21,11 +21,14 @@ $(document).ready(function ()
         var clickedListElement = $(this);
         $('.person-container ul li').removeClass('active');
         clickedListElement.addClass('active');
+
+        var id = clickedListElement.attr('index');
+        getUser(id);
     });
 
     var response = new $.jqx.response();
     var documentWidth = window.innerWidth;
-    if (documentWidth < 1001)
+    if (documentWidth < 1101)
     {
         $('#mainSplitter').jqxSplitter({ orientation: 'horizontal', panels: [{ size: '150' }, { size: '82%' }] });
     }
@@ -37,20 +40,22 @@ $(document).ready(function ()
         resizeEvent = setTimeout(function ()
         {
             documentWidth = window.innerWidth;
-            if (documentWidth < 1001)
+            if (documentWidth < 1101)
             {
                 $('#mainSplitter').jqxSplitter({ orientation: 'horizontal', panels: [{ size: '150' }, { size: '82%' }] });
             } else
             {
                 $('#mainSplitter').jqxSplitter({ orientation: 'vertical', panels: [{ size: '346' }, { size: '82%' }] });
             }
+            mainPageHeight();
         }
         , 1);
     });
 
-
+    getUser(1);
     dropDownList();
     chart();
+    mainPageHeight();
 });
 
 function dropDownList()
@@ -193,4 +198,65 @@ function chart()
     };
     $('#chart').jqxChart(settings);
 
+}
+
+function OverallConditionCircleColor(condition)
+{
+    switch (condition)
+    {
+        case -2:
+            $('.person-big-img').css('border', '6px solid #cc0000');
+            break;
+        case -1:
+            $('.person-big-img').css('border', '6px solid #ffff66');
+            break;
+        case -0:
+            $('.person-big-img').css('border', '6px solid #00cc00');
+            break;
+        case 1:
+            $('.person-big-img').css('border', '6px solid #99ff99');
+            break;
+        case 2:
+            $('.person-big-img').css('border', '6px solid #db70db');
+            break;
+    }
+}
+
+function getUser(UserId)
+{
+    $.ajax({
+        url: 'http://adept-adeptserver.rhcloud.com/userdata',
+        headers:
+        {
+            'parameters': '[{ "UserId" :' + UserId + '}]'
+        },
+        method: 'GET',
+        dataType: 'json',
+        success: function (data)
+        {
+            console.log(data)
+            $('.person-name').html(data[0].Name);
+            //$('.person-title').html(data[0].Title);
+            $('.weight-stats').html(data[0].Weight);
+            $('.MS-stats').html(data[0].avgForce);
+            //$('.WBS-stats').html(data[0].WristCirc);
+            $('.CB-stats').html(data[0].CaloriesBalance);
+            $('.RHR-stats').html(data[0].RestingHeartRate);
+            $('.person-big-img').css('background-image', 'url(' + data[0].picture_big + ')');
+            OverallConditionCircleColor(data[0].OverallCondition);
+        }
+    });
+}
+
+function mainPageHeight()
+{
+    var mainHeight = $('.person-info-container').height() + $('.person-stats').height() + $('.buttons-container').height() + $('#chart').height()
+    if ($('#mainSplitter').jqxSplitter('orientation') === 'vertical')
+    {
+        $('#mainSplitter').jqxSplitter({ height: mainHeight + 324 });
+    } else
+    {
+        $('#mainSplitter').jqxSplitter({ height: mainHeight + 501 });
+    }
+    
 }
