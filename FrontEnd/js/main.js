@@ -47,10 +47,52 @@ $(document).ready(function ()
             {
                 $('#mainSplitter').jqxSplitter({ orientation: 'vertical', panels: [{ size: '346' }, { size: '82%' }] });
             }
-            mainPageHeight();
+
+            if ($('#chart').css('display') === 'none')
+            {
+                secondPageHeight();
+            } else
+            {
+                mainPageHeight();
+            }
         }
         , 1);
     });
+
+    $('.gear').on('click', function ()
+    {
+        exercisesContainers();
+        $('#chart , .buttons-container, .person-stats, .gear').css('display', 'none');
+        $('.back').css('display', 'inline-block');
+        secondPageHeight()
+    });
+
+    $('.back').on('click', function ()
+    {
+        $('#chart , .buttons-container, .person-stats, .back').css('display', 'block');
+        $('.gear').css('display', 'inline-block');
+        mainPageHeight()
+    });
+
+
+    $('.exerciseContainers ul li').on('click', function (e)
+    {
+        if (e.target !== this)
+        {
+            return;
+        }
+            
+        var isChecked = $(this).find('input:checkbox').is(':checked');
+        if (isChecked)
+        {
+            $(this).find('input:checkbox').prop('checked', false);
+        } else 
+        {
+            $(this).find('input:checkbox').prop('checked', true);
+        }
+    });
+
+    
 
     getUser(1);
     dropDownList();
@@ -205,19 +247,19 @@ function OverallConditionCircleColor(condition)
     switch (condition)
     {
         case -2:
-            $('.person-big-img').css('border', '6px solid #cc0000');
+            $('.person-big-img').css('border-color', '#33CCFF');
             break;
         case -1:
-            $('.person-big-img').css('border', '6px solid #ffff66');
+            $('.person-big-img').css('border-color', '#33CC7F');
             break;
         case -0:
-            $('.person-big-img').css('border', '6px solid #00cc00');
+            $('.person-big-img').css('border-color', '#33CCCC');
             break;
         case 1:
-            $('.person-big-img').css('border', '6px solid #99ff99');
+            $('.person-big-img').css('border-color', '#33CCCC');
             break;
         case 2:
-            $('.person-big-img').css('border', '6px solid #db70db');
+            $('.person-big-img').css('border-color', '#33CCCC');
             break;
     }
 }
@@ -232,6 +274,7 @@ function getUser(UserId)
         },
         method: 'GET',
         dataType: 'json',
+        async: false,
         success: function (data)
         {
             console.log(data)
@@ -259,4 +302,22 @@ function mainPageHeight()
         $('#mainSplitter').jqxSplitter({ height: mainHeight + 501 });
     }
     
+}
+
+function secondPageHeight()
+{
+    var mainHeight = $('.person-info-container').height() + $('.exerciseTitles').height() + $('.exerciseContainers').height();
+    if ($('#mainSplitter').jqxSplitter('orientation') === 'vertical')
+    {
+        $('#mainSplitter').jqxSplitter({ height: mainHeight + 610 });
+    } else
+    {
+        $('#mainSplitter').jqxSplitter({ height: mainHeight + 759 });
+    }
+}
+
+function exercisesContainers()
+{
+    $('.exerciseContainers').jqxPanel({ width: '76%', height: 180, scrollBarSize: 10 });
+
 }

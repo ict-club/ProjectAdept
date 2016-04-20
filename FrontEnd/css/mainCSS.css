@@ -3,6 +3,10 @@
     width:100%;
     padding:0;
     min-width:750px;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /*RESPONSIVE*/ 
@@ -74,7 +78,7 @@
 }
 
 .logo {
-    background: #F1495B; 
+    background: #2eb8b8; 
     height:150px;
     text-align:center;
     padding-top:4em;
@@ -83,7 +87,7 @@
 .logo-img {
    width:30px;
    height:30px;
-   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/space-ship.png');
+   /*background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/space-ship.png');*/
    background-repeat:no-repeat;
    padding:0; 
    display:inline-block;
@@ -206,7 +210,7 @@ ul {
    background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/space.jpg');
    padding:0; 
    text-align:center;
-   border-bottom:3px solid #F1495B;
+   border-bottom:3px solid #3E4752;
 }
 
 .person-data {
@@ -225,6 +229,7 @@ ul {
     border-radius:50%;
     margin-top:7em;
     margin-bottom:2em;
+    border:5px solid white;
 }
 
 .person-name {
@@ -258,12 +263,12 @@ ul {
 }
 
 .buttons-container ul li:hover {
-    background-color:#f4717e;
+    background-color:#85e0e0;
     color:white;
 }
 
 .person-active, .person-active:hover {
-    background-color:#F1495B !important;
+    background-color:#33cccc !important;
     color:white !important;
     border:none !important;
 }
@@ -322,6 +327,7 @@ ul {
     font-size:150%;
     display: inline-block;
     vertical-align: bottom;
+    font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important; 
 }
 
 .statsValueFormat {
@@ -335,15 +341,76 @@ rect {
     fill: #ECECEC;
 }
 
-.gear {
+.navigation {
    width:64px;
    height:64px;
-   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/gear.png');
    background-repeat:no-repeat;
    padding:0; 
    display:inline-block;
    position:relative;
-   top:-80px;
-   right:-200px;
    cursor:pointer;
+}
+
+.gear {
+   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/gear.png');
+   top:-142px;
+   right:-550px;  
+}
+
+.back {
+   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/back.png');
+   top:-140px;
+   right:580px; 
+   display:none; 
+}
+
+.back p { 
+    font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important; 
+    font-size:210%;
+    color: #33CCCC;
+    position:relative;
+    top:16px; 
+    left:50px;  
+}
+
+.low {
+    margin-top:7.3em !important;
+}
+
+.exerciseTitles {
+    font-size:280%;
+    color:#808080;
+    font-weight:bold;
+    font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    width:76%;
+    margin:0 auto;
+    margin-bottom:0.5em;
+}
+
+.exerciseContainers {
+    margin: 0 auto;
+    margin-bottom:2em;
+}
+
+.exerciseContainers ul {
+    margin-left:0.1em;
+    min-width:3676px;
+}
+
+.exerciseContainers ul li {
+   width:180px;
+   height:165px;
+   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/exercise.png');
+   background-repeat:no-repeat;
+   padding:0; 
+   border:2px solid #33CCCC;
+}
+
+.checkBoxes {
+    position:relative;
+    top:125px;
+    left:17px;
+    width:17px;
+    height:17px;
+
 }
