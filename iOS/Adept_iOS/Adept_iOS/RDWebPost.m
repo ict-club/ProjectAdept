@@ -7,94 +7,78 @@
 //
 
 #import "RDWebPost.h"
+#import "RDWeb.h"
+
 
 @implementation RDWebPost
 
--(void)postToServerWithUserDictionary:(NSMutableDictionary*)fieldsDictionary completionHandler:(void (^)(BOOL success, NSMutableDictionary* mutableDictionary, NSError* error))completionHandler {
+-(void)loadDataToPostUserDataWithId:(NSInteger)Id andUserId:(NSInteger)userId andCaloriesToBeBurned:(NSInteger)caloriesToBeBurned andCaloriesBalance:(NSInteger)caloriesBalance
+{   //Getting Time Stamp
+    NSDateFormatter *formatter;
+    NSString        *dateString;
     
-    NSURL * loginUrl = self.requestURL;
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:loginUrl];
-    NSMutableString *postStr = [[NSMutableString alloc] initWithString:@""];
-        
-    [fieldsDictionary setValue:self.appName forKey:@"app_name"];
-    [fieldsDictionary setValue:device forKey:@"dp"];
+    formatter = [[NSDateFormatter alloc] init];
+    //This is the shown time format in the documentation "2016-04-18T17:48:47.000Z"
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
     
-    for(NSString *aKey in fieldsDictionary){
-        if (![postStr isEqual:@""]) {
-            [postStr appendFormat:@"&%@=%@",aKey,[fieldsDictionary objectForKey:aKey]];
+    dateString = [formatter stringFromDate:[NSDate date]];
+
+    
+    NSMutableDictionary *dictionaryToPost = [NSMutableDictionary
+                                             dictionaryWithDictionary:@{
+                                                                        @"id" : [NSNumber numberWithUnsignedInteger:Id],
+                                                                        @"UserId" : [NSNumber numberWithUnsignedInteger:userId],
+                                                                        @"CaloriesToBeBurned" : [NSNumber numberWithUnsignedInteger:caloriesToBeBurned],
+                                                                        @"CaloriesBalance" : [NSNumber numberWithUnsignedInteger:caloriesBalance],
+                                                                        @"Timestamp" : dateString
+                                                                        }];
+    [self postToServerWithDictionaryToPost:dictionaryToPost];
+    
+}
+-(void)loadDataToPostUserDataCaloriesWithId:(NSInteger)Id andName:(NSString*)name andAge:(NSInteger)age andTitle:(NSString*)title andOverallCondition:(NSInteger)overallCondition andRecommendedCalories:(float)recommendedCalories andPicture_small:(NSString*)picture_small andPicture_big:(NSString*)picture_big
+{   //Getting Time Stamp
+    NSDateFormatter *formatter;
+    NSString        *dateString;
+    
+    formatter = [[NSDateFormatter alloc] init];
+    //This is the shown time format in the documentation "2016-04-18T17:48:47.000Z"
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
+    
+    dateString = [formatter stringFromDate:[NSDate date]];
+    
+    NSMutableDictionary *dictionaryToPost = [NSMutableDictionary
+                                             dictionaryWithDictionary:@{
+                                                                        @"id" : [NSNumber numberWithUnsignedInteger:Id],
+                                                                        @"Name" : name,
+                                                                        @"Age" : [NSNumber numberWithUnsignedInteger:age],
+                                                                        @"Title" : title,
+                                                                        @"OverallCondition" : [NSNumber numberWithUnsignedInteger:overallCondition],
+                                                                        @"RecommendedCalories" : [NSNumber numberWithFloat:recommendedCalories],
+                                                                        @"picture_small" : picture_small,
+                                                                        @"picture_big" : picture_big
+                                                                        }];
+
+    [self postToServerWithDictionaryToPost:dictionaryToPost];
+    
+}
+-(void)postToServerWithDictionaryToPost:(NSMutableDictionary*)dictionaryToPost
+{
+    NSString* serverUrl = [NSString stringWithFormat:@""];
+    
+    RDWeb* webPost = [[RDWeb alloc] init];
+    webPost.requestURL = [NSURL URLWithString:serverUrl];
+    
+    [webPost postToServerWithUserDictionary:dictionaryToPost completionHandler:^(BOOL success, NSMutableDictionary *JSONresult, NSError* error){
+
+        if (success) {
+            // Successful
         } else {
-            [postStr appendFormat:@"%@=%@",aKey,[fieldsDictionary objectForKey:aKey]];
+            // Not Successful
         }
-    }
-    NSData *postData = [postStr dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    
-    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
-    
-    NSString *userAgent = [NSString stringWithFormat:@"%@ %@",[UIDevice currentDevice].systemName,[UIDevice currentDevice].systemVersion];
-    [request setValue:userAgent forHTTPHeaderField:@"User-Agent"];
-    
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    //    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
-    [request setTimeoutInterval:300];////////////////
-    //        NSLog(@"AllHTTPHeaderFields: %@", request.allHTTPHeaderFields);
-    
-    //create the task
-    NSURLSessionDataTask* task = [[NSURLSession sharedSession] dataTaskWithRequest:request
-                                                                 completionHandler:^(NSData* data, NSURLResponse* response, NSError *error) {
-                                                                     [self logRespons:response data:data error:error];
-                                                                     
-                                                                     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
-                                                                     //                                                                     NSLog(@"httpResponse code: %@", [NSString stringWithFormat:@"%ld", (unsigned long)httpResponse.statusCode]);
-                                                                     //                                                                     NSLog(@"httpResponse head: %@", httpResponse.allHeaderFields);
-                                                                     
-                                                                     if (error) {
-                                                                         NSLog(@"Error in updateInfoFromServer: %@ %@", error, [error localizedDescription]);
-                                                                         NSLog(@"Error code: %li", (long)error.code);
-                                                                         completionHandler(NO, nil, error);
-                                                                     }else{
-                                                                         
-                                                                         switch (httpResponse.statusCode) {
-                                                                             case 200:/* Success */
-                                                                             {
-                                                                                 NSMutableDictionary* jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-                                                                                 //                                                                                 NSString* title = jsonData[@"title"];
-                                                                                 //                                                                                 NSString* msg = jsonData[@"message"];
-                                                                                 //                                                                                 NSString* redirectUrl = jsonData[@"redirect_url"];
-                                                                                 
-                                                                                 //BOOL success = [(NSNumber *) [jsonData objectForKey:@"success"] boolValue];
-                                                                                 //NSLog(@"success = %ld",(long)success);
-                                                                                 
-                                                                                 completionHandler(YES, jsonData, error);
-                                                                             }
-                                                                                 break;
-                                                                             default:
-                                                                             {
-                                                                                 completionHandler(NO, nil, error);
-                                                                             }
-                                                                                 break;
-                                                                         }
-                                                                     }
-                                                                 }];
-    [task resume];
+        
+        
+        
+    }];
 }
-#pragma mark - Debug Helpers
--(void)logRespons:(NSURLResponse*)response data:(NSData*)data error:(NSError*)error{
-    //#if DEVELOPMENT
-    NSLog(@"Error in ResponseFromServer: %@ %@", error, [error localizedDescription]);
-    
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
-    NSLog(@"httpResponse code: %@", [NSString stringWithFormat:@"%ld", (unsigned long)httpResponse.statusCode]);
-    NSLog(@"httpResponse head: %@", httpResponse.allHeaderFields);
-    
-    NSDictionary* responseJSONData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    NSLog(@"Response ==> %@", responseJSONData);
-    
-    NSString *responseData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"Response String: ==> %@", responseData);
-    self.responseString= responseData;
-    //#endif
-}
+
 @end
