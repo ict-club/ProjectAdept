@@ -25,9 +25,13 @@ $(document).ready(function ()
         $('.person-container ul li').removeClass('active');
         clickedListElement.addClass('active');
 
+        $('.buttons-container ul li').removeClass('person-active');
+        $('.buttons-container ul li:first-child').addClass('person-active');
+
         var id = clickedListElement.attr('index');
         $('#person-dropdown').jqxDropDownList({ selectedIndex: id - 1 });
         getUser(id);
+        getChart(id, 'weightChart');
     });
 
     var response = new $.jqx.response();
@@ -145,7 +149,12 @@ function dropDownList()
         var id = event.args.index + 1;
         $('.person-container ul li').removeClass('active');
         $('.person-container ul li:nth-child(' + id + ')').addClass('active');
+
+        $('.buttons-container ul li').removeClass('person-active');
+        $('.buttons-container ul li:first-child').addClass('person-active');
+
         getUser(id);
+        getChart(id, 'weightChart');
     });
 };
 
@@ -281,7 +290,7 @@ function getUser(UserId)
         },
         method: 'GET',
         dataType: 'json',
-        async: false,
+        async: true,
         success: function (data)
         {
             $('.person-name').html(data[0].Name);
@@ -307,7 +316,7 @@ function getChart(UserId, ChartType)
         },
         method: 'GET',
         dataType: 'json',
-        async: false,
+        async: true,
         success: function (data)
         {
             localStorage.setItem('chart', JSON.stringify(data));
