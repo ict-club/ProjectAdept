@@ -10,7 +10,7 @@
 
 @interface UserDataCaloriesSingleton : NSObject
 
-@property NSInteger userId;
+@property (nonatomic, assign, readonly)NSInteger userId;
 @property NSInteger Id;
 @property NSInteger caloriesToBeBurned;
 @property NSInteger CaloriesBalance;
