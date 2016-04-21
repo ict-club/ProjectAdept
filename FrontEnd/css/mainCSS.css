@@ -17,10 +17,25 @@
     }
 }
 
+@media (max-width:1605px) {
+    .back {
+        margin-left: 13.5em !important;
+    }
+    .gear {
+         margin-right: 15em !important;
+    }
+}
+
 @media (max-width:1440px) {
     .person-stats, .buttons-container {
         margin-left: 8em;
         margin-right:8em;
+    }
+    .back {
+        margin-left: 9.5em !important;
+    }
+    .gear { 
+         margin-right: 11em !important;
     }
 }
 
@@ -28,6 +43,12 @@
     .person-stats, .buttons-container {
         margin-left: 0em;
         margin-right:0em;
+    }
+     .back {
+        margin-left: 5.5em !important;
+    }
+    .gear {
+         margin-right: 7em !important;
     }
 }
 
@@ -275,7 +296,6 @@ ul {
 
 #chart {
     height:380px;
-    width:80%;
     padding-top:2em;
     overflow: hidden;
     margin:0 auto;
@@ -347,21 +367,24 @@ rect {
    background-repeat:no-repeat;
    padding:0; 
    display:inline-block;
-   position:relative;
    cursor:pointer;
+   z-index:9999;
 }
 
 .gear {
    background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/gear.png');
-   top:-142px;
-   right:-550px;  
+   float:right;
+   margin-right:19em;
+   margin-top:6em;
 }
 
 .back {
    background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/back.png');
-   top:-140px;
-   right:580px; 
    display:none; 
+   float:left;
+   margin-left:15.5em;
+   margin-top:6em;
+
 }
 
 .back p { 

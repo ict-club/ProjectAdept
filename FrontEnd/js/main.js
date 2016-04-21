@@ -13,8 +13,11 @@ $(document).ready(function ()
         var clickedListElement = $(this);
         $('.buttons-container ul li').removeClass('person-active');
         clickedListElement.addClass('person-active');
+        
+        var chartType = $(this).attr('class').match(/([^\s]+)/)[0];
+        var personId = $('.person-container ul li.active').attr('index');;
+        getChart(personId, chartType);
     });
-
 
     $('.person-container ul li').on('click', function ()
     {
@@ -23,6 +26,7 @@ $(document).ready(function ()
         clickedListElement.addClass('active');
 
         var id = clickedListElement.attr('index');
+        $('#person-dropdown').jqxDropDownList({ selectedIndex: id - 1 });
         getUser(id);
     });
 
@@ -32,10 +36,15 @@ $(document).ready(function ()
     {
         $('#mainSplitter').jqxSplitter({ orientation: 'horizontal', panels: [{ size: '150' }, { size: '82%' }] });
     }
+    rightPannelWidth = $('.rightPanel').width();
+    $('#chart').css('width', rightPannelWidth - 314);
+    $('#chart').jqxChart('refresh');
     var resizeEvent;
     response.resize(function ()
     {
         $("#person-dropdown").jqxDropDownList("close");
+        $('#chart').jqxChart('update');
+
         clearTimeout(resizeEvent);
         resizeEvent = setTimeout(function ()
         {
@@ -47,6 +56,10 @@ $(document).ready(function ()
             {
                 $('#mainSplitter').jqxSplitter({ orientation: 'vertical', panels: [{ size: '346' }, { size: '82%' }] });
             }
+
+            var rightPannelWidth = $('.rightPanel').width();
+            $('#chart').css('width', rightPannelWidth - 314);
+            $('#chart').jqxChart('refresh');
 
             if ($('#chart').css('display') === 'none')
             {
@@ -63,17 +76,18 @@ $(document).ready(function ()
     {
         exercisesContainers();
         $('#chart , .buttons-container, .person-stats, .gear').css('display', 'none');
+        $('.exerciseTitles, .exerciseContainers').css('display', 'block');
         $('.back').css('display', 'inline-block');
         secondPageHeight()
     });
 
     $('.back').on('click', function ()
     {
-        $('#chart , .buttons-container, .person-stats, .back').css('display', 'block');
+        $('.exerciseTitles, .exerciseContainers, .back').css('display', 'none');
+        $('#chart , .buttons-container, .person-stats').css('display', 'block');
         $('.gear').css('display', 'inline-block');
         mainPageHeight()
     });
-
 
     $('.exerciseContainers ul li').on('click', function (e)
     {
@@ -92,11 +106,9 @@ $(document).ready(function ()
         }
     });
 
-    
-
     getUser(1);
+    getChart(1, 'weightChart');
     dropDownList();
-    chart();
     mainPageHeight();
 });
 
@@ -125,8 +137,15 @@ function dropDownList()
             var img = '<img class="table-img-format" src="' + imgurl + '"/>';
             var table = '<table class="table-header"><tr><td class="table-img">' + img + '</td><td class="dropdown-header">' + label + '</td></tr></table>';
             return table;
-            //return '<span class="dropdown-header">' + label + '</span>';
         }
+    });
+
+    $('#person-dropdown').on('select', function (event)
+    {
+        var id = event.args.index + 1;
+        $('.person-container ul li').removeClass('active');
+        $('.person-container ul li:nth-child(' + id + ')').addClass('active');
+        getUser(id);
     });
 };
 
@@ -144,51 +163,52 @@ function dropDownList()
     });
 })();
 
-function chart()
+function chart(ChartType)
 {
 
     'use strict';
-    //var source =
-    //                {
-    //                    datafields: [
-    //                        { name: 'day' },
-    //                        { name: 'spline1' },
-    //                        { name: 'spline2' }
-    //                    ],
-    //                    url: 'http://localhost/demos/interactivedemos/businessdashboard/data.php?usedwidget=chartdataclicks',
-    //                    datatype: 'json'
-    //                };
+    var chartPropertyName;
+    if (ChartType === 'weightChart')
+    {
+        chartPropertyName = 'Weight';
+    } else if (ChartType === 'msChart')
+    {
+        chartPropertyName = 'Muscle_strenght';
+    } else if (ChartType === 'wbsChart')
+    {
+        chartPropertyName = 'WristCirc';
+    } else if (ChartType === 'cbChart')
+    {
+        chartPropertyName = 'CaloriesBalance';
+    } else if (ChartType === 'rhChart')
+    {
+        chartPropertyName = 'HeartRate';
+    }
 
-
-    //var dataAdapter = new $.jqx.dataAdapter(source, { async: false, autoBind: true, loadError: function (xhr, status, error) { alert('Error loading "' + source.url + '" : ' + error); } });
-    var sampleData = [
-                    { Day: 'Monday', Running: 30, Swimming: 10, Cycling: 25, Goal: 40 },
-                    { Day: 'Tuesday', Running: 25, Swimming: 15, Cycling: 10, Goal: 50 },
-                    { Day: 'Wednesday', Running: 30, Swimming: 10, Cycling: 25, Goal: 60 },
-                    { Day: 'Thursday', Running: 40, Swimming: 20, Cycling: 25, Goal: 40 },
-                    { Day: 'Friday', Running: 45, Swimming: 20, Cycling: 25, Goal: 50 },
-                    { Day: 'Saturday', Running: 30, Swimming: 20, Cycling: 30, Goal: 60 },
-                    { Day: 'Sunday', Running: 20, Swimming: 30, Cycling: 10, Goal: 90 }
-    ];
-
-    //var toolTipCustomFormatFn = function (value, itemIndex, serie, group, categoryValue)
-    //{
-    //    return '<div style="text-align:left"><b><i>' + categoryValue + ' : ' + value + '</i></b></div>';
-    //};
+    var data = JSON.parse(localStorage.getItem('chart'));
+    var dates = ['20160418', '20160419', '20160420', '20160421', '20160422'];
+    var newData = [];
+    for (var i = 0; i < data.length; i++) {
+        var temp = { 'points': dates[i], 'data': data[i][chartPropertyName] };
+        newData.push(temp); 
+    }
+    var toolTipCustomFormatFn = function (value, itemIndex, serie, group, categoryValue)
+    {
+        return '<div style="text-align:left"><b><i>' + categoryValue + ' : ' + value + '</i></b></div>';
+    };
 
     var settings = {
         title: '',
         description: '',
         showBorderLine: false,
         showLegend: false,
-        enableAnimations: true,
-        //toolTipFormatFunction: toolTipCustomFormatFn,
+        enableAnimations: false,
+        toolTipFormatFunction: toolTipCustomFormatFn,
         padding: { left: 10, top: 10, right: 15, bottom: 10 },
         titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
-        source: sampleData,
-        colorScheme: 'scheme05',
+        source: newData,
         xAxis: {
-            dataField: 'Day',
+            dataField: 'points',
             unitInterval: 1,
             tickMarks: { visible: true, interval: 1 },
             gridLinesInterval: { visible: true, interval: 1 },
@@ -196,40 +216,25 @@ function chart()
             padding: { bottom: 10 }
         },
         valueAxis: {
-            unitInterval: 10,
             minValue: 0,
-            maxValue: 50,
             title: { text: '' },
             labels: { horizontalAlignment: 'right' }
         },
         seriesGroups:
             [
                 {
-                    type: 'spline',
+                    type: 'splinearea',
                     series:
                     [
                         {
-                            dataField: 'Running',
-                            symbolType: 'square',
+                            dataField: 'data',
+                            symbolType: 'cirlce',
                             labels:
                             {
                                 visible: true,
-                                backgroundColor: '#FEFEFE',
+                                backgroundColor: '#33CCCC',
                                 backgroundOpacity: 0.2,
-                                borderColor: '#7FC4EF',
-                                borderOpacity: 0.7,
-                                padding: { left: 5, right: 5, top: 0, bottom: 0 }
-                            }
-                        },
-                        {
-                            dataField: 'Swimming',
-                            symbolType: 'square',
-                            labels:
-                            {
-                                visible: true,
-                                backgroundColor: '#FEFEFE',
-                                backgroundOpacity: 0.2,
-                                borderColor: '#7FC4EF',
+                                borderColor: '#33CCCC',
                                 borderOpacity: 0.7,
                                 padding: { left: 5, right: 5, top: 0, bottom: 0 }
                             }
@@ -239,7 +244,9 @@ function chart()
             ]
     };
     $('#chart').jqxChart(settings);
-
+    var myChart = $('#chart').jqxChart(settings);
+    myChart.jqxChart('addColorScheme', 'myScheme', ['#33CCCC']);
+    myChart.jqxChart('colorScheme', 'myScheme');
 }
 
 function OverallConditionCircleColor(condition)
@@ -277,7 +284,6 @@ function getUser(UserId)
         async: false,
         success: function (data)
         {
-            console.log(data)
             $('.person-name').html(data[0].Name);
             //$('.person-title').html(data[0].Title);
             $('.weight-stats').html(data[0].Weight);
@@ -287,6 +293,26 @@ function getUser(UserId)
             $('.RHR-stats').html(data[0].RestingHeartRate);
             $('.person-big-img').css('background-image', 'url(' + data[0].picture_big + ')');
             OverallConditionCircleColor(data[0].OverallCondition);
+        }
+    });
+}
+
+function getChart(UserId, ChartType)
+{
+    $.ajax({
+        url: 'http://adept-adeptserver.rhcloud.com/' + ChartType,
+        headers:
+        {
+            'parameters': '[{"UserId":' + UserId + ', "Points":5, "FromDate":"2016-04-18", "ToDate":"2016-04-22"}]'
+        },
+        method: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data)
+        {
+            localStorage.setItem('chart', JSON.stringify(data));
+            console.log(JSON.parse(localStorage.getItem('chart')))
+            chart(ChartType);
         }
     });
 }
