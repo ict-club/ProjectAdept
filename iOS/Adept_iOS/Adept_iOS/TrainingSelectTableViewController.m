@@ -7,6 +7,7 @@
 //
 
 #import "TrainingSelectTableViewController.h"
+#import "ExerciseExecutionViewController.h"
 
 @interface TrainingSelectTableViewController ()
 {
@@ -41,15 +42,16 @@
     pickerIndex = 0;
     
     
+    [self setupTaoTrainingOptions];
     
-    switch (self.selectedType) {
-        case WellshellTraining:
-            [self setupTaoTrainingOptions];
-            break;
-            
-        default:
-            break;
-    }
+//    switch (self.selectedType) {
+//        case WellshellTraining:
+//            
+//            break;
+//            
+//        default:
+//            break;
+//    }
     
     [self setupPickerValues];
 }
@@ -66,7 +68,7 @@
     // Pass the selected object to the new view controller.
     if([[segue destinationViewController] respondsToSelector:@selector(setExerciseInformation:)])
     {
-        
+        [[segue destinationViewController] performSelector:@selector(setExerciseInformation:) withObject:self.trainingData];
     }
 }
 
@@ -75,7 +77,7 @@
 - (void) setupPickerValues
 {
     [self.trainingData setObject:[self.pickerMuscleGroupData objectAtIndex:0] forKey:@"MuscleGroup"];
-    [self.trainingData setObject:[self.pickerHardnessData objectAtIndex:0] forKey:@"Hardness"];
+    [self.trainingData setObject:[self.pickerHardnessData lastObject] forKey:@"Hardness"];
     [self.trainingData setObject:[self.pickerTimeForExerciseData objectAtIndex:0] forKey:@"Time"];
     [self.trainingData setObject:[self.pickerMinHeartRateData objectAtIndex:0] forKey:@"HRZMin"];
     [self.trainingData setObject:[self.pickerMaxHeartRateData objectAtIndex:0] forKey:@"HRZMax"];
@@ -83,7 +85,7 @@
 }
 - (void) setupTaoTrainingOptions
 {
-    for(int i = 0; i < 20; i++)
+    for(int i = 1; i <= 20; i++)
     {
         [self.pickerHardnessData addObject:[NSNumber numberWithInteger:i*5]];
     }

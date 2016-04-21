@@ -11,4 +11,5 @@
 @interface ExerciseDynamicLine : UIView
 
 @property (nonatomic, strong) NSMutableArray * pointsArray;
+@property (nonatomic, assign) NSInteger numberOfPoints;
 @end

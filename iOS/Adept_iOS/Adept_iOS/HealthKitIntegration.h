@@ -47,6 +47,8 @@
 - (NSInteger) getAverageHeartRateForPeriodFrom: (NSDate *) startDate to: (NSDate *) endDate;
 - (void) writeHeartRatetoHealthKit: (NSInteger) heartRateValue;
 - (double) getCaloriesForHeartRate: (NSInteger) heartRate andTime: (NSInteger) time;
+- (double) getCaloriesForIsometricsForce: (NSInteger) isometricForce andTime:(float) time;
+- (void) writeActiveEnergyBurnedToHealthKit: (double) caloriesBurned;
 
 - (NSDate *) dateOfBirth;
 - (HKBiologicalSexObject*) biologicalSex;

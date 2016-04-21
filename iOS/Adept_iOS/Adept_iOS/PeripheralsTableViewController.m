@@ -170,7 +170,14 @@
         if(aDevice.device.name == device.name)
         {
             aDevice.connected = YES;
-            [aDevice.device discoverServices:nil];
+            if([device.name isEqualToString: @"TAO-AA-0051"])
+            {
+                [aDevice.device discoverServices:[NSArray arrayWithObject:[CBUUID UUIDWithString:@"5000"]]];
+            }
+            else
+            {
+                [aDevice.device discoverServices:nil];
+            }
             [self.tableView reloadData];
             break;
         }

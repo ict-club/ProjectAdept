@@ -23,7 +23,7 @@
     
     self.labels = [NSArray arrayWithObjects:@"Training time", @"Burned calories", @"HRZ Min", @"HRZ Max", nil];
     self.detailTextLabels = [NSMutableArray arrayWithObjects:@"00:00",
-                           @"0.0 Cal",
+                           @"0.0 kCal",
                            [NSString stringWithFormat:@"%ld", self.heartRateZoneMin],
                            [NSString stringWithFormat:@"%ld", self.heartRateZoneMax],
                            nil];
@@ -67,7 +67,7 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
     [self.updateTimer invalidate];
-    
+    [self.heathKit writeActiveEnergyBurnedToHealthKit:self.burnedCalories];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -79,6 +79,14 @@
 {
     
 }
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [self.heathKit writeActiveEnergyBurnedToHealthKit:self.burnedCalories];
+}
+
 
 - (void) refreshTrainingData
 {
@@ -92,7 +100,7 @@
                                          withObject:[NSString stringWithFormat:@"%02ld:%02ld", self.trainingTime/60, self.trainingTime%60]];
         
         [self.detailTextLabels replaceObjectAtIndex:HR_BURNED_CALORIES
-                                         withObject:[NSString stringWithFormat:@"%0.2f", self.burnedCalories]];
+                                         withObject:[NSString stringWithFormat:@"%0.2f kCal", self.burnedCalories]];
         
         [self.tableView reloadData];
     }

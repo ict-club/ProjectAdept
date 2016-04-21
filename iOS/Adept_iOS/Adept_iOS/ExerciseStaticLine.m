@@ -37,7 +37,7 @@
     int amplitude = (self.frame.size.height*0.9)/2;
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:Red green:Green blue:Blue alpha:1].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:Red green:Green blue:Blue alpha:0.3].CGColor);
     
     // Draw them with a 2.0 stroke width so they are a bit more visible.
     CGContextSetLineWidth(context, 5.0f);

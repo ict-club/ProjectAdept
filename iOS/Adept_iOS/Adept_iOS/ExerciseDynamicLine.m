@@ -13,12 +13,15 @@
 - (instancetype) initWithCoder:(NSCoder *)aDecoder
 {
     self.pointsArray = [NSMutableArray arrayWithObject:[NSNumber numberWithDouble:0]];
+    self.numberOfPoints = 1;
     self = [super initWithCoder:aDecoder];
     return self;
 }
 
 - (instancetype) initWithFrame:(CGRect)frame
 {
+    self.pointsArray = [NSMutableArray arrayWithObject:[NSNumber numberWithDouble:0]];
+    self.numberOfPoints = 1;
     self = [super initWithFrame:frame];
     return self;
 }
@@ -29,11 +32,11 @@
     [super drawRect:rect];
     
     
-    double Red = 255.0f/255.0f;
-    double Green = 51.0f/255.0f;
+    double Red = 51.0f/255.0f;
+    double Green = 204.0f/255.0f;
     double Blue = 204.0f/255.0f;
     
-    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3f];
+    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0f];
     NSInteger numberOfPoints = self.frame.size.width;
     int amplitude = (self.frame.size.height*0.9)/2;
     
@@ -45,18 +48,20 @@
     
     CGContextMoveToPoint(context, 0.0f, amplitude); //start at this point
     
-    double scaleFactor = (double)numberOfPoints / (double)[self.pointsArray count];
+    double scaleFactor = (double)numberOfPoints / (double)self.numberOfPoints;
     double xPoint = 0.0f;
     
     for(int i = 0; i < [self.pointsArray count]; i+=1)
     {
         if(i == 0)
         {
-            CGContextMoveToPoint(context, 0.0f, 0.0f);
+            CGContextMoveToPoint(context, 0.0f, self.frame.size.height);
         }
         else
         {
-            CGContextAddLineToPoint(context, xPoint += scaleFactor, ([[self.pointsArray objectAtIndex:i] doubleValue]/1023.0) * self.frame.size.height); //draw to this point
+            NSInteger currentValue = [[self.pointsArray objectAtIndex:i] doubleValue];
+            if(currentValue > 1023) currentValue = 1023;
+            CGContextAddLineToPoint(context, xPoint += scaleFactor, ((1 -(currentValue)/1023.0)) * self.frame.size.height); //draw to this point
         }
     }
     

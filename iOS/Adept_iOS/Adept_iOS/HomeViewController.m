@@ -144,7 +144,7 @@ NSDate * methodStart;
 {
     double remainingCaloriesToBurn = self.dailyTarget.exerciseRemainingCaloriesToBurn;
     
-    self.centerCircleView.textString = [NSString stringWithFormat:@"To Burn\n%0.1f Cal", (-1 * remainingCaloriesToBurn)];
+    self.centerCircleView.textString = [NSString stringWithFormat:@"To Burn\n%0.1f kCal", (-1 * remainingCaloriesToBurn)];
     double leftRed = 51.0f/255.0f;
     double leftGreen = 204.0f/255.0f;
     double leftBlue = 204.0f/255.0f;
@@ -170,7 +170,7 @@ NSDate * methodStart;
 - (void) redrawRightCircle
 {
     double netEnergy = self.healthKitObject.netEnergy/(4186.8);
-    self.rightCircleView.textString = [NSString stringWithFormat:@"Balance\n%0.1f Cal", netEnergy];
+    self.rightCircleView.textString = [NSString stringWithFormat:@"Balance\n%0.1f kCal", netEnergy];
     double leftRed = 51.0f/255.0f;
     double leftGreen = 204.0f/255.0f;
     double leftBlue = 204.0f/255.0f;

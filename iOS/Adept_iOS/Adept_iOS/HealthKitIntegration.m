@@ -476,6 +476,24 @@ typedef enum
     }
 }
 
+- (double) getCaloriesForIsometricsForce: (NSInteger) isometricForce andTime:(float) time
+{
+    NSInteger heartRate = isometricForce/25 + 90;
+    NSDate *now = [NSDate date];
+    NSDateComponents *ageComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:self.dateOfBirth toDate:now options:NSCalendarWrapComponents];
+    NSUInteger ageInYears = ageComponents.year;
+    
+    if([self.biologicalSex biologicalSex] == HKBiologicalSexMale)
+    {
+        //Male = ((-55.0969 + (0.6309 × HR) + (0.1988 × W) + (0.2017 × A)) / 4.184) × 60 × T
+        return ((-55.0969f + 0.6309f * heartRate + 0.1988f * self.bodyMass + 0.2017f * ageInYears)/4.184f) * (double)(time / 60.0f);
+    }
+    else
+    {
+        //Female = ((-20.4022 + (0.4472 × HR) - (0.1263 × W) + (0.074 × A)) / 4.184) × 60 × T
+        return ((-20.4022f + 0.4472f * heartRate + 0.1988f * self.bodyMass + 0.2017f * ageInYears)/4.184f) * (double)(time/60.0f);
+    }
+}
 
 #pragma mark - Actve energy burned
 
@@ -522,7 +540,7 @@ typedef enum
 
 - (void) writeActiveEnergyBurnedToHealthKit: (double) caloriesBurned
 {
-    HKQuantity *activeEnergyBurnedQuantity = [HKQuantity quantityWithUnit:[HKUnit calorieUnit] doubleValue:caloriesBurned];
+    HKQuantity *activeEnergyBurnedQuantity = [HKQuantity quantityWithUnit:[HKUnit calorieUnit] doubleValue:(caloriesBurned * 1000)];
     
     HKQuantityType * activeEnergyQuantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned];
     NSDate * now = [NSDate date];
