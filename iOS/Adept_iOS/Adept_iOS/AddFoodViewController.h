@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AddFoodViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *buttonAddFood;
+@property (weak, nonatomic) IBOutlet UIView *tableViewDataFromFood;
 
 @end
