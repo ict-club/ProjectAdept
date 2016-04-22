@@ -32,6 +32,13 @@ $(document).ready(function ()
         $('#person-dropdown').jqxDropDownList({ selectedIndex: id - 1 });
         getUser(id);
         getChart(id, 'weightChart');
+        setTimeout(function ()
+        {
+            $('.exerciseTitles, .exerciseContainers, .back').css('display', 'none');
+            $('#chart , .buttons-container, .person-stats').css('display', 'block');
+            $('.gear').css('display', 'inline-block');
+        }, 500)
+
     });
 
     var response = new $.jqx.response();
@@ -118,26 +125,28 @@ $(document).ready(function ()
 
 function dropDownList()
 {
+    var photoslinks = ['./assets/people/60_borkata.png', './assets/people/60_ivo.jpg', './assets/people/60_marto.jpg', './assets/people/60_petar.jpg',
+                       './assets/people/60_evgeni.jpg', './assets/people/60_kosio.jpg', './assets/people/60_teodora.jpg', './assets/people/60_joro.jpg'
+    ];
     var users = JSON.parse(localStorage.getItem('usersDB'));
-    var names = [], imgUrls = [];
+    var names = [];
     for (var i = 0; i < users.length; i++)
     {
         names.push(users[i].Name);
-        imgUrls.push(users[i].picture_small);
     }
 
     $('#person-dropdown').jqxDropDownList({
         selectedIndex: 0, source: names, theme: 'metrodark', width: 400, height: 65, autoItemsHeight: true, dropDownHeight: 300,
         renderer: function (index, label, value)
         {
-            var imgurl = imgUrls[index];
+            var imgurl = photoslinks[index];
             var img = '<img class="table-img-format" src="' + imgurl + '"/>';
             var table = '<table class="table-content"><tr><td class="table-img">' + img + '</td><td class="table-text">' + label + '</td></tr></table>';
             return table;
         },
         selectionRenderer: function (element, index, label, value)
         {
-            var imgurl = imgUrls[index];
+            var imgurl = photoslinks[index];
             var img = '<img class="table-img-format" src="' + imgurl + '"/>';
             var table = '<table class="table-header"><tr><td class="table-img">' + img + '</td><td class="dropdown-header">' + label + '</td></tr></table>';
             return table;
@@ -166,10 +175,19 @@ function dropDownList()
         {
             $('.person-container ul li:nth-child(' + (i + 1) + ') p').html(data[i].Name);
             $('.person-container ul li:nth-child(' + (i + 1) + ')').attr('index', data[i].id);
-            $('.person-container ul li:nth-child(' + (i + 1) + ') span').css('background-image', 'url(' + data[i].picture_small + ')');
+            //$('.person-container ul li:nth-child(' + (i + 1) + ') span').css('background-image', 'url(' + data[i].picture_small + ')');
         }
         localStorage.setItem('usersDB', JSON.stringify(data));
+
+        var photoslinks = ['./assets/people/60_borkata.png', './assets/people/60_ivo.jpg', './assets/people/60_marto.jpg', './assets/people/60_petar.jpg',
+                       './assets/people/60_evgeni.jpg', './assets/people/60_kosio.jpg', './assets/people/60_teodora.jpg', './assets/people/60_joro.jpg'
+        ];
+        for (var i = 1; i < 9; i++)
+        {
+            $('.person-container ul li:nth-child(' + i + ') span').css('background-image', 'url(' + photoslinks[i - 1] + ')');
+        }
     });
+    return false;
 })();
 
 function chart(ChartType)
@@ -282,6 +300,14 @@ function OverallConditionCircleColor(condition)
 
 function getUser(UserId)
 {
+    var photoslinks =
+        {
+            'Borislav Filipov': './assets/people/170_borkata.png', 'Ivo Zhulev': './assets/people/170_ivo.jpg',
+            'Martin Kuvandzhiev': './assets/people/170_marto.jpg', 'Peter Lazarov': './assets/people/170_petar.jpg',
+            'Evgeni Sabev': './assets/people/170_evgeni.jpg', 'Konstantin Jleibinkov': './assets/people/170_kosio.jpg',
+            'Teodora Malashevska': './assets/people/170_teodora.jpg', 'Georgi Velev': './assets/people/170_joro.jpg',
+        };
+
     $.ajax({
         url: 'http://adept-adeptserver.rhcloud.com/userdata',
         headers:
@@ -294,16 +320,18 @@ function getUser(UserId)
         success: function (data)
         {
             $('.person-name').html(data[0].Name);
-            //$('.person-title').html(data[0].Title);
+            $('.person-title').html(data[0].Title);
             $('.weight-stats').html(data[0].Weight);
             $('.MS-stats').html(data[0].avgForce);
-            //$('.WBS-stats').html(data[0].WristCirc);
+            $('.WBS-stats').html(data[0].WristCirc);
             $('.CB-stats').html(data[0].CaloriesBalance);
             $('.RHR-stats').html(data[0].RestingHeartRate);
-            $('.person-big-img').css('background-image', 'url(' + data[0].picture_big + ')');
+            //$('.person-big-img').css('background-image', 'url(' + data[0].picture_big + ')');
+            $('.person-big-img').css('background-image', 'url(' + photoslinks[data[0].Name] + ')');
             OverallConditionCircleColor(data[0].OverallCondition);
         }
     });
+    return false;
 }
 
 function getChart(UserId, ChartType)
@@ -320,10 +348,10 @@ function getChart(UserId, ChartType)
         success: function (data)
         {
             localStorage.setItem('chart', JSON.stringify(data));
-            console.log(JSON.parse(localStorage.getItem('chart')))
             chart(ChartType);
         }
     });
+    return false;
 }
 
 function mainPageHeight()
