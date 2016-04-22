@@ -11,11 +11,20 @@
 #import "ExerciseDynamicLine.h"
 #import "HealthKitIntegration.h"
 
+NS_ENUM(NSInteger, STATE_ENUM)
+{
+    EX_STATE_WAITING_TO_START,
+    EX_STATE_ONGOING,
+    EX_STATE_FINISHED
+};
+
 @interface ExerciseExecutionViewController ()
 {
     NSInteger exerciseIndex;
     CGFloat difficulty;
     HealthKitIntegration * healthKit;
+    NSInteger currentState;
+    NSInteger repetitions;
 }
 @property (weak, nonatomic) IBOutlet ExerciseStaticLine *exerciseStaticGraphic;
 @property (strong, nonatomic) IBOutlet ExerciseDynamicLine *exerciseDynamicGraphic;
@@ -40,8 +49,6 @@
     self.exerciseImage.layer.cornerRadius = 15;
     self.exerciseImage.layer.masksToBounds = YES;
     
-    exerciseIndex = 0;
-    
     self.exerciseDynamicGraphic.pointsArray = [[NSMutableArray alloc] init];
     self.exerciseDynamicGraphic.numberOfPoints = [[self.exerciseInformation objectForKey:@"Time"] integerValue] * 10;
     difficulty = [[self.exerciseInformation objectForKey:@"Hardness"] integerValue];
@@ -58,6 +65,10 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     self.bleCommunication.delegate = self;
+    currentState = EX_STATE_WAITING_TO_START;
+    exerciseIndex = 0;
+    repetitions = 0;
+    
     [self subscribeToIsometricCharacteristic];
 }
 
@@ -107,16 +118,48 @@
 
 - (void) refreshTrainingData
 {
+    NSInteger exerciseSeconds = exerciseIndex/10 + repetitions * (self.exerciseDynamicGraphic.numberOfPoints / 10);
     
-    NSInteger exerciseSeconds = exerciseIndex/10;
-    self.exerciseTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld s", exerciseSeconds/60, exerciseSeconds%60];
+    if(currentState == EX_STATE_ONGOING)
+    {
+        self.exerciseTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld s", exerciseSeconds/60, exerciseSeconds%60];
+    }
+    else if(currentState == EX_STATE_WAITING_TO_START)
+    {
+        self.exerciseTimeLabel.text = @"Ready to start";
+    }
+    else if(currentState == EX_STATE_FINISHED)
+    {
+        self.exerciseTimeLabel.text = @"Release";
+    }
     
-    if(self.currentIsometricData > 0) self.burnedCalories += [healthKit getCaloriesForIsometricsForce:self.currentIsometricData andTime:0.1];
+    if(self.currentIsometricData > 0)
+    {
+        self.burnedCalories += [healthKit getCaloriesForIsometricsForce:self.currentIsometricData andTime:0.1];
+    }
     self.burnedCaloriesLabel.text = [NSString stringWithFormat:@"%0.1f Cal", self.burnedCalories];
     
     self.currentForceLabel.text = [NSString stringWithFormat:@"%ld N",self.currentIsometricData];
 }
 
+- (void) checkState
+{
+    if(exerciseIndex >= self.exerciseDynamicGraphic.numberOfPoints && currentState == EX_STATE_ONGOING)
+    {
+        currentState = EX_STATE_FINISHED;
+    }
+    else if(currentState == EX_STATE_FINISHED && self.currentIsometricData == 0)
+    {
+        currentState = EX_STATE_WAITING_TO_START;
+        repetitions += 1;
+        exerciseIndex = 0;
+        self.exerciseDynamicGraphic.pointsArray = [[NSMutableArray alloc] init];
+    }
+    else if(currentState == EX_STATE_WAITING_TO_START && self.currentIsometricData > 0)
+    {
+        currentState = EX_STATE_ONGOING;
+    }
+}
 
 - (void) didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic ofDevice:(CBPeripheral *)peripheral andData:(NSData *)data
 {
@@ -128,6 +171,7 @@
         
         self.currentIsometricData = [isometricData integerValue];
         NSInteger graphicIsometricDataToSend = self.currentIsometricData*100/difficulty;
+        [self checkState];
         [self refreshTrainingData];
         if(exerciseIndex < self.exerciseDynamicGraphic.numberOfPoints && graphicIsometricDataToSend > 0)
         {
