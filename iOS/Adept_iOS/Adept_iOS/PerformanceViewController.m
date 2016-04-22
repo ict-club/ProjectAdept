@@ -7,8 +7,12 @@
 //
 
 #import "PerformanceViewController.h"
+#import "GraphicsTableViewCell.h"
+#import "LogTableViewCell.h"
 
 @interface PerformanceViewController ()
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentController;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -16,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LogTableViewCell" bundle:nil] forCellReuseIdentifier:@"LogTableViewCellIdentifier"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"GraphicTableViewCell" bundle:nil] forCellReuseIdentifier:@"GraphicTableViewCellIdentifier"];
     // Do any additional setup after loading the view.
 }
 
@@ -24,6 +30,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+}
 /*
 #pragma mark - Navigation
 
@@ -34,13 +44,41 @@
 }
 */
 
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return 6;
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell * tableViewCell;
+    if(self.segmentController.selectedSegmentIndex == 0)
+    {
+        LogTableViewCell * logTableViewCell = (LogTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"LogTableViewCellIdentifier" forIndexPath:indexPath];
+        
+        logTableViewCell.logTypeLabel.text = @"asddsa";
+        self.tableView.rowHeight = 60.0f;
+        tableViewCell = logTableViewCell;
+    }
+    else
+    {
+        GraphicsTableViewCell * graphicTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"GraphicTableViewCellIdentifier" forIndexPath:indexPath];
+        self.tableView.rowHeight = 180.0f;
+        tableViewCell = graphicTableViewCell;
+    }
+    
+    return tableViewCell;
+    
+}
+
+
+- (IBAction)segmentControllerStateChanged:(id)sender {
+    [self.tableView reloadData];
+}
+
 @end

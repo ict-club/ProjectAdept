@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogTableViewCellIdentifier" rowHeight="60" id="Kdn-Lj-7K6" customClass="LogTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kdn-Lj-7K6" id="eVn-eh-TVc">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log type label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wog-fJ-8II">
+                        <rect key="frame" x="8" y="14" width="202" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="7Ga-fl-L6e"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Di-X4-WYq">
+                        <rect key="frame" x="8" y="32" width="202" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="b91-Wf-ggy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnO-gi-YHM">
+                        <rect key="frame" x="210" y="16" width="94" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="ig9-D8-cMh"/>
+                            <constraint firstAttribute="width" constant="94" id="mPb-ZL-jgB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="2Di-X4-WYq" secondAttribute="bottom" constant="-1.5" id="1DH-o1-6t5"/>
+                    <constraint firstItem="gnO-gi-YHM" firstAttribute="top" secondItem="eVn-eh-TVc" secondAttribute="topMargin" constant="8" id="D4e-Uo-Cy7"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="gnO-gi-YHM" secondAttribute="bottom" constant="8.5" id="KTA-dZ-4ea"/>
+                    <constraint firstItem="gnO-gi-YHM" firstAttribute="leading" secondItem="2Di-X4-WYq" secondAttribute="trailing" id="Mlc-sX-d0x"/>
+                    <constraint firstItem="Wog-fJ-8II" firstAttribute="top" secondItem="eVn-eh-TVc" secondAttribute="topMargin" constant="6" id="NVE-Cp-fSo"/>
+                    <constraint firstItem="gnO-gi-YHM" firstAttribute="leading" secondItem="Wog-fJ-8II" secondAttribute="trailing" id="PhD-HF-hTA"/>
+                    <constraint firstItem="2Di-X4-WYq" firstAttribute="leading" secondItem="eVn-eh-TVc" secondAttribute="leadingMargin" id="Thr-FW-atH"/>
+                    <constraint firstItem="Wog-fJ-8II" firstAttribute="leading" secondItem="eVn-eh-TVc" secondAttribute="leadingMargin" id="Vpc-o2-ixy"/>
+                    <constraint firstItem="2Di-X4-WYq" firstAttribute="top" secondItem="eVn-eh-TVc" secondAttribute="topMargin" constant="24" id="bam-Mr-Iq0"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Wog-fJ-8II" secondAttribute="bottom" constant="16.5" id="rhL-J7-Wfx"/>
+                    <constraint firstItem="gnO-gi-YHM" firstAttribute="leading" secondItem="2Di-X4-WYq" secondAttribute="trailing" id="tLw-uw-1SX"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="gnO-gi-YHM" secondAttribute="trailing" constant="8" id="wq2-dc-1xr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dataLabel" destination="gnO-gi-YHM" id="IBh-E5-5jL"/>
+                <outlet property="dateTimeLabel" destination="2Di-X4-WYq" id="0GQ-zk-W8R"/>
+                <outlet property="logTypeLabel" destination="Wog-fJ-8II" id="h8F-HK-Hge"/>
+            </connections>
+            <point key="canvasLocation" x="214" y="378"/>
+        </tableViewCell>
+    </objects>
+</document>

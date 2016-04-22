@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PerformanceViewController : UIViewController
+@interface PerformanceViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

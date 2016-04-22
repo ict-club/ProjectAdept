@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GraphicTableViewCellIdentifier" rowHeight="180" id="MPf-F7-Ge5" customClass="GraphicsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MPf-F7-Ge5" id="A8Y-W9-vRi">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="179.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S39-sl-NMJ" customClass="ORKLineGraphChartView">
+                        <rect key="frame" x="8" y="34" width="304" height="110.5"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="S39-sl-NMJ" firstAttribute="leading" secondItem="A8Y-W9-vRi" secondAttribute="leadingMargin" id="Nyd-J8-FlL"/>
+                    <constraint firstItem="S39-sl-NMJ" firstAttribute="trailing" secondItem="A8Y-W9-vRi" secondAttribute="trailingMargin" id="T8a-sR-1HJ"/>
+                    <constraint firstItem="S39-sl-NMJ" firstAttribute="top" secondItem="A8Y-W9-vRi" secondAttribute="topMargin" constant="26" id="Zap-mA-aiW"/>
+                    <constraint firstItem="S39-sl-NMJ" firstAttribute="bottom" secondItem="A8Y-W9-vRi" secondAttribute="bottomMargin" constant="-27" id="z8v-9y-R50"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="graphView" destination="S39-sl-NMJ" id="oaK-Tr-H1R"/>
+            </connections>
+            <point key="canvasLocation" x="252" y="337"/>
+        </tableViewCell>
+    </objects>
+</document>
