@@ -54,6 +54,16 @@
 		19C2259A1CB720210017D5A7 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C225991CB720210017D5A7 /* circle.png */; };
 		19C2259C1CB720260017D5A7 /* circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C2259B1CB720260017D5A7 /* circle@2x.png */; };
 		19C2259E1CB7207E0017D5A7 /* circle-48.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C2259D1CB7207E0017D5A7 /* circle-48.png */; };
+		19CE7E2A1CCADC9600C759C1 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E201CCADC9600C759C1 /* Icon-60@2x.png */; };
+		19CE7E2B1CCADC9600C759C1 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E211CCADC9600C759C1 /* Icon-60@3x.png */; };
+		19CE7E2C1CCADC9600C759C1 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E221CCADC9600C759C1 /* Icon-76.png */; };
+		19CE7E2D1CCADC9600C759C1 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E231CCADC9600C759C1 /* Icon-76@2x.png */; };
+		19CE7E2E1CCADC9600C759C1 /* Icon-Small-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E241CCADC9600C759C1 /* Icon-Small-40.png */; };
+		19CE7E2F1CCADC9600C759C1 /* Icon-Small-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E251CCADC9600C759C1 /* Icon-Small-40@2x.png */; };
+		19CE7E301CCADC9600C759C1 /* Icon-Small-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E261CCADC9600C759C1 /* Icon-Small-40@3x.png */; };
+		19CE7E311CCADC9600C759C1 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E271CCADC9600C759C1 /* Icon-Small.png */; };
+		19CE7E321CCADC9600C759C1 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E281CCADC9600C759C1 /* Icon-Small@2x.png */; };
+		19CE7E331CCADC9600C759C1 /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E291CCADC9600C759C1 /* Icon-Small@3x.png */; };
 		19DA718C1CAAF1020078DC65 /* TrainingSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */; };
 		19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA718E1CAAF11A0078DC65 /* ExerciseExecutionViewController.m */; };
 		19DA71921CAAF5DA0078DC65 /* ExerciseStaticLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA71911CAAF5DA0078DC65 /* ExerciseStaticLine.m */; };
@@ -187,6 +197,16 @@
 		19C225991CB720210017D5A7 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		19C2259B1CB720260017D5A7 /* circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle@2x.png"; sourceTree = "<group>"; };
 		19C2259D1CB7207E0017D5A7 /* circle-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-48.png"; sourceTree = "<group>"; };
+		19CE7E201CCADC9600C759C1 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		19CE7E211CCADC9600C759C1 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
+		19CE7E221CCADC9600C759C1 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		19CE7E231CCADC9600C759C1 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		19CE7E241CCADC9600C759C1 /* Icon-Small-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-40.png"; sourceTree = "<group>"; };
+		19CE7E251CCADC9600C759C1 /* Icon-Small-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-40@2x.png"; sourceTree = "<group>"; };
+		19CE7E261CCADC9600C759C1 /* Icon-Small-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-40@3x.png"; sourceTree = "<group>"; };
+		19CE7E271CCADC9600C759C1 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		19CE7E281CCADC9600C759C1 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		19CE7E291CCADC9600C759C1 /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
 		19DA718A1CAAF1020078DC65 /* TrainingSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingSelectTableViewController.h; sourceTree = "<group>"; };
 		19DA718B1CAAF1020078DC65 /* TrainingSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingSelectTableViewController.m; sourceTree = "<group>"; };
 		19DA718D1CAAF11A0078DC65 /* ExerciseExecutionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseExecutionViewController.h; sourceTree = "<group>"; };
@@ -364,6 +384,16 @@
 		19DA71951CAAF63C0078DC65 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				19CE7E201CCADC9600C759C1 /* Icon-60@2x.png */,
+				19CE7E211CCADC9600C759C1 /* Icon-60@3x.png */,
+				19CE7E221CCADC9600C759C1 /* Icon-76.png */,
+				19CE7E231CCADC9600C759C1 /* Icon-76@2x.png */,
+				19CE7E241CCADC9600C759C1 /* Icon-Small-40.png */,
+				19CE7E251CCADC9600C759C1 /* Icon-Small-40@2x.png */,
+				19CE7E261CCADC9600C759C1 /* Icon-Small-40@3x.png */,
+				19CE7E271CCADC9600C759C1 /* Icon-Small.png */,
+				19CE7E281CCADC9600C759C1 /* Icon-Small@2x.png */,
+				19CE7E291CCADC9600C759C1 /* Icon-Small@3x.png */,
 				1945CC421CBD80BA004505F6 /* AppleWatchTraining.png */,
 				1945CC431CBD80BA004505F6 /* HeartRateTraining.png */,
 				1945CC441CBD80BA004505F6 /* MoovTraining.png */,
@@ -545,16 +575,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19CE7E2C1CCADC9600C759C1 /* Icon-76.png in Resources */,
+				19CE7E2F1CCADC9600C759C1 /* Icon-Small-40@2x.png in Resources */,
 				1945CC471CBD80BA004505F6 /* HeartRateTraining.png in Resources */,
+				19CE7E2D1CCADC9600C759C1 /* Icon-76@2x.png in Resources */,
 				19C225931CB71EFE0017D5A7 /* Settings.png in Resources */,
 				1945CC491CBD80BA004505F6 /* TaoTraining.png in Resources */,
 				19C225971CB71EFE0017D5A7 /* Statistics@2x.png in Resources */,
 				19C225911CB71EFE0017D5A7 /* Profile@2x.png in Resources */,
+				19CE7E311CCADC9600C759C1 /* Icon-Small.png in Resources */,
 				19C2258C1CB71EFE0017D5A7 /* Connections@3x.png in Resources */,
 				19C2259A1CB720210017D5A7 /* circle.png in Resources */,
 				19FDF0501CA9950F00FBE133 /* LaunchScreen.storyboard in Resources */,
 				19C225561CB714FC0017D5A7 /* syncing.png in Resources */,
 				19FDF04D1CA9950F00FBE133 /* Assets.xcassets in Resources */,
+				19CE7E2E1CCADC9600C759C1 /* Icon-Small-40.png in Resources */,
 				19C225901CB71EFE0017D5A7 /* Profile.png in Resources */,
 				19C2255A1CB715180017D5A7 /* syncing@3x.png in Resources */,
 				19C225951CB71EFE0017D5A7 /* Settings@3x.png in Resources */,
@@ -562,6 +597,7 @@
 				19C225981CB71EFE0017D5A7 /* Statistics@3x.png in Resources */,
 				19C2258F1CB71EFE0017D5A7 /* Exercise@3x.png in Resources */,
 				19FDF04B1CA9950F00FBE133 /* Main.storyboard in Resources */,
+				19CE7E331CCADC9600C759C1 /* Icon-Small@3x.png in Resources */,
 				1945CC481CBD80BA004505F6 /* MoovTraining.png in Resources */,
 				19C225961CB71EFE0017D5A7 /* Statistics.png in Resources */,
 				19C225941CB71EFE0017D5A7 /* Settings@2x.png in Resources */,
@@ -569,13 +605,17 @@
 				1945CC461CBD80BA004505F6 /* AppleWatchTraining.png in Resources */,
 				19DA719A1CAB0DF30078DC65 /* calories.png in Resources */,
 				19DA719E1CAB11C40078DC65 /* mxerciseImage1axresdefault.jpg in Resources */,
+				19CE7E2B1CCADC9600C759C1 /* Icon-60@3x.png in Resources */,
 				19B66A301CCA889800225464 /* LogTableViewCell.xib in Resources */,
 				19C225581CB7150A0017D5A7 /* syncing@2x.png in Resources */,
 				19FDF06C1CAA7DC400FBE133 /* TAO-picture.png in Resources */,
 				19C225921CB71EFE0017D5A7 /* Profile@3x.png in Resources */,
 				19C2258D1CB71EFE0017D5A7 /* Exercise.png in Resources */,
+				19CE7E321CCADC9600C759C1 /* Icon-Small@2x.png in Resources */,
 				19C2258E1CB71EFE0017D5A7 /* Exercise@2x.png in Resources */,
+				19CE7E301CCADC9600C759C1 /* Icon-Small-40@3x.png in Resources */,
 				19C2258B1CB71EFE0017D5A7 /* Connections@2x.png in Resources */,
+				19CE7E2A1CCADC9600C759C1 /* Icon-60@2x.png in Resources */,
 				19C2259C1CB720260017D5A7 /* circle@2x.png in Resources */,
 				19B66A2C1CCA87EC00225464 /* GraphicTableViewCell.xib in Resources */,
 				19DA719C1CAB0DF90078DC65 /* heartrate.png in Resources */,
