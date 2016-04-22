@@ -63,11 +63,6 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    //    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f
-    //                                                        target:self
-    //                                                      selector:@selector(refreshTrainingData)
-    //                                                      userInfo:nil
-    //                                                       repeats:YES];
 }
 
 
@@ -82,18 +77,18 @@
 
 - (void) subscribeToIsometricCharacteristic
 {
+    
     CBPeripheral * TAOPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:2] device];
     
     for(NSInteger i = [[TAOPeripheral services] count] - 1; i >= 0; i--)
     {
         CBService * aService = [[TAOPeripheral services] objectAtIndex:i];
-        for(CBCharacteristic * aCharacteristic in aService.characteristics)
+        for(CBMutableCharacteristic * aCharacteristic in aService.characteristics)
         {
-            if([[aCharacteristic.UUID UUIDString]  isEqual: @"5A01"] == YES)
+            if([aCharacteristic.UUID  isEqual: [CBUUID UUIDWithString:@"5A01"]] == YES)
             {
                 [TAOPeripheral setNotifyValue:YES forCharacteristic:aCharacteristic];
                 self.isometricCaracteristic = aCharacteristic;
-                [TAOPeripheral readValueForCharacteristic:self.isometricCaracteristic];
                 break;
             }
         }
@@ -102,7 +97,7 @@
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    [healthKit writeActiveEnergyBurnedToHealthKit:self.burnedCalories];
+    if(self.burnedCalories > 0)[healthKit writeActiveEnergyBurnedToHealthKit:self.burnedCalories];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -123,20 +118,23 @@
 }
 
 
-- (void) didUpdateValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy andData: (NSData *) data
+- (void) didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic ofDevice:(CBPeripheral *)peripheral andData:(NSData *)data
 {
-    NSString * isometricData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@", isometricData);
-    
-    self.currentIsometricData = [isometricData integerValue];
-    NSInteger graphicIsometricDataToSend = self.currentIsometricData*100/difficulty;
-    [self refreshTrainingData];
-    if(exerciseIndex < self.exerciseDynamicGraphic.numberOfPoints && graphicIsometricDataToSend > 0)
+    if([peripheral.name isEqualToString:@"TAO-AA-0051"])
     {
-        [self.exerciseDynamicGraphic.pointsArray addObject:[NSNumber numberWithInteger:graphicIsometricDataToSend]];
-        [self.exerciseDynamicGraphic setNeedsDisplay];
-        exerciseIndex ++ ;
+        NSString * isometricData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"%@", isometricData);
+        
+        self.currentIsometricData = [isometricData integerValue];
+        NSInteger graphicIsometricDataToSend = self.currentIsometricData*100/difficulty;
+        [self refreshTrainingData];
+        if(exerciseIndex < self.exerciseDynamicGraphic.numberOfPoints && graphicIsometricDataToSend > 0)
+        {
+            [self.exerciseDynamicGraphic.pointsArray addObject:[NSNumber numberWithInteger:graphicIsometricDataToSend]];
+            [self.exerciseDynamicGraphic setNeedsDisplay];
+            exerciseIndex ++ ;
+        }
     }
 }
 - (void) didWriteValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy
@@ -156,7 +154,7 @@
 {
     if([device.name isEqualToString: @"ТАО-АА-0051"] == YES)
     {
-        [device discoverServices:[NSArray arrayWithObject:[CBUUID UUIDWithString:@"5000"]]];
+        [device discoverServices:nil];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void)
                        {
                            [self subscribeToIsometricCharacteristic];

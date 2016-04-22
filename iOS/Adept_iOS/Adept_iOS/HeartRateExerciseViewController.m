@@ -132,8 +132,11 @@
 
 #pragma mark - Bluetooth Low Energy Delegate
 
-- (void) didUpdateValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy andData: (NSData *) data
+- (void) didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic ofDevice:(CBPeripheral *)peripheral andData:(NSData *)data
 {
+    
+    if([peripheral.name isEqualToString:@"Heart Rate Sensor"] == NO) return;
+    
     uint8_t *currentHeartRate = (uint8_t *) data.bytes;
     
     if(currentHeartRate)

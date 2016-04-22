@@ -18,7 +18,7 @@
 - (void) didDisconnectDevice: (CBPeripheral *) device;
 - (void) didDiscoverServices: (RDBluetoothLowEnergy *) bluetoothLowEnergy;
 - (void) didDiscoverCharacteristics: (RDBluetoothLowEnergy *) bluetoothLowEnergy;
-- (void) didUpdateValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy andData: (NSData *) data;
+- (void) didUpdateValueForCharacteristic: (CBCharacteristic *) characteristic ofDevice:(CBPeripheral *) peripheral andData: (NSData *) data;
 - (void) didWriteValueForCharacteristic: (RDBluetoothLowEnergy *) bluetoothLowEnergy;
 
 @property (nonatomic, weak) id delegate;

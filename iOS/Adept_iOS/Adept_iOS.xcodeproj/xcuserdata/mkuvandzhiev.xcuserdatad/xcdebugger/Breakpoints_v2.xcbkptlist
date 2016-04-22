@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Adept_iOS/ExerciseExecutionViewController.m"
-            timestampString = "482918614.582814"
+            filePath = "Adept_iOS/HomeViewController.m"
+            timestampString = "482962942.166928"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-viewWillDisappear:"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "-addFoodLongPress:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

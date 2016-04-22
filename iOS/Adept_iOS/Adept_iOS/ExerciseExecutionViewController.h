@@ -26,7 +26,7 @@
 @property (assign, nonatomic) NSInteger heartRateZoneMin;
 @property (assign, nonatomic) NSInteger heartRateZoneMax;
 
-@property (assign, nonatomic) CBCharacteristic * isometricCharacteristic;
+@property (strong, nonatomic) CBCharacteristic * isometricCharacteristic;
 
 
 @end

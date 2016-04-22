@@ -262,8 +262,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     //NSLog(@"%@", characteristic.value);
     self.timeLastRead = [NSDate date];
     
-    if([self.delegate respondsToSelector:@selector(didUpdateValueForCharacteristic:andData:)]) {
-        [self.delegate didUpdateValueForCharacteristic:self andData:characteristic.value];
+    if([self.delegate respondsToSelector:@selector(didUpdateValueForCharacteristic: ofDevice:andData: andData:)]) {
+        [self.delegate didUpdateValueForCharacteristic:characteristic ofDevice:peripheral andData:characteristic.value];
     }
 }
 

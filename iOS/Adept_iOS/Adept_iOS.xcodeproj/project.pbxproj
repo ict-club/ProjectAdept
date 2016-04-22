@@ -15,6 +15,7 @@
 		1945CC481CBD80BA004505F6 /* MoovTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC441CBD80BA004505F6 /* MoovTraining.png */; };
 		1945CC491CBD80BA004505F6 /* TaoTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC451CBD80BA004505F6 /* TaoTraining.png */; };
 		194DB9F31CC69CBC00546EEB /* PickerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DB9F21CC69CBC00546EEB /* PickerTableCell.m */; };
+		1971357C1CC96A470078F31B /* AddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1971357B1CC96A470078F31B /* AddFoodViewController.m */; };
 		197292161CBD5B6800CD5A48 /* BluetoothDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */; };
 		19811DF41CBEFC530037B65A /* MoovCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 19811DF31CBEFC530037B65A /* MoovCommunication.m */; };
 		19811DF71CBEFC800037B65A /* HeartRateensorCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 19811DF61CBEFC800037B65A /* HeartRateensorCommunication.m */; };
@@ -129,6 +130,8 @@
 		1945CC451CBD80BA004505F6 /* TaoTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaoTraining.png; sourceTree = "<group>"; };
 		194DB9F11CC69CBC00546EEB /* PickerTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerTableCell.h; sourceTree = "<group>"; };
 		194DB9F21CC69CBC00546EEB /* PickerTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerTableCell.m; sourceTree = "<group>"; };
+		1971357A1CC96A470078F31B /* AddFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFoodViewController.h; sourceTree = "<group>"; };
+		1971357B1CC96A470078F31B /* AddFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFoodViewController.m; sourceTree = "<group>"; };
 		197292141CBD5B6800CD5A48 /* BluetoothDeviceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceList.h; sourceTree = "<group>"; };
 		197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothDeviceList.m; sourceTree = "<group>"; };
 		19811DF21CBEFC530037B65A /* MoovCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoovCommunication.h; sourceTree = "<group>"; };
@@ -319,6 +322,8 @@
 				19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */,
 				19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */,
 				19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */,
+				1971357A1CC96A470078F31B /* AddFoodViewController.h */,
+				1971357B1CC96A470078F31B /* AddFoodViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -580,6 +585,7 @@
 				D3B714531CC2481D00C08DD8 /* RDWebPost.m in Sources */,
 				19FDF0421CA9950F00FBE133 /* AppDelegate.m in Sources */,
 				19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */,
+				1971357C1CC96A470078F31B /* AddFoodViewController.m in Sources */,
 				19FDF03F1CA9950F00FBE133 /* main.m in Sources */,
 				10E903B51CA9A017000904DB /* CircleView.m in Sources */,
 				19FDF05F1CA996E200FBE133 /* ExerciseViewController.m in Sources */,

@@ -56,6 +56,11 @@ NSDate * methodStart;
     [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(initalizeThreadToUpdateDataOnAnotherThread) userInfo:nil repeats:YES];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -205,6 +210,13 @@ NSDate * methodStart;
                        [self.healthKitObject updateData];
                        [self.dailyTarget calculateDailyTargetAndRemainingCaloriesToBurn];
                    });
+}
+- (IBAction)addFoodLongPress:(id)sender {
+
+    if([sender state] == UIGestureRecognizerStateRecognized)
+    {
+        [self performSegueWithIdentifier:@"AddFoodSegue" sender:nil];
+    }
 }
 
 @end
