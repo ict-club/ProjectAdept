@@ -26,8 +26,13 @@
     if(self)
     {
         self.taoDevice = [[BluetoothDevice alloc] init];
-        self.taoDevice.displayName = @"Tao-Wellshell";
-        self.taoDevice.deviceName = @"TAO-AA-0051";
+        self.taoDevice.displayName = @"Tao-Wellshell 01";
+        self.taoDevice.deviceName = @"TAO-AA-0246";
+        
+        self.taoDevice2 = [[BluetoothDevice alloc] init];
+        self.taoDevice2.deviceName = @"TAO-AA-0375";
+        self.taoDevice2.displayName = @"Tao-Wellshell 02";
+        
         
         self.moovDevice = [[BluetoothDevice alloc] init];
         self.moovDevice.displayName = @"Moov";
@@ -45,13 +50,8 @@
         self.appleWatch.displayName = @"Apple watch";
         self.appleWatch.deviceName = @"AppleFukinWatch";
         self = [super init];
-        self = (BluetoothDeviceList *)[NSArray arrayWithObjects:self.adeptDevice, self.moovDevice, self.taoDevice, self.heartRateDevice, self.appleWatch, nil];
+        self = (BluetoothDeviceList *)[NSArray arrayWithObjects:self.adeptDevice, self.moovDevice, self.taoDevice, self.taoDevice2, self.heartRateDevice, self.appleWatch, nil];
         
-//        self.adeptDevice = [self objectAtIndex:0];
-//        self.moovDevice = [self objectAtIndex:1];
-//        self.taoDevice = [self objectAtIndex:2];
-//        self.heartRateDevice = [self objectAtIndex:3];
-//        self.appleWatch = [self objectAtIndex:4];
     }
     return self;
 }

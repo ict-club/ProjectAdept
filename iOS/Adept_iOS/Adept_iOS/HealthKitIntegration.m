@@ -311,7 +311,7 @@ typedef enum
 - (void) writeBodyMassToHealthKit: (double) bodyMass
 {
     
-    HKQuantity *BMquantity = [HKQuantity quantityWithUnit:[HKUnit countUnit] doubleValue:bodyMass];
+    HKQuantity *BMquantity = [HKQuantity quantityWithUnit:[HKUnit gramUnit] doubleValue:bodyMass*1000];
     HKQuantityType * BMquantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass];
     NSDate * now = [NSDate date];
     
@@ -379,6 +379,22 @@ typedef enum
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     
     return returnResult;
+}
+
+- (void) writeHeightToHealthKit: (double) height
+{
+    HKQuantity *HeightQuantity = [HKQuantity quantityWithUnit:[HKUnit meterUnit] doubleValue:height];
+    
+    HKQuantityType * HeightQuantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight];
+    NSDate * now = [NSDate date];
+    
+    HKQuantitySample *HeightSample = [HKQuantitySample quantitySampleWithType:HeightQuantityType quantity:HeightQuantity startDate:now endDate:now];
+    
+    [self.healthStore saveObject:HeightSample withCompletion:^(BOOL success, NSError *error) {
+        if (!success) {
+            NSLog(@"Error while saving heart rate (%lf) to Health Store: %@.", height, error);
+        }
+    }];
 }
 
 #pragma mark Heart Rate

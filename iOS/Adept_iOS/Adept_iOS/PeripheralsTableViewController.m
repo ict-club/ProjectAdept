@@ -94,6 +94,7 @@
         green = 204.0f/255.0f;
         blue = 204.0f/255.0f;
     }
+    device.connected = (device.device.state == CBPeripheralStateConnected);
     if([device connected] == YES)
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;

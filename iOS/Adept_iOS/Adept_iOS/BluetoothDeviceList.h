@@ -18,5 +18,6 @@
 @property (nonatomic, strong) BluetoothDevice * heartRateDevice;
 @property (nonatomic, strong) BluetoothDevice * adeptDevice;
 @property (nonatomic, strong) BluetoothDevice * appleWatch;
+@property (nonatomic, strong) BluetoothDevice * taoDevice2;
 
 @end

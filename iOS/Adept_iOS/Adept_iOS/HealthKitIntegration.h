@@ -49,6 +49,7 @@
 - (double) getCaloriesForHeartRate: (NSInteger) heartRate andTime: (NSInteger) time;
 - (double) getCaloriesForIsometricsForce: (NSInteger) isometricForce andTime:(float) time;
 - (void) writeActiveEnergyBurnedToHealthKit: (double) caloriesBurned;
+- (void) writeHeightToHealthKit: (double) height;
 
 - (NSDate *) dateOfBirth;
 - (HKBiologicalSexObject*) biologicalSex;

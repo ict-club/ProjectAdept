@@ -54,6 +54,11 @@
 		19C2259A1CB720210017D5A7 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C225991CB720210017D5A7 /* circle.png */; };
 		19C2259C1CB720260017D5A7 /* circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C2259B1CB720260017D5A7 /* circle@2x.png */; };
 		19C2259E1CB7207E0017D5A7 /* circle-48.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C2259D1CB7207E0017D5A7 /* circle-48.png */; };
+		19CE7CA31CCB75CC0090FF70 /* ResearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CE7CA21CCB75CC0090FF70 /* ResearchTableViewController.m */; };
+		19CE7CAC1CCB787B0090FF70 /* MaximumPowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CE7CAB1CCB787B0090FF70 /* MaximumPowerViewController.m */; };
+		19CE7CB21CCBB3ED0090FF70 /* research.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7CAF1CCBB3ED0090FF70 /* research.png */; };
+		19CE7CB31CCBB3ED0090FF70 /* research@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7CB01CCBB3ED0090FF70 /* research@2x.png */; };
+		19CE7CB41CCBB3ED0090FF70 /* research@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7CB11CCBB3ED0090FF70 /* research@3x.png */; };
 		19CE7E2A1CCADC9600C759C1 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E201CCADC9600C759C1 /* Icon-60@2x.png */; };
 		19CE7E2B1CCADC9600C759C1 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E211CCADC9600C759C1 /* Icon-60@3x.png */; };
 		19CE7E2C1CCADC9600C759C1 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CE7E221CCADC9600C759C1 /* Icon-76.png */; };
@@ -81,7 +86,6 @@
 		19FDF05C1CA996BA00FBE133 /* PeripheralsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF05B1CA996BA00FBE133 /* PeripheralsTableViewController.m */; };
 		19FDF05F1CA996E200FBE133 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF05E1CA996E200FBE133 /* ExerciseViewController.m */; };
 		19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */; };
-		19FDF0651CA9972400FBE133 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */; };
 		19FDF06C1CAA7DC400FBE133 /* TAO-picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */; };
 		D328F3341CCB5939006E7020 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D328F3331CCB5939006E7020 /* Foundation.framework */; };
 		D328F3361CCB5943006E7020 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D328F3351CCB5943006E7020 /* AVFoundation.framework */; };
@@ -201,6 +205,13 @@
 		19C225991CB720210017D5A7 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		19C2259B1CB720260017D5A7 /* circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle@2x.png"; sourceTree = "<group>"; };
 		19C2259D1CB7207E0017D5A7 /* circle-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-48.png"; sourceTree = "<group>"; };
+		19CE7CA11CCB75CC0090FF70 /* ResearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResearchTableViewController.h; sourceTree = "<group>"; };
+		19CE7CA21CCB75CC0090FF70 /* ResearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResearchTableViewController.m; sourceTree = "<group>"; };
+		19CE7CAA1CCB787B0090FF70 /* MaximumPowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaximumPowerViewController.h; sourceTree = "<group>"; };
+		19CE7CAB1CCB787B0090FF70 /* MaximumPowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaximumPowerViewController.m; sourceTree = "<group>"; };
+		19CE7CAF1CCBB3ED0090FF70 /* research.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = research.png; sourceTree = "<group>"; };
+		19CE7CB01CCBB3ED0090FF70 /* research@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "research@2x.png"; sourceTree = "<group>"; };
+		19CE7CB11CCBB3ED0090FF70 /* research@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "research@3x.png"; sourceTree = "<group>"; };
 		19CE7E201CCADC9600C759C1 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		19CE7E211CCADC9600C759C1 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
 		19CE7E221CCADC9600C759C1 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
@@ -240,8 +251,6 @@
 		19FDF05E1CA996E200FBE133 /* ExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseViewController.m; sourceTree = "<group>"; };
 		19FDF0601CA9970F00FBE133 /* PerformanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformanceViewController.h; sourceTree = "<group>"; };
 		19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceViewController.m; sourceTree = "<group>"; };
-		19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
-		19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TAO-picture.png"; sourceTree = "<group>"; };
 		D328F3331CCB5939006E7020 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D328F3351CCB5943006E7020 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -362,10 +371,12 @@
 				1934BCCB1CC25C3600475745 /* HeartRateExerciseViewController.m */,
 				19FDF0601CA9970F00FBE133 /* PerformanceViewController.h */,
 				19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */,
-				19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */,
-				19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */,
+				19CE7CA11CCB75CC0090FF70 /* ResearchTableViewController.h */,
+				19CE7CA21CCB75CC0090FF70 /* ResearchTableViewController.m */,
 				1971357A1CC96A470078F31B /* AddFoodViewController.h */,
 				1971357B1CC96A470078F31B /* AddFoodViewController.m */,
+				19CE7CAA1CCB787B0090FF70 /* MaximumPowerViewController.h */,
+				19CE7CAB1CCB787B0090FF70 /* MaximumPowerViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -396,6 +407,9 @@
 		19DA71951CAAF63C0078DC65 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				19CE7CAF1CCBB3ED0090FF70 /* research.png */,
+				19CE7CB01CCBB3ED0090FF70 /* research@2x.png */,
+				19CE7CB11CCBB3ED0090FF70 /* research@3x.png */,
 				19CE7E201CCADC9600C759C1 /* Icon-60@2x.png */,
 				19CE7E211CCADC9600C759C1 /* Icon-60@3x.png */,
 				19CE7E221CCADC9600C759C1 /* Icon-76.png */,
@@ -608,6 +622,7 @@
 				19C225971CB71EFE0017D5A7 /* Statistics@2x.png in Resources */,
 				19C225911CB71EFE0017D5A7 /* Profile@2x.png in Resources */,
 				19CE7E311CCADC9600C759C1 /* Icon-Small.png in Resources */,
+				19CE7CB31CCBB3ED0090FF70 /* research@2x.png in Resources */,
 				19C2258C1CB71EFE0017D5A7 /* Connections@3x.png in Resources */,
 				19C2259A1CB720210017D5A7 /* circle.png in Resources */,
 				19FDF0501CA9950F00FBE133 /* LaunchScreen.storyboard in Resources */,
@@ -617,6 +632,7 @@
 				19C225901CB71EFE0017D5A7 /* Profile.png in Resources */,
 				19C2255A1CB715180017D5A7 /* syncing@3x.png in Resources */,
 				19C225951CB71EFE0017D5A7 /* Settings@3x.png in Resources */,
+				19CE7CB41CCBB3ED0090FF70 /* research@3x.png in Resources */,
 				19C2259E1CB7207E0017D5A7 /* circle-48.png in Resources */,
 				19C225981CB71EFE0017D5A7 /* Statistics@3x.png in Resources */,
 				19C2258F1CB71EFE0017D5A7 /* Exercise@3x.png in Resources */,
@@ -629,6 +645,7 @@
 				1945CC461CBD80BA004505F6 /* AppleWatchTraining.png in Resources */,
 				19DA719A1CAB0DF30078DC65 /* calories.png in Resources */,
 				19DA719E1CAB11C40078DC65 /* mxerciseImage1axresdefault.jpg in Resources */,
+				19CE7CB21CCBB3ED0090FF70 /* research.png in Resources */,
 				19CE7E2B1CCADC9600C759C1 /* Icon-60@3x.png in Resources */,
 				19B66A301CCA889800225464 /* LogTableViewCell.xib in Resources */,
 				19C225581CB7150A0017D5A7 /* syncing@2x.png in Resources */,
@@ -656,12 +673,12 @@
 				D33448601CC86A5C00DAF4A4 /* RDWeb.m in Sources */,
 				19811DF71CBEFC800037B65A /* HeartRateensorCommunication.m in Sources */,
 				1973B6FB1CCA5D8200DD1EBF /* GraphicsTableViewCell.m in Sources */,
-				19FDF0651CA9972400FBE133 /* SettingsTableViewController.m in Sources */,
 				19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */,
 				199E0C1A1CB9B5630094B384 /* DeviceConnectionStateTableViewCell.m in Sources */,
 				1934BCCC1CC25C3600475745 /* HeartRateExerciseViewController.m in Sources */,
 				199F44691CBC340200D26FDB /* BluetoothDevice.m in Sources */,
 				199E0C151CB912C00094B384 /* DailyTarget.m in Sources */,
+				19CE7CA31CCB75CC0090FF70 /* ResearchTableViewController.m in Sources */,
 				D33448661CC88A6A00DAF4A4 /* RDBarcodeScanner.m in Sources */,
 				1998A5F81CAC802D00DA95C1 /* RDDateTime.m in Sources */,
 				197292161CBD5B6800CD5A48 /* BluetoothDeviceList.m in Sources */,
@@ -680,6 +697,7 @@
 				19811DF41CBEFC530037B65A /* MoovCommunication.m in Sources */,
 				199E0C211CB9CE040094B384 /* TAOCommunication.m in Sources */,
 				19C225521CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m in Sources */,
+				19CE7CAC1CCB787B0090FF70 /* MaximumPowerViewController.m in Sources */,
 				19FDF0591CA996A200FBE133 /* HomeViewController.m in Sources */,
 				194DB9F31CC69CBC00546EEB /* PickerTableCell.m in Sources */,
 				D33448631CC8761300DAF4A4 /* RDWebGet.m in Sources */,

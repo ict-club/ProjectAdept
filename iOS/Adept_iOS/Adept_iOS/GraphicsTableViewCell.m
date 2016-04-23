@@ -20,6 +20,8 @@
     [self.pointsArray addObject:[NSNumber numberWithInteger:arc4random()%50]];
     [self.pointsArray addObject:[NSNumber numberWithInteger:arc4random()%50]];
     [self.pointsArray addObject:[NSNumber numberWithInteger:arc4random()%50]];
+    [self.pointsArray addObject:[NSNumber numberWithInteger:arc4random()%50]];
+    [self.pointsArray addObject:[NSNumber numberWithInteger:arc4random()%50]];
 }
 
 
@@ -48,6 +50,11 @@
     return [UIColor colorWithRed:leftRed green:leftGreen blue:leftBlue alpha:1.0f];
 }
 
+- (NSString *) graphChartView:(ORKGraphChartView *)graphChartView titleForXAxisAtPointIndex:(NSInteger)pointIndex
+{
+#warning implement timestaps
+    return @"asd";
+}
 - (ORKRangedPoint *)graphChartView:(ORKGraphChartView *)graphChartView pointForPointIndex:(NSInteger)pointIndex plotIndex:(NSInteger)plotIndex
 {
     ORKRangedPoint * rangedPoint = [[ORKRangedPoint alloc] initWithValue:[[self.pointsArray objectAtIndex:pointIndex] integerValue]];

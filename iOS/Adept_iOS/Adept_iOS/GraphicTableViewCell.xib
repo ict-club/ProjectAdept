@@ -15,19 +15,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="179.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHg-tz-uVV">
+                        <rect key="frame" x="8" y="8" width="144" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S39-sl-NMJ" customClass="ORKLineGraphChartView">
-                        <rect key="frame" x="8" y="34" width="304" height="110.5"/>
+                        <rect key="frame" x="8" y="34" width="304" height="137.5"/>
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="S39-sl-NMJ" firstAttribute="top" secondItem="tHg-tz-uVV" secondAttribute="bottom" constant="2" id="8Od-VN-B0x"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="tHg-tz-uVV" secondAttribute="trailing" constant="160" id="KOP-xG-EBn"/>
                     <constraint firstItem="S39-sl-NMJ" firstAttribute="leading" secondItem="A8Y-W9-vRi" secondAttribute="leadingMargin" id="Nyd-J8-FlL"/>
+                    <constraint firstItem="tHg-tz-uVV" firstAttribute="top" secondItem="A8Y-W9-vRi" secondAttribute="topMargin" id="SDu-Dp-znh"/>
                     <constraint firstItem="S39-sl-NMJ" firstAttribute="trailing" secondItem="A8Y-W9-vRi" secondAttribute="trailingMargin" id="T8a-sR-1HJ"/>
                     <constraint firstItem="S39-sl-NMJ" firstAttribute="top" secondItem="A8Y-W9-vRi" secondAttribute="topMargin" constant="26" id="Zap-mA-aiW"/>
-                    <constraint firstItem="S39-sl-NMJ" firstAttribute="bottom" secondItem="A8Y-W9-vRi" secondAttribute="bottomMargin" constant="-27" id="z8v-9y-R50"/>
+                    <constraint firstItem="tHg-tz-uVV" firstAttribute="leading" secondItem="A8Y-W9-vRi" secondAttribute="leadingMargin" id="sUP-Sn-UVe"/>
+                    <constraint firstItem="S39-sl-NMJ" firstAttribute="bottom" secondItem="A8Y-W9-vRi" secondAttribute="bottomMargin" id="z8v-9y-R50"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="graphView" destination="S39-sl-NMJ" id="oaK-Tr-H1R"/>
+                <outlet property="graphicName" destination="tHg-tz-uVV" id="07t-vs-z3e"/>
             </connections>
             <point key="canvasLocation" x="252" y="337"/>
         </tableViewCell>

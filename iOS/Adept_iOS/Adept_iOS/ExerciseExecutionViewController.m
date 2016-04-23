@@ -88,9 +88,20 @@ NS_ENUM(NSInteger, STATE_ENUM)
 
 - (void) subscribeToIsometricCharacteristic
 {
+    CBPeripheral * TAOPeripheral;
     
-    CBPeripheral * TAOPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:2] device];
-    
+    if([(CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:2] device] state] == CBPeripheralStateConnected)
+    {
+        TAOPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:2] device];
+    }
+    else if([(CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:3] device] state] == CBPeripheralStateConnected)
+    {
+        TAOPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:3] device];
+    }
+    else
+    {
+        return;
+    }
     for(NSInteger i = [[TAOPeripheral services] count] - 1; i >= 0; i--)
     {
         CBService * aService = [[TAOPeripheral services] objectAtIndex:i];
@@ -163,7 +174,7 @@ NS_ENUM(NSInteger, STATE_ENUM)
 
 - (void) didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic ofDevice:(CBPeripheral *)peripheral andData:(NSData *)data
 {
-    if([peripheral.name isEqualToString:@"TAO-AA-0051"])
+    if([peripheral.name isEqualToString:@"TAO-AA-0246"] == YES || [peripheral.name isEqualToString: @"TAO-AA-0375"] == YES)
     {
         NSString * isometricData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         
@@ -188,7 +199,7 @@ NS_ENUM(NSInteger, STATE_ENUM)
 
 - (void) didDisconnectDevice:(CBPeripheral *)device
 {
-    if([device.name isEqualToString: @"ТАО-АА-0051"] == YES)
+    if([device.name isEqualToString: @"ТАО-АА-0246"] == YES || [device.name isEqualToString: @"ТАО-АА-0375"] == YES)
     {
         [self.bleCommunication connectToDevice:device];
     }
@@ -196,7 +207,7 @@ NS_ENUM(NSInteger, STATE_ENUM)
 
 - (void) didConnectDevice:(CBPeripheral *)device
 {
-    if([device.name isEqualToString: @"ТАО-АА-0051"] == YES)
+    if([device.name isEqualToString: @"ТАО-АА-0246"] == YES || [device.name isEqualToString: @"ТАО-АА-0375"] == YES)
     {
         [device discoverServices:nil];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void)

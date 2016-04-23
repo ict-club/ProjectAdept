@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet ORKLineGraphChartView *graphView;
 @property (strong, nonatomic) NSMutableArray * pointsArray;
+@property (weak, nonatomic) IBOutlet UILabel *graphicName;
 @property (strong, nonatomic) NSString * graphName;
 @end

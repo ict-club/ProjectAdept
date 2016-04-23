@@ -1214,7 +1214,7 @@
             </objects>
             <point key="canvasLocation" x="2694" y="-354"/>
         </scene>
-        <!--Item-->
+        <!--Statistics-->
         <scene sceneID="XnF-Yn-elZ">
             <objects>
                 <viewController id="rCu-rc-d7E" customClass="PerformanceViewController" sceneMemberID="viewController">
@@ -1244,8 +1244,8 @@
                                             <rect key="frame" x="-60" y="-14" width="121" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
-                                                <segment title="First"/>
-                                                <segment title="Second"/>
+                                                <segment title="Log"/>
+                                                <segment title="Graph"/>
                                             </segments>
                                             <connections>
                                                 <action selector="segmentControllerStateChanged:" destination="rCu-rc-d7E" eventType="valueChanged" id="AeV-xE-vys"/>
@@ -1299,7 +1299,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="Statistics.png" id="EGV-Sv-cv4"/>
+                    <tabBarItem key="tabBarItem" title="Statistics" image="Statistics.png" id="EGV-Sv-cv4"/>
                     <connections>
                         <outlet property="segmentController" destination="gaU-io-Kpe" id="Ggd-XE-TLf"/>
                         <outlet property="tableView" destination="UFX-Fq-CiY" id="Ke8-9m-cqA"/>
@@ -1430,16 +1430,33 @@
             </objects>
             <point key="canvasLocation" x="1759.5" y="387"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="5jW-82-X0u">
+        <!--Maximum Power View Controller-->
+        <scene sceneID="L0X-MY-MJu">
             <objects>
-                <tableViewController id="bqt-YU-Y3d" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aUx-QD-PVA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                <viewController id="zJf-dT-CTs" customClass="MaximumPowerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HCP-qg-fJV"/>
+                        <viewControllerLayoutGuide type="bottom" id="fZk-9G-UE6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Gy-Bl-imS">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VPa-6H-iL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-435" y="1580"/>
+        </scene>
+        <!--Research-->
+        <scene sceneID="5jW-82-X0u">
+            <objects>
+                <tableViewController id="bqt-YU-Y3d" customClass="ResearchTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="80" sectionHeaderHeight="18" sectionFooterHeight="18" id="aUx-QD-PVA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResearchKitCellIdentifier" textLabel="IiY-1d-RPe" style="IBUITableViewCellStyleDefault" id="VYW-W3-UeP">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResearchKitCellIdentifier" textLabel="IiY-1d-RPe" rowHeight="80" style="IBUITableViewCellStyleDefault" id="VYW-W3-UeP">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VYW-W3-UeP" id="CcR-ec-KHe">
@@ -1449,11 +1466,11 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IiY-1d-RPe">
                                             <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact">
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             </variation>
                                         </label>
                                     </subviews>
@@ -1465,11 +1482,14 @@
                             <outlet property="delegate" destination="bqt-YU-Y3d" id="g89-r5-sni"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="EoS-Ox-bxG"/>
+                    <tabBarItem key="tabBarItem" title="Research" image="research.png" id="EoS-Ox-bxG"/>
+                    <connections>
+                        <segue destination="zJf-dT-CTs" kind="show" identifier="MaximumPowerSegue" id="pEu-2m-lDS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="liw-76-7hW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-324" y="799"/>
+            <point key="canvasLocation" x="-435" y="784"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ml4-BL-tSR">
@@ -1532,6 +1552,7 @@
         <image name="Statistics.png" width="30" height="30"/>
         <image name="TaoTraining.png" width="1600" height="400"/>
         <image name="mxerciseImage1axresdefault.jpg" width="1280" height="720"/>
+        <image name="research.png" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
 </document>
