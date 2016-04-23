@@ -50,6 +50,7 @@
 - (double) getCaloriesForIsometricsForce: (NSInteger) isometricForce andTime:(float) time;
 - (void) writeActiveEnergyBurnedToHealthKit: (double) caloriesBurned;
 - (void) writeHeightToHealthKit: (double) height;
+- (void) writeIntakeCaloriesToHealthKit: (double) calories;
 
 - (NSDate *) dateOfBirth;
 - (HKBiologicalSexObject*) biologicalSex;

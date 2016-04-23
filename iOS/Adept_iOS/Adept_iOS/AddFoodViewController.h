@@ -11,6 +11,8 @@
 @interface AddFoodViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddFood;
 @property (weak, nonatomic) IBOutlet UIView *tableViewDataFromFood;
+@property (weak, nonatomic) IBOutlet UIView *previewView;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSString* barCodeString;

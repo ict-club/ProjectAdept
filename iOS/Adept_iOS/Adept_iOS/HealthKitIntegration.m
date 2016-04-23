@@ -571,6 +571,22 @@ typedef enum
 
 }
 
+- (void) writeIntakeCaloriesToHealthKit: (double) calories
+{
+    HKQuantity *intakeCaloriesQuantity = [HKQuantity quantityWithUnit:[HKUnit calorieUnit] doubleValue:(calories * 1000)];
+    
+    HKQuantityType * caloriesIntakeQuantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryEnergyConsumed];
+    NSDate * now = [NSDate date];
+    
+    HKQuantitySample *caloriesIntakeSample = [HKQuantitySample quantitySampleWithType:caloriesIntakeQuantityType quantity:intakeCaloriesQuantity startDate:now endDate:now];
+    
+    [self.healthStore saveObject:caloriesIntakeSample withCompletion:^(BOOL success, NSError *error) {
+        if (!success) {
+            NSLog(@"Error while saving heart rate (%lf) to Health Store: %@.", calories, error);
+        }
+    }];
+}
+
 #pragma mark - Intake and Burned Calories
 
 - (void) updateCaloriesBalance {

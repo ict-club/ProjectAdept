@@ -8,6 +8,7 @@
 
 #import "AddFoodViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "HealthKitIntegration.h"
 
 @interface AddFoodViewController () <AVCaptureMetadataOutputObjectsDelegate>
 {
@@ -46,28 +47,20 @@
     self.buttonAddFood.layer.cornerRadius = 6.5;
     self.buttonAddFood.layer.masksToBounds = YES;
     self.buttonAddFood.layer.borderWidth = 0.1;
-    self.tableViewDataFromFood.layer.cornerRadius = 6.5;
-    self.tableViewDataFromFood.layer.masksToBounds = YES;
-    self.tableViewDataFromFood.layer.borderWidth = 1.0;
+    self.previewView.layer.cornerRadius = 6.5;
+    self.previewView.layer.masksToBounds = YES;
+    self.previewView.layer.borderWidth = 1.0;
     
     
     
     _highlightView = [[UIView alloc] init];
-    _highlightView.frame = CGRectMake(0, 0, self.tableViewDataFromFood.frame.size.width, self.tableViewDataFromFood.frame.size.height);
-    _highlightView.layer.borderColor = [UIColor blackColor].CGColor;
+    _highlightView.frame = CGRectMake(0, 0, self.previewView.frame.size.width, self.previewView.frame.size.height);
+    _highlightView.layer.borderColor = [UIColor greenColor].CGColor;
     _highlightView.layer.cornerRadius = 6.5;
     _highlightView.layer.masksToBounds = YES;
     _highlightView.layer.borderWidth = 1.0;
-    [self.tableViewDataFromFood addSubview:_highlightView];
+    [self.previewView addSubview:_highlightView];
     
-//    _label = [[UILabel alloc] init];
-//    _label.frame = CGRectMake(0, self.view.bounds.size.height - 40, self.view.bounds.size.width, 40);
-//    _label.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-//    _label.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
-//    _label.textColor = [UIColor whiteColor];
-//    _label.textAlignment = NSTextAlignmentCenter;
-//    _label.text = @"(none)";
-//    [self.view addSubview:_label];
     
     _session = [[AVCaptureSession alloc] init];
     _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -87,21 +80,46 @@
     _output.metadataObjectTypes = [_output availableMetadataObjectTypes];
     
     _prevLayer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
-    _prevLayer.frame = CGRectMake(0, 0, self.tableViewDataFromFood.frame.size.width, self.tableViewDataFromFood.frame.size.height);
+    _prevLayer.frame = CGRectMake(0, 0, self.previewView.frame.size.width, self.previewView.frame.size.height);
     _prevLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     _prevLayer.cornerRadius = 6.5;
     _prevLayer.masksToBounds = YES;
     _prevLayer.borderWidth = 1.0;
-    [self.tableViewDataFromFood.layer addSublayer:_prevLayer];
+    [self.previewView.layer addSublayer:_prevLayer];
     
     [_session startRunning];
     
     [self.view bringSubviewToFront:_highlightView];
     [self.view bringSubviewToFront:_label];
 }
+
+
+
+
+#pragma mark - Button pressed handler
 - (IBAction)buttonAddFood:(id)sender {
+#warning must add to data base
     self.barCodeString = @"no code scanned";
+    if([[self.selectedArray objectAtIndex:0] length] > 0)
+    {
+        double intakeCalories = [[self.selectedArray objectAtIndex:1] doubleValue];
+        [[HealthKitIntegration sharedInstance] writeIntakeCaloriesToHealthKit: intakeCalories];
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Success" message:@"Food added to log" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [alertController addAction:action];
+        [self presentViewController:alertController animated:YES completion:nil];
+                                               
+    }
 }
+
+
+
+
+
+
+
+
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
 {
     CGRect highlightViewRect = CGRectZero;
