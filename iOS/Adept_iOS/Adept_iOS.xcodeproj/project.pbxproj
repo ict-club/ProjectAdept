@@ -83,6 +83,10 @@
 		19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */; };
 		19FDF0651CA9972400FBE133 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */; };
 		19FDF06C1CAA7DC400FBE133 /* TAO-picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */; };
+		D328F3341CCB5939006E7020 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D328F3331CCB5939006E7020 /* Foundation.framework */; };
+		D328F3361CCB5943006E7020 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D328F3351CCB5943006E7020 /* AVFoundation.framework */; };
+		D328F3381CCB5952006E7020 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D328F3371CCB5952006E7020 /* CoreGraphics.framework */; };
+		D328F33A1CCB595F006E7020 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D328F3391CCB595F006E7020 /* QuartzCore.framework */; };
 		D334485A1CC836A100DAF4A4 /* UserDataSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D33448591CC836A100DAF4A4 /* UserDataSingleton.m */; };
 		D334485D1CC83BD300DAF4A4 /* UserDataCaloriesSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D334485C1CC83BD300DAF4A4 /* UserDataCaloriesSingleton.m */; };
 		D33448601CC86A5C00DAF4A4 /* RDWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = D334485F1CC86A5C00DAF4A4 /* RDWeb.m */; };
@@ -239,6 +243,10 @@
 		19FDF0631CA9972400FBE133 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		19FDF0641CA9972400FBE133 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TAO-picture.png"; sourceTree = "<group>"; };
+		D328F3331CCB5939006E7020 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D328F3351CCB5943006E7020 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D328F3371CCB5952006E7020 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D328F3391CCB595F006E7020 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D33448581CC836A100DAF4A4 /* UserDataSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataSingleton.h; sourceTree = "<group>"; };
 		D33448591CC836A100DAF4A4 /* UserDataSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataSingleton.m; sourceTree = "<group>"; };
 		D334485B1CC83BD300DAF4A4 /* UserDataCaloriesSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataCaloriesSingleton.h; sourceTree = "<group>"; };
@@ -261,6 +269,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D328F33A1CCB595F006E7020 /* QuartzCore.framework in Frameworks */,
+				D328F3381CCB5952006E7020 /* CoreGraphics.framework in Frameworks */,
+				D328F3361CCB5943006E7020 /* AVFoundation.framework in Frameworks */,
+				D328F3341CCB5939006E7020 /* Foundation.framework in Frameworks */,
 				D33448681CC88B7000DAF4A4 /* UIKit.framework in Frameworks */,
 				19C2254A1CB6B3BA0017D5A7 /* ResearchKit.framework in Frameworks */,
 				19DA71A81CAC2BD90078DC65 /* HealthKit.framework in Frameworks */,
@@ -430,9 +442,7 @@
 		19FDF0311CA9950F00FBE133 = {
 			isa = PBXGroup;
 			children = (
-				D33448671CC88B7000DAF4A4 /* UIKit.framework */,
-				19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */,
-				19DA71A71CAC2BD90078DC65 /* HealthKit.framework */,
+				D328F3301CCB5907006E7020 /* Frameworks */,
 				19FDF03C1CA9950F00FBE133 /* Adept_iOS */,
 				19FDF03B1CA9950F00FBE133 /* Products */,
 			);
@@ -474,6 +484,20 @@
 				19FDF03E1CA9950F00FBE133 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D328F3301CCB5907006E7020 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D328F3391CCB595F006E7020 /* QuartzCore.framework */,
+				D328F3371CCB5952006E7020 /* CoreGraphics.framework */,
+				D328F3351CCB5943006E7020 /* AVFoundation.framework */,
+				D328F3331CCB5939006E7020 /* Foundation.framework */,
+				D33448671CC88B7000DAF4A4 /* UIKit.framework */,
+				19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */,
+				19DA71A71CAC2BD90078DC65 /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D33448571CC8366700DAF4A4 /* Model */ = {
