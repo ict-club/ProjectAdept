@@ -7,6 +7,8 @@
 //
 
 #import "HomeViewController.h"
+#import "RDWebPost.h"
+#import "RDWebGet.h"
 
 @interface HomeViewController ()
 
@@ -48,6 +50,8 @@ NSDate * methodStart;
                              object:nil];
     
     [self.healthKitObject initialize];
+
+    [RDWebGet executeGet];
     
 }
 

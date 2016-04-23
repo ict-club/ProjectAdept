@@ -9,7 +9,16 @@
 
 @interface RDWebPost : NSObject
 
--(void)loadDataToPostUserDataWithId:(NSInteger)Id andUserId:(NSInteger)userId andCaloriesToBeBurned:(NSInteger)caloriesToBeBurned andCaloriesBalance:(NSInteger)caloriesBalance;
--(void)loadDataToPostUserDataCaloriesWithId:(NSInteger)Id andName:(NSString*)name andAge:(NSInteger)age andTitle:(NSString*)title andOverallCondition:(NSInteger)overallCondition andRecommendedCalories:(float)recommendedCalories andPicture_small:(NSString*)picture_small andPicture_big:(NSString*)picture_big;
 
+/**
+ *	@author Martin Kuvandzhiev, 16-04-24 00:04:16
+ *
+ *	@brief Use this to post an async request to an interenet site
+ *
+ *	@param url							Destination URL
+ *	@param data							Data that are posted in body
+ *	@param notificationName	Name of the notification that will be posted to the default center when the request is complete
+ */
+
++ (void) executePostRequestWithURL: (NSURL *) url andData:(NSData *) data onCompletePostNotificationWithName: (NSString *) notificationName;
 @end

@@ -19,22 +19,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Adept_iOS/HomeViewController.m"
-            timestampString = "482962942.166928"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "-addFoodLongPress:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Adept_iOS/ResearchTableViewController.m"
             timestampString = "483110352.06301"
             startingColumnNumber = "9223372036854775807"
@@ -48,17 +32,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Adept_iOS/HealthKitIntegration.m"
-            timestampString = "483107729.591877"
+            filePath = "Adept_iOS/RDWebPost.m"
+            timestampString = "483140339.457087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
-            landmarkName = "-writeHeightToHealthKit:"
-            landmarkType = "5">
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "@implementation RDWebPost"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

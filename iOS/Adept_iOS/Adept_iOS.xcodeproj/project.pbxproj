@@ -15,6 +15,7 @@
 		1945CC481CBD80BA004505F6 /* MoovTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC441CBD80BA004505F6 /* MoovTraining.png */; };
 		1945CC491CBD80BA004505F6 /* TaoTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC451CBD80BA004505F6 /* TaoTraining.png */; };
 		194DB9F31CC69CBC00546EEB /* PickerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DB9F21CC69CBC00546EEB /* PickerTableCell.m */; };
+		1969F9AF1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1969F9AE1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m */; };
 		1971357C1CC96A470078F31B /* AddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1971357B1CC96A470078F31B /* AddFoodViewController.m */; };
 		197292161CBD5B6800CD5A48 /* BluetoothDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */; };
 		1973B6F61CCA5D6500DD1EBF /* LogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1973B6F51CCA5D6500DD1EBF /* LogTableViewCell.m */; };
@@ -93,7 +94,6 @@
 		D328F33A1CCB595F006E7020 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D328F3391CCB595F006E7020 /* QuartzCore.framework */; };
 		D334485A1CC836A100DAF4A4 /* UserDataSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D33448591CC836A100DAF4A4 /* UserDataSingleton.m */; };
 		D334485D1CC83BD300DAF4A4 /* UserDataCaloriesSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = D334485C1CC83BD300DAF4A4 /* UserDataCaloriesSingleton.m */; };
-		D33448601CC86A5C00DAF4A4 /* RDWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = D334485F1CC86A5C00DAF4A4 /* RDWeb.m */; };
 		D33448631CC8761300DAF4A4 /* RDWebGet.m in Sources */ = {isa = PBXBuildFile; fileRef = D33448621CC8761300DAF4A4 /* RDWebGet.m */; };
 		D33448661CC88A6A00DAF4A4 /* RDBarcodeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = D33448651CC88A6A00DAF4A4 /* RDBarcodeScanner.m */; };
 		D33448681CC88B7000DAF4A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33448671CC88B7000DAF4A4 /* UIKit.framework */; };
@@ -152,6 +152,8 @@
 		1945CC451CBD80BA004505F6 /* TaoTraining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaoTraining.png; sourceTree = "<group>"; };
 		194DB9F11CC69CBC00546EEB /* PickerTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerTableCell.h; sourceTree = "<group>"; };
 		194DB9F21CC69CBC00546EEB /* PickerTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerTableCell.m; sourceTree = "<group>"; };
+		1969F9AD1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdeptDataBaseInteractions.h; sourceTree = "<group>"; };
+		1969F9AE1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdeptDataBaseInteractions.m; sourceTree = "<group>"; };
 		1971357A1CC96A470078F31B /* AddFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFoodViewController.h; sourceTree = "<group>"; };
 		1971357B1CC96A470078F31B /* AddFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFoodViewController.m; sourceTree = "<group>"; };
 		197292141CBD5B6800CD5A48 /* BluetoothDeviceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceList.h; sourceTree = "<group>"; };
@@ -260,8 +262,6 @@
 		D33448591CC836A100DAF4A4 /* UserDataSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataSingleton.m; sourceTree = "<group>"; };
 		D334485B1CC83BD300DAF4A4 /* UserDataCaloriesSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataCaloriesSingleton.h; sourceTree = "<group>"; };
 		D334485C1CC83BD300DAF4A4 /* UserDataCaloriesSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataCaloriesSingleton.m; sourceTree = "<group>"; };
-		D334485E1CC86A5C00DAF4A4 /* RDWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDWeb.h; sourceTree = "<group>"; };
-		D334485F1CC86A5C00DAF4A4 /* RDWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDWeb.m; sourceTree = "<group>"; };
 		D33448611CC8761300DAF4A4 /* RDWebGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDWebGet.h; sourceTree = "<group>"; };
 		D33448621CC8761300DAF4A4 /* RDWebGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDWebGet.m; sourceTree = "<group>"; };
 		D33448641CC88A6A00DAF4A4 /* RDBarcodeScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDBarcodeScanner.h; sourceTree = "<group>"; };
@@ -291,6 +291,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1969F9B21CCC2E1800E76AC8 /* Data Base  */ = {
+			isa = PBXGroup;
+			children = (
+				1969F9AD1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.h */,
+				1969F9AE1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m */,
+			);
+			name = "Data Base ";
+			sourceTree = "<group>";
+		};
 		1998A5F51CAC656100DA95C1 /* HealthKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,8 +321,6 @@
 				199E0C221CBA5AAF0094B384 /* RDBluetoothLowEnergyDelegate.h */,
 				10F070B71CB9CC620051A053 /* RDBluetoothLowEnergy.h */,
 				10F070B81CB9CC620051A053 /* RDBluetoothLowEnergy.m */,
-				D334485E1CC86A5C00DAF4A4 /* RDWeb.h */,
-				D334485F1CC86A5C00DAF4A4 /* RDWeb.m */,
 				D33448611CC8761300DAF4A4 /* RDWebGet.h */,
 				D33448621CC8761300DAF4A4 /* RDWebGet.m */,
 				D3B714511CC2481D00C08DD8 /* RDWebPost.h */,
@@ -477,6 +484,7 @@
 				19FDF0401CA9950F00FBE133 /* AppDelegate.h */,
 				19FDF0411CA9950F00FBE133 /* AppDelegate.m */,
 				19DA71951CAAF63C0078DC65 /* Resources */,
+				1969F9B21CCC2E1800E76AC8 /* Data Base  */,
 				1998A5F91CAC804A00DA95C1 /* RapidDevelopment */,
 				199E0C1C1CB9CDA70094B384 /* Bluetooth */,
 				1998A5F51CAC656100DA95C1 /* HealthKit */,
@@ -670,7 +678,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D33448601CC86A5C00DAF4A4 /* RDWeb.m in Sources */,
 				19811DF71CBEFC800037B65A /* HeartRateensorCommunication.m in Sources */,
 				1973B6FB1CCA5D8200DD1EBF /* GraphicsTableViewCell.m in Sources */,
 				19DA718F1CAAF11A0078DC65 /* ExerciseExecutionViewController.m in Sources */,
@@ -699,6 +706,7 @@
 				19C225521CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m in Sources */,
 				19CE7CAC1CCB787B0090FF70 /* MaximumPowerViewController.m in Sources */,
 				19FDF0591CA996A200FBE133 /* HomeViewController.m in Sources */,
+				1969F9AF1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m in Sources */,
 				194DB9F31CC69CBC00546EEB /* PickerTableCell.m in Sources */,
 				D33448631CC8761300DAF4A4 /* RDWebGet.m in Sources */,
 				19DA71981CAB09310078DC65 /* ExerciseDynamicLine.m in Sources */,
