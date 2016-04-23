@@ -28,14 +28,20 @@
 {
     self.barCodeString = [NSString stringWithFormat:@""];
     
-    self.titles = [NSArray arrayWithObjects:@"Type Food:", @"Calories:", @"Fat:", @"Carbs:", @"Protein:", nil];
-    self.selectedArray = [NSArray arrayWithObjects:@"", @"", @"", @"", @"", nil];
-    self.food1 = [NSArray arrayWithObjects:@"Вафла", @"100", @"10", @"0", @"100", nil];
-    self.food2 = [NSArray arrayWithObjects:@"Вафла", @"200", @"20", @"1", @"200", nil];
-    self.food3 = [NSArray arrayWithObjects:@"Вафла", @"300", @"30", @"2", @"300", nil];
-    self.food4 = [NSArray arrayWithObjects:@"Вафла", @"400", @"40", @"3", @"400", nil];
-    self.food5 = [NSArray arrayWithObjects:@"Вафла", @"500", @"50", @"4", @"500", nil];
+#warning add valid data for foods
+    self.titles = [NSMutableArray arrayWithObjects:@"Type Food:", @"Calories:", @"Fat:", @"Carbs:", @"Protein:", @"Food Quality:", nil];
+    self.selectedArray = [NSMutableArray arrayWithObjects:@"", @"", @"", @"", @"", @"", nil];
+    self.food1 = [NSMutableArray arrayWithObjects:@"Вафла", @"100", @"10", @"0", @"100", @"Junk", nil];
+    self.food2 = [NSMutableArray arrayWithObjects:@"Кифла", @"200", @"20", @"1", @"200", @"Healthy", nil];
+    self.food3 = [NSMutableArray arrayWithObjects:@"Салам", @"300", @"30", @"2", @"300", @"Healthy", nil];
+    self.food4 = [NSMutableArray arrayWithObjects:@"Банан", @"400", @"40", @"3", @"400", @"Junk", nil];
+    self.food5 = [NSMutableArray arrayWithObjects:@"Наденичка", @"500", @"50", @"4", @"500", @"Junk", nil];
     
+    self.foodForBarCode = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                           self.food1, @"42268222",
+                           self.food2, @"0022000015532",
+                           self.food3, @"3800000600029",
+                           self.food4, @"3800214422493", nil];
     
     self.buttonAddFood.layer.cornerRadius = 6.5;
     self.buttonAddFood.layer.masksToBounds = YES;
@@ -121,9 +127,17 @@
             if (![detectionString isEqualToString:self.barCodeString]) {
                 NSLog(@"%@", detectionString);
                 self.barCodeString = detectionString;
+                NSString* key = [NSString stringWithFormat:@"%@", detectionString];
+                self.selectedArray = [self.foodForBarCode mutableArrayValueForKey:key];
+                
+                if ([self.selectedArray count] > 0) {
+                    [self.tableView reloadData];
+                } else {
+                    self.barCodeString = @"wrong barcode";
+                }
+                
                 
             }
-            //            _label.text = detectionString;
             break;
         }
     }

@@ -11,18 +11,17 @@
 @interface AddFoodViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddFood;
 @property (weak, nonatomic) IBOutlet UIView *tableViewDataFromFood;
-@property (weak, nonatomic) IBOutlet UILabel *tableViewCellTitle;
-@property (weak, nonatomic) IBOutlet UILabel *tableViewCellDetail;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSString* barCodeString;
 
-@property (nonatomic, strong) NSArray *titles;
-@property (nonatomic, strong) NSArray *selectedArray;
-@property (nonatomic, strong) NSArray *food1;
-@property (nonatomic, strong) NSArray *food2;
-@property (nonatomic, strong) NSArray *food3;
-@property (nonatomic, strong) NSArray *food4;
-@property (nonatomic, strong) NSArray *food5;
+@property (nonatomic, strong) NSMutableArray *titles;
+@property (nonatomic, strong) NSMutableArray *selectedArray;
+@property (nonatomic, strong) NSMutableArray *food1;
+@property (nonatomic, strong) NSMutableArray *food2;
+@property (nonatomic, strong) NSMutableArray *food3;
+@property (nonatomic, strong) NSMutableArray *food4;
+@property (nonatomic, strong) NSMutableArray *food5;
 
 @property (nonatomic, strong) NSMutableDictionary* foodForBarCode;
 
