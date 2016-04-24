@@ -11,9 +11,16 @@
 
 /*RESPONSIVE*/ 
 @media (max-width:1670px) {
-    .person-stats, .buttons-container {
-        margin-left: 15em;
-        margin-right:15em;
+    .person-stats {
+        margin-left: 12em;
+        margin-right:12em;
+    }
+    .buttons-container {
+        margin-left: 14em;
+        margin-right:14em;
+    }
+    .buttons-container ul {
+        margin-right:4em !important;
     }
 }
 
@@ -26,10 +33,18 @@
     }
 }
 
+@media (max-width:1510px) {
+    .buttons-container {
+        margin-left: 9.1em;
+        margin-right:9.1em;
+    }
+}
+
+
 @media (max-width:1440px) {
-    .person-stats, .buttons-container {
-        margin-left: 8em;
-        margin-right:8em;
+    .person-stats {
+        margin-left: 5em;
+        margin-right:5em;
     }
     .back {
         margin-left: 9.5em !important;
@@ -39,7 +54,7 @@
     }
 }
 
-@media (max-width:1260px) {
+@media (max-width:1280px) {
     .person-stats, .buttons-container {
         margin-left: 0em;
         margin-right:0em;
@@ -90,37 +105,38 @@
     }
 }
 
+@media (max-width:1530px) {
+    .person-stats ul li {
+        width:240px !important;  
+    }
+    .buttons-container ul li {
+        padding: 0.3em 1em !important;
+    }
+}
+
 .leftPanel {
     background-color:#3E4752;
 }
 
 .rightPanel {
-    background-color:#ECECEC;
+    background-color:white;
 }
 
 .logo {
     background: #2eb8b8; 
     height:150px;
     text-align:center;
-    padding-top:4em;
 }
 
 .logo-img {
-   width:30px;
-   height:30px;
-   /*background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/space-ship.png');*/
+   width:260px;
+   height:150px;
+   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/logo_site.png');
    background-repeat:no-repeat;
    padding:0; 
    display:inline-block;
 }
 
-.logo-text {
-    font-weight:bold;
-    color:white;
-    font-size:330%;
-    font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important; 
-    display:inline-block;
-}
 .jqx-widget-content {
     border:none;
 }
@@ -228,12 +244,11 @@ ul {
 .person-info-container {
    width:100%;
    height:150px;
-   background-image:url('/assets/space.jpg');
+   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/top.png');
    padding:0; 
    text-align:center;
-   border-bottom:3px solid #3E4752;
+   border-bottom:3px solid #33CCCC;
 }
-
 
 .person-big-img {
     width:170px;
@@ -251,7 +266,7 @@ ul {
 .person-name {
     font-size:280%;
     font-weight:bold;
-    color:#2eb8b8;
+    color:#33CCCC;
 }
 
 .person-title {
@@ -266,6 +281,7 @@ ul {
 
 .buttons-container ul {
     text-align:center;
+    margin-right:1.5em;
 }
 
 .buttons-container ul li {
@@ -276,6 +292,7 @@ ul {
     color:#808080;
     border-radius:8px;
     margin:0.25em 0.05em;
+    cursor:pointer;
 }
 
 .buttons-container ul li:hover {
@@ -297,43 +314,15 @@ ul {
 }
 
 .person-stats {
-    margin-top:18em;
+    margin-top:21em;
 }
 
 .person-stats ul{
     text-align:center;   
 }
 
-.stats-picture {
-    width:60px;
-    height:60px;
-    background-repeat:no-repeat;
-    padding:0; 
-    display: inline-block;
-    vertical-align: bottom;
-    margin-right:1em;
-    position:relative;
-    top:24px;
-}
-
-.weight-picture {
-    background-image:url('/assets/weight.png');
-}
-
-.MS-picture {
-    background-image:url('/assets/muscle.png');
-}
-
-.WBS-picture {
-    background-image:url('/assets/bone.png');
-}
-
-.CB-picture {
-    background-image:url('/assets/calories.png');
-}
-
-.RHR-picture {
-    background-image:url('/assets/hearth.png');
+.person-stats ul li{
+   width:253px;  
 }
 
 .statsTextFormat, .statsValueFormat {
@@ -349,11 +338,6 @@ ul {
      display: block;
      text-align:center;
      font-size:210%;
-     margin-left:1.85em;
-}
-
-rect {
-    fill: #ECECEC;
 }
 
 .navigation {
@@ -367,18 +351,18 @@ rect {
 }
 
 .gear {
-   background-image:url('/assets/gear.png');
+   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/gear.png');
    float:right;
    margin-right:19em;
-   margin-top:6em;
+   margin-top:5.5em;
 }
 
 .back {
-   background-image:url('/assets/back.png');
+   background-image:url('C:/Users/Asus/Documents/gitHub/ProjectAdept/FrontEnd/assets/back.png');
    display:none; 
    float:left;
    margin-left:15.5em;
-   margin-top:6em;
+   margin-top:5.5em;
 
 }
 
@@ -418,10 +402,9 @@ rect {
 .exerciseContainers ul li {
    width:180px;
    height:165px;
-   background-image:url('/assets/exercise.png');
-   background-repeat:no-repeat;
+   background-repeat: round;
    padding:0; 
-   border:2px solid #33CCCC;
+   border:2px solid #ECECEC;
 }
 
 .checkBoxes {
@@ -430,5 +413,127 @@ rect {
     left:17px;
     width:17px;
     height:17px;
+    cursor:pointer;
+}
 
+.tao li:nth-child(1) {
+    background-image:url('/assets/tao/2-SeatedAbs-L-male-Wh-720x720.jpg');
+}
+.tao li:nth-child(2) {
+    background-image:url('/assets/tao/1-ChestPress-female-Wh-720x720.jpg');
+}
+.tao li:nth-child(3) {
+    background-image:url('/assets/tao/4-SeatedStrengthStretch-male-Wh-720x720.jpg');
+}
+.tao li:nth-child(4) {
+    background-image:url('/assets/tao/5-BetweentheKnees-male-Bl-720x720.jpg');
+}
+.tao li:nth-child(5) {
+    background-image:url('/assets/tao/6-LeftBicepRightTricepPress-R-male-Bl-720x720.jpg');
+}
+.tao li:nth-child(6) {
+    background-image:url('/assets/tao/10-BehindtheBack-male-BL-720x720.jpg');
+}
+.tao li:nth-child(7) {
+    background-image:url('/assets/tao/11-SeatedOuterThighPress-R-male-Bl-720x720.jpg');
+}
+.tao li:nth-child(8) {
+    background-image:url('/assets/tao/13-ShoulderPress-L-female-Wh-720x720.jpg');
+}
+.tao li:nth-child(9) {
+    background-image:url('/assets/tao/15-ThighLift-R-male-Wh-720x720.jpg');
+}
+.tao li:nth-child(10) {
+    background-image:url('/assets/tao/17-SeatedSidePress-R-male-Bl-720x720.jpg');
+}
+.tao li:nth-child(11) {
+    background-image:url('/assets/tao/19-SeatedInnerThighPress-R-female-Wh-720x720.jpg');
+}
+.tao li:nth-child(12) {
+    background-image:url('/assets/tao/21-SeatedUpperBackPress-R-female-Wh-720x720.jpg');
+}
+.tao li:nth-child(13) {
+    background-image:url('/assets/tao/23-StandingAbs-L-male-Wh-720x720.jpg');
+}
+.tao li:nth-child(14) {
+    background-image:url('/assets/tao/25-DeltoidShoulderPress-R-male-Bl-720x720.jpg');
+}
+.tao li:nth-child(15) {
+    background-image:url('/assets/tao/27-ForearmPress-R-male-Bl-720x720.jpg');
+}
+.tao li:nth-child(16) {
+    background-image:url('/assets/tao/29-StandingInnerThighPress-R-female-Wh-720x720.jpg');
+}
+.tao li:nth-child(17) {
+    background-image:url('/assets/tao/32-StandingCalfPress-L-female-Wh-720x720.jpg');
+}
+.tao li:nth-child(18) {
+    background-image:url('/assets/tao/34-TableTopPress-R-male-Bl-720x720.jpg');
+}
+.tao li:nth-child(19) {
+    background-image:url('/assets/tao/37-StandingOuterThighPress-L-female-Wh-720x720.jpg');
+}
+.tao li:nth-child(20) {
+    background-image:url('/assets/tao/42-UnderDeskPress-R-male-Wh-720x720.jpg');
+}
+
+.adept li:nth-child(1) {
+    background-image:url('/assets/stick/1.png');
+}
+.adept li:nth-child(2) {
+    background-image:url('/assets/stick/2.png');
+}
+.adept li:nth-child(3) {
+    background-image:url('/assets/stick/3.png');
+}
+.adept li:nth-child(4) {
+    background-image:url('/assets/stick/4.png');
+}
+.adept li:nth-child(5) {
+    background-image:url('/assets/stick/5.png');
+}
+.adept li:nth-child(6) {
+    background-image:url('/assets/stick/6.png');
+}
+.adept li:nth-child(7) {
+    background-image:url('/assets/stick/7.png');
+}
+.adept li:nth-child(8) {
+    background-image:url('/assets/stick/8.png');
+}
+.adept li:nth-child(9) {
+    background-image:url('/assets/stick/9.png');
+}
+.adept li:nth-child(10) {
+    background-image:url('/assets/stick/10.png');
+}
+.adept li:nth-child(11) {
+    background-image:url('/assets/stick/11.png');
+}
+.adept li:nth-child(12) {
+    background-image:url('/assets/stick/12.png');
+}
+.adept li:nth-child(13) {
+    background-image:url('/assets/stick/13.png');
+}
+.adept li:nth-child(14) {
+    background-image:url('/assets/stick/7.png');
+}
+.adept li:nth-child(15) {
+    background-image:url('/assets/stick/1.png');
+}
+.adept li:nth-child(16) {
+    background-image:url('/assets/stick/2.png');
+}
+.adept li:nth-child(17) {
+    background-image:url('/assets/stick/3.png');
+}
+.adept li:nth-child(18) {
+    background-image:url('/assets/stick/4.png');
+}
+.adept li:nth-child(19) {
+    background-image:url('/assets/stick/5.png');
+}
+.adept li:nth-child(20) {
+    background-image:url('/assets/stick/6.png');
 }

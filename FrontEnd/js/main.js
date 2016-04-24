@@ -5,7 +5,7 @@ $(document).ready(function ()
         height: '100%',
         resizable: false,
         showSplitBar: false,
-        panels: [{ size: '346' }, { size: '82%' }]
+        panels: [{ size: '346' }]
     });
 
     $('.buttons-container ul li').on('click', function ()
@@ -26,7 +26,7 @@ $(document).ready(function ()
         clickedListElement.addClass('active');
 
         $('.buttons-container ul li').removeClass('person-active');
-        $('.buttons-container ul li:first-child').addClass('person-active');
+        $('.buttons-container ul li:nth-child(3)').addClass('person-active');
 
         var id = clickedListElement.attr('index');
         $('#person-dropdown').jqxDropDownList({ selectedIndex: id - 1 });
@@ -37,15 +37,15 @@ $(document).ready(function ()
             $('.exerciseTitles, .exerciseContainers, .back').css('display', 'none');
             $('#chart , .buttons-container, .person-stats').css('display', 'block');
             $('.gear').css('display', 'inline-block');
+            mainPageHeight();
         }, 500)
-
     });
 
     var response = new $.jqx.response();
     var documentWidth = window.innerWidth;
     if (documentWidth < 1101)
     {
-        $('#mainSplitter').jqxSplitter({ orientation: 'horizontal', panels: [{ size: '150' }, { size: '82%' }] });
+        $('#mainSplitter').jqxSplitter({ orientation: 'horizontal', panels: [{ size: '150' }] });
     }
     rightPannelWidth = $('.rightPanel').width();
     $('#chart').css('width', rightPannelWidth - 314);
@@ -62,23 +62,19 @@ $(document).ready(function ()
             documentWidth = window.innerWidth;
             if (documentWidth < 1101)
             {
-                $('#mainSplitter').jqxSplitter({ orientation: 'horizontal', panels: [{ size: '150' }, { size: '82%' }] });
+                $('#mainSplitter').jqxSplitter({ orientation: 'horizontal', panels: [{ size: '150' }] });
             } else
             {
-                $('#mainSplitter').jqxSplitter({ orientation: 'vertical', panels: [{ size: '346' }, { size: '82%' }] });
+                $('#mainSplitter').jqxSplitter({ orientation: 'vertical', panels: [{ size: '346' }] });
             }
 
             var rightPannelWidth = $('.rightPanel').width();
             $('#chart').css('width', rightPannelWidth - 314);
             $('#chart').jqxChart('refresh');
 
-            if ($('#chart').css('display') === 'none')
-            {
-                secondPageHeight();
-            } else
-            {
-                mainPageHeight();
-            }
+            secondPageHeight();
+            mainPageHeight();
+
         }
         , 1);
     });
@@ -97,7 +93,10 @@ $(document).ready(function ()
         $('.exerciseTitles, .exerciseContainers, .back').css('display', 'none');
         $('#chart , .buttons-container, .person-stats').css('display', 'block');
         $('.gear').css('display', 'inline-block');
-        mainPageHeight()
+        var rightPannelWidth = $('.rightPanel').width();
+        $('#chart').css('width', rightPannelWidth - 314);
+        $('#chart').jqxChart('refresh');
+        mainPageHeight();
     });
 
     $('.exerciseContainers ul li').on('click', function (e)
@@ -160,7 +159,7 @@ function dropDownList()
         $('.person-container ul li:nth-child(' + id + ')').addClass('active');
 
         $('.buttons-container ul li').removeClass('person-active');
-        $('.buttons-container ul li:first-child').addClass('person-active');
+        $('.buttons-container ul li:nth-child(3)').addClass('person-active');
 
         getUser(id);
         getChart(id, 'weightChart');
@@ -195,6 +194,18 @@ function chart(ChartType)
 
     'use strict';
     var chartPropertyName;
+    var newData = [], min = 99999, max = 0, dates = [];
+    for (var i = 0; i < 7; i++)
+    {
+        var oneWeekAgo = new Date();
+        oneWeekAgo.setDate(oneWeekAgo.getDate() - i);
+        var day = oneWeekAgo.getDate();
+        var month = oneWeekAgo.getMonth() + 1;
+        var year = oneWeekAgo.getFullYear();
+        var date = year + '/' + month + day;
+        dates.push(date);
+    }
+    dates.reverse();
     if (ChartType === 'weightChart')
     {
         chartPropertyName = 'Weight';
@@ -213,17 +224,56 @@ function chart(ChartType)
     }
 
     var data = JSON.parse(localStorage.getItem('chart'));
-    var dates = ['20160418', '20160419', '20160420', '20160421', '20160422'];
-    var newData = [];
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < data.length; i++)
+    {
         var temp = { 'points': dates[i], 'data': data[i][chartPropertyName] };
-        newData.push(temp); 
+        newData.push(temp);
     }
+    
+    for (var i = 0; i < newData.length; i++)
+    {
+        if (newData[i].data < min)
+        {
+            min = newData[i].data;
+        }
+        if (newData[i].data > max)
+        {
+            max = newData[i].data;
+        }
+    }
+    console.log(min,max)
+
+    
+    if (ChartType === 'weightChart')
+    {
+        min = min - 0.1;
+        max = max + 0.1;
+    } else if (ChartType === 'msChart')
+    {
+        min = min - 50;
+        max = max + 50;
+    } else if (ChartType === 'wbsChart')
+    {
+        min = min - 0.1;
+        max = max + 0.1;
+    } else if (ChartType === 'cbChart')
+    {
+        min = min - 100;
+        max = max + 100;
+    } else if (ChartType === 'rhChart')
+    {
+        min = min - 2;
+        max = max + 2;
+    }
+    
+
     var toolTipCustomFormatFn = function (value, itemIndex, serie, group, categoryValue)
     {
-        return '<div style="text-align:left"><b><i>' + categoryValue + ' : ' + value + '</i></b></div>';
+        var symbol = '/';
+        var output = [categoryValue.slice(0, 6), symbol, categoryValue.slice(6)].join('');
+        return '<div style="text-align:left"><b><i>' + output + ' : ' + value.toString().substr(0, 5) + '</i></b></div>';
     };
-
+     
     var settings = {
         title: '',
         description: '',
@@ -240,10 +290,17 @@ function chart(ChartType)
             tickMarks: { visible: true, interval: 1 },
             gridLinesInterval: { visible: true, interval: 1 },
             valuesOnTicks: false,
-            padding: { bottom: 10 }
+            padding: { bottom: 10 },
+            formatFunction: function (value)
+            {
+                var symbol = '/';
+                var output = [value.slice(0, 6), symbol, value.slice(6)].join('');
+                return output;
+            }
         },
         valueAxis: {
-            minValue: 0,
+            minValue: min,
+            maxValue: max,
             title: { text: '' },
             labels: { horizontalAlignment: 'right' }
         },
@@ -256,6 +313,10 @@ function chart(ChartType)
                         {
                             dataField: 'data',
                             symbolType: 'cirlce',
+                            formatFunction: function (value)
+                            {
+                                return value.toString().substr(0, 5);
+                            },
                             labels:
                             {
                                 visible: true,
@@ -264,6 +325,7 @@ function chart(ChartType)
                                 borderColor: '#33CCCC',
                                 borderOpacity: 0.7,
                                 padding: { left: 5, right: 5, top: 0, bottom: 0 }
+                                
                             }
                         }
                     ]
@@ -281,12 +343,12 @@ function OverallConditionCircleColor(condition)
     switch (condition)
     {
         case -2:
-            $('.person-big-img').css('border-color', '#33CCFF');
+            $('.person-big-img').css('border-color', '#ff33cc');
             break;
         case -1:
-            $('.person-big-img').css('border-color', '#33CC7F');
+            $('.person-big-img').css('border-color', '#7f33cc');
             break;
-        case -0:
+        case 0:
             $('.person-big-img').css('border-color', '#33CCCC');
             break;
         case 1:
@@ -319,13 +381,18 @@ function getUser(UserId)
         async: true,
         success: function (data)
         {
-            $('.person-name').html(data[0].Name);
+            var muscleStrength = data[0].avgForce.toString() + '.';
+            muscleStrength = muscleStrength.substr(0, muscleStrength.indexOf("."));
+            var restingHearthRate = data[0].RestingHeartRate.toString() + '.';
+            restingHearthRate = restingHearthRate.substr(0, restingHearthRate.indexOf("."));
+
+            $('.person-name').html(data[0].Name.toUpperCase());
             $('.person-title').html(data[0].Title);
             $('.weight-stats').html(data[0].Weight);
-            $('.MS-stats').html(data[0].avgForce);
+            $('.MS-stats').html(muscleStrength);
             $('.WBS-stats').html(data[0].WristCirc);
             $('.CB-stats').html(data[0].CaloriesBalance);
-            $('.RHR-stats').html(data[0].RestingHeartRate);
+            $('.RHR-stats').html(restingHearthRate);
             //$('.person-big-img').css('background-image', 'url(' + data[0].picture_big + ')');
             $('.person-big-img').css('background-image', 'url(' + photoslinks[data[0].Name] + ')');
             OverallConditionCircleColor(data[0].OverallCondition);
@@ -336,11 +403,23 @@ function getUser(UserId)
 
 function getChart(UserId, ChartType)
 {
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    var currentDate = year + '-' + month + '-' + day;
+    var oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    var pastDay = oneWeekAgo.getDate();
+    var pastMonth = oneWeekAgo.getMonth() + 1;
+    var pastYear = oneWeekAgo.getFullYear();
+    var pastDate = pastYear + '-' + pastMonth + '-' + pastDay;
+
     $.ajax({
         url: 'http://adept-adeptserver.rhcloud.com/' + ChartType,
         headers:
         {
-            'parameters': '[{"UserId":' + UserId + ', "Points":5, "FromDate":"2016-04-18", "ToDate":"2016-04-22"}]'
+            'parameters': '[{"UserId":' + UserId + ', "Points":7, "FromDate":"' + pastDate + '", "ToDate":"' + currentDate + '"}]'
         },
         method: 'GET',
         dataType: 'json',
@@ -348,6 +427,7 @@ function getChart(UserId, ChartType)
         success: function (data)
         {
             localStorage.setItem('chart', JSON.stringify(data));
+            console.log(data)
             chart(ChartType);
         }
     });
@@ -359,12 +439,12 @@ function mainPageHeight()
     var mainHeight = $('.person-info-container').height() + $('.person-stats').height() + $('.buttons-container').height() + $('#chart').height()
     if ($('#mainSplitter').jqxSplitter('orientation') === 'vertical')
     {
-        $('#mainSplitter').jqxSplitter({ height: mainHeight + 324 });
+        $('#mainSplitter').jqxSplitter({ height: mainHeight + 350 });
     } else
     {
         $('#mainSplitter').jqxSplitter({ height: mainHeight + 501 });
     }
-    
+    $('#chart').jqxChart('refresh');
 }
 
 function secondPageHeight()
@@ -381,6 +461,6 @@ function secondPageHeight()
 
 function exercisesContainers()
 {
-    $('.exerciseContainers').jqxPanel({ width: '76%', height: 180, scrollBarSize: 10 });
+    $('.exerciseContainers').jqxPanel({ width: '76%', height: 180, scrollBarSize: 8 });
 
 }
