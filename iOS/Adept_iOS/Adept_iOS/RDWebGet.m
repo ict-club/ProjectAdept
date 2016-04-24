@@ -36,7 +36,7 @@
     [downloadTask resume];
 }
 
-+ (void) executeGetRequestWithURL: (NSURL *) url andHeaders:(NSDictionary *) headers andWriteDataTo: (NSArray *) array onCompletePostNotificationWithName: (NSString *) nofitficationName
++ (void) executeGetRequestWithURL: (NSURL *) url andHeaders:(NSDictionary *) headers andWriteDataTo: (NSMutableArray *) array onCompletePostNotificationWithName: (NSString *) nofitficationName
 {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
@@ -44,11 +44,18 @@
     NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"GET";
     
-    request.allHTTPHeaderFields = headers;
     
-    __block NSArray * responseArray = [[NSArray alloc] init];
+    NSError * error;
     
-    array = responseArray;
+    NSData * postData = [NSJSONSerialization dataWithJSONObject:[headers objectForKey:[[headers allKeys] objectAtIndex: 0]] options:kNilOptions error:&error];
+    
+    NSString * postString = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+    
+    NSDictionary * postDictionary = [NSDictionary dictionaryWithObject:postString forKey:[[headers allKeys] objectAtIndex: 0]];
+    
+    request.allHTTPHeaderFields = postDictionary;
+    
+    __block NSMutableArray * responseArray = [[NSMutableArray alloc] init];
     
     NSURLSessionDownloadTask * downloadTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
