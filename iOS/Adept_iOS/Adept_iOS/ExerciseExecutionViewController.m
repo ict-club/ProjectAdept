@@ -26,6 +26,7 @@ NS_ENUM(NSInteger, STATE_ENUM)
     HealthKitIntegration * healthKit;
     NSInteger currentState;
     NSInteger repetitions;
+    NSString * connectedDeviceString;
 }
 @property NSArray* arrayPictures;;
 @property NSMutableDictionary * exerciseInformation;
@@ -54,6 +55,7 @@ NS_ENUM(NSInteger, STATE_ENUM)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     self.arrayPictures = [NSArray arrayWithObjects:@"1.png", @"2.png", @"3.png", @"4.png", @"5.png", @"6.png", nil];
     
@@ -110,14 +112,18 @@ NS_ENUM(NSInteger, STATE_ENUM)
     if([(CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:2] device] state] == CBPeripheralStateConnected)
     {
         TrainingPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:2] device];
+        connectedDeviceString = @"TAO";
     }
     else if([(CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:3] device] state] == CBPeripheralStateConnected)
     {
         TrainingPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:3] device];
+        connectedDeviceString = @"TAO";
     }
     else if([(CBPeripheral *) [[self.bluetoothDeviceList objectAtIndex:0] device] state] == CBPeripheralStateConnected)
     {
         TrainingPeripheral = (CBPeripheral *) [[self.bluetoothDeviceList objectAtIndex:0]  device];
+        connectedDeviceString = @"Adept";
+        self.exerciseImage.image = [UIImage imageNamed:@"6.png"];
     }
     else
     {
@@ -201,8 +207,6 @@ NS_ENUM(NSInteger, STATE_ENUM)
     {
         currentState = EX_STATE_WAITING_TO_START;
         repetitions += 1;
-        
-        self.exerciseImage.image = [UIImage imageNamed:[self.arrayPictures objectAtIndex:repetitions]];
         
         exerciseIndex = 0;
         self.exerciseDynamicGraphic.pointsArray = [[NSMutableArray alloc] init];
