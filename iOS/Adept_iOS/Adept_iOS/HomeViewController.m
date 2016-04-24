@@ -8,18 +8,20 @@
 
 #import "HomeViewController.h"
 #import "RDWebGet.h"
+#import "AdeptDataBaseInteractions.h"
 
 
 @interface HomeViewController ()
-
+@property AdeptDataBaseInteractions *adb;
 @end
 
 @implementation HomeViewController
-
+@synthesize adb;
 NSDate * methodStart;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     self.healthKitObject = [HealthKitIntegration sharedInstance];
     self.dailyTarget = [[DailyTarget alloc] init];
@@ -51,6 +53,16 @@ NSDate * methodStart;
     
     [self.healthKitObject initialize];
     
+    adb = [AdeptDataBaseInteractions sharedInstance];
+    [adb updateWeightChartDataForWeek];
+    [adb updateMuscleStrengthForWeek];
+    [adb updateWristBondeStructureForWeek];
+    [adb updateCaloriesBalanceForWeek];
+    [adb updateRestingHeartRateForWeek];
+    [adb updateOverallCondition];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(upadateRedrawMainCircle:) name:@"OverallConditionUpdate" object:nil];
+
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -203,7 +215,36 @@ NSDate * methodStart;
 {
     
 }
+- (void) upadateRedrawMainCircle:(NSNotification *) notification
+{
+//    NSArray * dataArray = [NSArray arrayWithArray:[notification object]];
+    NSNumber* number = [notification object];
+    
+    NSInteger integer = [number integerValue];
+        switch (integer) {
+        case -2:
+            self.mainCircleView.textString = [NSString stringWithFormat:@"Very Bad"];
+            break;
+        case -1:
+            self.mainCircleView.textString = [NSString stringWithFormat:@"Bad"];
+            break;
+        case 0:
+            self.mainCircleView.textString = [NSString stringWithFormat:@"Normal"];
+            break;
+        case 1:
+            self.mainCircleView.textString = [NSString stringWithFormat:@"Good"];
+            break;
+        case 2:
+            self.mainCircleView.textString = [NSString stringWithFormat:@"Very Good"];
+            break;
 
+            
+        default:
+            break;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.mainCircleView setNeedsDisplay];
+    });}
 - (void) initalizeThreadToUpdateDataOnAnotherThread
 {
     

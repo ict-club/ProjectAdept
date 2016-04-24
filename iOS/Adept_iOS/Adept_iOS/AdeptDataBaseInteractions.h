@@ -24,7 +24,7 @@
 
 @property (nonatomic, strong) NSArray * exerciseRecommendedExerciseArray; // hold information about recommended exercises
 
-
++ (id)sharedInstance;
 
 @property (nonatomic, strong) NSMutableArray * weightChartDataForWeek; // holds information about 7 logs for weight in the database for the last week
 
