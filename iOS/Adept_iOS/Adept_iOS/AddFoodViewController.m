@@ -33,15 +33,15 @@
 #warning add valid data for foods
     self.titles = [NSMutableArray arrayWithObjects:@"Type Food:", @"Calories:", @"Fat:", @"Carbs:", @"Protein:", @"Food Quality:", nil];
     self.selectedArray = [NSMutableArray arrayWithObjects:@"", @"", @"", @"", @"", @"", nil];
-    self.food1 = [NSMutableArray arrayWithObjects:@"Вафла", @"100", @"10", @"0", @"100", @"Junk", nil];
-    self.food2 = [NSMutableArray arrayWithObjects:@"Кифла", @"200", @"20", @"1", @"200", @"Healthy", nil];
+    self.food1 = [NSMutableArray arrayWithObjects:@"Сирене", @"246", @"11", @"20", @"15", @"Junk", nil];
+    self.food2 = [NSMutableArray arrayWithObjects:@"Кисело мляко", @"72", @"4", @"4", @"3", @"Healthy", nil];
     self.food3 = [NSMutableArray arrayWithObjects:@"Салам", @"300", @"30", @"2", @"300", @"Healthy", nil];
     self.food4 = [NSMutableArray arrayWithObjects:@"Банан", @"400", @"40", @"3", @"400", @"Junk", nil];
     self.food5 = [NSMutableArray arrayWithObjects:@"Наденичка", @"500", @"50", @"4", @"500", @"Junk", nil];
     
     self.foodForBarCode = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                           self.food1, @"42268222",
-                           self.food2, @"0022000015532",
+                           self.food1, @"3800069331728",
+                           self.food2, @"3800748002321",
                            self.food3, @"3800000600029",
                            self.food4, @"3800214422493", nil];
     
@@ -105,11 +105,12 @@
         double intakeCalories = [[self.selectedArray objectAtIndex:1] doubleValue];
         [[HealthKitIntegration sharedInstance] writeIntakeCaloriesToHealthKit: intakeCalories];
         
-        [[[ExerciseAndFoodLog sharedInstance] logArray] insertObject:@"Exercise" atIndex:[[[ExerciseAndFoodLog sharedInstance] logArray] count]];
+        [[[ExerciseAndFoodLog sharedInstance] logArray] addObject:@"Exercise"];
         
-        [[[ExerciseAndFoodLog sharedInstance] dataArray] insertObject:[NSString stringWithFormat:@"+%0.2f", intakeCalories] atIndex:[[[ExerciseAndFoodLog sharedInstance] dataArray] count]];
         
-        [[[ExerciseAndFoodLog sharedInstance] dateArray] insertObject:[NSDate date] atIndex:[[[ExerciseAndFoodLog sharedInstance] dateArray] count]];
+        [[[ExerciseAndFoodLog sharedInstance] dataArray] addObject:[NSString stringWithFormat:@"+%0.2f", intakeCalories]];
+         
+         [[[ExerciseAndFoodLog sharedInstance] dateArray] addObject:[NSDate date]];
         
         UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Success" message:@"Food added to log" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction * action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

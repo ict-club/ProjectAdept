@@ -101,6 +101,12 @@
 		D33448681CC88B7000DAF4A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33448671CC88B7000DAF4A4 /* UIKit.framework */; };
 		D3A13FA11CC3EEBF009CC8C2 /* RDReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A13FA01CC3EEBF009CC8C2 /* RDReachability.m */; };
 		D3B714531CC2481D00C08DD8 /* RDWebPost.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B714521CC2481D00C08DD8 /* RDWebPost.m */; };
+		D3E2259C1CCCE21B00831D63 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E225961CCCE21B00831D63 /* 2.png */; };
+		D3E2259D1CCCE21B00831D63 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E225971CCCE21B00831D63 /* 3.png */; };
+		D3E2259E1CCCE21B00831D63 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E225981CCCE21B00831D63 /* 4.png */; };
+		D3E2259F1CCCE21B00831D63 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E225991CCCE21B00831D63 /* 5.png */; };
+		D3E225A01CCCE21B00831D63 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E2259A1CCCE21B00831D63 /* 6.png */; };
+		D3E225A11CCCE21B00831D63 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E2259B1CCCE21B00831D63 /* 1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -277,6 +283,12 @@
 		D3A13FA01CC3EEBF009CC8C2 /* RDReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDReachability.m; sourceTree = "<group>"; };
 		D3B714511CC2481D00C08DD8 /* RDWebPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDWebPost.h; sourceTree = "<group>"; };
 		D3B714521CC2481D00C08DD8 /* RDWebPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDWebPost.m; sourceTree = "<group>"; };
+		D3E225961CCCE21B00831D63 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		D3E225971CCCE21B00831D63 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		D3E225981CCCE21B00831D63 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		D3E225991CCCE21B00831D63 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		D3E2259A1CCCE21B00831D63 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		D3E2259B1CCCE21B00831D63 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -424,6 +436,12 @@
 		19DA71951CAAF63C0078DC65 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3E225961CCCE21B00831D63 /* 2.png */,
+				D3E225971CCCE21B00831D63 /* 3.png */,
+				D3E225981CCCE21B00831D63 /* 4.png */,
+				D3E225991CCCE21B00831D63 /* 5.png */,
+				D3E2259A1CCCE21B00831D63 /* 6.png */,
+				D3E2259B1CCCE21B00831D63 /* 1.png */,
 				19CE7CAF1CCBB3ED0090FF70 /* research.png */,
 				19CE7CB01CCBB3ED0090FF70 /* research@2x.png */,
 				19CE7CB11CCBB3ED0090FF70 /* research@3x.png */,
@@ -658,6 +676,7 @@
 				19CE7E331CCADC9600C759C1 /* Icon-Small@3x.png in Resources */,
 				1945CC481CBD80BA004505F6 /* MoovTraining.png in Resources */,
 				19C225961CB71EFE0017D5A7 /* Statistics.png in Resources */,
+				D3E225A01CCCE21B00831D63 /* 6.png in Resources */,
 				19C225941CB71EFE0017D5A7 /* Settings@2x.png in Resources */,
 				19C2258A1CB71EFE0017D5A7 /* Connections.png in Resources */,
 				1945CC461CBD80BA004505F6 /* AppleWatchTraining.png in Resources */,
@@ -669,15 +688,20 @@
 				19C225581CB7150A0017D5A7 /* syncing@2x.png in Resources */,
 				19FDF06C1CAA7DC400FBE133 /* TAO-picture.png in Resources */,
 				19C225921CB71EFE0017D5A7 /* Profile@3x.png in Resources */,
+				D3E2259F1CCCE21B00831D63 /* 5.png in Resources */,
 				19C2258D1CB71EFE0017D5A7 /* Exercise.png in Resources */,
 				19CE7E321CCADC9600C759C1 /* Icon-Small@2x.png in Resources */,
 				19C2258E1CB71EFE0017D5A7 /* Exercise@2x.png in Resources */,
 				19CE7E301CCADC9600C759C1 /* Icon-Small-40@3x.png in Resources */,
+				D3E2259C1CCCE21B00831D63 /* 2.png in Resources */,
+				D3E2259E1CCCE21B00831D63 /* 4.png in Resources */,
 				19C2258B1CB71EFE0017D5A7 /* Connections@2x.png in Resources */,
 				19CE7E2A1CCADC9600C759C1 /* Icon-60@2x.png in Resources */,
 				19C2259C1CB720260017D5A7 /* circle@2x.png in Resources */,
 				19B66A2C1CCA87EC00225464 /* GraphicTableViewCell.xib in Resources */,
+				D3E225A11CCCE21B00831D63 /* 1.png in Resources */,
 				19DA719C1CAB0DF90078DC65 /* heartrate.png in Resources */,
+				D3E2259D1CCCE21B00831D63 /* 3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

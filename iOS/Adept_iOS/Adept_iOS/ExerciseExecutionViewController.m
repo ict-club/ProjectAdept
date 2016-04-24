@@ -27,6 +27,7 @@ NS_ENUM(NSInteger, STATE_ENUM)
     NSInteger currentState;
     NSInteger repetitions;
 }
+@property NSArray* arrayPictures;;
 @property NSMutableDictionary * exerciseInformation;
 @property (nonatomic, strong) NSArray * dataPoints;
 @property (nonatomic, strong) RDBluetoothLowEnergy * bleCommunication;
@@ -53,6 +54,8 @@ NS_ENUM(NSInteger, STATE_ENUM)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.arrayPictures = [NSArray arrayWithObjects:@"1.png", @"2.png", @"3.png", @"4.png", @"5.png", @"6.png", nil];
     
     self.bleCommunication = [RDBluetoothLowEnergy sharedInstance];
     self.bluetoothDeviceList = [BluetoothDeviceList sharedInstance];
@@ -147,9 +150,9 @@ NS_ENUM(NSInteger, STATE_ENUM)
     {
         [healthKit writeActiveEnergyBurnedToHealthKit:self.burnedCalories];
         
-        [[[ExerciseAndFoodLog sharedInstance] logArray] insertObject:@"Exercise" atIndex:[[[ExerciseAndFoodLog sharedInstance] logArray] count]];
-        [[[ExerciseAndFoodLog sharedInstance] dataArray] insertObject:[NSString stringWithFormat:@"-%0.2f", self.burnedCalories] atIndex:[[[ExerciseAndFoodLog sharedInstance] dataArray] count]];
-        [[[ExerciseAndFoodLog sharedInstance] dateArray] insertObject:[NSDate date] atIndex:[[[ExerciseAndFoodLog sharedInstance] dateArray] count]];
+        [[[ExerciseAndFoodLog sharedInstance] logArray] addObject:@"Exercise"];
+        [[[ExerciseAndFoodLog sharedInstance] dataArray] addObject:[NSString stringWithFormat:@"-%0.2f", self.burnedCalories]];
+        [[[ExerciseAndFoodLog sharedInstance] dateArray] addObject:[NSDate date]];
         
         
     }
@@ -198,6 +201,9 @@ NS_ENUM(NSInteger, STATE_ENUM)
     {
         currentState = EX_STATE_WAITING_TO_START;
         repetitions += 1;
+        
+        self.exerciseImage.image = [UIImage imageNamed:[self.arrayPictures objectAtIndex:repetitions]];
+        
         exerciseIndex = 0;
         self.exerciseDynamicGraphic.pointsArray = [[NSMutableArray alloc] init];
     }

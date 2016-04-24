@@ -25,6 +25,9 @@
     self = [super init];
     if(self)
     {
+        self.logArray = [[NSMutableArray alloc] init];
+        self.dataArray = [[NSMutableArray alloc] init];
+        self.dateArray = [[NSMutableArray alloc] init];
         if(![[NSUserDefaults standardUserDefaults] objectForKey:@"LogType"]) // logValue, logDate
         {
             NSArray * foodArray = [NSArray arrayWithObject:@"Лютеница"];
@@ -39,22 +42,6 @@
     return self;
 }
 
-- (NSMutableArray *) logArray
-{
-    _logArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"LogType"];
-    return _logArray;
-}
 
-- (NSMutableArray *) dataArray
-{
-    _dataArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"logValue"];
-    return _dataArray;
-}
-
-- (NSMutableArray *) dateArray
-{
-    _dateArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"logDate"];
-    return _dateArray;
-}
 
 @end
