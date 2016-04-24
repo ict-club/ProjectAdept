@@ -26,6 +26,19 @@ NS_ENUM(NSInteger, STATE_ENUM)
     NSInteger currentState;
     NSInteger repetitions;
 }
+@property NSMutableDictionary * exerciseInformation;
+@property (nonatomic, strong) NSArray * dataPoints;
+@property (nonatomic, strong) RDBluetoothLowEnergy * bleCommunication;
+@property (strong, nonatomic) BluetoothDeviceList * bluetoothDeviceList;
+@property (strong, nonatomic) HealthKitIntegration * heathKit;
+@property (strong, nonatomic) CBCharacteristic * isometricCaracteristic;
+@property (assign, nonatomic) NSInteger currentIsometricData;
+@property (assign, nonatomic) NSInteger trainingTime;
+@property (assign, nonatomic) CGFloat burnedCalories;
+@property (assign, nonatomic) NSInteger heartRateZoneMin;
+@property (assign, nonatomic) NSInteger heartRateZoneMax;
+
+@property (strong, nonatomic) CBCharacteristic * isometricCharacteristic;
 @property (weak, nonatomic) IBOutlet ExerciseStaticLine *exerciseStaticGraphic;
 @property (strong, nonatomic) IBOutlet ExerciseDynamicLine *exerciseDynamicGraphic;
 @property (weak, nonatomic) IBOutlet UIImageView *exerciseImage;

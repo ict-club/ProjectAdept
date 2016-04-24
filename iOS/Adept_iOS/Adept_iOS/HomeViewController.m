@@ -50,8 +50,6 @@ NSDate * methodStart;
                              object:nil];
     
     [self.healthKitObject initialize];
-
-    [RDWebGet executeGet];
     
 }
 

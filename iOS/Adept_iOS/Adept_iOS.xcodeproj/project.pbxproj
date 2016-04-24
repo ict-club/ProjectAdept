@@ -16,6 +16,7 @@
 		1945CC491CBD80BA004505F6 /* TaoTraining.png in Resources */ = {isa = PBXBuildFile; fileRef = 1945CC451CBD80BA004505F6 /* TaoTraining.png */; };
 		194DB9F31CC69CBC00546EEB /* PickerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DB9F21CC69CBC00546EEB /* PickerTableCell.m */; };
 		1969F9AF1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1969F9AE1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m */; };
+		1969F9B51CCC407B00E76AC8 /* RestingHeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1969F9B41CCC407B00E76AC8 /* RestingHeartRateViewController.m */; };
 		1971357C1CC96A470078F31B /* AddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1971357B1CC96A470078F31B /* AddFoodViewController.m */; };
 		197292161CBD5B6800CD5A48 /* BluetoothDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */; };
 		1973B6F61CCA5D6500DD1EBF /* LogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1973B6F51CCA5D6500DD1EBF /* LogTableViewCell.m */; };
@@ -154,6 +155,8 @@
 		194DB9F21CC69CBC00546EEB /* PickerTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerTableCell.m; sourceTree = "<group>"; };
 		1969F9AD1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdeptDataBaseInteractions.h; sourceTree = "<group>"; };
 		1969F9AE1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdeptDataBaseInteractions.m; sourceTree = "<group>"; };
+		1969F9B31CCC407B00E76AC8 /* RestingHeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestingHeartRateViewController.h; sourceTree = "<group>"; };
+		1969F9B41CCC407B00E76AC8 /* RestingHeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestingHeartRateViewController.m; sourceTree = "<group>"; };
 		1971357A1CC96A470078F31B /* AddFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFoodViewController.h; sourceTree = "<group>"; };
 		1971357B1CC96A470078F31B /* AddFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFoodViewController.m; sourceTree = "<group>"; };
 		197292141CBD5B6800CD5A48 /* BluetoothDeviceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceList.h; sourceTree = "<group>"; };
@@ -384,6 +387,8 @@
 				1971357B1CC96A470078F31B /* AddFoodViewController.m */,
 				19CE7CAA1CCB787B0090FF70 /* MaximumPowerViewController.h */,
 				19CE7CAB1CCB787B0090FF70 /* MaximumPowerViewController.m */,
+				1969F9B31CCC407B00E76AC8 /* RestingHeartRateViewController.h */,
+				1969F9B41CCC407B00E76AC8 /* RestingHeartRateViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -697,6 +702,7 @@
 				19FDF03F1CA9950F00FBE133 /* main.m in Sources */,
 				10E903B51CA9A017000904DB /* CircleView.m in Sources */,
 				19FDF05F1CA996E200FBE133 /* ExerciseViewController.m in Sources */,
+				1969F9B51CCC407B00E76AC8 /* RestingHeartRateViewController.m in Sources */,
 				10F070B91CB9CC620051A053 /* RDBluetoothLowEnergy.m in Sources */,
 				19FDF05C1CA996BA00FBE133 /* PeripheralsTableViewController.m in Sources */,
 				1998A5F41CAC654E00DA95C1 /* HealthKitIntegration.m in Sources */,

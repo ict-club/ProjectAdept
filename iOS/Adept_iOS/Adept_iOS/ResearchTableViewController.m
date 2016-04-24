@@ -15,6 +15,7 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
     RKTV_ADD_HEALTH_DATA = 0,
     RKTV_ADD_FOOD,
     RKTV_MEASURE_MAX_STRENGTH,
+    RKTV_MEASURE_REST_HR,
     RKTV_PHYCO_DIAGNOZE
 };
 @interface ResearchTableViewController () <ORKTaskViewControllerDelegate>
@@ -44,7 +45,7 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 
@@ -61,6 +62,10 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
     else if(indexPath.row == RKTV_MEASURE_MAX_STRENGTH)
     {
         cell.textLabel.text = @"Measure max strength";
+    }
+    else if(indexPath.row == RKTV_MEASURE_REST_HR)
+    {
+        cell.textLabel.text = @"Measure resting heart rate";
     }
     else if(indexPath.row == RKTV_PHYCO_DIAGNOZE)
     {
@@ -87,12 +92,17 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
     }
     else if(indexPath.row == RKTV_ADD_FOOD)
     {
-        
+        [self performSegueWithIdentifier:@"AddFoodSegue" sender:nil];
     }
     else if(indexPath.row == RKTV_MEASURE_MAX_STRENGTH)
     {
-        
+        [self performSegueWithIdentifier:@"MeasureMaxPowerSegue" sender:nil];
     }
+    else if(indexPath.row == RKTV_MEASURE_REST_HR)
+    {
+        [self performSegueWithIdentifier:@"MeasureRestingHRSegue" sender:nil];
+    }
+
     else if(indexPath.row == RKTV_PHYCO_DIAGNOZE)
     {
         

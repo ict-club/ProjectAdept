@@ -31,7 +31,7 @@
 
 - (void) subscribeToHRCharacteristic
 {
-    CBPeripheral * HRPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:3] device];
+    CBPeripheral * HRPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:4] device];
     
     for(CBService * aService in [HRPeripheral services])
     {
