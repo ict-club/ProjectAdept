@@ -9,6 +9,7 @@
 #import "PerformanceViewController.h"
 #import "GraphicsTableViewCell.h"
 #import "LogTableViewCell.h"
+#import "ExerciseAndFoodLog.h"
 
 @interface PerformanceViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentController;
@@ -51,7 +52,8 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    if(self.segmentController.selectedSegmentIndex == 0) return [[[ExerciseAndFoodLog sharedInstance] logArray] count];
+    else return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,7 +63,19 @@
     {
         LogTableViewCell * logTableViewCell = (LogTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"LogTableViewCellIdentifier" forIndexPath:indexPath];
         
-        logTableViewCell.logTypeLabel.text = @"asddsa";
+        
+        logTableViewCell.logTypeLabel.text = [[[ExerciseAndFoodLog sharedInstance] logArray] objectAtIndex:indexPath.row];
+        
+        logTableViewCell.dataLabel.text = [NSString stringWithFormat:@"%@ kCal",[[[ExerciseAndFoodLog sharedInstance] dataArray] objectAtIndex:indexPath.row]];
+        
+        NSDate * logDate = [[[ExerciseAndFoodLog sharedInstance] dateArray] objectAtIndex:indexPath.row];
+        
+        NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterShortStyle];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        formatter.doesRelativeDateFormatting = YES;
+        logTableViewCell.dateTimeLabel.text = [formatter stringFromDate:logDate];
+
         self.tableView.rowHeight = 60.0f;
         tableViewCell = logTableViewCell;
     }

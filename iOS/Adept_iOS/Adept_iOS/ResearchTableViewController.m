@@ -16,9 +16,13 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
     RKTV_ADD_FOOD,
     RKTV_MEASURE_MAX_STRENGTH,
     RKTV_MEASURE_REST_HR,
-    RKTV_PHYCO_DIAGNOZE
+    RKTV_PHYCO_DIAGNOZE,
+    RKTV_ILLNESS_SYMPTOMS
 };
 @interface ResearchTableViewController () <ORKTaskViewControllerDelegate>
+{
+    NSInteger selectedTest;
+}
 @property ORKTaskViewController * PollViewController;
 @end
 @implementation ResearchTableViewController 
@@ -38,6 +42,10 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
     // Dispose of any resources that can be recreated.
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    selectedTest = 0;
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -45,7 +53,7 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 
@@ -67,6 +75,11 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
     {
         cell.textLabel.text = @"Measure resting heart rate";
     }
+    else if(indexPath.row == RKTV_ILLNESS_SYMPTOMS)
+    {
+        cell.textLabel.text = @"Record illness condition";
+    }
+
     else if(indexPath.row == RKTV_PHYCO_DIAGNOZE)
     {
         cell.textLabel.text = @"Record phyco data";
@@ -89,6 +102,7 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
     if(indexPath.row == RKTV_ADD_HEALTH_DATA)
     {
         [self addBodyDataInfo];
+        selectedTest = RKTV_ADD_HEALTH_DATA;
     }
     else if(indexPath.row == RKTV_ADD_FOOD)
     {
@@ -102,10 +116,15 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
     {
         [self performSegueWithIdentifier:@"MeasureRestingHRSegue" sender:nil];
     }
-
+    else if(indexPath.row == RKTV_ILLNESS_SYMPTOMS)
+    {
+        [self illnessTest];
+        selectedTest = RKTV_ILLNESS_SYMPTOMS;
+    }
     else if(indexPath.row == RKTV_PHYCO_DIAGNOZE)
     {
-        
+        [self psycoTest];
+        selectedTest = RKTV_PHYCO_DIAGNOZE;
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -132,12 +151,23 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
         case ORKTaskViewControllerFinishReasonCompleted:
             
         {
+            if(selectedTest == RKTV_ADD_HEALTH_DATA)
+            {
             NSNumber * weight = [(ORKNumericQuestionResult *)[[[taskViewController.result stepResultForStepIdentifier:@"weightIdentificator"] results] objectAtIndex:0] numericAnswer];
             NSNumber * height = [(ORKNumericQuestionResult *)[[[taskViewController.result stepResultForStepIdentifier:@"heightIdentificator"] results] objectAtIndex:0] numericAnswer];
             NSNumber * writeSize = [(ORKNumericQuestionResult *)[[[taskViewController.result stepResultForStepIdentifier:@"wristSizeIdentificator"] results] objectAtIndex:0] numericAnswer];
             [[HealthKitIntegration sharedInstance] writeHeightToHealthKit:((double)[height integerValue]/100.0f)];
             [[HealthKitIntegration sharedInstance] writeBodyMassToHealthKit:(double)([weight doubleValue])];
 #warning must add this data to internet;
+            }
+            else if(selectedTest == RKTV_PHYCO_DIAGNOZE)
+            {
+                
+            }
+            else if(selectedTest == RKTV_ILLNESS_SYMPTOMS)
+            {
+                
+            }
         }
 
             break;
@@ -145,10 +175,76 @@ NS_ENUM(NSInteger, ResearchTableViewCellTypeEnum)
         default:
             break;
     }
+    
+    selectedTest = 0;
 }
 
+- (void) psycoTest
+{
+    ORKScaleAnswerFormat * feelingAnswer = [ORKScaleAnswerFormat scaleAnswerFormatWithMaximumValue:10 minimumValue:0 defaultValue:5 step:1 vertical:NO maximumValueDescription:@"Perfect" minimumValueDescription:@"Very bad"];
+    ORKQuestionStep * feelingStep = [ORKQuestionStep questionStepWithIdentifier:@"feelingIdentifier" title:@"How do you feel today from the scale of 1 to 10" answer:feelingAnswer];
+    
+    
+    ORKNumericAnswerFormat * sleepHours = [ORKNumericAnswerFormat decimalAnswerFormatWithUnit:@"Hours"];
+    sleepHours.minimum = @(0);
+    sleepHours.maximum = @(20);
+    ORKQuestionStep * sleepQuestion = [ORKQuestionStep questionStepWithIdentifier:@"sleepIdentifier" title:@"How many hours did you sleep last night" answer:sleepHours];
+    
+    
+    ORKScaleAnswerFormat * sleepQuality = [ORKScaleAnswerFormat scaleAnswerFormatWithMaximumValue:10 minimumValue:0 defaultValue:5 step:1 vertical:NO maximumValueDescription:@"Perfect" minimumValueDescription:@"Very bad"];
+    ORKQuestionStep * sleepQualityStep = [ORKQuestionStep questionStepWithIdentifier:@"sleepQualityIdentifier" title:@"Evaluate your last night sleep on the scale from 1 to 10" answer:sleepQuality];
+    
+    
+    ORKScaleAnswerFormat * agressionAnswer = [ORKScaleAnswerFormat scaleAnswerFormatWithMaximumValue:10 minimumValue:0 defaultValue:5 step:1 vertical:NO maximumValueDescription:@"Very Agressive" minimumValueDescription:@"Not agressive"];
+     ORKQuestionStep * agressionStep = [ORKQuestionStep questionStepWithIdentifier:@"agressionIdentifier" title:@"How agressive do you feel on the scale from 0 to 10" answer:agressionAnswer];
+    
+    
+    ORKOrderedTask *task =
+    [[ORKOrderedTask alloc] initWithIdentifier:@"Identifier"
+                                         steps:@[feelingStep, sleepQuestion ,sleepQualityStep, agressionStep]];
+    
+    ORKTaskViewController *taskViewController =
+    [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
+    taskViewController.delegate = self;
+    
+    // Present the task view controller.
+    [self presentViewController:taskViewController animated:YES completion:nil];
 
+}
 
+- (void) illnessTest
+{
+    ORKScaleAnswerFormat * illnessIndicator = [ORKScaleAnswerFormat scaleAnswerFormatWithMaximumValue:10 minimumValue:0 defaultValue:5 step:1 vertical:NO maximumValueDescription:@"Perfect" minimumValueDescription:@"Very bad"];
+    ORKQuestionStep * feelingStep = [ORKQuestionStep questionStepWithIdentifier:@"feelingIdentifier" title:@"Evaluate you current condition on the scale from 0 to 10" answer:illnessIndicator];
+    
+    
+    ORKNumericAnswerFormat * sleepHours = [ORKNumericAnswerFormat decimalAnswerFormatWithUnit:@"Hours"];
+    sleepHours.minimum = @(0);
+    sleepHours.maximum = @(20);
+    ORKQuestionStep * sleepQuestion = [ORKQuestionStep questionStepWithIdentifier:@"sleepIdentifier" title:@"How many hours did you sleep last night" answer:sleepHours];
+    
+    ORKScaleAnswerFormat * sleepQuality = [ORKScaleAnswerFormat scaleAnswerFormatWithMaximumValue:10 minimumValue:0 defaultValue:5 step:1 vertical:NO maximumValueDescription:@"Perfect" minimumValueDescription:@"Very bad"];
+    ORKQuestionStep * sleepQualityStep = [ORKQuestionStep questionStepWithIdentifier:@"sleepQualityIdentifier" title:@"Evaluate you current condition on the scale from 0 to 10" answer:sleepQuality];
+    
+    
+    ORKTextAnswerFormat * symptoms = [ORKTextAnswerFormat textAnswerFormat];
+    ORKQuestionStep * symptomsQuestion = [ORKQuestionStep questionStepWithIdentifier:@"symptoms" title:@"Describe your symptoms" answer:symptoms];
+    
+    ORKOrderedTask *task =
+    [[ORKOrderedTask alloc] initWithIdentifier:@"Identifier"
+                                         steps:@[feelingStep, sleepQuestion, sleepQualityStep, symptomsQuestion]];
+    
+    
+    ORKTaskViewController *taskViewController =
+    [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
+    taskViewController.delegate = self;
+    
+    // Present the task view controller.
+    [self presentViewController:taskViewController animated:YES completion:nil];
+
+    
+
+}
 - (void) addBodyDataInfo
 {
     

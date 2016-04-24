@@ -18,7 +18,6 @@
     
     self.bleCommunication = [RDBluetoothLowEnergy sharedInstance];
     self.bleDevices = [BluetoothDeviceList sharedInstance];
-    
     return YES;
 }
 

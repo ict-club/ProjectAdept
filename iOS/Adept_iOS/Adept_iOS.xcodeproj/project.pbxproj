@@ -17,6 +17,7 @@
 		194DB9F31CC69CBC00546EEB /* PickerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DB9F21CC69CBC00546EEB /* PickerTableCell.m */; };
 		1969F9AF1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1969F9AE1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m */; };
 		1969F9B51CCC407B00E76AC8 /* RestingHeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1969F9B41CCC407B00E76AC8 /* RestingHeartRateViewController.m */; };
+		1969F9BE1CCCD23C00E76AC8 /* ExerciseAndFoodLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1969F9BD1CCCD23C00E76AC8 /* ExerciseAndFoodLog.m */; };
 		1971357C1CC96A470078F31B /* AddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1971357B1CC96A470078F31B /* AddFoodViewController.m */; };
 		197292161CBD5B6800CD5A48 /* BluetoothDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 197292151CBD5B6800CD5A48 /* BluetoothDeviceList.m */; };
 		1973B6F61CCA5D6500DD1EBF /* LogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1973B6F51CCA5D6500DD1EBF /* LogTableViewCell.m */; };
@@ -157,6 +158,8 @@
 		1969F9AE1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdeptDataBaseInteractions.m; sourceTree = "<group>"; };
 		1969F9B31CCC407B00E76AC8 /* RestingHeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestingHeartRateViewController.h; sourceTree = "<group>"; };
 		1969F9B41CCC407B00E76AC8 /* RestingHeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestingHeartRateViewController.m; sourceTree = "<group>"; };
+		1969F9BC1CCCD23C00E76AC8 /* ExerciseAndFoodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseAndFoodLog.h; sourceTree = "<group>"; };
+		1969F9BD1CCCD23C00E76AC8 /* ExerciseAndFoodLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseAndFoodLog.m; sourceTree = "<group>"; };
 		1971357A1CC96A470078F31B /* AddFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFoodViewController.h; sourceTree = "<group>"; };
 		1971357B1CC96A470078F31B /* AddFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFoodViewController.m; sourceTree = "<group>"; };
 		197292141CBD5B6800CD5A48 /* BluetoothDeviceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceList.h; sourceTree = "<group>"; };
@@ -299,6 +302,8 @@
 			children = (
 				1969F9AD1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.h */,
 				1969F9AE1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m */,
+				1969F9BC1CCCD23C00E76AC8 /* ExerciseAndFoodLog.h */,
+				1969F9BD1CCCD23C00E76AC8 /* ExerciseAndFoodLog.m */,
 			);
 			name = "Data Base ";
 			sourceTree = "<group>";
@@ -715,6 +720,7 @@
 				1969F9AF1CCC2E0400E76AC8 /* AdeptDataBaseInteractions.m in Sources */,
 				194DB9F31CC69CBC00546EEB /* PickerTableCell.m in Sources */,
 				D33448631CC8761300DAF4A4 /* RDWebGet.m in Sources */,
+				1969F9BE1CCCD23C00E76AC8 /* ExerciseAndFoodLog.m in Sources */,
 				19DA71981CAB09310078DC65 /* ExerciseDynamicLine.m in Sources */,
 				19DA71921CAAF5DA0078DC65 /* ExerciseStaticLine.m in Sources */,
 				19811DFA1CBEFC970037B65A /* AdeptStickCommunication.m in Sources */,

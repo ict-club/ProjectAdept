@@ -44,7 +44,7 @@
         
         self.adeptDevice = [[BluetoothDevice alloc] init];
         self.adeptDevice.displayName = @"Adept Stick";
-        self.adeptDevice.deviceName = @"AdeptStick";
+        self.adeptDevice.deviceName = @"BT05";
         
         self.appleWatch = [[BluetoothDevice alloc] init];
         self.appleWatch.displayName = @"Apple watch";

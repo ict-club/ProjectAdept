@@ -10,6 +10,7 @@
 #import "ExerciseStaticLine.h"
 #import "ExerciseDynamicLine.h"
 #import "HealthKitIntegration.h"
+#import "ExerciseAndFoodLog.h"
 
 NS_ENUM(NSInteger, STATE_ENUM)
 {
@@ -101,28 +102,38 @@ NS_ENUM(NSInteger, STATE_ENUM)
 
 - (void) subscribeToIsometricCharacteristic
 {
-    CBPeripheral * TAOPeripheral;
+    CBPeripheral * TrainingPeripheral;
     
     if([(CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:2] device] state] == CBPeripheralStateConnected)
     {
-        TAOPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:2] device];
+        TrainingPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:2] device];
     }
     else if([(CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:3] device] state] == CBPeripheralStateConnected)
     {
-        TAOPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:3] device];
+        TrainingPeripheral = (CBPeripheral *)[[self.bluetoothDeviceList objectAtIndex:3] device];
+    }
+    else if([(CBPeripheral *) [[self.bluetoothDeviceList objectAtIndex:0] device] state] == CBPeripheralStateConnected)
+    {
+        TrainingPeripheral = (CBPeripheral *) [[self.bluetoothDeviceList objectAtIndex:0]  device];
     }
     else
     {
         return;
     }
-    for(NSInteger i = [[TAOPeripheral services] count] - 1; i >= 0; i--)
+    for(NSInteger i = [[TrainingPeripheral services] count] - 1; i >= 0; i--)
     {
-        CBService * aService = [[TAOPeripheral services] objectAtIndex:i];
+        CBService * aService = [[TrainingPeripheral services] objectAtIndex:i];
         for(CBMutableCharacteristic * aCharacteristic in aService.characteristics)
         {
             if([aCharacteristic.UUID  isEqual: [CBUUID UUIDWithString:@"5A01"]] == YES)
             {
-                [TAOPeripheral setNotifyValue:YES forCharacteristic:aCharacteristic];
+                [TrainingPeripheral setNotifyValue:YES forCharacteristic:aCharacteristic];
+                self.isometricCaracteristic = aCharacteristic;
+                break;
+            }
+            else if([aCharacteristic.UUID isEqual:[CBUUID UUIDWithString:@"0000ffe1-0000-1000-8000-00805f9b34fb"]])
+            {
+                [TrainingPeripheral setNotifyValue:YES forCharacteristic:aCharacteristic];
                 self.isometricCaracteristic = aCharacteristic;
                 break;
             }
@@ -132,7 +143,18 @@ NS_ENUM(NSInteger, STATE_ENUM)
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    if(self.burnedCalories > 0)[healthKit writeActiveEnergyBurnedToHealthKit:self.burnedCalories];
+    if(self.burnedCalories > 0)
+    {
+        [healthKit writeActiveEnergyBurnedToHealthKit:self.burnedCalories];
+        
+        [[[ExerciseAndFoodLog sharedInstance] logArray] insertObject:@"Exercise" atIndex:[[[ExerciseAndFoodLog sharedInstance] logArray] count]];
+        [[[ExerciseAndFoodLog sharedInstance] dataArray] insertObject:[NSString stringWithFormat:@"-%0.2f", self.burnedCalories] atIndex:[[[ExerciseAndFoodLog sharedInstance] dataArray] count]];
+        [[[ExerciseAndFoodLog sharedInstance] dateArray] insertObject:[NSDate date] atIndex:[[[ExerciseAndFoodLog sharedInstance] dateArray] count]];
+        
+        
+    }
+    
+        
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -187,7 +209,7 @@ NS_ENUM(NSInteger, STATE_ENUM)
 
 - (void) didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic ofDevice:(CBPeripheral *)peripheral andData:(NSData *)data
 {
-    if([peripheral.name isEqualToString:@"TAO-AA-0246"] == YES || [peripheral.name isEqualToString: @"TAO-AA-0375"] == YES)
+    if([peripheral.name isEqualToString:@"TAO-AA-0246"] == YES || [peripheral.name isEqualToString: @"TAO-AA-0375"] == YES || [peripheral.name isEqualToString:@"BT05"] == YES)
     {
         NSString * isometricData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         

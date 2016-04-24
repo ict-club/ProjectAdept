@@ -8,6 +8,7 @@
 
 #import "AddFoodViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "ExerciseAndFoodLog.h"
 #import "HealthKitIntegration.h"
 
 @interface AddFoodViewController () <AVCaptureMetadataOutputObjectsDelegate>
@@ -98,12 +99,18 @@
 
 #pragma mark - Button pressed handler
 - (IBAction)buttonAddFood:(id)sender {
-#warning must add to data base
     self.barCodeString = @"no code scanned";
     if([[self.selectedArray objectAtIndex:0] length] > 0)
     {
         double intakeCalories = [[self.selectedArray objectAtIndex:1] doubleValue];
         [[HealthKitIntegration sharedInstance] writeIntakeCaloriesToHealthKit: intakeCalories];
+        
+        [[[ExerciseAndFoodLog sharedInstance] logArray] insertObject:@"Exercise" atIndex:[[[ExerciseAndFoodLog sharedInstance] logArray] count]];
+        
+        [[[ExerciseAndFoodLog sharedInstance] dataArray] insertObject:[NSString stringWithFormat:@"+%0.2f", intakeCalories] atIndex:[[[ExerciseAndFoodLog sharedInstance] dataArray] count]];
+        
+        [[[ExerciseAndFoodLog sharedInstance] dateArray] insertObject:[NSDate date] atIndex:[[[ExerciseAndFoodLog sharedInstance] dateArray] count]];
+        
         UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Success" message:@"Food added to log" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction * action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         }];
