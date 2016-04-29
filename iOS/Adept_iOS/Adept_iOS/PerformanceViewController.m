@@ -83,6 +83,25 @@
     {
         GraphicsTableViewCell * graphicTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"GraphicTableViewCellIdentifier" forIndexPath:indexPath];
         self.tableView.rowHeight = 180.0f;
+        switch (indexPath.row) {
+            case 0:
+                graphicTableViewCell.graphicName.text = @"Wrist size";
+                break;
+            case 1:
+                graphicTableViewCell.graphicName.text = @"Max power";
+                break;
+            case 2:
+                graphicTableViewCell.graphicName.text = @"Calories balance";
+                break;
+            case 3:
+                graphicTableViewCell.graphicName.text = @"Calories left to be burned";
+                break;
+            case 4:
+                graphicTableViewCell.graphicName.text = @"BMI";
+                break;
+            default:
+                break;
+        }
         tableViewCell = graphicTableViewCell;
     }
     

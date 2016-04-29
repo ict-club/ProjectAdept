@@ -53,7 +53,32 @@
 - (NSString *) graphChartView:(ORKGraphChartView *)graphChartView titleForXAxisAtPointIndex:(NSInteger)pointIndex
 {
 #warning implement timestaps
-    return @"asd";
+    switch (pointIndex) {
+        case 0:
+            return @"Mon";
+            break;
+        case 1:
+            return @"Tue";
+            break;
+        case 2:
+            return @"Wed";
+            break;
+        case 3:
+            return @"Thur";
+            break;
+        case 4:
+            return @"Fr";
+            break;
+        case 5:
+            return @"Sat";
+            break;
+        case 6:
+            return @"Sun";
+            break;
+        default:
+            return @"Mon";
+            break;
+    }
 }
 - (ORKRangedPoint *)graphChartView:(ORKGraphChartView *)graphChartView pointForPointIndex:(NSInteger)pointIndex plotIndex:(NSInteger)plotIndex
 {
