@@ -7,6 +7,7 @@ Current development:
 * More foods for barcode scanning are being added - Peter Lazarov
 * Prepairing application for Apple App Store release - Martin Kuvandzhiev
 * Medics and researcher site improvement - Ivo Zhulev
+* Hardware schematic optimisation - George Velev
 
 #####Target for the Q2 of 2016:
 - [x] TAO-Wellness device support
