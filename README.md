@@ -1,5 +1,10 @@
 # ProjectAdept
 
+####Adept Quickstart guide: [click to open](https://github.com/ict-club/ProjectAdept/blob/master/Documentation/Adept%20Stick%20User%20Manual.pdf)
+
+####Adept iOS Application design and user manual: [click to open](https://github.com/ict-club/ProjectAdept/blob/master/Documentation/Adept_iOS_App_Doc.pdf)
+
+#### More documents available [here](https://github.com/ict-club/ProjectAdept/tree/master/Documentation)
 ###Currently only user 3 (Martin Kuvandzhiev) has valid data in the database and the [web interface](adept.rapiddevcrew.com) !
 
 Current development:
