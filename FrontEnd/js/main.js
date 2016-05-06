@@ -74,7 +74,6 @@ $(document).ready(function ()
 
             secondPageHeight();
             mainPageHeight();
-
         }
         , 1);
     });
@@ -124,7 +123,7 @@ $(document).ready(function ()
 
 function dropDownList()
 {
-    var photoslinks = ['./assets/people/60_borkata.png', './assets/people/60_ivo.jpg', './assets/people/60_marto.jpg', './assets/people/60_petar.jpg',
+    var photoslinks = ['./assets/people/60_marto.jpg', './assets/people/60_ivo.jpg', './assets/people/60_borkata.png', './assets/people/60_petar.jpg',
                        './assets/people/60_evgeni.jpg', './assets/people/60_kosio.jpg', './assets/people/60_teodora.jpg', './assets/people/60_joro.jpg'
     ];
     var users = JSON.parse(localStorage.getItem('usersDB'));
@@ -133,7 +132,8 @@ function dropDownList()
     {
         names.push(users[i].Name);
     }
-
+    names[0] = "Martin Kuvandzhiev";
+    names[2] = "Borislav Filipov";
     $('#person-dropdown').jqxDropDownList({
         selectedIndex: 0, source: names, theme: 'metrodark', width: 400, height: 65, autoItemsHeight: true, dropDownHeight: 300,
         renderer: function (index, label, value)
@@ -174,11 +174,12 @@ function dropDownList()
         {
             $('.person-container ul li:nth-child(' + (i + 1) + ') p').html(data[i].Name);
             $('.person-container ul li:nth-child(' + (i + 1) + ')').attr('index', data[i].id);
-            //$('.person-container ul li:nth-child(' + (i + 1) + ') span').css('background-image', 'url(' + data[i].picture_small + ')');
         }
+
         localStorage.setItem('usersDB', JSON.stringify(data));
 
-        var photoslinks = ['./assets/people/60_borkata.png', './assets/people/60_ivo.jpg', './assets/people/60_marto.jpg', './assets/people/60_petar.jpg',
+
+        var photoslinks = ['./assets/people/60_marto.jpg', './assets/people/60_ivo.jpg', './assets/people/60_borkata.png', './assets/people/60_petar.jpg',
                        './assets/people/60_evgeni.jpg', './assets/people/60_kosio.jpg', './assets/people/60_teodora.jpg', './assets/people/60_joro.jpg'
         ];
         for (var i = 1; i < 9; i++)
@@ -241,28 +242,40 @@ function chart(ChartType)
             max = newData[i].data;
         }
     }
-    console.log(min,max)
-
-    
     if (ChartType === 'weightChart')
     {
-        min = min - 0.1;
+        if (min !== null)
+        {
+            min = min - 0.1;
+        }  
         max = max + 0.1;
     } else if (ChartType === 'msChart')
     {
-        min = min - 50;
+        if (min !== null)
+        {
+            min = min - 50;
+        }
         max = max + 50;
     } else if (ChartType === 'wbsChart')
     {
-        min = min - 0.1;
+        if (min !== null)
+        {
+            min = min - 0.1;
+        }
         max = max + 0.1;
     } else if (ChartType === 'cbChart')
     {
-        min = min - 100;
+        if (min !== null)
+        {
+            min = min - 100;
+        }
         max = max + 100;
     } else if (ChartType === 'rhChart')
     {
-        min = min - 2;
+        if (min !== null)
+        {
+            min = min - 2;
+        }
         max = max + 2;
     }
     
@@ -362,10 +375,11 @@ function OverallConditionCircleColor(condition)
 
 function getUser(UserId)
 {
+
     var photoslinks =
         {
-            'Borislav Filipov': './assets/people/170_borkata.png', 'Ivo Zhulev': './assets/people/170_ivo.jpg',
-            'Martin Kuvandzhiev': './assets/people/170_marto.jpg', 'Peter Lazarov': './assets/people/170_petar.jpg',
+            'Martin Kuvandzhiev': './assets/people/170_marto.jpg', 'Ivo Zhulev': './assets/people/170_ivo.jpg',
+            'Borislav Filipov': './assets/people/170_borkata.png', 'Peter Lazarov': './assets/people/170_petar.jpg',
             'Evgeni Sabev': './assets/people/170_evgeni.jpg', 'Konstantin Jleibinkov': './assets/people/170_kosio.jpg',
             'Teodora Malashevska': './assets/people/170_teodora.jpg', 'Georgi Velev': './assets/people/170_joro.jpg',
         };
@@ -427,7 +441,6 @@ function getChart(UserId, ChartType)
         success: function (data)
         {
             localStorage.setItem('chart', JSON.stringify(data));
-            console.log(data)
             chart(ChartType);
         }
     });
@@ -436,10 +449,16 @@ function getChart(UserId, ChartType)
 
 function mainPageHeight()
 {
-    var mainHeight = $('.person-info-container').height() + $('.person-stats').height() + $('.buttons-container').height() + $('#chart').height()
+    var mainHeight = $('.person-info-container').height() + $('.person-stats').height() + $('.buttons-container').height() + $('#chart').height();
     if ($('#mainSplitter').jqxSplitter('orientation') === 'vertical')
     {
-        $('#mainSplitter').jqxSplitter({ height: mainHeight + 350 });
+        if ((mainHeight + 349) < $(document).height())
+        {
+            $('#mainSplitter').jqxSplitter({ height: mainHeight + 357});
+        } else
+        {
+            $('#mainSplitter').jqxSplitter({ height: mainHeight + 349 });
+        }
     } else
     {
         $('#mainSplitter').jqxSplitter({ height: mainHeight + 501 });
@@ -452,7 +471,13 @@ function secondPageHeight()
     var mainHeight = $('.person-info-container').height() + $('.exerciseTitles').height() + $('.exerciseContainers').height();
     if ($('#mainSplitter').jqxSplitter('orientation') === 'vertical')
     {
-        $('#mainSplitter').jqxSplitter({ height: mainHeight + 610 });
+        if ((mainHeight + 610) < $(document).height())
+        {
+            $('#mainSplitter').jqxSplitter({ height: mainHeight + 618 });
+        } else
+        {
+            $('#mainSplitter').jqxSplitter({ height: mainHeight + 610 });
+        }
     } else
     {
         $('#mainSplitter').jqxSplitter({ height: mainHeight + 759 });
