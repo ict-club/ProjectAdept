@@ -17,6 +17,9 @@ Current development:
 * Medics and researcher site improvement - Ivo Zhulev
 * Hardware schematic optimisation - George Velev
 
+Adept Health iOS Application state:
+v0.1.0.11 waiting for application review from Apple Inc. Will upload to AppStore after completion of the review.
+
 #####Target for the Q2 of 2016:
 - [x] TAO-Wellness device support
 - [x] Complete Apple ResearchKit support
