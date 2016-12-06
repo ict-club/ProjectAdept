@@ -33,8 +33,6 @@
 		199F44691CBC340200D26FDB /* BluetoothDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 199F44681CBC340200D26FDB /* BluetoothDevice.m */; };
 		19B66A2C1CCA87EC00225464 /* GraphicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19B66A2B1CCA87EC00225464 /* GraphicTableViewCell.xib */; };
 		19B66A301CCA889800225464 /* LogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19B66A2F1CCA889800225464 /* LogTableViewCell.xib */; };
-		19C2254A1CB6B3BA0017D5A7 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C225461CB6B1090017D5A7 /* ResearchKit.framework */; };
-		19C2254B1CB6B3BA0017D5A7 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 19C225461CB6B1090017D5A7 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		19C225521CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C225511CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m */; };
 		19C225561CB714FC0017D5A7 /* syncing.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C225551CB714FC0017D5A7 /* syncing.png */; };
 		19C225581CB7150A0017D5A7 /* syncing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C225571CB7150A0017D5A7 /* syncing@2x.png */; };
@@ -90,6 +88,7 @@
 		19FDF05F1CA996E200FBE133 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF05E1CA996E200FBE133 /* ExerciseViewController.m */; };
 		19FDF0621CA9970F00FBE133 /* PerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */; };
 		19FDF06C1CAA7DC400FBE133 /* TAO-picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */; };
+		64F18EF6FF486C9978CA4399 /* libPods-Adept_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B576C4AB2855642254B3E6D /* libPods-Adept_iOS.a */; };
 		D328F3341CCB5939006E7020 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D328F3331CCB5939006E7020 /* Foundation.framework */; };
 		D328F3361CCB5943006E7020 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D328F3351CCB5943006E7020 /* AVFoundation.framework */; };
 		D328F3381CCB5952006E7020 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D328F3371CCB5952006E7020 /* CoreGraphics.framework */; };
@@ -109,30 +108,6 @@
 		D3E225A11CCCE21B00831D63 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E2259B1CCCE21B00831D63 /* 1.png */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		19C225451CB6B1090017D5A7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B183A5951A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
-		19C225471CB6B1090017D5A7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
-			remoteInfo = ResearchKitTests;
-		};
-		19C2254C1CB6B3BA0017D5A7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B183A4731A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		19C2254E1CB6B3BA0017D5A7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -140,7 +115,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				19C2254B1CB6B3BA0017D5A7 /* ResearchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,7 +169,6 @@
 		199F44681CBC340200D26FDB /* BluetoothDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothDevice.m; sourceTree = "<group>"; };
 		19B66A2B1CCA87EC00225464 /* GraphicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphicTableViewCell.xib; sourceTree = "<group>"; };
 		19B66A2F1CCA889800225464 /* LogTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogTableViewCell.xib; sourceTree = "<group>"; };
-		19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = Adept_iOS/ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		19C225501CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HKHealthStore+AAPLExtensions.h"; sourceTree = "<group>"; };
 		19C225511CB6B6C50017D5A7 /* HKHealthStore+AAPLExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HKHealthStore+AAPLExtensions.m"; sourceTree = "<group>"; };
 		19C225551CB714FC0017D5A7 /* syncing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = syncing.png; sourceTree = "<group>"; };
@@ -266,6 +239,8 @@
 		19FDF0601CA9970F00FBE133 /* PerformanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformanceViewController.h; sourceTree = "<group>"; };
 		19FDF0611CA9970F00FBE133 /* PerformanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceViewController.m; sourceTree = "<group>"; };
 		19FDF06B1CAA7DC400FBE133 /* TAO-picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TAO-picture.png"; sourceTree = "<group>"; };
+		7B576C4AB2855642254B3E6D /* libPods-Adept_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Adept_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F69F8BDDF9528C39ABBED87 /* Pods-Adept_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Adept_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Adept_iOS/Pods-Adept_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D328F3331CCB5939006E7020 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D328F3351CCB5943006E7020 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D328F3371CCB5952006E7020 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -289,6 +264,7 @@
 		D3E225991CCCE21B00831D63 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		D3E2259A1CCCE21B00831D63 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
 		D3E2259B1CCCE21B00831D63 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		FE7D102A40835A5BBF4DB505 /* Pods-Adept_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Adept_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Adept_iOS/Pods-Adept_iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,8 +277,8 @@
 				D328F3361CCB5943006E7020 /* AVFoundation.framework in Frameworks */,
 				D328F3341CCB5939006E7020 /* Foundation.framework in Frameworks */,
 				D33448681CC88B7000DAF4A4 /* UIKit.framework in Frameworks */,
-				19C2254A1CB6B3BA0017D5A7 /* ResearchKit.framework in Frameworks */,
 				19DA71A81CAC2BD90078DC65 /* HealthKit.framework in Frameworks */,
+				64F18EF6FF486C9978CA4399 /* libPods-Adept_iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,15 +346,6 @@
 				19811DF91CBEFC970037B65A /* AdeptStickCommunication.m */,
 			);
 			name = Bluetooth;
-			sourceTree = "<group>";
-		};
-		19C225401CB6B1090017D5A7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				19C225461CB6B1090017D5A7 /* ResearchKit.framework */,
-				19C225481CB6B1090017D5A7 /* ResearchKitTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		19DA71931CAAF5DF0078DC65 /* ViewControllers */ = {
@@ -494,6 +461,7 @@
 				D328F3301CCB5907006E7020 /* Frameworks */,
 				19FDF03C1CA9950F00FBE133 /* Adept_iOS */,
 				19FDF03B1CA9950F00FBE133 /* Products */,
+				8F97E816CF51D869EFA21455 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -536,6 +504,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8F97E816CF51D869EFA21455 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F69F8BDDF9528C39ABBED87 /* Pods-Adept_iOS.debug.xcconfig */,
+				FE7D102A40835A5BBF4DB505 /* Pods-Adept_iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D328F3301CCB5907006E7020 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,8 +521,8 @@
 				D328F3351CCB5943006E7020 /* AVFoundation.framework */,
 				D328F3331CCB5939006E7020 /* Foundation.framework */,
 				D33448671CC88B7000DAF4A4 /* UIKit.framework */,
-				19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */,
 				19DA71A71CAC2BD90078DC65 /* HealthKit.framework */,
+				7B576C4AB2855642254B3E6D /* libPods-Adept_iOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -568,15 +545,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 19FDF0541CA9950F00FBE133 /* Build configuration list for PBXNativeTarget "Adept_iOS" */;
 			buildPhases = (
+				CC39701273FF6D93C901CDE3 /* [CP] Check Pods Manifest.lock */,
 				19FDF0361CA9950F00FBE133 /* Sources */,
 				19FDF0371CA9950F00FBE133 /* Frameworks */,
 				19FDF0381CA9950F00FBE133 /* Resources */,
 				19C2254E1CB6B3BA0017D5A7 /* Embed Frameworks */,
+				55C62AA9D5A7D5245B788C2D /* [CP] Embed Pods Frameworks */,
+				662ED3ED66703FD906FAB95F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				19C2254D1CB6B3BA0017D5A7 /* PBXTargetDependency */,
 			);
 			name = Adept_iOS;
 			productName = Adept_iOS;
@@ -589,12 +568,13 @@
 		19FDF0321CA9950F00FBE133 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Martin Kuvandzhiev";
 				TargetAttributes = {
 					19FDF0391CA9950F00FBE133 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = P6Y2W9RQ54;
+						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -614,35 +594,12 @@
 			mainGroup = 19FDF0311CA9950F00FBE133;
 			productRefGroup = 19FDF03B1CA9950F00FBE133 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 19C225401CB6B1090017D5A7 /* Products */;
-					ProjectRef = 19C225361CB6B0E40017D5A7 /* ResearchKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				19FDF0391CA9950F00FBE133 /* Adept_iOS */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		19C225461CB6B1090017D5A7 /* ResearchKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ResearchKit.framework;
-			remoteRef = 19C225451CB6B1090017D5A7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		19C225481CB6B1090017D5A7 /* ResearchKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ResearchKitTests.xctest;
-			remoteRef = 19C225471CB6B1090017D5A7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		19FDF0381CA9950F00FBE133 /* Resources */ = {
@@ -707,6 +664,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		55C62AA9D5A7D5245B788C2D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Adept_iOS/Pods-Adept_iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		662ED3ED66703FD906FAB95F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Adept_iOS/Pods-Adept_iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC39701273FF6D93C901CDE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		19FDF0361CA9950F00FBE133 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -756,14 +761,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		19C2254D1CB6B3BA0017D5A7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ResearchKit;
-			targetProxy = 19C2254C1CB6B3BA0017D5A7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		19FDF0491CA9950F00FBE133 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -798,8 +795,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -843,8 +842,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -870,33 +871,37 @@
 		};
 		19FDF0551CA9950F00FBE133 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F69F8BDDF9528C39ABBED87 /* Pods-Adept_iOS.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Adept_iOS/Adept_iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Adept_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ICT-Club.Adept-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		19FDF0561CA9950F00FBE133 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE7D102A40835A5BBF4DB505 /* Pods-Adept_iOS.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Adept_iOS/Adept_iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Adept_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ICT-Club.Adept-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
